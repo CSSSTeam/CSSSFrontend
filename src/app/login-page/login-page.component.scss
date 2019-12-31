@@ -12,35 +12,37 @@
 }
 main {
     #logBox {
-        -webkit-box-shadow: 3px 3px 30px 5px rgba(58,58,68,1);
-        -moz-box-shadow: 3px 3px 30px 5px rgba(58,58,68,1);
-	    box-shadow: 3px 3px 30px 5px rgba(58,58,68,1);
-        background-color: #070701;
-        text-align: center;
-        padding: 6% 5%;
-        border-radius: 20px;
-        width: 40%;
-        input {
-            width: 100%;
-            background-color: #efefef;
-            color: #666;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 1.3rem;
-            padding: 3%;
-            outline: none;
-            margin-top: 5%;
-        }
-        button {
-            width: 100%;
-            background-color: #ffcc00;
-            font-size: 1.3rem;
-            color: #000;
-            padding: 4% 3%;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            letter-spacing: 2px;
+      -webkit-box-shadow: 3px 3px 30px 5px rgba(58, 58, 68, 1);
+      -moz-box-shadow: 3px 3px 30px 5px rgba(58, 58, 68, 1);
+      box-shadow: 3px 3px 30px 5px rgba(58, 58, 68, 1);
+      background-color: #070701;
+      text-align: center;
+      padding: 6% 5%;
+      border-radius: 20px;
+      width: 40%;
+
+      input {
+        width: 100%;
+        background-color: #efefef;
+        color: #666;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 1.3rem;
+        padding: 3%;
+        outline: none;
+        margin-top: 5%;
+      }
+
+      button {
+        width: 100%;
+        background-color: #ffcc00;
+        font-size: 1.3rem;
+        color: #000;
+        padding: 4% 3%;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        letter-spacing: 2px;
             outline: none;
             margin-top: 10%;
         }
