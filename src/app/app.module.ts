@@ -12,13 +12,23 @@ import {LoggedLayoutComponent} from './logged-layout/logged-layout.component';
 import {APP_ROUTES} from './app.routes';
 import {GuardService} from './guard.service';
 import {UserService} from './user.service';
+import { EventsComponent } from './logged-layout/events/events.component';
+import { LessonsComponent } from './logged-layout/lessons/lessons.component';
+import { FilesComponent } from './logged-layout/files/files.component';
+import { InfosComponent } from './logged-layout/infos/infos.component';
+import { OthersComponent } from './logged-layout/others/others.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     MainPageComponent,
-    LoggedLayoutComponent
+    LoggedLayoutComponent,
+    EventsComponent,
+    LessonsComponent,
+    FilesComponent,
+    InfosComponent,
+    OthersComponent
   ],
   imports: [
     BrowserModule,
