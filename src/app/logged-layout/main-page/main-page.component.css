@@ -1,7 +1,9 @@
 #schDays {
-  width: 100%;
   margin: 5vh 0 5vh 25%;
   height: 90vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(5, 1fr);
@@ -23,6 +25,7 @@
   border-right: 1rem solid #ffcc00;
   opacity: .8;
   width: 100%;
+  flex-basis: 20%;
   position: relative;
 }
 
