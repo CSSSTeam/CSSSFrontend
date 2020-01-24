@@ -15,6 +15,9 @@ export class BasicInfoService {
     this.http.get(url).subscribe(
       (data: any) => {
         this.date = new Date(data.month + ' ' + data.day + ',' + data.year + ' ' + data.hour + ':' + data.minute + ':' + data.second);
+      },
+      (e: any) => {
+        this.date = new Date();
       }
     );
   }
