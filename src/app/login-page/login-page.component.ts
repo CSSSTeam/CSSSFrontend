@@ -32,24 +32,29 @@ export class LoginPageComponent implements OnInit {
   }
 
   login() {
-    this.userService.loginUser(this.loginForm).subscribe(
-      (data: any) => {
-        this.userService.createUser(data.token, this.router);
-      },
-      error => this.loginError(error.error)
+    this.userService.loginUser(this.loginForm).then().catch((e) => {
+        this.loginError(e.error);
+      }
     );
 
   }
 
   private loginError(error: any) {
+
     if (error.non_field_errors != null || error.non_field_errors !== 'undefined') {
       this.errorForm.global = error.non_field_errors;
+    } else {
+      this.errorForm.global = null;
     }
     if (error.username != null && error.username !== 'undefined') {
       this.errorForm.username = error.username;
+    } else {
+      this.errorForm.username = null;
     }
     if (error.password != null && error.password !== 'undefined') {
       this.errorForm.password = error.password;
+    } else {
+      this.errorForm.password = null;
     }
     console.log(error);
   }
