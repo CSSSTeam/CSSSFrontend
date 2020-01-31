@@ -1,0 +1,105 @@
+<main>
+    <div id="timeTable">
+        <div (click)="showMonday()" id="day1" class="day">
+            <h6><i class="icon-calendar"></i>Pn<i id="open" class="icon-down-open open"></i></h6>
+        </div>
+        <div *ngIf="isMonday" id="monTable" class="table">
+            <div id="hours" class="tableEl">
+                <h6 *ngFor="let time of monLessons">
+                  {{ time.time }}
+                </h6>
+            </div>
+            <div id="subjects" class="tableEl">
+                <h6 *ngFor="let subject of monLessons">
+                    {{ subject.subject }}
+                </h6>
+            </div>
+            <div id="rooms" class="tableEl">
+                <h6 *ngFor="let room of monLessons">
+                    {{ room.room }}
+                </h6>
+            </div>
+        </div>
+        <div (click)="showTuesday()" id="day2" class="day">
+            <h6><i class="icon-calendar"></i>Wt<i id="open1" class="icon-down-open open"></i></h6>
+        </div>
+        <div *ngIf="isTuesday" id="tueTable" class="table">
+            <div id="hours" class="tableEl">
+                <h6 *ngFor="let time of tueLessons">
+                    {{ time.time }}
+                </h6>
+            </div>
+            <div id="subjects" class="tableEl">
+                <h6 *ngFor="let subject of tueLessons">
+                    {{ subject.subject }}
+                </h6>
+            </div>
+            <div id="rooms" class="tableEl">
+                <h6 *ngFor="let room of tueLessons">
+                    {{ room.room }}
+                </h6>
+            </div>
+        </div>
+        <div (click)="showWednesday()" id="day3" class="day">
+            <h6><i class="icon-calendar"></i>Śr<i id="open2" class="icon-down-open open"></i></h6>
+        </div>
+        <div *ngIf="isWednesday" id="wedTable" class="table">
+            <div id="hours" class="tableEl">
+                <h6 *ngFor="let time of wedLessons">
+                    {{ time.time }}
+                </h6>
+            </div>
+            <div id="subjects" class="tableEl">
+                <h6 *ngFor="let subject of wedLessons">
+                    {{ subject.subject }}
+                </h6>
+            </div>
+            <div id="rooms" class="tableEl">
+                <h6 *ngFor="let room of wedLessons">
+                    {{ room.room }}
+                </h6>
+            </div>
+        </div>
+        <div (click)="showThursday()" id="day4" class="day">
+            <h6><i class="icon-calendar"></i>Cz<i id="open3" class="icon-down-open open"></i></h6>
+        </div>
+        <div *ngIf="isThursday" id="thuTable" class="table">
+            <div id="hours" class="tableEl">
+                <h6 *ngFor="let time of thuLessons">
+                    {{ time.time }}
+                </h6>
+            </div>
+            <div id="subjects" class="tableEl">
+                <h6 *ngFor="let subject of thuLessons">
+                    {{ subject.subject }}
+                </h6>
+            </div>
+            <div id="rooms" class="tableEl">
+                <h6 *ngFor="let room of thuLessons">
+                    {{ room.room }}
+                </h6>
+            </div>
+        </div>
+        <div (click)="showFriday()" id="day5" class="day">
+            <h6><i class="icon-calendar"></i>Pt<i id="open4" class="icon-down-open open"></i></h6>
+        </div>
+        <div *ngIf="isFriday" id="friTable" class="table">
+            <div id="hours" class="tableEl">
+                <h6 *ngFor="let time of friLessons">
+                    {{ time.time }}
+                </h6>
+            </div>
+            <div id="subjects" class="tableEl">
+                <h6 *ngFor="let subject of friLessons">
+                    {{ subject.subject }}
+                </h6>
+            </div>
+            <div id="rooms" class="tableEl">
+                <h6 *ngFor="let room of friLessons">
+                    {{ room.room }}
+                </h6>
+            </div>
+        </div>
+    </div>
+</main>
+<div style="clear:both"></div>

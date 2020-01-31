@@ -1,0 +1,68 @@
+<div id="content">
+  <div id="mainNav">
+    <a routerLink="/" routerLinkActive="active">
+        <div id="logo">
+            <img src="../../assets/img/logotype3.svg" alt="">
+        </div>
+    </a>
+    <div id="settings">
+        <i  *ngIf="isCog" (click)="showSettings()" class="icon-cog"></i>
+        <div *ngIf="isSett" id="account">
+            <div id="userOption">
+                <i class="icon-off"></i>
+                <i class="icon-key"></i>
+                <i class="icon-info"></i>
+                <i (click)="showSettings()" class="icon-cancel"></i>
+            </div>
+        </div>
+    </div>
+    <div  (click)="showMenu()" id="menu">
+        <i id="ham" class="icon-menu"></i>
+    </div>
+    <nav *ngIf="isMenu">
+        <a routerLink="/events" routerLinkActive="active">
+            <div id="events" class="menuOp">
+                <i class="icon-th-list"></i>Wydarzenia
+            </div>
+        </a>
+        <a routerLink="/lessons" routerLinkActive="active">
+            <div id="lessons" class="menuOp">
+                <i class="icon-table"></i>Rozkład zajęć
+            </div>
+        </a>
+        <a routerLink="/files" routerLinkActive="active">
+            <div id="files" class="menuOp">
+                <i class="icon-folder-open"></i>Pliki
+            </div>
+        </a>
+    </nav>
+    <div id="widgets">
+        <div id="box1" class="wid">
+            <div class="elem">
+                <h1>30</h1>
+            </div>
+        </div>
+        <div id="box2" class="wid">
+            <div class="elem">
+                <i class="icon-calendar"></i>
+            </div>
+        </div>
+        <div id="box3" class="wid">
+            <a routerLink="/infos" routerLinkActive="active"><div class="elem">
+                <i class="icon-attention"></i>
+                <p>Informacje</p>
+            </div></a>
+        </div>
+        <div id="box4" class="wid">
+            <a routerLink="/others" routerLinkActive="active"><div class="elem">
+                <i class="icon-newspaper"></i>
+                <p>Inne</p>
+            </div></a>
+        </div>
+    </div>
+  </div>
+    <router-outlet></router-outlet>
+  <footer>
+    ClassStudentServiceSystem &copy; 2020
+  </footer>
+</div>
