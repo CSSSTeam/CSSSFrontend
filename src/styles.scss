@@ -153,6 +153,21 @@ a {
         }
     }
 }
+@media (max-height: 670px) {
+    #mainNav {
+        nav {
+            font-size: 1rem;
+            .menuOp {
+                padding: 10px 5px;
+                border-bottom: 1px solid #222;
+                i {
+                    font-size: .8rem;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
 @media (min-width: 1024px) {
     #mainNav {
         float: left;
