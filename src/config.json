@@ -3,6 +3,11 @@
   "endpoints": {
     "login": "auth/",
     "infoUser": "user/details/",
-    "date": "basic/date/"
+    "date": "basic/date/",
+    "timetable": {
+      "get": "timetable/get/",
+      "createTimetable": "timetable/createTimetable/",
+      "createPeriods": "timetable/createHour/"
+    }
   }
 }

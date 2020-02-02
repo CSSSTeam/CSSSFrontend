@@ -1,1 +1,9 @@
-<p>lessons works!</p>
+<header *ngIf="timetableService.getTimetable() == undefined">ERROR</header>
+<table *ngIf="timetableService.getTimetable() != undefined">
+  <tr *ngFor="let day of timetableService.daysOfWeek">
+    <th>{{day[1]}}</th>
+    <th *ngFor="let lesson of timetableService.getTimetable()[day[0]]">
+      {{displayLesson(lesson[0])}}
+    </th>
+  </tr>
+</table>
