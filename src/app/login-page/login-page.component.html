@@ -1,14 +1,13 @@
 <div id="content">
-  <div id="side">
+  <div id="mainNav">
       <div id="logo">
-          <img src="../assets/img/logotype2.svg" alt="logo">
+          <img src="../assets/img/logotype3.svg" alt="logo">
       </div>
-      <h1>o projekcie</h1>
       <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias atque dolorem consequuntur, hic provident assumenda officia ratione recusandae autem inventore quam, iure possimus reiciendis perferendis natus illo. Placeat, vitae voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam delectus excepturi saepe veritatis laudantium debitis eaque dignissimos.
+        Jest to nieduża, jasno zabarwiona małpa. Jej twarz jest charakterystyczna. Sierść dookoła oczu ma sinoniebieski odcień. Nos i uszy są ceglastoczerwone. Sierść na policzkach ma żółte zabarwienie i jest dość długa.
       </p>
   </div>
-  <main>
+  <div id="logPage">
       <div id="logBox">
           <h3>{{displayError(errorForm.global)}}</h3>
           <p>{{displayError(errorForm.username)}}</p>
@@ -17,5 +16,5 @@
           <input [(ngModel)]="loginForm.password" type="password" placeholder="hasło" onfocus="this.placeholder=''" onblur="this.placeholder='hasło'"> <br>
           <button (click)="login()">zaloguj się</button>
       </div>
-  </main>
+    </div>
 </div>

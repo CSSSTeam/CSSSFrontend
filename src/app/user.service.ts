@@ -10,19 +10,13 @@ export class UserService {
 
   dataURL;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient) {
     this.dataURL = (data as any).default;
   }
 
-  loginUser(userData): Promise<any> {
+  loginUser(userData) {
     const url = this.dataURL.server + this.dataURL.endpoints.login;
-    return new Promise<any>((t, j) => this.http.post(url, userData).subscribe(
-      (data: any) => {
-        this.createUser(data.token, this.router);
-        t(data);
-      },
-      error => j(error)
-    ));
+    return this.http.post(url, userData);
   }
 
   createUser(token, router: Router) {
@@ -80,6 +74,8 @@ export class User {
     this.email = data.email;
     this.token = token;
     this.groups = data.groups;
+
+    localStorage.setItem('user', JSON.stringify(this));
 
   }
 

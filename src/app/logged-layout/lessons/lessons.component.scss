@@ -1,0 +1,79 @@
+#timeTable {
+    .day {
+        width: 300px;
+        height: 50px;
+        background-color: #0A0B0D;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        position: relative;
+        cursor: pointer;
+        h6 {
+            font-size: 1.5rem;
+            color: #bbb;
+            .open {
+                position: absolute;
+                right: 10px;
+            }
+        }
+    }
+    .table {
+        background-color: #818DA6;
+        border-radius: 5px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #hours {
+        width: 80px;
+        text-align: right;
+    }
+    #subjects {
+        width: 150px;
+        text-align: center;
+    }
+    #rooms {
+        width: 30px;
+        text-align: left;
+    }
+    .tableEl {
+        display: inline-block;
+        h6 {
+            padding: 5px 0;
+            border-bottom: 1px dotted #eee;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}
+@media (min-width: 768px) {
+    #timeTable {
+        max-height: 80vh;
+        overflow-y: scroll;
+        scrollbar-color: #ccc #222F40;
+        scrollbar-width: thin;
+        .day {
+            width: 600px;
+        }
+        .tableEl {
+            font-size: 1.5rem;
+        }
+        #hours {
+            width: 130px;
+        }
+        #subjects {
+            width: 310px;
+        }
+        #rooms {
+            width: 80px;
+        }
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #ccc
+    }
+}
