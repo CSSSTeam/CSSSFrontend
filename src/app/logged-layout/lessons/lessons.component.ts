@@ -16,8 +16,7 @@ export class LessonsComponent implements OnInit {
   }
 
   constructor(private timetableService: TimeTableService) {
-    for (let day in timetableService.daysOfWeek) {
-      console.log(day);
+    for (let day of timetableService.daysOfWeek) {
       this.isTabsOpen[day[0]] = false;
     }
   }
@@ -36,7 +35,6 @@ export class LessonsComponent implements OnInit {
   }
 
   displayText(object: any, tag: string): string {
-    console.log(object);
     return object == undefined ? '‎‏‏‎ ‎‎' : object[tag];
   }
 }
