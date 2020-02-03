@@ -21,7 +21,14 @@
               {{displayText(room[0], 'classroom')}}
             </h6>
           </div>
+          <div *ngIf="isConfigEnabled" id="config">
+            <i class="icon-plus"></i>
+          </div>
+
         </div>
+      </div>
+      <div (click)="mgmtStart()" id="timeTableMGMT">
+        <h6>Zarządzaj planem lekcji</h6>
       </div>
     </div>
 </main>

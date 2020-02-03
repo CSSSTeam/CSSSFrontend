@@ -1,7 +1,7 @@
 #schDays .day {
   width: 300px;
   min-height: 50px;
-  background-color: #818DA6;
+  background-color: #000;
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
@@ -12,6 +12,7 @@
   color: #bbb;
   border-bottom: 1px dotted #bbb;
   margin-bottom: 5px;
+  padding: 4px 0;
 }
 
 #schDays .day div {
@@ -36,7 +37,7 @@
   #schDays {
     max-height: 80vh;
     overflow-y: scroll;
-    scrollbar-color: #ccc #222F40;
+    scrollbar-color: #ccc transparent;
     scrollbar-width: thin;
   }
   #schDays .day {

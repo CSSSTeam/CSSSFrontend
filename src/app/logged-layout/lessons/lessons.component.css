@@ -6,12 +6,21 @@
   padding: 10px;
   border-radius: 5px;
   position: relative;
+  transition: all .2s ease-in-out;
+}
+
+#timeTable .day:hover {
   cursor: pointer;
+  padding-left: 20px;
+}
+
+#timeTable .day:hover h6 {
+  color: #fff;
 }
 
 #timeTable .day h6 {
   font-size: 1.5rem;
-  color: #bbb;
+  color: #ddd;
 }
 
 #timeTable .day h6 .open {
@@ -20,7 +29,7 @@
 }
 
 #timeTable .table {
-  background-color: #818DA6;
+  background-color: #171717;
   border-radius: 5px;
   padding: 10px;
   display: flex;
@@ -56,14 +65,35 @@
   border-bottom: none;
 }
 
+#timeTable #timeTableMGMT {
+  width: 300px;
+  height: 40px;
+  line-height: 20px;
+  background-color: #aa0000;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+#timeTable #timeTableMGMT h6 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #bbb;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
 @media (min-width: 768px) {
   #timeTable {
     max-height: 80vh;
     overflow-y: scroll;
-    scrollbar-color: #ccc #222F40;
+    scrollbar-color: #ccc transparent;
     scrollbar-width: thin;
   }
-  #timeTable .day {
+  #timeTable .day, #timeTable #timeTableMGMT {
     width: 600px;
   }
   #timeTable .tableEl {

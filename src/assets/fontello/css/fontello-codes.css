@@ -8,7 +8,9 @@
 .icon-cog:before { content: '\e806'; } /* '' */
 .icon-down-open:before { content: '\e807'; } /* '' */
 .icon-cancel:before { content: '\e808'; } /* '' */
+.icon-plus:before { content: '\e809'; } /* '' */
 .icon-menu:before { content: '\f0c9'; } /* '' */
 .icon-table:before { content: '\f0ce'; } /* '' */
 .icon-info:before { content: '\f129'; } /* '' */
 .icon-newspaper:before { content: '\f1ea'; } /* '' */
+.icon-user-times:before { content: '\f235'; } /* '' */
