@@ -10,6 +10,7 @@ import {TimeTableService} from '../../time-table.service';
 export class LessonsComponent implements OnInit {
 
   isTabsOpen = {};
+  isConfigEnabled = false;
 
   timetable() {
     return this.timetableService.getTimetable();

@@ -8,6 +8,7 @@
         border-radius: 5px;
         position: relative;
         transition: all .2s ease-in-out;
+        cursor: pointer;
         &:hover {
             cursor: pointer;
             padding-left: 20px;
@@ -26,31 +27,36 @@
     }
     .table {
         background-color: #171717;
-        border-radius: 5px;
+        border-radius: 10px;
         padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    #hours {
-        width: 80px;
-        text-align: right;
-    }
-    #subjects {
-        width: 150px;
-        text-align: center;
-    }
-    #rooms {
-        width: 30px;
-        text-align: left;
-    }
-    .tableEl {
-        display: inline-block;
-        h6 {
-            padding: 5px 0;
-            border-bottom: 1px dotted #eee;
+        .lesson {
+            width: 100%;
+            min-height: 40px;
+            line-height: 90%;
+            padding: 6px 12px;
+            border-bottom: 1px solid #393939;
             &:last-child {
                 border-bottom: none;
+            }
+            .tableEl {
+                color: #eee;
+                font-size: 1rem;
+            }
+            .subject {
+                width: 100%;
+                font-size: 1.1rem;
+                color: #fff;
+            }
+            .hours {
+                width: 60%;
+                display: inline-block;
+                font-size: .8rem;
+            }
+            .room {
+                width: 40%;
+                display: inline-block;
+                font-size: .9rem;
+                text-align: right;
             }
         }
     }
@@ -83,17 +89,30 @@
         .day, #timeTableMGMT {
             width: 600px;
         }
-        .tableEl {
-            font-size: 1.5rem;
-        }
-        #hours {
-            width: 130px;
-        }
-        #subjects {
-            width: 310px;
-        }
-        #rooms {
-            width: 80px;
+        .table {
+            .lesson {
+                width: 100%;
+                .tableEl {
+                    color: #eee;
+                    padding: 5px;
+                    float: left;
+                }
+                .subject {
+                    width: 50%;
+                    font-size: 1.2rem;
+                    color: #fff;
+                }
+                .hours {
+                    width: 30%;
+                    font-size: .9rem;
+                    text-align: right;
+                }
+                .room {
+                    width: 20%;
+                    font-size: 1rem;
+                    text-align: center;
+                }
+            }
         }
     }
     ::-webkit-scrollbar {

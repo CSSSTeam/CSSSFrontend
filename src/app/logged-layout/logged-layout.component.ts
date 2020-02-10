@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ScrollService} from '../scroll.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logged-layout',
@@ -7,15 +9,19 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LoggedLayoutComponent implements OnInit {
 
-  isMenu:any;
+  isMenu:boolean;
 
-  constructor() {
-  }
+  constructor(
+    protected router: Router,
+    private scrollService: ScrollService
+  ) {}
 
   ngOnInit() {
-    let width = window.innerWidth;
-    if(width >= 1024) this.isMenu = true;
-    else this.isMenu = false;
+
+    if(window.screen.height != 0) this.scrollService.scrollToTop();
+
+    (window.innerWidth >= 1024) ? this.isMenu = true : this.isMenu = false;
+    
   }
 
   showMenu() {

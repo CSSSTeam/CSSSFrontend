@@ -137,6 +137,7 @@ body{
 main{
     background-image: url(assets/img/mainBg.svg);
     background-size: cover;
+    background-attachment: fixed;
     width: 100%;
     min-height: 50vh;
     display: flex;

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../user.service';
 import {Router} from '@angular/router';
+import {UserService} from '../user.service';
+import { ScrollService } from '../scroll.service';
 
 @Component({
   selector: 'app-login-page',
@@ -16,10 +17,13 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private scrollService: ScrollService
   ) { }
 
   ngOnInit() {
+
+    if(window.innerWidth > window.innerHeight) this.scrollService.scrollToLog();
 
     this.loginForm = {
       username: '',
@@ -36,7 +40,7 @@ export class LoginPageComponent implements OnInit {
   login() {
     this.userService.loginUser(this.loginForm).subscribe(
       (data: any) => {
-   //     this.userService.createUser(data.token, this.router);
+        this.userService.createUser(data.token, this.router);
       },
       error => this.loginError(error.error)
     );
