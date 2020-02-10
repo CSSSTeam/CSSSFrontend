@@ -7,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LoggedLayoutComponent implements OnInit {
 
+  isMenu:any;
+
   constructor() {
   }
 
@@ -16,10 +18,8 @@ export class LoggedLayoutComponent implements OnInit {
     else this.isMenu = false;
   }
 
-  isMenu = true;
   showMenu() {
-    if(this.isMenu==false) this.isMenu = true;  //// DO POPRAWIENIA !!!!
-    else this.isMenu = false;   
+    this.isMenu = !this.isMenu;   
   }
 
   isSett = false;

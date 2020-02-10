@@ -11,11 +11,13 @@ import {Router} from '@angular/router';
 export class LoginPageComponent implements OnInit {
 
   title = 'csssFrontend';
-  loginForm;
-  errorForm;
+  loginForm:any;
+  errorForm:any;
 
-  constructor(private router: Router, private userService: UserService) {
-  }
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
 
@@ -28,13 +30,13 @@ export class LoginPageComponent implements OnInit {
       username: '',
       password: ''
     };
-
+    
   }
 
   login() {
     this.userService.loginUser(this.loginForm).subscribe(
       (data: any) => {
-        this.userService.createUser(data.token, this.router);
+   //     this.userService.createUser(data.token, this.router);
       },
       error => this.loginError(error.error)
     );

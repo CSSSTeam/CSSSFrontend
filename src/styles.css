@@ -160,7 +160,6 @@ body {
 main {
   background-image: url(assets/img/mainBg.svg);
   background-size: cover;
-  background-attachment: fixed;
   width: 100%;
   min-height: 50vh;
   display: flex;
@@ -183,6 +182,7 @@ footer {
 a {
   color: inherit;
   text-decoration: none;
+  outline: none;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {

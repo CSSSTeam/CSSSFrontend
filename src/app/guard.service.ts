@@ -7,12 +7,14 @@ import {UserService} from './user.service';
 )
 export class GuardService implements CanActivate {
 
-  constructor(protected router: Router,
-              private userService: UserService) {
-  }
+  constructor(
+    protected router: Router,
+    private userService: UserService
+  ) { }
 
   canActivate() {
-    if (this.userService.isLogged()) {
+    return true;
+    /* if (this.userService.isLogged()) {
       // logged in so return true
       return true;
     }
@@ -23,6 +25,6 @@ export class GuardService implements CanActivate {
     }
     // not logged in so redirect to login page
     this.router.navigate(['/login']);
-    return false;
+    return false; */
   }
 }
