@@ -7,16 +7,16 @@ export class ScrollService {
 
   constructor() { }
 
-  scrollToLog() {
+  scrollDown(fromTop:number, timeout:number) {
     window.setTimeout(function() {
       window.scroll({
-        top: window.screen.height,
+        top: fromTop,
         behavior: 'smooth'
       })
-    }, 1500);
+    }, timeout);
   }
 
-  scrollToTop() {
+  scrollUp() {
     window.scroll(0,0);
   }
 

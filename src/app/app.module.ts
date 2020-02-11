@@ -17,6 +17,7 @@ import { LessonsComponent } from './logged-layout/lessons/lessons.component';
 import { FilesComponent } from './logged-layout/files/files.component';
 import { InfosComponent } from './logged-layout/infos/infos.component';
 import { OthersComponent } from './logged-layout/others/others.component';
+import { OpEditComponent } from './logged-layout/op-edit/op-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { OthersComponent } from './logged-layout/others/others.component';
     LessonsComponent,
     FilesComponent,
     InfosComponent,
-    OthersComponent
+    OthersComponent,
+    OpEditComponent
   ],
   imports: [
     BrowserModule,

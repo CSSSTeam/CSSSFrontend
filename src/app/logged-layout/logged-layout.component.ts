@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoggedLayoutComponent implements OnInit {
 
-  isMenu:boolean;
+  isMenu;
 
   constructor(
     protected router: Router,
@@ -18,14 +18,21 @@ export class LoggedLayoutComponent implements OnInit {
 
   ngOnInit() {
 
-    if(window.screen.height != 0) this.scrollService.scrollToTop();
+    if(window.screen.height != 0) this.scrollService.scrollUp();
 
     (window.innerWidth >= 1024) ? this.isMenu = true : this.isMenu = false;
     
   }
 
   showMenu() {
-    this.isMenu = !this.isMenu;   
+    this.isMenu = !this.isMenu;
+  }
+  navTo() {
+    if (window.innerWidth < 1024) {
+      this.scrollService.scrollDown(520,0);
+      this.isMenu = false;
+      console.log("działa");
+    }
   }
 
   isSett = false;

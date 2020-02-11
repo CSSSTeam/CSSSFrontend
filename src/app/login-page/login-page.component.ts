@@ -23,7 +23,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
 
-    if(window.innerWidth > window.innerHeight) this.scrollService.scrollToLog();
+    if(window.innerWidth > window.innerHeight) this.scrollService.scrollDown(window.screen.height, 1500);
 
     this.loginForm = {
       username: '',
