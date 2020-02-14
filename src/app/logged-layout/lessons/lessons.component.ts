@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TimeTableService} from '../../time-table.service';
+import {TimeTableService} from '../../services/time-table.service';
 
 @Component({
   selector: 'app-lessons',
@@ -10,6 +10,7 @@ import {TimeTableService} from '../../time-table.service';
 export class LessonsComponent implements OnInit {
 
   isTabsOpen = {};
+  isConfigEnabled: boolean = true;
 
   timetable() {
     return this.timetableService.getTimetable();
@@ -36,5 +37,9 @@ export class LessonsComponent implements OnInit {
 
   displayText(object: any, tag: string): string {
     return object == undefined ? '‎‏‏‎ ‎‎' : object[tag];
+  }
+
+  mgmtStart() {
+
   }
 }
