@@ -23,6 +23,17 @@ export class UserService {
     User.instance = new User(token, this, router);
   }
 
+  logoutUser(token): Observable<any> {
+    const url = this.dataURL.server + this.dataURL.endpoints.logout;
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'token ' + token
+      })
+    };
+    return this.http.post(url, httpOption);
+  }
+
   getProfileUser(token): Observable<any> {
     const httpOption = {
       headers: new HttpHeaders({
@@ -46,13 +57,17 @@ export class User {
   email: '';
   token: '';
   groups: {};
+  userService: UserService;
+  router: Router;
 
   constructor(token, userService: UserService, router: Router) {
+    this.userService = userService;
+    this.router = router;
     userService.getProfileUser(token).subscribe(
       (data: any) => {
         localStorage.setItem('token', token);
         this.initData(data, token);
-        router.navigate(['/']);
+        
       },
       error => {
         if (error.status == 401 && error.error == 'Token is Invalid') {
@@ -74,9 +89,28 @@ export class User {
     this.email = data.email;
     this.token = token;
     this.groups = data.groups;
-
-    localStorage.setItem('user', JSON.stringify(this));
+    console.log(this);
+    localStorage.setItem('user', JSON.stringify({
+      'firstName': data.firstName,
+      'lastName': data.lastName,
+      'email': this.email,
+      'token': this.token,
+      'groups': this.groups
+    }));
 
   }
 
+  logout() {
+    this.userService.logoutUser(this.token).subscribe(
+      () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        User.instance = null;
+        this.router.navigate(['/login']);
+      },
+      error => {
+        console.error('Can\'t logout');
+      }
+    );
+  }
 }
