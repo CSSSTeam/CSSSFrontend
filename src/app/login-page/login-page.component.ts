@@ -35,6 +35,7 @@ export class LoginPageComponent implements OnInit {
     this.userService.loginUser(this.loginForm).subscribe(
       (data: any) => {
         this.userService.createUser(data.token, this.router);
+        this.router.navigate(['/']);
       },
       error => this.loginError(error.error)
     );
