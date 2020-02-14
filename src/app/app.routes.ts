@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 import {LoginPageComponent} from './login-page/login-page.component';
-import {GuardService} from './guard.service';
+import {GuardService} from './services/guard.service';
 import {LOGGED_PAGE} from './logged-layout/logged.routes';
 import {LoggedLayoutComponent} from './logged-layout/logged-layout.component';
 

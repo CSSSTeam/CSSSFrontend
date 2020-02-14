@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {UserService, User} from '../../user.service';
+import {UserService, User} from '../../services/user.service';
 
 @Component({
   selector: 'app-main-page',
@@ -12,17 +11,17 @@ export class MainPageComponent implements OnInit {
 
   user;
 
-  constructor(private userService: UserService) {
+  constructor() {
 
   }
 
   ngOnInit() {
 
     this.user = User.instance;
-    
+
   }
 
- 
+
   monSubjects = [
     {subject: 'matematyka', type: 'test'},
     {subject: 'religia', type: 'smallTest'},
@@ -48,5 +47,5 @@ export class MainPageComponent implements OnInit {
     {subject: 'religia', type: 'smallTest'},
     {subject: 'SO', type: 'test'},
   ];
-  
+
 }

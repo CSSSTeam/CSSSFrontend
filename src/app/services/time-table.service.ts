@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import * as data from '../config.json';
+import * as data from '../../config.json';
 
 @Injectable({
   providedIn: 'root',
@@ -13,16 +13,16 @@ export class TimeTableService {
     ['tuesday', 'Wtorek'],
     ['wednesday', 'Środa'],
     ['thursday', 'Czwartek'],
-    ['friday', 'Piątek'],
+    ['friday', 'Piątek']
   ];
 
   constructor(private http: HttpClient) {
     this.dataURL = (data as any).default;
-    this.loadTimetable();
+    this.loadTimetable4everyone();
 
   }
 
-  loadTimetable() {
+  loadTimetable4everyone() {
     const url = this.dataURL.server + this.dataURL.endpoints.timetable.get;
     const httpOption = {
       headers: new HttpHeaders({
@@ -52,7 +52,15 @@ export class TimeTableService {
     );
   }
 
+  createTimetable() {
+
+  }
+
   getTimetable() {
     return this.timetable;
   }
+
+
 }
+
+
