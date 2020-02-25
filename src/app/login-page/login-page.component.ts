@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {UserService} from '../user.service';
-import { ScrollService } from '../scroll.service';
+import {UserService} from '../services/user.service';
+import { ScrollService } from '../services/scroll.service';
 
 @Component({
   selector: 'app-login-page',

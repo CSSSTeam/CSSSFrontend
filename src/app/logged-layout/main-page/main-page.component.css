@@ -2,9 +2,13 @@
   width: 300px;
   min-height: 50px;
   background-color: #000;
-  margin: 10px 0;
+  margin: 0px 0;
   padding: 10px;
   border-radius: 5px;
+}
+
+#schDays .day:nth-child(even) {
+  background-color: #222;
 }
 
 #schDays .day h6 {
@@ -16,13 +20,13 @@
 }
 
 #schDays .day div {
-  padding: 1% 1.5%;
-  margin: 1%;
+  padding: 1.5% 2%;
+  margin: 3px;
   border-radius: 10px;
   font-size: 1rem;
   letter-spacing: 1px;
   color: #eee;
-  background-color: crimson;
+  background-color: #222;
 }
 
 #schDays .day .null {
@@ -42,6 +46,7 @@
   }
   #schDays .day {
     width: 600px;
+    margin: 10px 0;
   }
   #schDays .subjects {
     width: 48%;

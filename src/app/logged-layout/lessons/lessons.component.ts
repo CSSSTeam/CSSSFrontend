@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {TimeTableService} from '../../time-table.service';
+import {TimeTableService} from '../../services/time-table.service';
 
 @Component({
   selector: 'app-lessons',
   templateUrl: './lessons.component.html',
   styleUrls: ['./lessons.component.css'],
-  providers: [TimeTableService]
+  providers: [ TimeTableService ]
 })
 export class LessonsComponent implements OnInit {
 

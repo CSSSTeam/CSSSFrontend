@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ScrollService} from '../scroll.service';
+import {ScrollService} from '../services/scroll.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoggedLayoutComponent implements OnInit {
 
-  isMenu;
+  isMenu:boolean;
 
   constructor(
     protected router: Router,
@@ -20,7 +20,7 @@ export class LoggedLayoutComponent implements OnInit {
 
     if(window.screen.height != 0) this.scrollService.scrollUp();
 
-    (window.innerWidth >= 1024) ? this.isMenu = true : this.isMenu = false;
+    this.isMenu = window.innerWidth >= 1024;
     
   }
 
@@ -29,9 +29,8 @@ export class LoggedLayoutComponent implements OnInit {
   }
   navTo() {
     if (window.innerWidth < 1024) {
-      this.scrollService.scrollDown(520,0);
+      this.scrollService.scrollDown(550,0);
       this.isMenu = false;
-      console.log("działa");
     }
   }
 

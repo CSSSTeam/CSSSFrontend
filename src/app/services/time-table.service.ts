@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import * as data from '../config.json';
+import * as data from '../../config.json';
 
 @Injectable({
   providedIn: 'root',
@@ -16,10 +16,9 @@ export class TimeTableService {
     ['friday', 'Piątek'],
   ];
 
-  constructor(private http: HttpClient) {
+  constructor( private http: HttpClient ) {
     this.dataURL = (data as any).default;
     this.loadTimetable();
-
   }
 
   loadTimetable() {
