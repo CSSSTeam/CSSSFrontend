@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {UserService} from '../services/user.service';
 import {Router} from '@angular/router';
 import {UserService} from '../services/user.service';
 import { ScrollService } from '../services/scroll.service';
@@ -41,6 +42,7 @@ export class LoginPageComponent implements OnInit {
     this.userService.loginUser(this.loginForm).subscribe(
       (data: any) => {
         this.userService.createUser(data.token, this.router);
+        this.router.navigate(['/']);
       },
       error => this.loginError(error.error)
     );

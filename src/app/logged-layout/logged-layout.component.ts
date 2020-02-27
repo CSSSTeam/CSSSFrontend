@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ScrollService} from '../services/scroll.service';
 import { Router } from '@angular/router';
+import {User} from '../services/user.service';
 
 @Component({
   selector: 'app-logged-layout',
@@ -36,9 +37,13 @@ export class LoggedLayoutComponent implements OnInit {
 
   isSett = false;
   isCog = !this.isSett;
+
   showSettings() {
     this.isSett = !this.isSett;
     this.isCog = !this.isCog;
   }
 
+  logout() {
+    User.instance.logout();
+  }
 }

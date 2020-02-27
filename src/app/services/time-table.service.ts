@@ -13,15 +13,16 @@ export class TimeTableService {
     ['tuesday', 'Wtorek'],
     ['wednesday', 'Środa'],
     ['thursday', 'Czwartek'],
-    ['friday', 'Piątek'],
+    ['friday', 'Piątek']
   ];
 
-  constructor( private http: HttpClient ) {
+  constructor(private http: HttpClient) {
     this.dataURL = (data as any).default;
-    this.loadTimetable();
+    this.loadTimetable4everyone();
+
   }
 
-  loadTimetable() {
+  loadTimetable4everyone() {
     const url = this.dataURL.server + this.dataURL.endpoints.timetable.get;
     const httpOption = {
       headers: new HttpHeaders({
@@ -51,7 +52,14 @@ export class TimeTableService {
     );
   }
 
+  createTimetable() {
+
+  }
+
   getTimetable() {
     return this.timetable;
   }
+
+
 }
+
