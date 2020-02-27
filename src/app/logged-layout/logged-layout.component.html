@@ -1,8 +1,8 @@
 <div id="content">
   <div id="mainNav">
-    <a routerLink="/" routerLinkActive="active">
+    <a (click)="navTo()" routerLink="/" routerLinkActive="active">
         <div id="logo">
-            <img src="../../assets/img/logotype3.svg" alt="">
+            <img src="../../assets/img/logotype_yellow.svg" alt="">
         </div>
     </a>
     <div id="settings">
@@ -20,17 +20,17 @@
         <i id="ham" class="icon-menu"></i>
     </div>
     <nav *ngIf="isMenu">
-        <a routerLink="/events" routerLinkActive="active">
+        <a (click)="navTo()" routerLink="/events" routerLinkActive="active">
             <div id="events" class="menuOp">
                 <i class="icon-th-list"></i>Wydarzenia
             </div>
         </a>
-        <a routerLink="/lessons" routerLinkActive="active">
+        <a (click)="navTo()" routerLink="/lessons" routerLinkActive="active">
             <div id="lessons" class="menuOp">
                 <i class="icon-table"></i>Rozkład zajęć
             </div>
         </a>
-        <a routerLink="/files" routerLinkActive="active">
+        <a (click)="navTo()" routerLink="/files" routerLinkActive="active">
             <div id="files" class="menuOp">
                 <i class="icon-folder-open"></i>Pliki
             </div>
@@ -48,13 +48,13 @@
             </div>
         </div>
         <div id="box3" class="wid">
-            <a routerLink="/infos" routerLinkActive="active"><div class="elem">
+            <a (click)="navTo()" routerLink="/infos" routerLinkActive="active"><div class="elem">
                 <i class="icon-attention"></i>
                 <p>Informacje</p>
             </div></a>
         </div>
         <div id="box4" class="wid">
-            <a routerLink="/others" routerLinkActive="active"><div class="elem">
+            <a (click)="navTo()" routerLink="/others" routerLinkActive="active"><div class="elem">
                 <i class="icon-newspaper"></i>
                 <p>Inne</p>
             </div></a>

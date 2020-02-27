@@ -27,6 +27,7 @@ export class MainPageComponent implements OnInit {
     {subject: 'religia', type: 'smallTest'},
     {subject: 'SO', type: 'test'},
   ];
+
   tueSubjects = [
     {subject: 'matematyka', type: 'test'},
     {subject: 'religia', type: 'smallTest'},
@@ -47,5 +48,4 @@ export class MainPageComponent implements OnInit {
     {subject: 'religia', type: 'smallTest'},
     {subject: 'SO', type: 'test'},
   ];
-
 }

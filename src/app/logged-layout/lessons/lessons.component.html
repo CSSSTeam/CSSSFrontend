@@ -1,12 +1,26 @@
 <main>
     <div id="timeTable">
       <div *ngFor="let day of timetableService.daysOfWeek">
+
         <div (click)="showDay(day[0])" id="{{day[0]}}" class="day">
           <h6><i class="icon-calendar"></i>{{day[1]}}<i id="tab{{day[0]}}" class="icon-down-open open"></i></h6>
         </div>
-        <div *ngIf="isTabsOpen[day[0]]" id="monTable" class="table">
 
-          <div id="hours" class="tableEl">
+        <div class="table" *ngIf="isTabsOpen[day[0]]"> 
+
+          <div class="lesson" *ngIf="isTabsOpen[day[0]]">
+            <div class="tableEl subject" *ngFor="let time of timetable()['period']">
+                {{displayText(subject[0], 'name')}}
+            </div>
+            <div class="tableEl hours" *ngFor="let subject of timetable()[day[0]]">
+                {{time['start']}} - {{time['end']}}
+            </div>
+            <div class="tableEl room" *ngFor="let room of timetable()[day[0]]">
+                {{displayText(room[0], 'classroom')}}
+            </div>
+          </div>
+
+          <!--<div id="hours" class="tableEl">
             <h6 *ngFor="let time of timetable()['period']">
               {{time['start']}} - {{time['end']}}
             </h6>
@@ -21,15 +35,18 @@
               {{displayText(room[0], 'classroom')}}
             </h6>
           </div>
+
           <div *ngIf="isConfigEnabled" id="config">
             <i class="icon-plus"></i>
-          </div>
+          </div> -->
 
         </div>
       </div>
-      <div (click)="mgmtStart()" id="timeTableMGMT">
+
+      <div routerLink="/edit" (click)="mgmtStart()" id="timeTableMGMT">
         <h6>Zarządzaj planem lekcji</h6>
       </div>
+
     </div>
 </main>
 <div style="clear:both"></div>

@@ -7,6 +7,7 @@ import {UserService} from './user.service';
 )
 export class GuardService implements CanActivate {
 
+
   constructor(protected router: Router,
               private userService: UserService) {
   }

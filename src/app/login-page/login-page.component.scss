@@ -1,97 +1,126 @@
 #content {
     background-image: url(../../assets/img/loginPage/darkmosaic.png);
-    background-size: cover;
-}
-#mainNav {
-    height: 50vh;
-    width: 100%;
-    #logLogo {
-        height: 6rem;
+    #logMainNav {
+        //background-image: url(../../assets/img/mainBg.svg);
+        background-size: cover;
+        height: 50vh;
         width: 100%;
-        position: relative;
+        #logLogo {
+            height: 6rem;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            img{
+                margin-left: 1rem;
+                height: 70%;
+            }
+        }
+        p {
+            display: block;
+            font-size: 65%;
+            font-weight: 700;
+            text-align: center;
+            padding: 8%;
+            text-indent: 15px;
+            color: #eee;
+            margin-bottom: 10px;
+            span {
+                color: green;
+            }
+        }
+    }
+    #logPage {
+        height: 50vh;
+        width: 100%;
         display: flex;
         align-items: center;
-        img{
-            margin-left: .5rem;
-            height: 70%;
+        justify-content: center;
+        #logBox {
+            -webkit-box-shadow: 3px 3px 30px 5px rgba(58,58,68,1);
+            -moz-box-shadow: 3px 3px 30px 5px rgba(58,58,68,1);
+            box-shadow: 3px 3px 30px 5px rgba(58,58,68,1);
+            text-align: center;
+            padding: 20px 30px;
+            border-radius: 20px;
+            width: 300px;
+            input {
+                width: 100%;
+                background-color: #efefef;
+                color: #666;
+                border: 2px solid #ddd;
+                border-radius: 5px;
+                font-size: 1.3rem;
+                padding: 3%;
+                outline: none;
+                margin-top: 5%;
+            }
+            button {
+                width: 100%;
+                background-color: #d85b11;
+                font-size: 1.3rem;
+                color: #eee;
+                padding: 4% 3%;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                letter-spacing: 2px;
+                outline: none;
+                margin-top: 10%;
+            }
         }
     }
-    p {
-        display: block;
-        font-size: 1.1rem;
-        font-weight: 700;
-        text-align: center;
-        padding: 30px;
-        text-indent: 15px;
-        color: #818DA6;
-        margin-bottom: 10px;
+    a {
+        text-decoration: none;
+        outline: none;
     }
 }
-#logPage {
-    height: 50vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    #logBox {
-        -webkit-box-shadow: 3px 3px 30px 5px rgba(58,58,68,1);
-        -moz-box-shadow: 3px 3px 30px 5px rgba(58,58,68,1);
-	    box-shadow: 3px 3px 30px 5px rgba(58,58,68,1);
-        text-align: center;
-        padding: 20px 30px;
-        border-radius: 20px;
-        width: 300px;
-        input {
-            width: 100%;
-            background-color: #efefef;
-            color: #666;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 1.3rem;
-            padding: 3%;
-            outline: none;
-            margin-top: 5%;
+@media (max-width: 1023px) and (max-height: 560px) and (orientation: landscape) {
+    #content {
+        #logMainNav {
+            height: 100vh;
         }
-        button {
-            width: 100%;
-            background-color: #818DA6;
-            font-size: 1.3rem;
-            color: #000;
-            padding: 4% 3%;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            letter-spacing: 2px;
-            outline: none;
-            margin-top: 10%;
+        #logPage {
+            height: 100vh;
         }
     }
 }
 @media (min-width: 1024px) {
-    #mainNav {
-        float: left;
-        height: 100vh;
-        width: 60%;
-        background-image: url(../../assets/img/loginPage/logPageBg.svg);
-        background-size: cover;
-        #logo {
-            height: 15vh;
+    #content {
+        background-image: url(../../assets/img/loginPage/darkmosaic.png);
+        #logMainNav {
+            background-image: url(../../assets/img/loginPage/darkmosaic.png);
+            background-size: auto;
+            float: left;
+            height: 100vh;
+            width: 50%;
+            #logo {
+                height: 15vh;
+            }
+            p {
+                
+                height: 80%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 20%;
+                font-size: 120%;
+                text-align: right;
+            }
         }
-        p {
-            
-            height: 80%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20%;
-            font-size: 120%;
-            text-align: center;
+        #logPage {
+            background-image: url(../../assets/img/mainBg.svg);
+            background-size: cover;
+            float: left;
+            height: 100vh;
+            width: 50%;
+            border-left: 30px solid #d85b11;
+            #logBox {
+                text-align: center;
+                padding: 20px 30px;
+                border-radius: 20px;
+                width: 450px;
+            }
         }
-    }
-    #logPage {
-        float: left;
-        height: 100vh;
-        width: 40%;
-        border-left: 30px solid #222F40;
     }
 }

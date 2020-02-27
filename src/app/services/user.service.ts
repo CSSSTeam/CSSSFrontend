@@ -56,7 +56,7 @@ export class User {
   username: '';
   email: '';
   token: '';
-  groups: {};
+
   userService: UserService;
   router: Router;
 
@@ -67,7 +67,6 @@ export class User {
       (data: any) => {
         localStorage.setItem('token', token);
         this.initData(data, token);
-        
       },
       error => {
         if (error.status == 401 && error.error == 'Token is Invalid') {

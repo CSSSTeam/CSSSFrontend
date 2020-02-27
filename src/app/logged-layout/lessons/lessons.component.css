@@ -2,11 +2,12 @@
   width: 300px;
   height: 50px;
   background-color: #0A0B0D;
-  margin: 10px 0;
+  margin-top: 10px;
   padding: 10px;
   border-radius: 5px;
   position: relative;
   transition: all .2s ease-in-out;
+  cursor: pointer;
 }
 
 #timeTable .day:hover {
@@ -30,46 +31,51 @@
 
 #timeTable .table {
   background-color: #171717;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-#timeTable #hours {
-  width: 80px;
-  text-align: right;
+#timeTable .table .lesson {
+  width: 100%;
+  min-height: 40px;
+  line-height: 90%;
+  padding: 6px 12px;
+  border-bottom: 1px solid #393939;
 }
 
-#timeTable #subjects {
-  width: 150px;
-  text-align: center;
-}
-
-#timeTable #rooms {
-  width: 30px;
-  text-align: left;
-}
-
-#timeTable .tableEl {
-  display: inline-block;
-}
-
-#timeTable .tableEl h6 {
-  padding: 5px 0;
-  border-bottom: 1px dotted #eee;
-}
-
-#timeTable .tableEl h6:last-child {
+#timeTable .table .lesson:last-child {
   border-bottom: none;
+}
+
+#timeTable .table .lesson .tableEl {
+  color: #eee;
+  font-size: 1rem;
+}
+
+#timeTable .table .lesson .subject {
+  width: 100%;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+#timeTable .table .lesson .hours {
+  width: 60%;
+  display: inline-block;
+  font-size: .8rem;
+}
+
+#timeTable .table .lesson .room {
+  width: 40%;
+  display: inline-block;
+  font-size: .9rem;
+  text-align: right;
 }
 
 #timeTable #timeTableMGMT {
   width: 300px;
   height: 40px;
   line-height: 20px;
-  background-color: #aa0000;
+  background-color: #b74a00;
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
@@ -96,17 +102,28 @@
   #timeTable .day, #timeTable #timeTableMGMT {
     width: 600px;
   }
-  #timeTable .tableEl {
-    font-size: 1.5rem;
+  #timeTable .table .lesson {
+    width: 100%;
   }
-  #timeTable #hours {
-    width: 130px;
+  #timeTable .table .lesson .tableEl {
+    color: #eee;
+    padding: 5px;
+    float: left;
   }
-  #timeTable #subjects {
-    width: 310px;
+  #timeTable .table .lesson .subject {
+    width: 50%;
+    font-size: 1.2rem;
+    color: #fff;
   }
-  #timeTable #rooms {
-    width: 80px;
+  #timeTable .table .lesson .hours {
+    width: 30%;
+    font-size: .9rem;
+    text-align: right;
+  }
+  #timeTable .table .lesson .room {
+    width: 20%;
+    font-size: 1rem;
+    text-align: center;
   }
   ::-webkit-scrollbar {
     width: 6px;
