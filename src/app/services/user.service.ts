@@ -55,8 +55,9 @@ export class User {
   lastName: '';
   username: '';
   email: '';
-  token: '';
+  groups;
 
+  token: '';
   userService: UserService;
   router: Router;
 

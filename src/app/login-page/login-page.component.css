@@ -1,5 +1,5 @@
 #content {
-  background-image: url(../../assets/img/loginPage/darkmosaic.png);
+  background-image: url(../../assets/img/loginPage/darkMosaic.png);
 }
 
 #content #logMainNav {
@@ -96,10 +96,10 @@
 
 @media (min-width: 1024px) {
   #content {
-    background-image: url(../../assets/img/loginPage/darkmosaic.png);
+    background-image: url(../../assets/img/loginPage/darkMosaic.png);
   }
   #content #logMainNav {
-    background-image: url(../../assets/img/loginPage/darkmosaic.png);
+    background-image: url(../../assets/img/loginPage/darkMosaic.png);
     background-size: auto;
     float: left;
     height: 100vh;
