@@ -10,14 +10,14 @@ import {TimeTableService} from '../../services/time-table.service';
 export class LessonsComponent implements OnInit {
 
   isTabsOpen = {};
-  
+
   isConfigEnabled: boolean = true;
 
   timetable() {
     return this.timetableService.getTimetable();
   }
 
-  constructor(private timetableService: TimeTableService) {
+  constructor(public timetableService: TimeTableService) {
     for (let day of timetableService.daysOfWeek) {
       this.isTabsOpen[day[0]] = false;
     }
@@ -42,5 +42,10 @@ export class LessonsComponent implements OnInit {
 
   mgmtStart() {
 
+  }
+
+  displayTime(timeElement: string) {
+    let time = timeElement.split(':');
+    return time[0] + ':' + time[1];
   }
 }

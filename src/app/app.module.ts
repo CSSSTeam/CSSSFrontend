@@ -12,12 +12,14 @@ import {LoggedLayoutComponent} from './logged-layout/logged-layout.component';
 import {APP_ROUTES} from './app.routes';
 import {GuardService} from './services/guard.service';
 import {UserService} from './services/user.service';
-import { EventsComponent } from './logged-layout/events/events.component';
-import { LessonsComponent } from './logged-layout/lessons/lessons.component';
-import { FilesComponent } from './logged-layout/files/files.component';
-import { InfosComponent } from './logged-layout/infos/infos.component';
-import { OthersComponent } from './logged-layout/others/others.component';
-import { OpEditComponent } from './logged-layout/op-edit/op-edit.component';
+import {EventsComponent} from './logged-layout/events/events.component';
+import {LessonsComponent} from './logged-layout/lessons/lessons.component';
+import {FilesComponent} from './logged-layout/files/files.component';
+import {InfosComponent} from './logged-layout/infos/infos.component';
+import {OthersComponent} from './logged-layout/others/others.component';
+import {OpEditComponent} from './logged-layout/op-edit/op-edit.component';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { OpEditComponent } from './logged-layout/op-edit/op-edit.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(APP_ROUTES)
+    RouterModule.forRoot(APP_ROUTES),
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [UserService, GuardService],
   bootstrap: [AppComponent]

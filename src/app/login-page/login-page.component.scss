@@ -1,25 +1,29 @@
 #content {
-    background-image: url(../../assets/img/loginPage/darkmosaic.png);
-    #logMainNav {
-        //background-image: url(../../assets/img/mainBg.svg);
-        background-size: cover;
-        height: 50vh;
-        width: 100%;
-        #logLogo {
-            height: 6rem;
-            width: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            img{
-                margin-left: 1rem;
-                height: 70%;
-            }
-        }
-        p {
-            display: block;
-            font-size: 65%;
-            font-weight: 700;
+  background-image: url(../../assets/img/loginPage/darkMosaic.png);
+
+  #logMainNav {
+    //background-image: url(../../assets/img/mainBg.svg);
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
+
+    #logLogo {
+      height: 6rem;
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-left: 1rem;
+        height: 70%;
+      }
+    }
+
+    p {
+      display: block;
+      font-size: 65%;
+      font-weight: 700;
             text-align: center;
             padding: 8%;
             text-indent: 15px;
@@ -87,26 +91,29 @@
 }
 @media (min-width: 1024px) {
     #content {
-        background-image: url(../../assets/img/loginPage/darkmosaic.png);
-        #logMainNav {
-            background-image: url(../../assets/img/loginPage/darkmosaic.png);
-            background-size: auto;
-            float: left;
-            height: 100vh;
-            width: 50%;
-            #logo {
-                height: 15vh;
-            }
-            p {
-                
-                height: 80%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 20%;
-                font-size: 120%;
-                text-align: right;
-            }
+      background-image: url(../../assets/img/loginPage/darkMosaic.png);
+
+      #logMainNav {
+        background-image: url(../../assets/img/loginPage/darkMosaic.png);
+        background-size: auto;
+        float: left;
+        height: 100vh;
+        width: 50%;
+
+        #logo {
+          height: 15vh;
+        }
+
+        p {
+
+          height: 80%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20%;
+          font-size: 120%;
+          text-align: right;
+        }
         }
         #logPage {
             background-image: url(../../assets/img/mainBg.svg);

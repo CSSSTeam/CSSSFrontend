@@ -35,6 +35,7 @@ export class TimeTableService {
       (data: any) => {
         console.log(data);
         this.timetable = data;
+        console.log(data);
         localStorage.setItem('myTimetable', JSON.stringify(data));
       },
       () => {
