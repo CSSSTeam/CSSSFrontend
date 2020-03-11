@@ -1,4 +1,17 @@
 <main>
-    <p>files works!</p>
+  name: <label>
+  <input type="text" [(ngModel)]="addingFileForm.name">
+</label>
+  description: <label>
+  <textarea [(ngModel)]="addingFileForm.description"></textarea>
+</label>
+  type:
+  <label>
+    <select [(ngModel)]="addingFileForm.type" size="1">
+      <option *ngFor="let t of getTypes()" [value]="t.id">{{t.name}}</option>
+    </select>
+  </label>
+  file: <input type="file" (change)="onFileChanged($event)"><br/>
+  <input type="button" (click)="uploadFile()" value="upload">
 </main>
 <div style="clear:both"></div>

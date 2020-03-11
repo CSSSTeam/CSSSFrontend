@@ -9,6 +9,10 @@
       "get": "timetable/get/",
       "createTimetable": "timetable/createTimetable/",
       "createPeriods": "timetable/createHour/"
+    },
+    "fileSystem": {
+      "addFile": "fileSystem/file/add/",
+      "getTypes": "fileSystem/type/"
     }
   }
 }

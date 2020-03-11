@@ -10,7 +10,7 @@
 
         <div class="lesson" *ngIf="isTabsOpen[day[0]]">
           <div class="tableEl subject" *ngFor="let subject of timetable()[day[0]]">
-            {{displayText(subject[0], 'name')}}
+            {{displayText(subject[0], 'subject')}}
           </div>
           <div class="tableEl hours" *ngFor="let time of timetable()['period']">
 
