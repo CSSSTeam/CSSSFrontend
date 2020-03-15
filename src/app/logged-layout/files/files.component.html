@@ -1,17 +1,24 @@
-<main>
+<div>
   name: <label>
   <input type="text" [(ngModel)]="addingFileForm.name">
-</label>
+</label><br/>
   description: <label>
   <textarea [(ngModel)]="addingFileForm.description"></textarea>
-</label>
-  type:
+</label><br/>
   <label>
+    type:
     <select [(ngModel)]="addingFileForm.type" size="1">
-      <option *ngFor="let t of getTypes()" [value]="t.id">{{t.name}}</option>
+      <option *ngFor="let type of getTypes()" [value]="type.id">{{type.name}}</option>
     </select>
-  </label>
+  </label><br/>
   file: <input type="file" (change)="onFileChanged($event)"><br/>
   <input type="button" (click)="uploadFile()" value="upload">
-</main>
-<div style="clear:both"></div>
+</div>
+<div>
+  FileList:
+  <div *ngFor="let file of getFiles()">
+    {{file.name}}
+    <button (click)="downloadFile(file.upload)">Download</button>
+    <button type="button" (click)="detailsFile(file.pk)">details</button>
+  </div>
+</div>

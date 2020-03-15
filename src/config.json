@@ -12,7 +12,10 @@
     },
     "fileSystem": {
       "addFile": "fileSystem/file/add/",
-      "getTypes": "fileSystem/type/"
+      "getTypes": "fileSystem/type/",
+      "listFile": "fileSystem/file/",
+      "detailsFile": "fileSystem/file/:fileId/",
+      "download": "image.jpg"
     }
   }
 }

@@ -20,6 +20,7 @@ import {OthersComponent} from './logged-layout/others/others.component';
 import {OpEditComponent} from './logged-layout/op-edit/op-edit.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
+import {FileDatailsComponent} from './logged-layout/file-datails/file-datails.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {environment} from '../environments/environment';
     FilesComponent,
     InfosComponent,
     OthersComponent,
-    OpEditComponent
+    OpEditComponent,
+    FileDatailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as data from '../../config.json';
+import {saveAs} from 'file-saver';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,15 @@ export class FileSystemService {
   }
 
   public types(): Array<TypeOfFile> {
+    if (this.typesOfFile == null) {
+      this.getTypesOfFiles();
+      return null;
+    }
     return this.typesOfFile;
   }
 
   private getTypesOfFiles() {
-    var url = this.dataURL.server + this.dataURL.endpoints.fileSystem.getTypes;
+    const url = this.dataURL.server + this.dataURL.endpoints.fileSystem.getTypes;
     const httpOption = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -28,11 +33,9 @@ export class FileSystemService {
     };
     this.http.get(url, httpOption).subscribe(
       (data: any) => {
-        console.log('OK');
         for (var type of data) {
           this.typesOfFile.push(new TypeOfFile(type.pk, type.name));
         }
-        console.log(this.typesOfFile);
       }
     );
   }
@@ -54,10 +57,45 @@ export class FileSystemService {
     return new Promise<any>((p, e) => this.http.post(url, formData, httpOption).subscribe(
       (data: any) => {
 
-        p = data;
+        p(data);
       },
       (error: any) => {
-        e = error;
+        e(error);
+      }
+    ));
+  }
+
+  public listFile(): Promise<any> {
+    const url = this.dataURL.server + this.dataURL.endpoints.fileSystem.listFile;
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': 'token ' + localStorage.getItem('token')
+      })
+    };
+    return new Promise<any>((p, e) => this.http.get(url, httpOption).subscribe(
+      (data: any) => {
+        p(data);
+      },
+      (error: any) => {
+        e(error);
+      }
+    ));
+  }
+
+  public downloadFile(src: string): Promise<any> {
+    const url = this.dataURL.server + src.slice(14);
+
+    //console.log("ok");
+    return new Promise<any>((p, e) => this.http.get(url, {responseType: 'blob'}).subscribe(
+      (data: any) => {
+        console.log(data);
+
+        saveAs(data, 'plik.asd');
+        p(data);
+      },
+      (error: any) => {
+        console.log(e);
+        e(error);
       }
     ));
   }
