@@ -18,7 +18,7 @@
   FileList:
   <div *ngFor="let file of getFiles()">
     {{file.name}}
-    <button (click)="downloadFile(file.upload)">Download</button>
-    <button type="button" (click)="detailsFile(file.pk)">details</button>
+    <button (click)="downloadFile(file.name,file.upload)">Download</button>
+    <button type="button" routerLink="/files/{{file.pk}}">details</button>
   </div>
 </div>

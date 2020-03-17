@@ -66,7 +66,7 @@ export class FileSystemService {
   }
 
   public listFile(): Promise<any> {
-    const url = this.dataURL.server + this.dataURL.endpoints.fileSystem.listFile;
+    let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.listFile;
     const httpOption = {
       headers: new HttpHeaders({
         'Authorization': 'token ' + localStorage.getItem('token')
@@ -82,23 +82,40 @@ export class FileSystemService {
     ));
   }
 
-  public downloadFile(src: string): Promise<any> {
-    const url = this.dataURL.server + src.slice(14);
-
-    //console.log("ok");
+  public downloadFile(name: string, src: string): Promise<any> {
+    let url = this.dataURL.server + src.slice(14);
     return new Promise<any>((p, e) => this.http.get(url, {responseType: 'blob'}).subscribe(
       (data: any) => {
-        console.log(data);
 
-        saveAs(data, 'plik.asd');
+
+        saveAs(data, name);
         p(data);
       },
       (error: any) => {
-        console.log(e);
+        console.error(e);
         e(error);
       }
     ));
   }
+
+  getDetails(id: number): Promise<any> {
+    let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.detailsFile;
+    url = url.replace(':fileId', id.toString());
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': 'token ' + localStorage.getItem('token')
+      })
+    };
+    return new Promise<any>((p, e) => this.http.get(url, httpOption).subscribe(
+      (data: any) => {
+        p(data);
+      },
+      (error: any) => {
+        e(error);
+      }
+    ));
+  }
+
 }
 
 class TypeOfFile {

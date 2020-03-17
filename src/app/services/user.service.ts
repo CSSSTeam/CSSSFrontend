@@ -81,7 +81,11 @@ export class User {
         }
       }
     );
+
+
   }
+
+//todo(n2one): create function hasPermission
 
   initData(data, token) {
     this.firstName = data.firstName;
@@ -101,16 +105,10 @@ export class User {
   }
 
   logout() {
-    this.userService.logoutUser(this.token).subscribe(
-      () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        User.instance = null;
-        this.router.navigate(['/login']);
-      },
-      error => {
-        console.error('Can\'t logout');
-      }
-    );
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    User.instance = null;
+    this.router.navigate(['/login']);
+    this.userService.logoutUser(this.token);
   }
 }

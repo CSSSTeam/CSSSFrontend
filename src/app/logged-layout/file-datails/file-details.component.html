@@ -1,0 +1,5 @@
+<p>name: {{file.name}}</p><br/>
+<p>description: {{file.description}}</p><br/>
+<p>type: {{getType(file.fileType)}}</p><br/>
+<p>date: {{getDate(file.date)}}</p><br/>
+<button (click)="downloadFile()">Download</button>

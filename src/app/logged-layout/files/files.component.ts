@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FileSystemService} from '../../services/file-system.service';
+import {Router} from '@angular/router';
+import {stringify} from 'querystring';
 
 @Component({
   selector: 'app-files',
@@ -55,12 +57,8 @@ export class FilesComponent implements OnInit {
     return this.files;
   }
 
-  downloadFile(src: string) {
+  downloadFile(name: string, src: string) {
     console.log(src);
-    this.fileSystemService.downloadFile(src).then(() => console.log('OK'));
-  }
-
-  detailsFile(id: number) {
-
+    this.fileSystemService.downloadFile(name, src).then(() => console.log('OK'));
   }
 }
