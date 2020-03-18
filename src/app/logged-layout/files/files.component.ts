@@ -12,7 +12,9 @@ import {stringify} from 'querystring';
 export class FilesComponent implements OnInit {
 
   addingFileForm: any;
-  private files: any;
+  addingTypeForm: any;
+  searchText: string;
+  searchedFile: Array<any>;
 
   constructor(public fileSystemService: FileSystemService) {
   }
@@ -28,11 +30,9 @@ export class FilesComponent implements OnInit {
       type: 0,
       upload: File = null
     };
-    this.fileSystemService.listFile().then((data: any) => {
-      this.files = data;
-    }).catch((e: any) => {
-      console.error(e);
-    });
+    this.addingTypeForm = {
+      name: ''
+    };
   }
 
   uploadFile() {
@@ -46,19 +46,50 @@ export class FilesComponent implements OnInit {
 
   getTypes() {
 
-    return this.fileSystemService.types();
+    return this.fileSystemService.Types();
   }
 
   getFiles() {
-    if (this.files == null) {
-
+    if (this.searchedFile != null) {
+      return this.searchedFile;
     }
-
-    return this.files;
+    return this.fileSystemService.Files();
   }
 
   downloadFile(name: string, src: string) {
     console.log(src);
     this.fileSystemService.downloadFile(name, src).then(() => console.log('OK'));
+  }
+
+  createTypeFile() {
+    this.fileSystemService.createTypeFile(this.addingTypeForm.name);
+  }
+
+  deleteType(id: number) {
+    this.fileSystemService.deleteType(id).then(() => {
+      console.log('delete Type');
+    }).catch(e => {
+      console.error(e);
+    });
+  }
+
+  searchFile() {
+    if (this.searchText == '') {
+      this.searchedFile = null;
+      return;
+    }
+    this.fileSystemService.searchFile(this.searchText).then(data => {
+      this.searchedFile = data;
+    }).catch(e => {
+      console.error(e);
+    });
+  }
+
+  deleteFile(pk: number) {
+    this.fileSystemService.deleteFile(pk).then(() => {
+      console.log('deleted File');
+    }).catch(e => {
+      console.error(e);
+    });
   }
 }

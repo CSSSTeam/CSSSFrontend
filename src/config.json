@@ -15,7 +15,10 @@
       "getTypes": "fileSystem/type/",
       "listFile": "fileSystem/file/",
       "detailsFile": "fileSystem/file/:fileId/",
-      "download": "image.jpg"
+      "createType": "fileSystem/type/add/",
+      "deleteType": "fileSystem/type/del/:typeId/",
+      "deleteFile": "fileSystem/file/del/:fileId/",
+      "searchFile": "fileSystem/file/search/"
     }
   }
 }

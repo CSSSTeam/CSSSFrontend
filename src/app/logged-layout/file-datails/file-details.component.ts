@@ -25,10 +25,10 @@ export class FileDetailsComponent implements OnInit {
   }
 
   getType(typeId: number) {
-    let type = this.fileSystemService.types().filter(t => {
+    let type = this.fileSystemService.Types().filter(t => {
       return t.id == typeId;
     })[0];
-    console.log(typeId, this.fileSystemService.types(), type);
+    console.log(typeId, this.fileSystemService.Types(), type);
     return type.name;
   }
 
