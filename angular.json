@@ -23,8 +23,7 @@
               "src/favicon.ico",
               "src/manifest.webmanifest",
               "src/assets/img/",
-              "src/assets/fontello/",
-              "src/assets/uploaded_files/"
+              "src/assets/fontello/"
             ],
             "styles": [
               "src/styles.css"

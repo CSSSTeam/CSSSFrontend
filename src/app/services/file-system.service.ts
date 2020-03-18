@@ -65,7 +65,7 @@ export class FileSystemService {
 
     return new Promise<any>((p, e) => this.http.post(url, formData, httpOption).subscribe(
       (data: any) => {
-
+        this.files.push(data);
         p(data);
       },
       (error: any) => {
