@@ -10,7 +10,6 @@ import {TimeTableService} from '../../services/time-table.service';
 export class LessonsComponent implements OnInit {
 
   isTabsOpen = {};
-
   isConfigEnabled: boolean = true;
 
   timetable() {
@@ -37,7 +36,7 @@ export class LessonsComponent implements OnInit {
   }
 
   displayText(object: any, tag: string): string {
-    return object == undefined ? '‎‏‏‎ ‎‎' : object[tag];
+    return object == undefined ? '‎‏‏‎‎‎' : object[tag];
   }
 
   mgmtStart() {
@@ -47,5 +46,8 @@ export class LessonsComponent implements OnInit {
   displayTime(timeElement: string) {
     let time = timeElement.split(':');
     return time[0] + ':' + time[1];
+  }
+
+  createLesson() {
   }
 }
