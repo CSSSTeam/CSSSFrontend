@@ -1,4 +1,40 @@
-<main>
-    <p>files works!</p>
-</main>
-<div style="clear:both"></div>
+<div>
+  <h2>FILE</h2>
+  name: <label>
+  <input type="text" [(ngModel)]="addingFileForm.name">
+</label><br/>
+  description: <label>
+  <textarea [(ngModel)]="addingFileForm.description"></textarea>
+</label><br/>
+  <label>
+    type:
+    <select [(ngModel)]="addingFileForm.type" size="1">
+      <option *ngFor="let type of getTypes()" [value]="type.id">{{type.name}}</option>
+    </select>
+  </label><br/>
+  file: <input type="file" (change)="onFileChanged($event)"><br/>
+  <input type="button" (click)="uploadFile()" value="upload">
+</div>
+<div>
+  <input type="text" (change)="searchFile()" [(ngModel)]="searchText"><br/>
+  FileList:
+  <div *ngFor="let file of getFiles()">
+    {{file.name}}
+    <button (click)="downloadFile(file.name,file.upload)">Download</button>
+    <button (click)="deleteFile(file.pk)">Delete</button>
+    <button routerLink="/files/{{file.pk}}">details</button>
+  </div>
+</div>
+<div>
+  <h2>TYPE</h2>
+  name:<input type="text" [(ngModel)]="addingTypeForm.name">
+  <button (click)="createTypeFile()">ADD TYPE</button>
+</div>
+<div>
+  TypeList:
+  <div *ngFor="let type of getTypes()">
+    {{type.name}}
+    <button (click)="deleteType(type.id)">delete</button>
+  </div>
+</div>
+

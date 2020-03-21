@@ -22,7 +22,8 @@
             "assets": [
               "src/favicon.png",
               "src/manifest.webmanifest",
-              "src/assets/*"
+              "src/assets/img/",
+              "src/assets/fontello/"
             ],
             "styles": [
               "src/styles.css"

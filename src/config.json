@@ -9,6 +9,16 @@
       "get": "timetable/get/",
       "createTimetable": "timetable/createTimetable/",
       "createPeriods": "timetable/createHour/"
+    },
+    "fileSystem": {
+      "addFile": "fileSystem/file/add/",
+      "getTypes": "fileSystem/type/",
+      "listFile": "fileSystem/file/",
+      "detailsFile": "fileSystem/file/:fileId/",
+      "createType": "fileSystem/type/add/",
+      "deleteType": "fileSystem/type/del/:typeId/",
+      "deleteFile": "fileSystem/file/del/:fileId/",
+      "searchFile": "fileSystem/file/search/"
     }
   }
 }
