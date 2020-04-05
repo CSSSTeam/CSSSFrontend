@@ -21,6 +21,7 @@ import {OpEditComponent} from './logged-layout/op-edit/op-edit.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {FileDetailsComponent} from './logged-layout/file-datails/file-details.component';
+import {RedactorsPanelComponent} from './logged-layout/redactors-panel/redactors-panel.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {FileDetailsComponent} from './logged-layout/file-datails/file-details.co
     InfosComponent,
     OthersComponent,
     OpEditComponent,
-    FileDetailsComponent
+    FileDetailsComponent,
+    RedactorsPanelComponent
   ],
   imports: [
     BrowserModule,

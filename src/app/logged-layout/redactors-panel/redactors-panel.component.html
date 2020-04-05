@@ -1,0 +1,11 @@
+<div>
+  <p>Dodawanie wydarzeń</p>
+  <input type="text" [(ngModel)]="addEventForm.name"><br/>
+  <textarea [(ngModel)]="addEventForm.description"></textarea><br/>
+  <select [(ngModel)]="addEventForm.eventType" size="1"><
+    <option *ngFor="let type of getTypes()" [value]="type.id">{{type.name}}</option>
+  </select><br/>
+  <input type="date" [(ngModel)]="addEventForm.dateStart" [value]="addEventForm.dateStart"><br/>
+  <input type="date" [(ngModel)]="addEventForm.dateEnd" [value]="addEventForm.dateEnd">\
+  <input type="submit" (click)="addEvent()">
+</div>

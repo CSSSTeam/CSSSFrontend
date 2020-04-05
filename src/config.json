@@ -19,6 +19,32 @@
       "deleteType": "fileSystem/type/del/:typeId/",
       "deleteFile": "fileSystem/file/del/:fileId/",
       "searchFile": "fileSystem/file/search/"
+    },
+    "events": {
+      "create": "events/event/add/",
+      "getEventByDate": "events/event/date/"
     }
-  }
+  },
+  "daysOfWeek": [
+    [
+      "monday",
+      "Poniedziałek"
+    ],
+    [
+      "tuesday",
+      "Wtorek"
+    ],
+    [
+      "wednesday",
+      "Środa"
+    ],
+    [
+      "thursday",
+      "Czwartek"
+    ],
+    [
+      "friday",
+      "Piątek"
+    ]
+  ]
 }
