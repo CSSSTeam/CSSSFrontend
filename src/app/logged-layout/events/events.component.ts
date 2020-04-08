@@ -26,13 +26,6 @@ export class EventsComponent implements OnInit {
     this.events4Week = this.eventsSystemService.getEventsForWeek();
   }
 
-
-  monSubjects = [
-    {subject: 'matematyka', type: 'test'},
-    {subject: 'religia', type: 'smallTest'},
-    {subject: 'SO', type: 'test'},
-  ];
-
   getEvent(day) {
     if (this.events4Week == null) {
       this.events4Week = this.eventsSystemService.getEventsForWeek();

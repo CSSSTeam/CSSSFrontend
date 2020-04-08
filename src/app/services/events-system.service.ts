@@ -9,7 +9,9 @@ export class EventsSystemService {
   events = {};
   private weekEvents;
   private dataURL;
+  private eventTypes;
   public daysOfWeek;
+
 
   constructor(private http: HttpClient) {
     this.dataURL = (data as any).default;
@@ -143,4 +145,61 @@ export class EventsSystemService {
   }
 
 
+  getEventDetails(id: number): Promise<any> {
+    let url = this.dataURL.server + this.dataURL.endpoints.events.getEventDetails;
+    url = url.replace(':eventId', id.toString());
+
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': 'token ' + localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+      })
+    };
+    return new Promise<any>((p, e) => this.http.get(url, httpOption).subscribe(
+      data => {
+        console.log('ok');
+        p(data);
+      },
+      (err: any) => {
+        e(err);
+      }
+    ));
+  }
+
+  private getTypes(): Promise<any> {
+    let url = this.dataURL.server + this.dataURL.endpoints.events.getEventTypes;
+
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': 'token ' + localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+      })
+    };
+    return new Promise<any>((p, e) => this.http.get(url, httpOption).subscribe(
+      data => {
+        console.log('ok');
+        p(data);
+      },
+      (err: any) => {
+        e(err);
+      }
+    ));
+  }
+
+  getEventTypes() {
+
+    if (this.eventTypes == null) {
+      this.getTypes().then(data => {
+        this.eventTypes = data;
+      }).catch(() => console.error('error in events get types'));
+    }
+    return this.eventTypes;
+
+  }
+
+  getEventTypesAtId(id: number) {
+    return this.getEventTypes().find(e => {
+      return id == e.pk;
+    });
+  }
 }

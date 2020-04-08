@@ -22,7 +22,9 @@
     },
     "events": {
       "create": "events/event/add/",
-      "getEventByDate": "events/event/date/"
+      "getEventByDate": "events/event/date/",
+      "getEventDetails": "events/event/:eventId/",
+      "getEventTypes": "events/type/"
     }
   },
   "daysOfWeek": [

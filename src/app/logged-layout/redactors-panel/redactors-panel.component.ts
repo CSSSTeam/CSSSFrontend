@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {EventsSystemService} from 'src/app/services/events-system.service';
+import {EventsSystemService} from '../../services/events-system.service';
 
 @Component({
   selector: 'app-redactors-panel',
@@ -30,16 +30,7 @@ export class RedactorsPanelComponent implements OnInit {
   }
 
   getTypes() {
-    return [
-      {
-        id: 1,
-        name: 'test1',
-      },
-      {
-        id: 2,
-        name: 'test2',
-      }
-    ];
+    return this.eventsSystemService.getEventTypes();
   }
 
   addEvent() {
