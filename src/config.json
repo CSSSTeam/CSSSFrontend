@@ -24,7 +24,8 @@
       "create": "events/event/add/",
       "getEventByDate": "events/event/date/",
       "getEventDetails": "events/event/:eventId/",
-      "getEventTypes": "events/type/"
+      "getEventTypes": "events/type/",
+      "createType": "events/type/add/"
     }
   },
   "daysOfWeek": [

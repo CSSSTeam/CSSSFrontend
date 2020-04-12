@@ -14,6 +14,7 @@ export class RedactorsPanelComponent implements OnInit {
     dateStart: Date.now(),
     dateEnd: Date.now()
   };
+  addTypeForm: any;
 
   constructor(private eventsSystemService: EventsSystemService) {
   }
@@ -26,6 +27,9 @@ export class RedactorsPanelComponent implements OnInit {
       dateStart: Date.now(),
       dateEnd: Date.now()
     };
+    this.addTypeForm = {
+      name: ''
+    };
 
   }
 
@@ -36,5 +40,9 @@ export class RedactorsPanelComponent implements OnInit {
   addEvent() {
     console.log(this.addEventForm);
     this.eventsSystemService.addEvent(this.addEventForm).then().catch();
+  }
+
+  addType() {
+    this.eventsSystemService.addType(this.addTypeForm).then().catch();
   }
 }

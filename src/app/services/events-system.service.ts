@@ -6,7 +6,7 @@ import * as data from '../../config.json';
   providedIn: 'root'
 })
 export class EventsSystemService {
-  events = {};
+  private events = {};
   private weekEvents;
   private dataURL;
   private eventTypes;
@@ -16,6 +16,8 @@ export class EventsSystemService {
   constructor(private http: HttpClient) {
     this.dataURL = (data as any).default;
     this.daysOfWeek = this.dataURL.daysOfWeek;
+
+
   }
 
   addEvent(eventData): Promise<any> {
@@ -33,7 +35,7 @@ export class EventsSystemService {
 
     return new Promise<any>((p, e) => this.http.post(url, eventData, httpOption).subscribe(
       data => {
-        console.log('ok');
+        console.log(data);
         p(data);
       },
       (err: any) => {
@@ -177,7 +179,7 @@ export class EventsSystemService {
     };
     return new Promise<any>((p, e) => this.http.get(url, httpOption).subscribe(
       data => {
-        console.log('ok');
+        console.log(data);
         p(data);
       },
       (err: any) => {
@@ -201,5 +203,27 @@ export class EventsSystemService {
     return this.getEventTypes().find(e => {
       return id == e.pk;
     });
+  }
+
+  addType(addTypeForm: any): Promise<any> {
+    let url = this.dataURL.server + this.dataURL.endpoints.events.createType;
+
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': 'token ' + localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return new Promise<any>((p, e) => this.http.post(url, addTypeForm, httpOption).subscribe(
+      data => {
+        console.log(data);
+        this.eventTypes.put(data);
+        p(data);
+      },
+      (err: any) => {
+        e(err);
+      }
+    ));
   }
 }
