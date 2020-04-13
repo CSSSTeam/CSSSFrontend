@@ -146,7 +146,6 @@ export class EventsSystemService {
 
   }
 
-
   getEventDetails(id: number): Promise<any> {
     let url = this.dataURL.server + this.dataURL.endpoints.events.getEventDetails;
     url = url.replace(':eventId', id.toString());
@@ -189,14 +188,14 @@ export class EventsSystemService {
   }
 
   getEventTypes() {
-
     if (this.eventTypes == null) {
+      this.eventTypes = localStorage.getItem('typeDetails');
       this.getTypes().then(data => {
         this.eventTypes = data;
+        localStorage.setItem('typeDetails', JSON.stringify(data));
       }).catch(() => console.error('error in events get types'));
     }
     return this.eventTypes;
-
   }
 
   getEventTypesAtId(id: number) {

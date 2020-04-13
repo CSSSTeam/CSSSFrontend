@@ -81,8 +81,6 @@ export class User {
         }
       }
     );
-
-
   }
 //todo(n2one): create function hasPermission
 
