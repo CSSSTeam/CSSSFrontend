@@ -25,7 +25,8 @@
       "getEventByDate": "events/event/date/",
       "getEventDetails": "events/event/:eventId/",
       "getEventTypes": "events/type/",
-      "createType": "events/type/add/"
+      "createType": "events/type/add/",
+      "deleteEvent": "events/event/del/:eventId/"
     }
   },
   "daysOfWeek": [

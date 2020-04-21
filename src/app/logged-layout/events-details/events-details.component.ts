@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {EventsSystemService} from '../../services/events-system.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class EventsDetailsComponent implements OnInit {
   event;
 
 
-  constructor(private route: ActivatedRoute, private eventsSystemService: EventsSystemService) {
+  constructor(protected router: Router, private route: ActivatedRoute, private eventsSystemService: EventsSystemService) {
   }
 
   ngOnInit() {
@@ -31,7 +31,12 @@ export class EventsDetailsComponent implements OnInit {
 
   getNameType(eventType: number) {
     var a = this.eventsSystemService.getEventTypesAtId(eventType);
-    console.log(a);
     return a.name;
+  }
+
+  deleteEvent() {
+    this.eventsSystemService.deleteEvent(this.event.pk).then(() => {
+      this.router.navigate(['/events']);
+    }).catch();
   }
 }

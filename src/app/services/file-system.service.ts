@@ -114,8 +114,6 @@ export class FileSystemService {
     let url = this.dataURL.server + 'uploaded_files/' + src;
     return new Promise<any>((p, e) => this.http.get(url, {responseType: 'blob'}).subscribe(
       (data: any) => {
-
-
         saveAs(data, name);
         p(data);
       },

@@ -6,7 +6,7 @@ import * as data from '../../config.json';
   providedIn: 'root'
 })
 export class EventsSystemService {
-  private events = {};
+  private events;
   private weekEvents;
   private dataURL;
   private eventTypes;
@@ -36,6 +36,10 @@ export class EventsSystemService {
     return new Promise<any>((p, e) => this.http.post(url, eventData, httpOption).subscribe(
       data => {
         console.log(data);
+        if (this.events != null) {
+          this.events.append(data);
+          this.createEventWeek();
+        }
         p(data);
       },
       (err: any) => {
@@ -96,6 +100,7 @@ export class EventsSystemService {
     return new Promise<any>((p, e) => this.http.get(url, httpOption).subscribe(
       data => {
         console.log('ok');
+        this.events = data;
         p(data);
       },
       (err: any) => {
@@ -119,31 +124,36 @@ export class EventsSystemService {
       let endWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 7);
       console.log(EventsSystemService.date2String(startWeek), EventsSystemService.date2String(endWeek));
       this.getEventsBetweenDates(EventsSystemService.date2String(startWeek), EventsSystemService.date2String(endWeek)).then(data => {
-        this.weekEvents = {};
-        this.daysOfWeek.forEach((day, index) => {
-          let eventsDay = [];
-          let date = new Date(today.getFullYear(), today.getMonth(),
-            today.getDate() - today.getDay() + index + 2, 0, 0, 0);
-          data.forEach(event => {
-
-            //date without hour
-            let startDate = Math.floor(Date.parse(event.dateStart) / (24 * 3600 * 1000)) * 24 * 3600 * 1000;
-            //next day date without hour
-            let endDate = Math.floor((Date.parse(event.dateEnd) / (24 * 3600 * 1000)) + 1) * 24 * 3600 * 1000;
-            if (startDate <= date.getTime() && date.getTime() <= endDate) {
-              eventsDay.push(event);
-            }
-          });
-
-          this.weekEvents[day[0]] = eventsDay;
-        });
-
-
+        this.events = data;
+        this.createEventWeek();
         console.log(this.weekEvents);
       }).catch();
     }
     return this.weekEvents;
 
+  }
+
+  private createEventWeek() {
+    let today = new Date();
+    this.weekEvents = {};
+    this.daysOfWeek.forEach((day, index) => {
+      let eventsDay = [];
+      let date = new Date(today.getFullYear(), today.getMonth(),
+        today.getDate() - today.getDay() + index + 2, 0, 0, 0);
+
+      this.events.forEach(event => {
+
+        //date without hour
+        let startDate = Math.floor(Date.parse(event.dateStart) / (24 * 3600 * 1000)) * 24 * 3600 * 1000;
+        //next day date without hour
+        let endDate = Math.floor((Date.parse(event.dateEnd) / (24 * 3600 * 1000)) + 1) * 24 * 3600 * 1000;
+        if (startDate <= date.getTime() && date.getTime() <= endDate) {
+          eventsDay.push(event);
+        }
+      });
+
+      this.weekEvents[day[0]] = eventsDay;
+    });
   }
 
   getEventDetails(id: number): Promise<any> {
@@ -219,6 +229,31 @@ export class EventsSystemService {
         console.log(data);
         this.eventTypes.put(data);
         p(data);
+      },
+      (err: any) => {
+        e(err);
+      }
+    ));
+  }
+
+  deleteEvent(id: number): Promise<any> {
+    let url = this.dataURL.server + this.dataURL.endpoints.events.deleteEvent;
+    url = url.replace(':eventId', id.toString());
+
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': 'token ' + localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+      })
+    };
+    return new Promise<any>((p, e) => this.http.delete(url, httpOption).subscribe(
+      () => {
+        console.log('ok');
+        this.events = this.events.filter(d => {
+          return d.pk != id;
+        });
+        this.createEventWeek();
+        p();
       },
       (err: any) => {
         e(err);
