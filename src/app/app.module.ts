@@ -23,6 +23,7 @@ import {environment} from '../environments/environment';
 import {FileDetailsComponent} from './logged-layout/file-datails/file-details.component';
 import {RedactorsPanelComponent} from './logged-layout/redactors-panel/redactors-panel.component';
 import {EventsDetailsComponent} from './logged-layout/events-details/events-details.component';
+import {UserPanelComponent} from './logged-layout/user-panel/user-panel.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {EventsDetailsComponent} from './logged-layout/events-details/events-deta
     OpEditComponent,
     FileDetailsComponent,
     RedactorsPanelComponent,
-    EventsDetailsComponent
+    EventsDetailsComponent,
+    UserPanelComponent
   ],
   imports: [
     BrowserModule,
