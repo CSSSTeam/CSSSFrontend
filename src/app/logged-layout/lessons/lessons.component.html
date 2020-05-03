@@ -9,57 +9,23 @@
       <div class="table" *ngIf="isTabsOpen[day[0]]">
 
         <div *ngFor="let lesson of timetable()[day[0]], let index = index">
-        <div  class="lesson" *ngIf="timetable()[day[0]][index].length != 0">
-            <div class="tableEl subject">
-              {{ displayText(lesson[0], 'subject') }}
-            </div>
-            <div class="tableEl hours">
-              {{ displayTime(timetable()['period'][index]['start']) }} -
-              {{ displayTime(timetable()['period'][index]['end']) }}
-            </div>
-            <div class="tableEl room">
-              {{ displayText(lesson[0], 'classroom') }}
-            </div>
-        </div>
-      </div>
-
-        <!--<div class="lesson" *ngIf="isTabsOpen[day[0]]">
-          <div class="tableEl subject" *ngFor="let subject of timetable()[day[0]]">
-            {{displayText(subject[0], 'subject')}}
-          </div>
-          <div class="tableEl hours" *ngFor="let time of timetable()['period']">
-
-            {{displayTime(time['start'])}} - {{displayTime(time['end'])}}
-          </div>
-          <div class="tableEl room" *ngFor="let room of timetable()[day[0]]">
-            {{displayText(room[0], 'classroom')}}
+          <div  class="lesson" *ngIf="timetable()[day[0]][index].length != 0">
+              <div class="tableEl subject">
+                {{ displayText(lesson[0], 'subject') }}
+              </div>
+              <div class="tableEl hours">
+                {{ displayTime(timetable()['period'][index]['start']) }} -
+                {{ displayTime(timetable()['period'][index]['end']) }}
+              </div>
+              <div class="tableEl room">
+                {{ displayText(lesson[0], 'classroom') }}
+              </div>
           </div>
         </div>
-
-        <!--<div id="hours" class="tableEl">
-          <h6 *ngFor="let time of timetable()['period']">
-            {{displayTime(time['start'])}} - {{displayTime(time['end'])}}
-          </h6>
-        </div>
-        <div id="subjects" class="tableEl">
-          <h6 *ngFor="let subject of timetable()[day[0]]">
-            {{displayText(subject[0], 'subject')}}
-          </h6>
-        </div>
-        <div id="rooms" class="tableEl">
-          <h6 *ngFor="let room of timetable()[day[0]]">
-            {{displayText(room[0], 'classroom')}}
-          </h6>
-        </div>
-
-        <div *ngIf="isConfigEnabled" id="config">
-          <i class="icon-plus"></i>
-        </div> -->
-
       </div>
     </div>
 
-    <div routerLink="/edit" (click)="mgmtStart()" id="timeTableMGMT">
+    <div routerLink="/lessons-edit" (click)="mgmtStart()" id="timeTableMGMT">
       <h6>Zarządzaj planem lekcji</h6>
     </div>
 

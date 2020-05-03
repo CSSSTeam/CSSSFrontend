@@ -5,7 +5,8 @@ import {LessonsComponent} from './lessons/lessons.component';
 import {FilesComponent} from './files/files.component';
 import {InfosComponent} from './infos/infos.component';
 import {OthersComponent} from './others/others.component';
-import {OpEditComponent} from './op-edit/op-edit.component';
+import {LessonsEditComponent} from './lessons/lessons-edit/lessons-edit.component';
+import {EventsEditComponent} from './events/events-edit/events-edit.component';
 import {FileDetailsComponent} from './file-datails/file-details.component';
 import {RedactorsPanelComponent} from './redactors-panel/redactors-panel.component';
 import {EventsDetailsComponent} from './events-details/events-details.component';
@@ -23,4 +24,6 @@ export const LOGGED_PAGE: Routes = [
   {path: 'userpanel', component: UserPanelComponent},
   {path: 'edit', component: OpEditComponent},
   {path: 'redactor', component: RedactorsPanelComponent},
+  {path: 'lessons-edit', component: LessonsEditComponent},
+  {path: 'events-edit', component: EventsEditComponent}
 ];

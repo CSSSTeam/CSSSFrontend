@@ -1,3 +1,212 @@
-main {
-  display: block;
+#mainArea {
+  width: 300px;
+}
+
+#mainArea #fileMgmt #fileMgmtHead {
+  width: 100%;
+  height: 50px;
+  background-color: #0A0B0D;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+
+#mainArea #fileMgmt #fileMgmtHead:hover {
+  cursor: pointer;
+  padding-left: 20px;
+}
+
+#mainArea #fileMgmt #fileMgmtHead:hover h6 {
+  color: #fff;
+}
+
+#mainArea #fileMgmt #fileMgmtHead h6 {
+  font-size: 1.5rem;
+  color: #ddd;
+}
+
+#mainArea #fileMgmt #fileMgmtHead h6 .open {
+  position: absolute;
+  right: 10px;
+}
+
+#mainArea #fileMgmt #fileMgmtContent {
+  background-color: #171717;
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas: "box1" "box2" "box3" "box4" "box5";
+}
+
+#mainArea #fileMgmt #fileMgmtContent #name {
+  grid-area: box1;
+}
+
+#mainArea #fileMgmt #fileMgmtContent #name input {
+  height: 3.5rem;
+  background-color: #222;
+}
+
+#mainArea #fileMgmt #fileMgmtContent #desc {
+  grid-area: box2;
+}
+
+#mainArea #fileMgmt #fileMgmtContent #desc textarea {
+  height: 3.5rem;
+}
+
+#mainArea #fileMgmt #fileMgmtContent #type {
+  grid-area: box3;
+}
+
+#mainArea #fileMgmt #fileMgmtContent #type select {
+  height: 3.5rem;
+}
+
+#mainArea #fileMgmt #fileMgmtContent #file {
+  grid-area: box4;
+}
+
+#mainArea #fileMgmt #fileMgmtContent #add {
+  grid-template: box5;
+  cursor: pointer;
+}
+
+#mainArea #fileMgmt #fileMgmtContent p {
+  width: 100%;
+  text-align: center;
+}
+
+#mainArea #fileMgmt #fileMgmtContent input, #mainArea #fileMgmt #fileMgmtContent textarea {
+  width: 100%;
+  padding: 8px 8px;
+  background-color: #333;
+  color: #eee;
+  border: 1px solid #555;
+  border-radius: 5px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1rem;
+  resize: none;
+}
+
+#mainArea #fileMgmt #fileMgmtContent input:hover, #mainArea #fileMgmt #fileMgmtContent textarea:hover {
+  background-color: #444;
+}
+
+#mainArea #fileMgmt #fileMgmtContent select {
+  width: 100%;
+  padding: 5px;
+  background-color: #333;
+  color: #eee;
+  border: 1px solid #555;
+  border-radius: 5px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1rem;
+}
+
+#mainArea #fileMgmt #fileMgmtContent select option {
+  padding: 0;
+  font-size: .8rem;
+}
+
+#mainArea #filesList #header {
+  width: 100%;
+  background-color: #0A0B0D;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 3px;
+  position: relative;
+}
+
+#mainArea #filesList #header h6 {
+  font-size: 1.3rem;
+  color: #ddd;
+}
+
+#mainArea #filesList #header h6 .icon-search {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+#mainArea #filesList #header h6 .icon-search:hover {
+  color: #fff;
+}
+
+#mainArea #filesList #searchBox {
+  width: 100%;
+  height: 30px;
+  color: #fff;
+  font-size: .9rem;
+  letter-spacing: 2px;
+  border: none;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 20px;
+  background-color: rgba(183, 74, 0, 0.8);
+}
+
+#mainArea #filesList #list {
+  background-color: #171717;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#mainArea #filesList #list #listItem {
+  width: 100%;
+  min-height: 40px;
+  line-height: 80%;
+  padding: 10px 12px;
+  margin: 4px 0;
+  background-color: #232323;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+#mainArea #filesList #list #listItem p {
+  color: #d96c22;
+}
+
+#mainArea #filesList #list #listItem i {
+  display: inline-block;
+  cursor: pointer;
+}
+
+#mainArea #filesList #list #listItem i:hover {
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  #mainArea {
+    max-height: 80vh;
+    width: 600px;
+    overflow-y: scroll;
+    scrollbar-color: #ccc transparent;
+    scrollbar-width: thin;
+  }
+  #mainArea #fileMgmt #fileMgmtHead {
+    width: 100%;
+  }
+  #mainArea #fileMgmt #fileMgmtContent {
+    width: 100%;
+    grid-gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: "box1 box3" "box2 box2" "box2 box2" "box2 box2" "box4 box5";
+  }
+  #mainArea #fileMgmt #fileMgmtContent #desc textarea {
+    height: 11.4rem;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+  }
 }
