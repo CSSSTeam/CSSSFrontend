@@ -1,0 +1,142 @@
+#lessonsMgmt {
+  width: 300px;
+}
+
+#lessonsMgmt #lessonsMgmtHead {
+  width: 100%;
+  height: 80px;
+  background-color: #0A0B0D;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  text-align: center;
+}
+
+#lessonsMgmt #lessonsMgmtHead h6 {
+  font-size: 1.5rem;
+  color: #ddd;
+}
+
+#lessonsMgmt #lessonsMgmtContent {
+  background-color: #171717;
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas: "box1 box1" "box2 box2" "box3 box3" "box4 box4" "box5 box5" "box7 box6";
+}
+
+#lessonsMgmt #lessonsMgmtContent #name {
+  grid-area: box1;
+}
+
+#lessonsMgmt #lessonsMgmtContent #name input {
+  height: 3.5rem;
+  background-color: #222;
+}
+
+#lessonsMgmt #lessonsMgmtContent #room {
+  grid-area: box2;
+}
+
+#lessonsMgmt #lessonsMgmtContent #room input {
+  height: 3.5rem;
+  background-color: #222;
+}
+
+#lessonsMgmt #lessonsMgmtContent #day {
+  grid-area: box3;
+}
+
+#lessonsMgmt #lessonsMgmtContent #day select {
+  height: 3.5rem;
+}
+
+#lessonsMgmt #lessonsMgmtContent #time {
+  grid-area: box4;
+}
+
+#lessonsMgmt #lessonsMgmtContent #time select {
+  height: 3.5rem;
+}
+
+#lessonsMgmt #lessonsMgmtContent #group {
+  grid-area: box5;
+}
+
+#lessonsMgmt #lessonsMgmtContent #group select {
+  height: 3.5rem;
+}
+
+#lessonsMgmt #lessonsMgmtContent #add {
+  grid-template: box6;
+  cursor: pointer;
+}
+
+#lessonsMgmt #lessonsMgmtContent #back {
+  grid-template: box7;
+  cursor: pointer;
+}
+
+#lessonsMgmt #lessonsMgmtContent p {
+  width: 100%;
+  text-align: center;
+}
+
+#lessonsMgmt #lessonsMgmtContent input, #lessonsMgmt #lessonsMgmtContent textarea {
+  width: 100%;
+  padding: 8px 8px;
+  background-color: #333;
+  color: #eee;
+  border: 1px solid #555;
+  border-radius: 5px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1rem;
+  resize: none;
+}
+
+#lessonsMgmt #lessonsMgmtContent input:hover, #lessonsMgmt #lessonsMgmtContent textarea:hover {
+  background-color: #444;
+}
+
+#lessonsMgmt #lessonsMgmtContent select {
+  width: 100%;
+  padding: 5px;
+  background-color: #333;
+  color: #eee;
+  border: 1px solid #555;
+  border-radius: 5px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1rem;
+}
+
+#lessonsMgmt #lessonsMgmtContent select option {
+  padding: 0;
+  font-size: .8rem;
+}
+
+@media (min-width: 768px) {
+  #lessonsMgmt {
+    width: 600px;
+  }
+  #lessonsMgmt #lessonsMgmtHead {
+    width: 100%;
+    height: 50px;
+  }
+  #lessonsMgmt #lessonsMgmtContent {
+    width: 100%;
+    grid-gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: "box1 box1" "box2 box3" "box4 box5" "box7 box6";
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+  }
+}

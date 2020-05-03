@@ -34,7 +34,7 @@ body {
 }
 
 #mainNav #logo:hover {
-  transform: translateX(20px);
+  transform: translateX(10px);
 }
 
 #mainNav #settings {
@@ -153,6 +153,14 @@ body {
   text-align: center;
 }
 
+#mainNav #widgets .int {
+  transition: .2s all ease;
+}
+
+#mainNav #widgets .int:hover {
+  border-left-width: 20px;
+}
+
 #mainNav #widgets i {
   font-size: 3rem;
 }
@@ -193,7 +201,7 @@ a {
   #mainNav #widgets {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
-    grid-template-areas: "box1 box2 box3 box4";
+    grid-template-areas: "box3 box4 box1 box2";
     min-height: 250px;
   }
 }
@@ -252,6 +260,6 @@ a {
     height: 65%;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, 1fr);
-    grid-template-areas: "box1" "box2" "box3" "box4";
+    grid-template-areas: "box3" "box4" "box1" "box2";
   }
 }

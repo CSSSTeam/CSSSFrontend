@@ -24,7 +24,7 @@ body{
             height: 70%;
         }
         &:hover {
-            transform: translateX(20px);
+            transform: translateX(10px);
         }
     }
     #settings {
@@ -129,6 +129,12 @@ body{
             justify-content: center;
             text-align: center;
         }
+        .int {
+            transition: .2s all ease;
+            &:hover {
+                border-left-width: 20px;
+            }
+        }
         i {
             font-size: 3rem;
         }
@@ -167,7 +173,7 @@ a {
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: 1fr;
             grid-template-areas:
-            "box1 box2 box3 box4";
+            "box3 box4 box1 box2";
             min-height: 250px;
         }
     }
@@ -228,10 +234,10 @@ a {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(4, 1fr);
             grid-template-areas:
-            "box1"
-            "box2"
             "box3"
-            "box4";
+            "box4"
+            "box1"
+            "box2";
         }
     }
 }

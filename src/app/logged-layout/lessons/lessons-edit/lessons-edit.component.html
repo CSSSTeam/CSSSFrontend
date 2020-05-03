@@ -1,0 +1,70 @@
+<main>
+    <div id="lessonsMgmt">
+
+        <div id="lessonsMgmtHead" class="header">
+          <h6>Menedżer planu lekcji</h6>
+        </div>
+      
+        <div id="lessonsMgmtContent">
+  
+          <label id="name">
+            <input placeholder="przedmiot" type="text">
+          </label>
+
+          <label id="room">
+            <input placeholder="sala" type="text">
+          </label>
+        
+          <label id="day">
+            <select required size="1">
+              <option disabled selected>dzień</option>
+              <option>Poniedziałek</option>
+              <option>Wtorek</option>
+              <option>Środa</option>
+              <option>Czwartek</option>
+              <option>Piątek</option>
+            </select>
+          </label>
+  
+          <label id="time">
+            <select required size="1">
+              <option disabled selected>godziny</option>
+              <option>7:30-8:15</option>
+              <option>8:25-9:10</option>
+              <option>9:20-10:05</option>
+              <option>10:15-11:00</option>
+              <option>11:15-12:00</option>
+              <option>12:10-12:55</option>
+              <option>13:05-13:50</option>
+              <option>13:55-14:40</option>
+              <option>15:00-15:45</option>
+              <option>15:55-16:40</option>
+            </select>
+          </label>
+
+          <label id="group">
+            <select required size="1">
+              <option disabled selected>grupa</option>
+              <option>grupa 1</option>
+              <option>grupa 2</option>
+              <option>grupa 1 - UTK</option>
+              <option>grupa 2 - UTK</option>
+              <option>grupa 3 - UTK</option>
+              <option>grupa 1 - WF - chł.</option>
+              <option>grupa 2 - WF - chł.</option>
+              <option>grupa 3 - WF - dz.</option>
+            </select>
+          </label>
+
+            <input id="back" type="button" routerLink="/lessons" value="Wróć">
+
+            <input id="add" type="button" value="Dodaj lekcję">
+
+            
+      
+        </div>
+
+    </div>
+
+</main>
+<div style="clear:both"></div>

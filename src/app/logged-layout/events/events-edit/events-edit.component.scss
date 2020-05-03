@@ -1,0 +1,158 @@
+#eventsMgmt {
+    width: 300px;
+    #eventsMgmtHead {
+        width: 100%;
+        height: 50px;
+        background-color: #0A0B0D;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        position: relative;
+        text-align: center;
+        h6 {
+            font-size: 1.5rem;
+            color: #ddd;
+        }
+    }
+    #eventsMgmtContent {
+        background-color: #171717;
+        border-radius: 10px;
+        padding: 10px;
+        display: grid;
+        grid-gap: 8px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(9, 1fr);
+        grid-template-areas:
+            "box1"
+            "box2"
+            "box3"
+            "box4"
+            "box5"
+            "box6"
+            "box7"
+            "box8"
+            "box9";
+        #name {
+            grid-area: box1;
+            input {
+                height: 3.5rem;
+                background-color: #222;
+            }
+        }
+        #type {
+            grid-area: box2;
+            select {
+                height: 3.5rem;
+                background-color: #222;
+            }
+        }
+        #desc {
+            grid-area: box3;
+            textarea {
+                height: 3.5rem;
+            }
+        }
+        #term {
+            grid-area: box4;
+            input {
+                height: 3.5rem;
+            }
+        }
+        #group {
+            grid-area: box5;
+            select {
+               height: 3.5rem;
+            }
+        }
+        #add {
+            grid-template: box6;
+            cursor: pointer;
+        }
+        #event {
+            grid-area: box7;
+            select {
+                height: 3.5rem;
+                color: crimson;
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+        #del {
+            grid-template: box8;
+            cursor: pointer;
+            color: crimson;
+            font-weight: bold;
+        }
+        #back {
+            grid-template: box9;
+            cursor: pointer;
+        }
+        p {
+            width: 100%;
+            text-align: center;
+        }
+        input,textarea {
+            width: 100%;
+            height: 3.5rem;
+            padding: 8px 8px;
+            background-color: #333;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 5px;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-size: 1rem;
+            resize: none;
+            &:hover {
+                background-color: #444;
+            }
+        }
+        select {
+            width: 100%;
+            padding: 5px;
+            background-color: #333;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 5px;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-size: 1rem;
+            option {
+                padding: 0;
+                font-size: .8rem;
+            }
+        }
+    }
+}
+@media (min-width: 768px) {
+    #eventsMgmt {
+        width: 600px;
+        #eventsMgmtHead {
+            width: 100%;
+            height: 50px;
+        }
+        #eventsMgmtContent {
+            width: 100%;
+            grid-gap: 8px;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            grid-template-areas:
+                "box1 box2"
+                "box3 box3"
+                "box3 box3"
+                "box4 box5"
+                "box7 box6"
+                "box8 box9";
+            #desc {
+                grid-area: box3;
+                textarea {
+                    height: 7.6rem;
+                }
+            }
+        }
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #ccc
+    }
+}

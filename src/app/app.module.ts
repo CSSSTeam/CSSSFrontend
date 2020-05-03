@@ -17,10 +17,11 @@ import {LessonsComponent} from './logged-layout/lessons/lessons.component';
 import {FilesComponent} from './logged-layout/files/files.component';
 import {InfosComponent} from './logged-layout/infos/infos.component';
 import {OthersComponent} from './logged-layout/others/others.component';
-import {OpEditComponent} from './logged-layout/op-edit/op-edit.component';
+import {LessonsEditComponent} from './logged-layout/lessons/lessons-edit/lessons-edit.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {FileDetailsComponent} from './logged-layout/file-datails/file-details.component';
+import { EventsEditComponent } from './logged-layout/events/events-edit/events-edit.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +34,9 @@ import {FileDetailsComponent} from './logged-layout/file-datails/file-details.co
     FilesComponent,
     InfosComponent,
     OthersComponent,
-    OpEditComponent,
-    FileDetailsComponent
+    LessonsEditComponent,
+    FileDetailsComponent,
+    EventsEditComponent
   ],
   imports: [
     BrowserModule,
