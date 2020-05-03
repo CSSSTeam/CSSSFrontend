@@ -22,7 +22,6 @@ export const LOGGED_PAGE: Routes = [
   {path: 'infos', component: InfosComponent},
   {path: 'others', component: OthersComponent},
   {path: 'userpanel', component: UserPanelComponent},
-  {path: 'edit', component: OpEditComponent},
   {path: 'redactor', component: RedactorsPanelComponent},
   {path: 'lessons-edit', component: LessonsEditComponent},
   {path: 'events-edit', component: EventsEditComponent}
