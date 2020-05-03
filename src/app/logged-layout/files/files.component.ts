@@ -11,12 +11,90 @@ import {stringify} from 'querystring';
 })
 export class FilesComponent implements OnInit {
 
+  isFileMgmtOpen = false;
   addingFileForm: any;
   addingTypeForm: any;
   searchText: string;
+  isSearchBox = false;
   searchedFile: Array<any>;
+  files = [
+    {
+      name: 'tablica mat',
+      description: 'Tablica wartości funkcji trygonometrycznych dla poszczególnych kątów',
+      date: '20.03.2020'
+    },
+    {
+      name: 'biol-zadanie',
+      description: 'Zadanie domowe dla chętnych z biologii ( termin do piątku 20III20 )',
+      date: '26.03.2020'
+    },
+    {
+      name: 'afryka',
+      description: 'Zadanie z informatyki: sformatuj tekst jak najdokładniej potrafisz',
+      date: '22.03.2020'
+    },
+    {
+      name: 'tablica mat',
+      description: 'Tablica wartości funkcji trygonometrycznych dla poszczególnych kątów',
+      date: '20.03.2020'
+    },
+    {
+      name: 'biol-zadanie',
+      description: 'Zadanie domowe dla chętnych z biologii ( termin do piątku 20III20 )',
+      date: '26.03.2020'
+    },
+    {
+      name: 'afryka',
+      description: 'Zadanie z informatyki: sformatuj tekst jak najdokładniej potrafisz',
+      date: '22.03.2020'
+    },
+    {
+      name: 'tablica mat',
+      description: 'Tablica wartości funkcji trygonometrycznych dla poszczególnych kątów',
+      date: '20.03.2020'
+    },
+    {
+      name: 'biol-zadanie',
+      description: 'Zadanie domowe dla chętnych z biologii ( termin do piątku 20III20 )',
+      date: '26.03.2020'
+    },
+    {
+      name: 'afryka',
+      description: 'Zadanie z informatyki: sformatuj tekst jak najdokładniej potrafisz',
+      date: '22.03.2020'
+    },
+    {
+      name: 'tablica mat',
+      description: 'Tablica wartości funkcji trygonometrycznych dla poszczególnych kątów',
+      date: '20.03.2020'
+    },
+    {
+      name: 'wok-referat',
+      description: 'Zadanie domowe dla chętnych z biologii ( termin do piątku 20III20 )',
+      date: '26.03.2020'
+    },
+    {
+      name: 'afryka',
+      description: 'Zadanie z informatyki: sformatuj tekst jak najdokładniej potrafisz',
+      date: '22.03.2020'
+    },
+  ];
 
   constructor(public fileSystemService: FileSystemService) {
+  }
+
+  searchBox(){
+    this.isSearchBox = !this.isSearchBox;
+  }
+
+  showFileMgmt() {
+    if (this.isFileMgmtOpen == false) {
+      this.isFileMgmtOpen = true;
+      document.querySelector('#tab').className = 'icon-cancel open';
+    } else {
+      this.isFileMgmtOpen = false;
+      document.querySelector('#tab').className = 'icon-down-open open';
+    }
   }
 
   onFileChanged(event) {
@@ -45,8 +123,14 @@ export class FilesComponent implements OnInit {
   }
 
   getTypes() {
-
-    return this.fileSystemService.Types();
+    let type = [{
+      name: "matematyka",
+      id: 1
+    },{
+      name: "polski",
+      id: 2
+    }]
+    return type; //this.fileSystemService.Types();
   }
 
   getFiles() {
