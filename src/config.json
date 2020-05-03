@@ -4,6 +4,7 @@
     "login": "auth/",
     "logout": "user/logout/",
     "infoUser": "user/details/",
+    "loggedUserChangePassword": "user/changePassword/",
     "date": "basic/date/",
     "timetable": {
       "get": "timetable/get/",
@@ -19,6 +20,36 @@
       "deleteType": "fileSystem/type/del/:typeId/",
       "deleteFile": "fileSystem/file/del/:fileId/",
       "searchFile": "fileSystem/file/search/"
+    },
+    "events": {
+      "create": "events/event/add/",
+      "getEventByDate": "events/event/date/",
+      "getEventDetails": "events/event/:eventId/",
+      "getEventTypes": "events/type/",
+      "createType": "events/type/add/",
+      "deleteEvent": "events/event/del/:eventId/"
     }
-  }
+  },
+  "daysOfWeek": [
+    [
+      "monday",
+      "Poniedziałek"
+    ],
+    [
+      "tuesday",
+      "Wtorek"
+    ],
+    [
+      "wednesday",
+      "Środa"
+    ],
+    [
+      "thursday",
+      "Czwartek"
+    ],
+    [
+      "friday",
+      "Piątek"
+    ]
+  ]
 }

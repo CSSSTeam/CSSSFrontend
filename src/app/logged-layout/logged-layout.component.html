@@ -10,7 +10,7 @@
       <div *ngIf="isSett" id="account">
         <div id="userOption">
           <i (click)="logout()" class="icon-off"></i>
-          <i class="icon-key"></i>
+          <i routerLink="userpanel" class="icon-key"></i>
           <i class="icon-info"></i>
           <i (click)="showSettings()" class="icon-cancel"></i>
         </div>
@@ -33,6 +33,11 @@
       <a (click)="navTo()" routerLink="/files" routerLinkActive="active">
         <div id="files" class="menuOp">
           <i class="icon-folder-open"></i>Pliki
+        </div>
+      </a>
+      <a (click)="navTo()" routerLink="/redactor" routerLinkActive="active">
+        <div id="eventEditPanel" class="menuOp">
+          <i class="icon-folder-open"></i>RedactorPanel
         </div>
       </a>
     </nav>

@@ -50,7 +50,7 @@ export class FileSystemService {
   }
 
   public uploadFile(name, description, type, file: File): Promise<any> {
-    var url = this.dataURL.server + this.dataURL.endpoints.fileSystem.addFile;
+    let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.addFile;
     let formData: FormData = new FormData();
 
     formData.append('name', name);
@@ -110,11 +110,10 @@ export class FileSystemService {
   }
 
   public downloadFile(name: string, src: string): Promise<any> {
-    let url = this.dataURL.server + src.slice(14);
+    console.log(src);
+    let url = this.dataURL.server + 'uploaded_files/' + src;
     return new Promise<any>((p, e) => this.http.get(url, {responseType: 'blob'}).subscribe(
       (data: any) => {
-
-
         saveAs(data, name);
         p(data);
       },
