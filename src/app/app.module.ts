@@ -37,11 +37,10 @@ import { EventsEditComponent } from './logged-layout/events/events-edit/events-e
     FilesComponent,
     InfosComponent,
     OthersComponent,
-    OpEditComponent,
     FileDetailsComponent,
     RedactorsPanelComponent,
     EventsDetailsComponent,
-    UserPanelComponent
+    UserPanelComponent,
     LessonsEditComponent,
     EventsEditComponent
   ],
