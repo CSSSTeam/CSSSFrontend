@@ -75,6 +75,7 @@
 
 #mainArea #fileMgmt #fileMgmtContent #add {
   grid-template: box5;
+  cursor: pointer;
 }
 
 #mainArea #fileMgmt #fileMgmtContent p {

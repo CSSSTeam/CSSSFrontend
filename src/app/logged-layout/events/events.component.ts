@@ -21,6 +21,9 @@ export class EventsComponent implements OnInit{
     
   }
 
+  mgmtStart(){
+    
+  }
  
   monSubjects = [
     {subject: 'matematyka', type: 'test'},
