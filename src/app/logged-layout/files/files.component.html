@@ -3,7 +3,7 @@
     <div id="fileMgmt">
 
       <div (click)="showFileMgmt()" id="fileMgmtHead" class="header"> <!-- (click)="" -->
-        <h6><i class="icon-calendar"></i>Dodaj plik<i id="tab" class="icon-down-open open"></i></h6>
+        <h6><i class="icon-folder-empty"></i> Dodaj plik<i id="tab" class="icon-down-open open"></i></h6>
       </div>
     
       <div id="fileMgmtContent" *ngIf="isFileMgmtOpen"> <!-- *ngIf="isTabsOpen[day[0]]" -->
@@ -32,7 +32,7 @@
     <div id="filesList">
     
       <div id="header">
-        <h6><i class="icon-calendar"></i>Lista plików:<i (click)="searchBox()" class="icon-search open"></i>
+        <h6><i class="icon-list-bullet"></i> Lista plików:<i (click)="searchBox()" class="icon-search open"></i>
         </h6>
       </div>
 
