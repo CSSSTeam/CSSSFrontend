@@ -50,14 +50,20 @@
                 </select>
             </label>
 
-            <input id="back" type="button" routerLink="/events" value="Wróć">
-
             <input id="add" type="button" value="Dodaj wydarzenie">
 
-            
-      
-        </div>
+            <label id="event">
+                <select required size="1">
+                    <option disabled selected>wydarzenie</option>
+                    <option></option>
+                </select>
+            </label>
 
+            <input id="del" type="button" value="Usuń wydarzenie">
+
+            <input id="back" type="button" routerLink="/events" value="Wróć">
+
+        </div>
     </div>
 
 </main>

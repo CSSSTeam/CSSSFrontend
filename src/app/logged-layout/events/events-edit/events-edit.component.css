@@ -25,8 +25,8 @@
   display: grid;
   grid-gap: 8px;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-areas: "box1" "box2" "box3" "box4" "box5";
+  grid-template-rows: repeat(9, 1fr);
+  grid-template-areas: "box1" "box2" "box3" "box4" "box5" "box6" "box7" "box8" "box9";
 }
 
 #eventsMgmt #eventsMgmtContent #name {
@@ -76,8 +76,26 @@
   cursor: pointer;
 }
 
+#eventsMgmt #eventsMgmtContent #event {
+  grid-area: box7;
+}
+
+#eventsMgmt #eventsMgmtContent #event select {
+  height: 3.5rem;
+  color: crimson;
+  font-weight: bold;
+  text-align: center;
+}
+
+#eventsMgmt #eventsMgmtContent #del {
+  grid-template: box8;
+  cursor: pointer;
+  color: crimson;
+  font-weight: bold;
+}
+
 #eventsMgmt #eventsMgmtContent #back {
-  grid-template: box7;
+  grid-template: box9;
   cursor: pointer;
 }
 
@@ -88,6 +106,7 @@
 
 #eventsMgmt #eventsMgmtContent input, #eventsMgmt #eventsMgmtContent textarea {
   width: 100%;
+  height: 3.5rem;
   padding: 8px 8px;
   background-color: #333;
   color: #eee;
@@ -130,8 +149,11 @@
     width: 100%;
     grid-gap: 8px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-areas: "box1 box2" "box3 box3" "box3 box3" "box4 box5" "box7 box6";
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: "box1 box2" "box3 box3" "box3 box3" "box4 box5" "box7 box6" "box8 box9";
+  }
+  #eventsMgmt #eventsMgmtContent #desc {
+    grid-area: box3;
   }
   #eventsMgmt #eventsMgmtContent #desc textarea {
     height: 7.6rem;
