@@ -24,7 +24,8 @@ import {FileDetailsComponent} from './logged-layout/file-datails/file-details.co
 import {RedactorsPanelComponent} from './logged-layout/redactors-panel/redactors-panel.component';
 import {EventsDetailsComponent} from './logged-layout/events-details/events-details.component';
 import {UserPanelComponent} from './logged-layout/user-panel/user-panel.component';
-import { EventsEditComponent } from './logged-layout/events/events-edit/events-edit.component';
+import {EventsEditComponent} from './logged-layout/events/events-edit/events-edit.component';
+import {UserManagementPanelComponent} from './logged-layout/user-management-panel/user-management-panel.component';
 
 @NgModule({
   declarations: [
@@ -37,13 +38,13 @@ import { EventsEditComponent } from './logged-layout/events/events-edit/events-e
     FilesComponent,
     InfosComponent,
     OthersComponent,
-    OpEditComponent,
     FileDetailsComponent,
     RedactorsPanelComponent,
     EventsDetailsComponent,
-    UserPanelComponent
+    UserPanelComponent,
     LessonsEditComponent,
-    EventsEditComponent
+    EventsEditComponent,
+    UserManagementPanelComponent
   ],
   imports: [
     BrowserModule,
