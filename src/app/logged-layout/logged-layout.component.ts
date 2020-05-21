@@ -35,8 +35,8 @@ export class LoggedLayoutComponent implements OnInit {
     }
   }
 
-  isSett = false;
-  isCog = !this.isSett;
+  isSett: boolean = false;
+  isCog: boolean = true;
 
   showSettings() {
     this.isSett = !this.isSett;

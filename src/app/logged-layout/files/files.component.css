@@ -71,6 +71,7 @@
 
 #mainArea #fileMgmt #fileMgmtContent #file {
   grid-area: box4;
+  font-size: .8rem;
 }
 
 #mainArea #fileMgmt #fileMgmtContent #add {

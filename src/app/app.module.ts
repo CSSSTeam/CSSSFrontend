@@ -22,6 +22,8 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {FileDetailsComponent} from './logged-layout/file-datails/file-details.component';
 import { EventsEditComponent } from './logged-layout/events/events-edit/events-edit.component';
+import { ChgPasswordComponent } from './logged-layout/chg-password/chg-password.component';
+import { AboutComponent } from './logged-layout/about/about.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { EventsEditComponent } from './logged-layout/events/events-edit/events-e
     OthersComponent,
     LessonsEditComponent,
     FileDetailsComponent,
-    EventsEditComponent
+    EventsEditComponent,
+    ChgPasswordComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

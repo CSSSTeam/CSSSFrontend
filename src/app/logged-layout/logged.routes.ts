@@ -8,6 +8,8 @@ import {OthersComponent} from './others/others.component';
 import {LessonsEditComponent} from './lessons/lessons-edit/lessons-edit.component';
 import {EventsEditComponent} from './events/events-edit/events-edit.component';
 import {FileDetailsComponent} from './file-datails/file-details.component';
+import {ChgPasswordComponent} from './chg-password/chg-password.component';
+import {AboutComponent} from './about/about.component';
 
 export const LOGGED_PAGE: Routes = [
   {path: '', component: MainPageComponent},
@@ -18,5 +20,7 @@ export const LOGGED_PAGE: Routes = [
   {path: 'infos', component: InfosComponent},
   {path: 'others', component: OthersComponent},
   {path: 'lessons-edit', component: LessonsEditComponent},
-  {path: 'events-edit', component: EventsEditComponent}
+  {path: 'events-edit', component: EventsEditComponent},
+  {path: 'chg-password', component: ChgPasswordComponent},
+  {path: 'about', component: AboutComponent}
 ];
