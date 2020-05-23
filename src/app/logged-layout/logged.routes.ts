@@ -11,6 +11,7 @@ import {FileDetailsComponent} from './file-datails/file-details.component';
 import {RedactorsPanelComponent} from './redactors-panel/redactors-panel.component';
 import {EventsDetailsComponent} from './events-details/events-details.component';
 import {UserPanelComponent} from './user-panel/user-panel.component';
+import {UserManagementPanelComponent} from './user-management-panel/user-management-panel.component';
 
 export const LOGGED_PAGE: Routes = [
   {path: '', component: MainPageComponent},
@@ -22,8 +23,9 @@ export const LOGGED_PAGE: Routes = [
   {path: 'infos', component: InfosComponent},
   {path: 'others', component: OthersComponent},
   {path: 'userpanel', component: UserPanelComponent},
-  {path: 'edit', component: OpEditComponent},
   {path: 'redactor', component: RedactorsPanelComponent},
   {path: 'lessons-edit', component: LessonsEditComponent},
-  {path: 'events-edit', component: EventsEditComponent}
+  {path: 'events-edit', component: EventsEditComponent},
+  {path: 'user-manager', component: UserManagementPanelComponent},
+
 ];

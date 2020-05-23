@@ -58,4 +58,8 @@ export class LoggedLayoutComponent implements OnInit {
   isRedactor() {
     return this.permissions.hasPerm([Group.moderator, Group.president, Group.vicePresident, Group.admin]);
   }
+
+  isAdmin() {
+    return this.permissions.hasPerm([Group.president, Group.vicePresident, Group.admin]);
+  }
 }

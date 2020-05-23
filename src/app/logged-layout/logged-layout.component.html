@@ -40,6 +40,11 @@
           <i class="icon-folder-open"></i>Zarządzanie wydarzeniami
         </div>
       </a>
+      <a *ngIf="isAdmin()" (click)="navTo()" routerLink="/user-manager" routerLinkActive="active">
+        <div id="user-manager" class="menuOp">
+          <i class="icon-folder-open"></i>Zarządzanie użytkowników
+        </div>
+      </a>
     </nav>
     <div id="widgets">
       <div id="box1" class="wid">

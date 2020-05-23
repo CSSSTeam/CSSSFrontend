@@ -28,6 +28,12 @@
       "getEventTypes": "events/type/",
       "createType": "events/type/add/",
       "deleteEvent": "events/event/del/:eventId/"
+    },
+    "userManager": {
+      "getList": "user/",
+      "createUser": "user/",
+      "deleteUser": "user/:idUser/",
+      "getGroups": "group/"
     }
   },
   "daysOfWeek": [
