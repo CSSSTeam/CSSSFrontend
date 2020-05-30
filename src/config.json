@@ -12,7 +12,8 @@
       "createPeriods": "timetable/createHour/"
     },
     "fileSystem": {
-      "addFile": "fileSystem/file/add/",
+      "addFile": "fileSystem/file/upload/",
+      "addFileComplete": "fileSystem/file/upload/complete/",
       "getTypes": "fileSystem/type/",
       "listFile": "fileSystem/file/",
       "detailsFile": "fileSystem/file/:fileId/",

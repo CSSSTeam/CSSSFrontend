@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as data from '../../config.json';
 import {saveAs} from 'file-saver';
+import {UtilsService} from './utils.service';
 
 @Injectable({
   providedIn: 'root'
@@ -49,29 +50,89 @@ export class FileSystemService {
     );
   }
 
-  public uploadFile(name, description, type, file: File): Promise<any> {
-    let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.addFile;
-    let formData: FormData = new FormData();
+  public async uploadFile(name, description, type, file: File) {
 
-    formData.append('name', name);
-    formData.append('description', description);
-    formData.append('fileType', type);
-    formData.append('upload', file);
+
     const httpOption = {
       headers: new HttpHeaders({
         'Authorization': 'token ' + localStorage.getItem('token')
       })
     };
 
-    return new Promise<any>((p, e) => this.http.post(url, formData, httpOption).subscribe(
-      (data: any) => {
-        this.files.push(data);
-        p(data);
+
+    this.getUploadId(file, httpOption).subscribe(data => {
+        this.sendChunks(file, data);
       },
-      (error: any) => {
-        e(error);
+      e => {
+        console.error(e);
       }
-    ));
+    );
+
+  }
+
+  private getUploadId(file, httpOption) {
+    let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.addFile;
+    let formData: FormData = new FormData();
+
+    let end = Math.min(file.size, 100000);
+
+    const chunk = file.slice(0, end);
+    formData.append('the_file', chunk);
+
+    return this.http.post(url, formData, httpOption);
+  }
+
+  async sendChunks(file, uploadingData) {
+    const offset = uploadingData['offset'];
+    if (offset >= file.size) {
+      this.endUploadFile(file, uploadingData['upload_id']);
+      return;
+    }
+    const end = Math.min(2 * offset, file.size);
+
+    const chunk: File = file.slice(offset, end);
+    console.log(file, chunk, offset, 2 * offset);
+    this.sendChunk(chunk, uploadingData['upload_id'], offset, end - 1, file.size).subscribe(data => {
+      this.sendChunks(file, data);
+    });
+  }
+
+
+  private endUploadFile(file, uploadId) {
+    UtilsService.computeChecksumMd5(file).then(md5 => {
+      console.log(md5);
+      let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.addFileComplete;
+
+      const httpOption = {
+        headers: new HttpHeaders({
+          'Authorization': 'token ' + localStorage.getItem('token')
+        })
+      };
+      let formData: FormData = new FormData();
+      formData.append('upload_id', uploadId);
+      formData.append('md5', md5);
+
+      this.http.post(url, formData, httpOption).subscribe(data => {
+        console.log(data);
+      });
+    });
+  }
+
+
+  sendChunk(chunk, uploadId, start, end, size) {
+    let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.addFile;
+
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': 'token ' + localStorage.getItem('token'),
+        'Content-Range': 'bytes ' + start + '-' + end + '/' + size
+      })
+    };
+
+    let formData: FormData = new FormData();
+    formData.append('upload_id', uploadId);
+    formData.append('the_file', chunk);
+    return this.http.post(url, formData, httpOption);
   }
 
   public listFile(): Promise<any> {

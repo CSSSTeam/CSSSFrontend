@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {MainPageComponent} from './logged-layout/main-page/main-page.component';
 import {LoggedLayoutComponent} from './logged-layout/logged-layout.component';
@@ -26,6 +26,36 @@ import {EventsDetailsComponent} from './logged-layout/events-details/events-deta
 import {UserPanelComponent} from './logged-layout/user-panel/user-panel.component';
 import {EventsEditComponent} from './logged-layout/events/events-edit/events-edit.component';
 import {UserManagementPanelComponent} from './logged-layout/user-management-panel/user-management-panel.component';
+
+import {Injectable} from '@angular/core';
+import {
+  HttpInterceptor, HttpXsrfTokenExtractor, HttpRequest, HttpHandler,
+  HttpEvent
+} from '@angular/common/http';
+import {Observable} from 'rxjs';
+
+@Injectable()
+export class HttpXsrfInterceptor implements HttpInterceptor {
+
+  constructor(private tokenExtractor: HttpXsrfTokenExtractor) {
+  }
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    let requestMethod: string = req.method;
+    requestMethod = requestMethod.toLowerCase();
+
+    if (requestMethod && (requestMethod === 'post' || requestMethod === 'delete' || requestMethod === 'put')) {
+      const headerName = 'X-XSRF-TOKEN';
+      let token = this.tokenExtractor.getToken() as string;
+      if (token !== null && !req.headers.has(headerName)) {
+        req = req.clone({headers: req.headers.set(headerName, token)});
+      }
+    }
+
+    return next.handle(req);
+  }
+}
 
 @NgModule({
   declarations: [
@@ -51,12 +81,18 @@ import {UserManagementPanelComponent} from './logged-layout/user-management-pane
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES),
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-CSRF-TOKEN'
+    })
   ],
-  providers: [UserService, GuardService],
+  providers: [UserService, GuardService, {provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+
+
 
 

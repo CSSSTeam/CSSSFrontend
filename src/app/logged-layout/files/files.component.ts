@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FileSystemService} from '../../services/file-system.service';
-import {Router} from '@angular/router';
-import {stringify} from 'querystring';
 
 @Component({
   selector: 'app-files',
@@ -83,7 +81,7 @@ export class FilesComponent implements OnInit {
   constructor(public fileSystemService: FileSystemService) {
   }
 
-  searchBox(){
+  searchBox() {
     this.isSearchBox = !this.isSearchBox;
   }
 
@@ -115,22 +113,18 @@ export class FilesComponent implements OnInit {
 
   uploadFile() {
 
-    this.fileSystemService.uploadFile(this.addingFileForm.name, this.addingFileForm.description, this.addingFileForm.type, this.addingFileForm.upload).then(() => {
-      console.log('ok');
-    }).catch(e => {
-      console.error(e);
-    });
+    this.fileSystemService.uploadFile(this.addingFileForm.name,
+      this.addingFileForm.description, this.addingFileForm.type, this.addingFileForm.upload);
   }
 
   getTypes() {
-    let type = [{
-      name: "matematyka",
+    return [{
+      name: 'matematyka',
       id: 1
-    },{
-      name: "polski",
+    }, {
+      name: 'polski',
       id: 2
-    }]
-    return type; //this.fileSystemService.Types();
+    }]; //this.fileSystemService.Types();
   }
 
   getFiles() {

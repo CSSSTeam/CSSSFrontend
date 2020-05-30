@@ -11,7 +11,7 @@ export class UserManagementPanelComponent implements OnInit {
 
   users: any;
   newUserForm: any;
-  private userList: any;
+  userList: any;
 
   constructor(private userManagementService: UserManagementService) {
   }
@@ -22,9 +22,9 @@ export class UserManagementPanelComponent implements OnInit {
       let reader = new FileReader();
       reader.readAsText(file, 'UTF-8');
       reader.onload = (d) => {
-        this.loadFile(d, this);
+        UserManagementPanelComponent.loadFile(d, this);
       };
-      reader.onerror = function(evt) {
+      reader.onerror = function() {
         console.log('error reading file');
       };
     }
@@ -62,13 +62,12 @@ export class UserManagementPanelComponent implements OnInit {
     });
 
 
-    this.userManagementService.createUsers(this.userList).then(d => {
-    }).catch(e => {
+    this.userManagementService.createUsers(this.userList).catch(e => {
       console.error(e);
     });
   }
 
-  private loadFile(evt, mainFunc) {
+  private static loadFile(evt, mainFunc) {
     mainFunc.setUserList(JSON.parse(evt.target['result']));
   }
 
@@ -78,10 +77,9 @@ export class UserManagementPanelComponent implements OnInit {
   }
 
   getGroupsList(groups) {
-    let a = groups.map(gr => {
+    return groups.map(gr => {
       return this.userManagementService.getGroupById(gr);
     });
-    return a;
   }
 
   public setUserList(parse: any) {
