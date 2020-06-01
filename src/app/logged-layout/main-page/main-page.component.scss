@@ -1,58 +1,67 @@
 #schDays {
-    .day {
-        width: 300px;
-        min-height: 50px;
-        background-color: #000;
-        margin: 0px 0;
-        padding: 10px;
-        border-radius: 5px;
-        &:nth-child(even) {
-            background-color: #222;
-        }
-        h6 {
-            font-size: 1rem;
-            color: #bbb;
-            border-bottom: 1px dotted #bbb;
-            margin-bottom: 5px;
-            padding: 4px 0;
-        }
-        div {
-            padding: 1.5% 2%;
-            margin: 3px;
-            border-radius: 10px;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            color: #eee;
-            background-color: #222;
-        }
-        .null {
-            padding: 5px 8px;
-            margin: 8px;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            color: #eee;
-        }
+  .day {
+    width: 300px;
+    min-height: 50px;
+    background-color: #000;
+    margin: 0px 0;
+    padding: 10px;
+    border-radius: 5px;
+
+    &:nth-child(even) {
+      background-color: #222;
     }
+
+    h6 {
+      font-size: 1rem;
+      color: #bbb;
+      border-bottom: 1px dotted #bbb;
+      margin-bottom: 5px;
+      padding: 4px 0;
+    }
+
+    div {
+      padding: 1.5% 2%;
+      margin: 3px;
+      border-radius: 10px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: #eee;
+      background-color: #222;
+    }
+
+    .null {
+      padding: 5px 8px;
+      margin: 8px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: #eee;
+    }
+  }
 }
+
 @media (min-width: 768px) {
-    #schDays {
-        max-height: 80vh;
-        overflow-y: scroll;
-        scrollbar-color: #ccc rgba(0,0,0,0);
-        scrollbar-width: thin;
-        .day {
-            width: 600px;
-            margin: 10px 0;
-        }
-        .subjects {
-            width: 48%;
-            display: inline-block;
-        }
+  #schDays {
+    max-height: 80vh;
+    overflow-y: scroll;
+    scrollbar-color: #ccc rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+
+    .day {
+      width: 600px;
+      margin: 10px 0;
     }
-    ::-webkit-scrollbar {
-        width: 6px;
+
+    .subjects {
+      width: 48%;
+      display: inline-block;
     }
-    ::-webkit-scrollbar-thumb {
-        background-color: #ccc
-    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #ccc
+  }
 }
