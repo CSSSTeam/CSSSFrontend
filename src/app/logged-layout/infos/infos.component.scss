@@ -1,0 +1,99 @@
+#infosList {
+    .infoEl {
+        width: 300px;
+        min-height: 50px;
+        background-color: #000;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        &:nth-child(even) {
+            background-color: #222;
+        }
+        h6 {
+            font-size: 1rem;
+            color: #bbb;
+            border-bottom: 1px dotted #bbb;
+            margin-bottom: 5px;
+            padding: 4px 0;
+            position: relative;
+            i {
+                margin-right: 7px;
+            }
+            span {
+                position: absolute;
+                top: -5px; right: 5px;
+                font-size: .8rem;
+                color: #444;
+            }
+        }
+        div {
+            padding: 1% 2%;
+            margin: 3px;
+            border-radius: 10px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: #eee;
+            text-align: center;
+            p {
+                font-size: .9rem;
+                text-align: left;
+                text-indent: 10px;
+                padding: 7px;
+            }
+        }
+        span /*img*/ {
+            display: block;
+            margin: 15px auto 10px auto;
+            max-width: 170px;
+            max-height: 80px;
+        }
+    }
+    #infosMGMT {
+        width: 300px;
+        height: 40px;
+        line-height: 20px;
+        background-color: #b74a00;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        position: relative;
+        cursor: pointer;
+        h6 {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #bbb;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+    }
+}
+@media (min-width: 768px) {
+    #infosList {
+        max-height: 80vh;
+        overflow-y: scroll;
+        scrollbar-color: #ccc rgba(0,0,0,0);
+        scrollbar-width: thin;
+        .infoEl {
+            width: 600px;
+            div {
+                p {
+                    text-indent: 25px;
+                }
+            }
+            span {
+                max-width: 240px;
+                max-height: 100px;
+            }
+        }
+        #infosMGMT {
+            width: 600px;
+        }
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+    }
+}
