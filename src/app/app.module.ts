@@ -24,6 +24,7 @@ import {FileDetailsComponent} from './logged-layout/file-datails/file-details.co
 import { EventsEditComponent } from './logged-layout/events/events-edit/events-edit.component';
 import { ChgPasswordComponent } from './logged-layout/chg-password/chg-password.component';
 import { AboutComponent } from './logged-layout/about/about.component';
+import { InfosEditComponent } from './logged-layout/infos/infos-edit/infos-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AboutComponent } from './logged-layout/about/about.component';
     FileDetailsComponent,
     EventsEditComponent,
     ChgPasswordComponent,
-    AboutComponent
+    AboutComponent,
+    InfosEditComponent
   ],
   imports: [
     BrowserModule,
