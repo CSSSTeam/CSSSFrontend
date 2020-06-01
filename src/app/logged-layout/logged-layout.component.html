@@ -8,7 +8,7 @@
     <div id="settings">
       <i *ngIf="isCog" (click)="showSettings()" class="icon-cog"></i>
       <div *ngIf="isSett" id="account">
-        <div id="userOption">
+        <div>
           <i (click)="logout()" class="icon-off"></i>
           <i class="icon-key" (click)="showSettings()" routerLink="/chg-password" routerLinkActive="active"></i>
           <i class="icon-info" (click)="showSettings()" routerLink="/about" routerLinkActive="active"></i>
