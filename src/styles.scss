@@ -1,243 +1,297 @@
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-    background: url(assets/img/darkness.png);
-    color: #fff;
-    font-family: 'Montserrat Alternates', sans-serif;
-    //font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-size: 1.4rem;
-    user-select: none;
+$bg-color: #D96C00;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  background: url(assets/img/darkness.png);
+  color: #fff;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1.4rem;
+  user-select: none;
+  position: relative;
+}
+
+#mainNav {
+  position: relative;
+  background-color: #171717;
+  width: 100%;
+  min-height: 550px;
+
+  #logo {
+    width: 100%;
+    height: 7rem;
     position: relative;
-}
-#mainNav{
-    background-color: #171717;
-    width: 100%;
-    min-height: 550px;
-    #logo{
-        height: 7rem;
-        width: 100%;
-        position: relative;
-        display: flex;
-        align-items: center;
-        transition: all .3s ease-in-out;
-        img{
-            margin-left: 1.5rem;
-            height: 70%;
-        }
-        &:hover {
-            transform: translateX(10px);
-        }
-    }
-    #settings {
-        z-index: 1000;
-        color: #fff;
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        transition: all .3s ease-in-out;
-        i {
-            cursor: pointer;
-        }
-    }
-    #account {
-        z-index: 1000;
-        width: 100%;
-        height: 3rem;
-        background-color: rgba(0,0,0,.6);
-        position: fixed;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        line-height: 3rem;
-        i {
-            padding: 3px 15px;
-            cursor: pointer;
-        }
-        .icon-cancel {
-            color: #cc0001;
-        }
-    }
-    #menu {
-        width: 100%;
-        height: 3rem;
-        background-color: #D96C00;
-        text-align: center;
-        color: #fff;
-        line-height: 3rem;
-        font-weight: 700;
-        font-size: 1.8rem;
-        position: relative;
-        cursor: pointer;
-    }
-    nav {
-        background-color: #000;
-        width: 100%;
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-        position: absolute;
-        .menuOp {
-            padding: 18px 10px;
-            border-bottom: 1px solid #222;
-            transition: all .3s ease;
-            i {
-                font-size: 1rem;
-                margin-right: 5px;
-            }
-            &:hover {
-                padding-left: 50px;
-                border-right: 6px solid #fff;
-            }
-        }
-    }
-    #widgets {
-        width: 100%;
-        padding: 15px;
-        margin: 20px 0;
-        text-transform: uppercase;
-        font-weight: 700;
-        display: grid;
-        grid-gap: 10px;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        grid-template-areas:
-            "box1 box2"
-            "box3 box3"
-            "box4 box4";
-        #box1 {
-            grid-area: box1;
-        }
-        #box2 {
-            grid-area: box2;
-        }
-        #box3 {
-            grid-area: box3;
-            font-size: 1rem;
-        }
-        #box4 {
-            grid-area: box4;
-            font-size: 1rem;
-        }
-        .wid {
-            background-color: #232323;
-            border-left: 6px solid #D96C00;
-            border-radius: 20px;
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .int {
-            transition: .2s all ease;
-            &:hover {
-                border-left-width: 20px;
-            }
-        }
-        i {
-            font-size: 3rem;
-        }
-    }
-}
-main{
-    background-image: url(assets/img/mainBg.svg);
-    background-size: cover;
-    background-attachment: fixed;
-    width: 100%;
-    min-height: 50vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 15px 0;
-}
-footer {
-    background-color: #b74a00;
+    transition: all .2s ease-in-out;
+
+    img {
+      margin-left: 1.5rem;
+      height: 70%;
+    }
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+
+  #settings {
+    z-index: 1000;
     color: #fff;
-    letter-spacing: 2px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: all .3s ease-in-out;
+
+    i {
+      cursor: pointer;
+    }
+  }
+
+  #account {
+    z-index: 1000;
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    line-height: 3rem;
+
+    i {
+      padding: 3px 15px;
+      cursor: pointer;
+    }
+
+    .icon-cancel {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      right: 10px;
+      color: #cc0001;
+    }
+  }
+
+  #menu {
+    width: 100%;
+    height: 3rem;
+    background-color: $bg-color;
     text-align: center;
-    height: 60px;
-    line-height: 60px;
-    font-size: .7rem;
+    color: #fff;
+    line-height: 3rem;
     font-weight: 700;
+    font-size: 1.8rem;
+    position: relative;
+    cursor: pointer;
+  }
+
+  nav {
+    background-color: #000;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    position: absolute;
+
+    .menuOp {
+      padding: 18px 10px;
+      border-bottom: 1px solid #222;
+      transition: all .3s ease;
+
+      i {
+        font-size: 1rem;
+        margin-right: 5px;
+      }
+
+      &:hover {
+        padding-left: 50px;
+        border-right: 6px solid #fff;
+      }
+    }
+  }
+
+  #widgets {
+    width: 100%;
+    padding: 15px;
+    margin: 20px 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      "box1 box2"
+      "box3 box3"
+      "box4 box4";
+
+    #box1 {
+      grid-area: box1;
+    }
+
+    #box2 {
+      grid-area: box2;
+    }
+
+    #box3 {
+      grid-area: box3;
+      font-size: 1rem;
+    }
+
+    #box4 {
+      grid-area: box4;
+      font-size: 1rem;
+    }
+
+    .wid {
+      background-color: #232323;
+      border-left: 6px solid $bg-color;
+      border-radius: 20px;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .int {
+      transition: .2s all ease;
+
+      &:hover {
+        border-left-width: 20px;
+      }
+    }
+
+    i {
+      font-size: 3rem;
+    }
+  }
 }
+
+main {
+  background-image: url(assets/img/mainBg.svg);
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+footer {
+  background-color: #b74a00;
+  color: #fff;
+  letter-spacing: 2px;
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+  font-size: .7rem;
+  font-weight: 700;
+}
+
 a {
-    color: inherit;
-    text-decoration: none;
-    outline: none;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
 }
+
 @media (min-width: 768px) and (max-width: 1023px) {
-    #mainNav {
-        min-height: 420px;
-        #widgets {
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: 1fr;
-            grid-template-areas:
-            "box3 box4 box1 box2";
-            min-height: 250px;
-        }
+  #mainNav {
+    min-height: 380px;
+
+    #widgets {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr;
+      grid-template-areas:
+        "box1 box2 box3 box4";
+      min-height: 20px;
+
+      .wid {
+        max-width: 250px;
+        height: 150px;
+      }
     }
+  }
 }
+
 @media (max-height: 670px) {
-    #mainNav {
-        nav {
-            font-size: 1rem;
-            .menuOp {
-                padding: 10px 5px;
-                border-bottom: 1px solid #222;
-                i {
-                    font-size: .8rem;
-                    margin-right: 5px;
-                }
-            }
+  #mainNav {
+    nav {
+      font-size: 1rem;
+
+      .menuOp {
+        padding: 10px 5px;
+        border-bottom: 1px solid #222;
+
+        i {
+          font-size: .8rem;
+          margin-right: 5px;
         }
+      }
     }
+  }
 }
+
 @media (min-width: 1024px) {
-    #mainNav {
-        float: left;
-        height: 95vh;
-        width: 30%;
-        #settings {
-            left: 27%;
-        }
-        #account {
-            width: 30%;
-        }
-        #menu {
-            display: none;
-        }
-        nav {
-            width: 100%;
-            position: static;
-        }
-        #widgets {
-            height: 55%;
-        }
+  #mainNav {
+    float: left;
+    height: 95vh;
+    width: 30%;
+
+    #account {
+      width: 30%;
     }
-    main {
-        background-attachment: unset;
-        float: left;
-        height: 95vh;
-        width: 70%;
+
+    #menu {
+      display: none;
     }
-    footer {
-        background-color: #000000;
-        height: 5vh;
-        line-height: 5vh;
+
+    nav {
+      width: 100%;
+      position: static;
     }
+
+    #widgets {
+      height: 55%;
+    }
+  }
+
+  main {
+    background-attachment: unset;
+    float: left;
+    height: 95vh;
+    width: 70%;
+  }
+
+  footer {
+    background-color: #000000;
+    height: 5vh;
+    line-height: 5vh;
+  }
 }
+
 @media (min-width: 1024px) and (min-height: 870px) {
-    #mainNav {
-        #widgets {
-            height: 65%;
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(4, 1fr);
-            grid-template-areas:
-            "box3"
-            "box4"
-            "box1"
-            "box2";
-        }
+  #mainNav {
+    #widgets {
+      height: 65%;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 1fr);
+      grid-template-areas:
+        "box3"
+        "box4"
+        "box1"
+        "box2";
     }
+  }
 }
