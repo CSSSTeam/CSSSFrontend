@@ -8,18 +8,12 @@ import * as data from '../../config.json';
 export class TimeTableService {
   private timetable;
   private dataURL;
-  public daysOfWeek = [
-    ['monday', 'Poniedziałek'],
-    ['tuesday', 'Wtorek'],
-    ['wednesday', 'Środa'],
-    ['thursday', 'Czwartek'],
-    ['friday', 'Piątek']
-  ];
+  public daysOfWeek;
 
   constructor(private http: HttpClient) {
     this.dataURL = (data as any).default;
     this.loadTimetable4everyone();
-
+    this.daysOfWeek = this.dataURL.daysOfWeek;
   }
 
   loadTimetable4everyone() {
@@ -30,7 +24,12 @@ export class TimeTableService {
         'Authorization': 'token ' + localStorage.getItem('token')
       })
     };
+    let timetableStringify = localStorage.getItem('myTimetable');
 
+    if (timetableStringify != null) {
+      this.timetable = JSON.parse(timetableStringify);
+      return;
+    }
     this.http.get(url, httpOption).subscribe(
       (data: any) => {
         console.log(data);
@@ -39,22 +38,11 @@ export class TimeTableService {
         localStorage.setItem('myTimetable', JSON.stringify(data));
       },
       () => {
-
-        let timetableStringify = localStorage.getItem('myTimetable');
-
-        if (timetableStringify != null) {
-          this.timetable = JSON.parse(timetableStringify);
-          return;
-        }
         this.timetable = {
           'error': 'timetable is not load because you do not have internet'
         };
       }
     );
-  }
-
-  createTimetable() {
-
   }
 
   getTimetable() {
