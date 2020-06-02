@@ -1,0 +1,144 @@
+#infosMgmt {
+    width: 300px;
+    #infosMgmtHead {
+        width: 100%;
+        height: 50px;
+        background-color: #0A0B0D;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        position: relative;
+        text-align: center;
+        h6 {
+            font-size: 1.5rem;
+            color: #ddd;
+        }
+    }
+    #infosMgmtContent {
+        background-color: #171717;
+        border-radius: 10px;
+        padding: 10px;
+        display: grid;
+        grid-gap: 8px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(7, 1fr);
+        grid-template-areas:
+            "box1"
+            "box1"
+            "box2"
+            "box3"
+            "box4"
+            "box5"
+            "box6";
+        #cont {
+            grid-area: box1;
+            textarea {
+                height: 7.5rem;
+            }
+        }
+        #file {
+            grid-area: box2;
+            input {
+                height: 3.5rem;
+                background-color: #222;
+            }
+        }
+        #addImage {
+            grid-area: box3;
+            cursor: pointer;
+            input {
+                height: 3.5rem;
+                background-color: #222;
+            }
+        }
+        #authorsList {
+            grid-area: box4;
+            select {
+                height: 3.5rem;
+            }
+        }
+        #addInfo {
+            grid-area: box5;
+            cursor: pointer;
+            input {
+                height: 3.5rem;
+                background-color: #222;
+            }
+        }
+        #back {
+            grid-area: box6;
+            cursor: pointer;
+            input {
+                height: 3.5rem;
+                background-color: #222;
+            }
+        }
+        p {
+            width: 100%;
+            text-align: center;
+        }
+        input,textarea {
+            width: 100%;
+            height: 3.5rem;
+            padding: 8px 8px;
+            background-color: #333;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 5px;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-size: 1rem;
+            resize: none;
+            &:hover {
+                background-color: #444;
+            }
+        }
+        select {
+            width: 100%;
+            padding: 5px;
+            background-color: #333;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 5px;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-size: 1rem;
+            option {
+                padding: 0;
+                font-size: .8rem;
+            }
+        }
+    }
+}
+@media (min-width: 768px) {
+    #infosMgmt {
+        width: 600px;
+        #infosMgmtHead {
+            width: 100%;
+            height: 50px;
+        }
+        #infosMgmtContent {
+            width: 100%;
+            grid-gap: 8px;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            grid-template-areas:
+                "box1 box1"
+                "box1 box1"
+                "box1 box1"
+                "box2 box3"
+                "box4 box5"
+                "box6 box6";
+            #cont {
+                grid-area: box1;
+                textarea {
+                    height: 11.5rem;
+                }
+            }
+        }
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #ccc
+    }
+}

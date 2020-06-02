@@ -40,15 +40,15 @@
   display: grid;
   grid-gap: 8px;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-areas: "box1" "box2" "box3" "box4" "box5";
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-areas: "box1" "box2" "box3" "box4" "box5" "box6" "box7";
 }
 
-#mainArea #fileMgmt #fileMgmtContent #name {
+#mainArea #fileMgmt #fileMgmtContent #fileName {
   grid-area: box1;
 }
 
-#mainArea #fileMgmt #fileMgmtContent #name input {
+#mainArea #fileMgmt #fileMgmtContent #fileName input {
   height: 3.5rem;
   background-color: #222;
 }
@@ -71,10 +71,25 @@
 
 #mainArea #fileMgmt #fileMgmtContent #file {
   grid-area: box4;
+  font-size: .8rem;
 }
 
-#mainArea #fileMgmt #fileMgmtContent #add {
+#mainArea #fileMgmt #fileMgmtContent #addFile {
   grid-template: box5;
+  cursor: pointer;
+}
+
+#mainArea #fileMgmt #fileMgmtContent #typeName {
+  grid-area: box6;
+}
+
+#mainArea #fileMgmt #fileMgmtContent #typeName input {
+  height: 3.5rem;
+  background-color: #222;
+}
+
+#mainArea #fileMgmt #fileMgmtContent #addType {
+  grid-template: box7;
   cursor: pointer;
 }
 
@@ -83,7 +98,8 @@
   text-align: center;
 }
 
-#mainArea #fileMgmt #fileMgmtContent input, #mainArea #fileMgmt #fileMgmtContent textarea {
+#mainArea #fileMgmt #fileMgmtContent input,
+#mainArea #fileMgmt #fileMgmtContent textarea {
   width: 100%;
   padding: 8px 8px;
   background-color: #333;
@@ -95,7 +111,8 @@
   resize: none;
 }
 
-#mainArea #fileMgmt #fileMgmtContent input:hover, #mainArea #fileMgmt #fileMgmtContent textarea:hover {
+#mainArea #fileMgmt #fileMgmtContent input:hover,
+#mainArea #fileMgmt #fileMgmtContent textarea:hover {
   background-color: #444;
 }
 
@@ -152,13 +169,25 @@
   background-color: rgba(183, 74, 0, 0.8);
 }
 
-#mainArea #filesList #list {
-  background-color: #171717;
-  border-radius: 10px;
-  padding: 10px;
+#mainArea #filesList #typeEl {
+  cursor: pointer;
+  position: relative;
 }
 
-#mainArea #filesList #list #listItem {
+#mainArea #filesList #typeEl p {
+  font-size: 2rem;
+}
+
+#mainArea #filesList #typeEl #delType {
+  position: absolute;
+  right: 15px;
+}
+
+#mainArea #filesList #typeEl #list {
+  margin-top: 15px;
+}
+
+#mainArea #filesList #typeEl #list #listItem {
   width: 100%;
   min-height: 40px;
   line-height: 80%;
@@ -169,16 +198,41 @@
   font-size: 1.2rem;
 }
 
-#mainArea #filesList #list #listItem p {
+#mainArea #filesList #typeEl #list #listItem p {
+  font-size: 1rem;
   color: #d96c22;
 }
 
-#mainArea #filesList #list #listItem i {
+#mainArea #filesList #typeEl #list #listItem i {
   display: inline-block;
   cursor: pointer;
 }
 
-#mainArea #filesList #list #listItem i:hover {
+#mainArea #filesList #typeEl #list #listItem i:hover {
+  color: #fff;
+}
+
+#mainArea #filesList #typeEl {
+  width: 100%;
+  min-height: 40px;
+  line-height: 80%;
+  padding: 10px 12px;
+  margin: 4px 0;
+  background-color: #171717;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+#mainArea #filesList #typeEl p {
+  color: #d96c22;
+}
+
+#mainArea #filesList #typeEl i {
+  display: inline-block;
+  cursor: pointer;
+}
+
+#mainArea #filesList #typeEl i:hover {
   color: #fff;
 }
 
@@ -197,8 +251,8 @@
     width: 100%;
     grid-gap: 8px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-areas: "box1 box3" "box2 box2" "box2 box2" "box2 box2" "box4 box5";
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: "box1 box3" "box2 box2" "box2 box2" "box2 box2" "box4 box5" "box6 box7";
   }
   #mainArea #fileMgmt #fileMgmtContent #desc textarea {
     height: 11.4rem;
