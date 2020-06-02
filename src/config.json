@@ -21,12 +21,12 @@
       "searchFile": "fileSystem/file/search/"
     },
     "events": {
-      "create": "events/event/add/",
-      "getEventByDate": "events/event/date/",
+      "create": "events/event/",
+      "getEventByDate": "events/event/",
       "getEventDetails": "events/event/:eventId/",
       "getEventTypes": "events/type/",
-      "createType": "events/type/add/",
-      "deleteEvent": "events/event/del/:eventId/"
+      "createType": "events/type/",
+      "deleteEvent": "events/event/:eventId/"
     }
   },
   "daysOfWeek": [
