@@ -27,10 +27,13 @@ export class UtilsService {
 
   public static blobToFile(theBlob: Blob, fileName: string): File {
     var b: any = theBlob;
+    console.log(b, <File> b);
     //A Blob() is almost a File() - it's just missing the two properties below which we will add
     b.lastModifiedDate = new Date();
+    console.log(b, <File> b);
+    b.filename = fileName;
     b.name = fileName;
-
+    console.log(b, <File> b);
     //Cast to a File() type
     return <File> theBlob;
   }
@@ -78,6 +81,10 @@ export class UtilsService {
 
       processChunk(0);
     });
+  }
+
+  public static getFileExtension(filename) {
+    return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename)[0] : undefined;
   }
 
 }

@@ -52,16 +52,17 @@ export class FileSystemService {
 
   public async uploadFile(name, description, type, file: File) {
 
+    let n = name + '.' + UtilsService.getFileExtension(file.name);
 
     const httpOption = {
       headers: new HttpHeaders({
-        'Authorization': 'token ' + localStorage.getItem('token')
+        'Authorization': 'token ' + localStorage.getItem('token'),
+        'Content-Disposition': 'attachment; filename="' + n + '"'
       })
     };
+    this.getUploadId(file, httpOption, n).subscribe(data => {
 
-
-    this.getUploadId(file, httpOption).subscribe(data => {
-        this.sendChunks(file, data);
+        this.sendChunks(file, data, n);
       },
       e => {
         console.error(e);
@@ -70,19 +71,19 @@ export class FileSystemService {
 
   }
 
-  private getUploadId(file, httpOption) {
+  private getUploadId(file: File, httpOption, name) {
     let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.addFile;
     let formData: FormData = new FormData();
 
     let end = Math.min(file.size, 100000);
 
-    const chunk = file.slice(0, end);
-    formData.append('the_file', chunk);
+    const chunk = file.slice(0, end, file.type);
+    formData.append('the_file', chunk, name);
 
     return this.http.post(url, formData, httpOption);
   }
 
-  async sendChunks(file, uploadingData) {
+  async sendChunks(file, uploadingData, name) {
     const offset = uploadingData['offset'];
     if (offset >= file.size) {
       this.endUploadFile(file, uploadingData['upload_id']);
@@ -90,17 +91,15 @@ export class FileSystemService {
     }
     const end = Math.min(2 * offset, file.size);
 
-    const chunk: File = file.slice(offset, end);
-    console.log(file, chunk, offset, 2 * offset);
-    this.sendChunk(chunk, uploadingData['upload_id'], offset, end - 1, file.size).subscribe(data => {
-      this.sendChunks(file, data);
+    const chunk: File = file.slice(offset, end, file.type);
+    this.sendChunk(chunk, uploadingData['upload_id'], offset, end - 1, file.size, name).subscribe(data => {
+      this.sendChunks(file, data, name);
     });
   }
 
 
   private endUploadFile(file, uploadId) {
     UtilsService.computeChecksumMd5(file).then(md5 => {
-      console.log(md5);
       let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.addFileComplete;
 
       const httpOption = {
@@ -119,19 +118,21 @@ export class FileSystemService {
   }
 
 
-  sendChunk(chunk, uploadId, start, end, size) {
+  sendChunk(chunk, uploadId, start, end, size, name) {
     let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.addFile;
+
 
     const httpOption = {
       headers: new HttpHeaders({
         'Authorization': 'token ' + localStorage.getItem('token'),
-        'Content-Range': 'bytes ' + start + '-' + end + '/' + size
+        'Content-Range': 'bytes ' + start + '-' + end + '/' + size,
+        'Content-Disposition': 'attachment; filename="' + name + '"'
       })
     };
 
     let formData: FormData = new FormData();
     formData.append('upload_id', uploadId);
-    formData.append('the_file', chunk);
+    formData.append('the_file', chunk, name);
     return this.http.post(url, formData, httpOption);
   }
 
