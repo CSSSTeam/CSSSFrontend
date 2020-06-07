@@ -5,17 +5,17 @@
       <div (click)="showFileMgmt()" id="fileMgmtHead" class="header"> <!-- (click)="" -->
         <h6><i class="icon-folder-empty"></i> Dodaj plik<i id="tab" class="icon-down-open open"></i></h6>
       </div>
-    
+
       <div id="fileMgmtContent" *ngIf="isFileMgmtOpen"> <!-- *ngIf="isTabsOpen[day[0]]" -->
 
         <label id="name">
           <input placeholder="nazwa pliku" type="text" [(ngModel)]="addingFileForm.name">
         </label>
-      
+
         <label id="desc">
           <textarea placeholder="opis" [(ngModel)]="addingFileForm.description"></textarea>
         </label>
-      
+
         <label id="type">
           <select required size="1"> <!-- [(ngModel)]="addingFileForm.type" -->
             <option disabled selected>przedmiot</option>
@@ -26,11 +26,11 @@
 
         <input id="file" type="file" (change)="onFileChanged($event)">
         <input id="add" type="button" (click)="uploadFile()" value="Dodaj plik">
-    
+
       </div>
     </div>
     <div id="filesList">
-    
+
       <div id="header">
         <h6><i class="icon-list-bullet"></i> Lista plików:<i (click)="searchBox()" class="icon-search open"></i>
         </h6>
@@ -39,33 +39,33 @@
       <input id="searchBox" *ngIf="isSearchBox" type="text" (change)="searchFile()" [(ngModel)]="searchText" placeholder="Wyszukaj">
 
       <div id="list">
-        <div id="listItem" *ngFor="let file of files"> <!-- getFiles() -->
+        <div id="listItem" *ngFor="let file of getFiles()"> <!-- getFiles() -->
           <p>{{ file.name }}</p><br>
           <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>
           <i class="icon-trash" (click)="deleteFile(file.pk)"></i>
           <i class="icon-help-1" routerLink="/files/{{file.pk}}"></i>
         </div>
       </div>
-    
+
     </div>
     <!--<div>
-    
+
       <h2>Typy</h2>
-    
+
       name:
       <input type="text" [(ngModel)]="addingTypeForm.name">
       <button (click)="createTypeFile()">Dodaj typ</button>
-    
+
     </div>
     <div>
-    
+
       Lista typów:
       <div *ngFor="let type of getTypes()">
         {{type.name}}
         <button (click)="deleteType(type.id)">delete</button>
       </div>
-      
+
     </div>-->
-  </div>   
+  </div>
 </main>
 <div style="clear:both"></div>

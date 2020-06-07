@@ -17,7 +17,7 @@ export class FileSystemService {
     this.getTypesOfFiles();
   }
 
-  public Files() {
+  public getFiles() {
     if (this.files == null) {
       this.listFile();
       return null;

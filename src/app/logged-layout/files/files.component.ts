@@ -131,12 +131,14 @@ export class FilesComponent implements OnInit {
     if (this.searchedFile != null) {
       return this.searchedFile;
     }
-    return this.fileSystemService.Files();
+    return this.fileSystemService.getFiles();
   }
 
   downloadFile(name: string, src: string) {
+    let filename = src.replace(/^.*[\\\/]/, '');
     console.log(src);
-    this.fileSystemService.downloadFile(name, src).then(() => console.log('OK'));
+
+    this.fileSystemService.downloadFile(name, filename).then(() => console.log('OK'));
   }
 
   createTypeFile() {
