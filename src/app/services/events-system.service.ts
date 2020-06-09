@@ -11,6 +11,7 @@ export class EventsSystemService {
   private dataURL;
   private eventTypes;
   public daysOfWeek;
+  private isNet: boolean = true;
 
 
   constructor(private http: HttpClient) {
@@ -37,7 +38,7 @@ export class EventsSystemService {
       data => {
         console.log(data);
         if (this.events != null) {
-          this.events.append(data);
+          this.events.push(data);
           this.createEventWeek();
         }
         p(data);
@@ -117,16 +118,14 @@ export class EventsSystemService {
   }
 
   getEventsForWeek() {
-
-    if (this.weekEvents == null) {
+    if (this.isNet && this.weekEvents == null) {
+      this.isNet = false;
       let today = new Date();
       let startWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 1);
       let endWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 7);
-      console.log(EventsSystemService.date2String(startWeek), EventsSystemService.date2String(endWeek));
       this.getEventsBetweenDates(EventsSystemService.date2String(startWeek), EventsSystemService.date2String(endWeek)).then(data => {
         this.events = data;
         this.createEventWeek();
-        console.log(this.weekEvents);
       }).catch();
     }
     return this.weekEvents;
@@ -227,7 +226,7 @@ export class EventsSystemService {
     return new Promise<any>((p, e) => this.http.post(url, addTypeForm, httpOption).subscribe(
       data => {
         console.log(data);
-        this.eventTypes.put(data);
+        this.eventTypes.push(data);
         p(data);
       },
       (err: any) => {
