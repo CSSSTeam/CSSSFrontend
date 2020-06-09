@@ -1,4 +1,26 @@
 <main>
-    <p>infos works!</p>
+    <div id="infosList">
+
+        <div class="infoEl" *ngFor="let info of infos">
+
+            <h6><i class="icon-list-bullet"></i> {{ info.date }} <span>autor: {{ info.author }}</span></h6>
+
+            <div>
+                <p>
+                    {{ info.content }}
+                </p>
+                <!-- <img src="{{ info.url }}" alt="{{ info.photo }}"> -->
+                <!-- <span
+                    style="background-color: #ddd; width: 1000px; height: 500px"
+                ></span> -->
+            </div>
+
+        </div>
+
+        <div routerLink="/infos-edit" (click)="mgmtStart()" id="infosMGMT">
+            <h6>Zarządzaj informacjami</h6>
+        </div>
+
+    </div>
 </main>
 <div style="clear:both"></div>

@@ -24,7 +24,7 @@
     },
     "events": {
       "create": "events/event/",
-      "getEventByDate": "events/event/date/",
+      "getEventByDate": "events/event/",
       "getEventDetails": "events/event/:eventId/",
       "getEventTypes": "events/type/",
       "createType": "events/type/",

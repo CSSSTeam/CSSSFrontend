@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 
 @Component({
-  selector: 'app-user-panel',
-  templateUrl: './user-panel.component.html',
-  styleUrls: ['./user-panel.component.css']
+  selector: 'app-chg-password',
+  templateUrl: './chg-password.component.html',
+  styleUrls: ['./chg-password.component.css']
 })
-export class UserPanelComponent implements OnInit {
+export class ChgPasswordComponent implements OnInit {
   changePasswordForm: any;
   info = '';
 

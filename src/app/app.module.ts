@@ -23,39 +23,11 @@ import {environment} from '../environments/environment';
 import {FileDetailsComponent} from './logged-layout/file-datails/file-details.component';
 import {RedactorsPanelComponent} from './logged-layout/redactors-panel/redactors-panel.component';
 import {EventsDetailsComponent} from './logged-layout/events-details/events-details.component';
-import {UserPanelComponent} from './logged-layout/user-panel/user-panel.component';
-import {EventsEditComponent} from './logged-layout/events/events-edit/events-edit.component';
 import {UserManagementPanelComponent} from './logged-layout/user-management-panel/user-management-panel.component';
-
-import {Injectable} from '@angular/core';
-import {
-  HttpInterceptor, HttpXsrfTokenExtractor, HttpRequest, HttpHandler,
-  HttpEvent
-} from '@angular/common/http';
-import {Observable} from 'rxjs';
-
-@Injectable()
-export class HttpXsrfInterceptor implements HttpInterceptor {
-
-  constructor(private tokenExtractor: HttpXsrfTokenExtractor) {
-  }
-
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    let requestMethod: string = req.method;
-    requestMethod = requestMethod.toLowerCase();
-
-    if (requestMethod && (requestMethod === 'post' || requestMethod === 'delete' || requestMethod === 'put')) {
-      const headerName = 'X-XSRF-TOKEN';
-      let token = this.tokenExtractor.getToken() as string;
-      if (token !== null && !req.headers.has(headerName)) {
-        req = req.clone({headers: req.headers.set(headerName, token)});
-      }
-    }
-
-    return next.handle(req);
-  }
-}
+import { EventsEditComponent } from './logged-layout/events/events-edit/events-edit.component';
+import { ChgPasswordComponent } from './logged-layout/chg-password/chg-password.component';
+import { AboutComponent } from './logged-layout/about/about.component';
+import { InfosEditComponent } from './logged-layout/infos/infos-edit/infos-edit.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +41,10 @@ export class HttpXsrfInterceptor implements HttpInterceptor {
     InfosComponent,
     OthersComponent,
     FileDetailsComponent,
+    EventsEditComponent,
+    ChgPasswordComponent,
+    AboutComponent,
+    InfosEditComponent,
     RedactorsPanelComponent,
     EventsDetailsComponent,
     UserPanelComponent,

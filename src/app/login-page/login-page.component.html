@@ -12,14 +12,21 @@
         <h3>{{displayError(errorForm.global)}}</h3>
         <p>{{displayError(errorForm.username)}}</p>
         <label>
-          <input [(ngModel)]="loginForm.username" placeholder="login" onfocus="this.placeholder=''"
-                 onblur="this.placeholder='login'">
-        </label> <br>
+          <input
+            [(ngModel)]="loginForm.username" placeholder="login"
+            onfocus="this.placeholder=''"
+            onblur="this.placeholder='login'"
+          >
+        </label><br>
         <p>{{displayError(errorForm.password)}}</p>
         <label>
-          <input [(ngModel)]="loginForm.password" type="password" placeholder="hasło" onfocus="this.placeholder=''"
-                 onblur="this.placeholder='hasło'">
-        </label> <br>
+          <input
+            [(ngModel)]="loginForm.password" type="password" placeholder="hasło"
+            onfocus="this.placeholder=''"
+            onblur="this.placeholder='hasło'"
+          >
+        </label><br>
+        
         <button (click)="login()">zaloguj się</button>
       </div>
   </div>

@@ -1,0 +1,106 @@
+#infosList .infoEl {
+  width: 300px;
+  min-height: 50px;
+  background-color: #000;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#infosList .infoEl:nth-child(even) {
+  background-color: #222;
+}
+
+#infosList .infoEl h6 {
+  font-size: 1rem;
+  color: #bbb;
+  border-bottom: 1px dotted #bbb;
+  margin-bottom: 5px;
+  padding: 4px 0;
+  position: relative;
+}
+
+#infosList .infoEl h6 i {
+  margin-right: 7px;
+}
+
+#infosList .infoEl h6 span {
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  font-size: .8rem;
+  color: #444;
+}
+
+#infosList .infoEl div {
+  padding: 1% 2%;
+  margin: 3px;
+  border-radius: 10px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #eee;
+  text-align: center;
+}
+
+#infosList .infoEl div p {
+  font-size: .9rem;
+  text-align: left;
+  text-indent: 10px;
+  padding: 7px;
+}
+
+#infosList .infoEl span {
+  display: block;
+  margin: 15px auto 10px auto;
+  max-width: 170px;
+  max-height: 80px;
+}
+
+#infosList #infosMGMT {
+  width: 300px;
+  height: 40px;
+  line-height: 20px;
+  background-color: #b74a00;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+#infosList #infosMGMT h6 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #bbb;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+@media (min-width: 768px) {
+  #infosList {
+    max-height: 80vh;
+    overflow-y: scroll;
+    scrollbar-color: #ccc transparent;
+    scrollbar-width: thin;
+  }
+  #infosList .infoEl {
+    width: 600px;
+  }
+  #infosList .infoEl div p {
+    text-indent: 25px;
+  }
+  #infosList .infoEl span {
+    max-width: 240px;
+    max-height: 100px;
+  }
+  #infosList #infosMGMT {
+    width: 600px;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+  }
+}
