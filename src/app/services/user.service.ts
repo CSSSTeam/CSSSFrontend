@@ -100,7 +100,6 @@ export class User {
     );
   }
 
-//todo(n2one): create function hasPermission
 
   initData(data, token) {
     this.firstName = data.firstName;

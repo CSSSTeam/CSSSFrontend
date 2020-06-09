@@ -12,8 +12,10 @@ export class UserManagementPanelComponent implements OnInit {
   users: any;
   newUserForm: any;
   userList: any;
+  addGroupForm: any;
 
   constructor(private userManagementService: UserManagementService) {
+    this.addGroupForm = {};
   }
 
   onFileChanged(event) {
@@ -51,17 +53,14 @@ export class UserManagementPanelComponent implements OnInit {
 
   createUserFromFile() {
     this.userList = this.userList.map(d => {
-      d.password = this.generateRandomPassword(5);
+      d.password = this.generateRandomPassword(8);
       return d;
     });
     this.userList = this.userList.map(d => {
-      d.groups = d.groups.map(a => {
-        return {pk: a};
-      });
       return d;
     });
 
-
+    console.log(this.userList);
     this.userManagementService.createUsers(this.userList).catch(e => {
       console.error(e);
     });
@@ -82,7 +81,22 @@ export class UserManagementPanelComponent implements OnInit {
     });
   }
 
+  getGroups() {
+    return this.userManagementService.getGroups();
+  }
+
   public setUserList(parse: any) {
     this.userList = parse;
+  }
+
+  addUser2Group(userId: number) {
+    console.log(this.addGroupForm);
+    if (userId in this.addGroupForm) {
+      let groupId = this.addGroupForm[userId];
+      console.log(groupId);
+      this.userManagementService.addUser2Group(userId, groupId).then(() => {
+        console.log('ok');
+      }).catch();
+    }
   }
 }

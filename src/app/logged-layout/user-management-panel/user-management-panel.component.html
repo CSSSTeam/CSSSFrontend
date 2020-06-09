@@ -4,6 +4,13 @@
     <ul>
       <li *ngFor="let group of user.groups">-->{{group.name}}</li>
     </ul>
+    <div>
+      <select [(ngModel)]="addGroupForm[user.id]" [value]="1">
+        <option *ngFor="let group of getGroups()" value="{{group.id}}">{{group.name}}</option>
+      </select>
+      <button (click)="addUser2Group(user.id)">ADD</button>
+    </div>
+
     <br/>
   </li>
 </ul>

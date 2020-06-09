@@ -18,23 +18,24 @@
       "listFile": "fileSystem/file/",
       "detailsFile": "fileSystem/file/:fileId/",
       "createType": "fileSystem/type/add/",
-      "deleteType": "fileSystem/type/del/:typeId/",
-      "deleteFile": "fileSystem/file/del/:fileId/",
+      "deleteType": "fileSystem/type/:typeId/",
+      "deleteFile": "fileSystem/file/:fileId/",
       "searchFile": "fileSystem/file/search/"
     },
     "events": {
-      "create": "events/event/add/",
+      "create": "events/event/",
       "getEventByDate": "events/event/date/",
       "getEventDetails": "events/event/:eventId/",
       "getEventTypes": "events/type/",
-      "createType": "events/type/add/",
-      "deleteEvent": "events/event/del/:eventId/"
+      "createType": "events/type/",
+      "deleteEvent": "events/event/:eventId/"
     },
     "userManager": {
       "getList": "user/",
       "createUser": "user/",
       "deleteUser": "user/:idUser/",
-      "getGroups": "group/"
+      "getGroups": "group/",
+      "addGroup2User": "user/group/"
     }
   },
   "daysOfWeek": [

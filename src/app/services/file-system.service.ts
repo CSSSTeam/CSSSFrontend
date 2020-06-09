@@ -112,6 +112,7 @@ export class FileSystemService {
       formData.append('md5', md5);
 
       this.http.post(url, formData, httpOption).subscribe(data => {
+        this.files.push(data);
         console.log(data);
       });
     });
@@ -172,8 +173,8 @@ export class FileSystemService {
   }
 
   public downloadFile(name: string, src: string): Promise<any> {
-    console.log(src);
-    let url = this.dataURL.server + 'uploaded_files/' + src;
+    let filename = src.replace(/^.*[\\\/]/, '');
+    let url = this.dataURL.server + 'uploaded_files/' + filename;
     return new Promise<any>((p, e) => this.http.get(url, {responseType: 'blob'}).subscribe(
       (data: any) => {
         saveAs(data, name);

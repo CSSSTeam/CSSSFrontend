@@ -135,10 +135,9 @@ export class FilesComponent implements OnInit {
   }
 
   downloadFile(name: string, src: string) {
-    let filename = src.replace(/^.*[\\\/]/, '');
     console.log(src);
 
-    this.fileSystemService.downloadFile(name, filename).then(() => console.log('OK'));
+    this.fileSystemService.downloadFile(name, src).then(() => console.log('OK'));
   }
 
   createTypeFile() {

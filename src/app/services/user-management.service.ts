@@ -126,4 +126,35 @@ export class UserManagementService {
       return gr.id == id;
     });
   }
+
+  getGroups() {
+    if (this.groups == null) {
+      this.getGroupsQuery();
+      return;
+    }
+    return this.groups;
+  }
+
+  addUser2Group(userId: number, groupId: number) {
+
+    let url = this.dataURL.server + this.dataURL.endpoints.userManager.addGroup2User;
+    url = url + '?user=' + userId + '&group=' + groupId;
+
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': 'token ' + localStorage.getItem('token')
+      })
+    };
+    return new Promise<any>((p, e) => this.http.post(url, null, httpOption).subscribe(
+      (data: any) => {
+        let group = this.groups.find(g => g.id == groupId);
+        this.users.find(d => d.id == userId).groups.push(group);
+
+        p(data);
+      },
+      (error: any) => {
+        e(error);
+      }
+    ));
+  }
 }
