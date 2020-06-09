@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FileSystemService } from '../../services/file-system.service';
-import { Router } from '@angular/router';
-import { stringify } from 'querystring';
-import { types } from 'util';
 
 @Component({
   selector: 'app-files',
@@ -205,7 +202,6 @@ export class FilesComponent implements OnInit {
       return this.searchedFile;
     }
     return this.fileSystemService.getFiles();
-    return this.fileSystemService.Files(); 
   }
 
   downloadFile(name: string, src: string) {
@@ -245,4 +241,4 @@ export class FilesComponent implements OnInit {
       console.error(e);
     });
   }
-} 
+}

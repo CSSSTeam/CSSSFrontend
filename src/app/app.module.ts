@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
-import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
+import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {MainPageComponent} from './logged-layout/main-page/main-page.component';
 import {LoggedLayoutComponent} from './logged-layout/logged-layout.component';
@@ -47,7 +47,6 @@ import { InfosEditComponent } from './logged-layout/infos/infos-edit/infos-edit.
     InfosEditComponent,
     RedactorsPanelComponent,
     EventsDetailsComponent,
-    UserPanelComponent,
     LessonsEditComponent,
     EventsEditComponent,
     UserManagementPanelComponent
@@ -63,7 +62,7 @@ import { InfosEditComponent } from './logged-layout/infos/infos-edit/infos-edit.
       headerName: 'X-CSRF-TOKEN'
     })
   ],
-  providers: [UserService, GuardService, {provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true}],
+  providers: [UserService, GuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
