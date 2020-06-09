@@ -13,6 +13,7 @@ import {ChgPasswordComponent} from './chg-password/chg-password.component';
 import {AboutComponent} from './about/about.component';
 import {RedactorsPanelComponent} from './redactors-panel/redactors-panel.component';
 import {EventsDetailsComponent} from './events-details/events-details.component';
+import {UserManagementPanelComponent} from './user-management-panel/user-management-panel.component';
 
 export const LOGGED_PAGE: Routes = [
   {path: '', component: MainPageComponent},
@@ -23,6 +24,10 @@ export const LOGGED_PAGE: Routes = [
   {path: 'files/:id', component: FileDetailsComponent},
   {path: 'infos', component: InfosComponent},
   {path: 'others', component: OthersComponent},
+  {path: 'redactor', component: RedactorsPanelComponent},
+  {path: 'lessons-edit', component: LessonsEditComponent},
+  {path: 'events-edit', component: EventsEditComponent},
+  {path: 'user-manager', component: UserManagementPanelComponent},
   {path: 'redactor', component: RedactorsPanelComponent},
   {path: 'lessons-edit', component: LessonsEditComponent},
   {path: 'events-edit', component: EventsEditComponent},

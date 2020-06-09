@@ -35,9 +35,14 @@
           <i class="icon-folder-open"></i>Pliki
         </div>
       </a>
-      <a (click)="navTo()" routerLink="/redactor" routerLinkActive="active">
+      <a *ngIf="isRedactor()" (click)="navTo()" routerLink="/redactor" routerLinkActive="active">
         <div id="eventEditPanel" class="menuOp">
-          <i class="icon-folder-open"></i>RedactorPanel
+          <i class="icon-folder-open"></i>Zarządzanie wydarzeniami
+        </div>
+      </a>
+      <a *ngIf="isAdmin()" (click)="navTo()" routerLink="/user-manager" routerLinkActive="active">
+        <div id="user-manager" class="menuOp">
+          <i class="icon-folder-open"></i>Zarządzanie użytkowników
         </div>
       </a>
     </nav>

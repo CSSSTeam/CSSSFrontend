@@ -6,7 +6,9 @@
         <h6><i class="icon-folder-empty"></i> Dodaj plik<i id="openMgmt" class="icon-down-open open"></i></h6>
       </div>
 
-      <div id="fileMgmtContent" *ngIf="isFileMgmtOpen">
+
+      <div id="fileMgmtContent" *ngIf="isFileMgmtOpen"> <!-- *ngIf="isTabsOpen[day[0]]" -->
+
 
         <label id="fileName">
           <input placeholder="nazwa pliku" type="text" [(ngModel)]="addingFileForm.name">
@@ -25,6 +27,8 @@
         </label>
 
         <input id="file" type="file" (change)="onFileChanged($event)">
+
+        <input id="add" type="button" (click)="uploadFile()" value="Dodaj plik">
 
         <input id="addFile" type="button" (click)="uploadFile()" value="Dodaj plik">
 
@@ -54,6 +58,7 @@
           <i id="tab{{type.id}}" class="icon-down-open open"></i> {{ type.name }}
           <i id="delType" class="icon-trash" (click)="deleteType(type.id)"></i>
 
+
           <div id="list" *ngIf="isTypeElOpen[type.id]">
 
             <div *ngFor="let file of getFiles()">
@@ -72,22 +77,22 @@
 
     </div>
     <!--<div>
-    
+
       <h2>Typy</h2>
-    
+
       name:
       <input type="text" [(ngModel)]="addingTypeForm.name">
       <button (click)="createTypeFile()">Dodaj typ</button>
-    
+
     </div>
     <div>
-    
+
       Lista typów:
       <div *ngFor="let type of getTypes()">
         {{type.name}}
         <button (click)="deleteType(type.id)">delete</button>
       </div>
-      
+
     </div>-->
   </div>
 </main>

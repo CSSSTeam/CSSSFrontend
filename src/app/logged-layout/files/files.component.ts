@@ -144,6 +144,10 @@ export class FilesComponent implements OnInit {
   ]
 
   constructor(public fileSystemService: FileSystemService) {
+  }
+
+  searchBox() {
+    this.isSearchBox = !this.isSearchBox;
     for (let type of this.types) {
       this.isTypeElOpen[type.id] = false;
     }
@@ -187,11 +191,8 @@ export class FilesComponent implements OnInit {
 
   uploadFile() {
 
-    this.fileSystemService.uploadFile(this.addingFileForm.name, this.addingFileForm.description, this.addingFileForm.type, this.addingFileForm.upload).then(() => {
-      console.log('ok');
-    }).catch(e => {
-      console.error(e);
-    });
+    this.fileSystemService.uploadFile(this.addingFileForm.name,
+      this.addingFileForm.description, this.addingFileForm.type, this.addingFileForm.upload);
   }
 
   getTypes() {
@@ -200,15 +201,16 @@ export class FilesComponent implements OnInit {
   }
 
   getFiles() {
-    /* if (this.searchedFile != null) {
+     if (this.searchedFile != null) {
       return this.searchedFile;
     }
-    return this.fileSystemService.Files(); */
-    return this.files;
+    return this.fileSystemService.getFiles();
+    return this.fileSystemService.Files(); 
   }
 
   downloadFile(name: string, src: string) {
     console.log(src);
+
     this.fileSystemService.downloadFile(name, src).then(() => console.log('OK'));
   }
 
