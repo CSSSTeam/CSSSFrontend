@@ -59,5 +59,8 @@
       "friday",
       "Piątek"
     ]
-  ]
+  ],
+  "intervalsInSecond": {
+    "intervalsEvent": 6
+  }
 }

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as data from '../../config.json';
+import {interval} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +12,18 @@ export class EventsSystemService {
   private dataURL;
   private eventTypes;
   public daysOfWeek;
-  private isNet: boolean = true;
-
-
   constructor(private http: HttpClient) {
     this.dataURL = (data as any).default;
     this.daysOfWeek = this.dataURL.daysOfWeek;
-
-
+    this.getEventsForWeekQuery();
+    let intervalReloadEvents = this.dataURL.intervalsInSecond.intervalsEvent * 60000; //minutes to milliseconds
+    interval(intervalReloadEvents).subscribe(() => {
+      this.getEventsForWeekQuery();
+    });
   }
 
   addEvent(eventData): Promise<any> {
 
-    eventData.dateStart += 'T12:00';
-    eventData.dateEnd += 'T12:00';
 
     let url = this.dataURL.server + this.dataURL.endpoints.events.create;
     const httpOption = {
@@ -118,18 +117,17 @@ export class EventsSystemService {
   }
 
   getEventsForWeek() {
-    if (this.isNet && this.weekEvents == null) {
-      this.isNet = false;
-      let today = new Date();
-      let startWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 1);
-      let endWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 7);
-      this.getEventsBetweenDates(EventsSystemService.date2String(startWeek), EventsSystemService.date2String(endWeek)).then(data => {
-        this.events = data;
-        this.createEventWeek();
-      }).catch();
-    }
     return this.weekEvents;
+  }
 
+  getEventsForWeekQuery() {
+    let today = new Date();
+    let startWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 1);
+    let endWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 7);
+    this.getEventsBetweenDates(EventsSystemService.date2String(startWeek), EventsSystemService.date2String(endWeek)).then(data => {
+      this.events = data;
+      this.createEventWeek();
+    }).catch();
   }
 
   private createEventWeek() {
