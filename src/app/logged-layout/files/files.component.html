@@ -45,12 +45,12 @@
       <div id="header">
         <h6>
           <i class="icon-list-bullet"></i> Lista plików:<i (click)="isSearchBox = !isSearchBox"
-            class="icon-search open"></i>
+                                                           class="icon-search open"></i>
         </h6>
       </div>
 
       <input id="searchBox" *ngIf="isSearchBox" type="text" (change)="searchFile()" [(ngModel)]="searchText"
-        placeholder="Wyszukaj">
+             placeholder="Wyszukaj">
 
       <div *ngFor="let type of getTypes()">
         <div id="typeEl" (click)="openTypeEl(type.id)">
@@ -61,8 +61,8 @@
 
           <div id="list" *ngIf="isTypeElOpen[type.id]">
 
-            <div *ngFor="let file of getFiles()">
-              <div id="listItem" *ngIf="file.typeid == type.id">
+            <div *ngFor="let file of getFilesByType(type.id)">
+              <div id="listItem">
                 <p>{{ file.name }}</p><br>
 
                 <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>

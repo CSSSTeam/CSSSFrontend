@@ -193,8 +193,8 @@ export class FilesComponent implements OnInit {
   }
 
   getTypes() {
-    //return this.fileSystemService.Types();
-    return this.types;
+    return this.fileSystemService.Types();
+    //return this.types;
   }
 
   getFiles() {
@@ -240,5 +240,9 @@ export class FilesComponent implements OnInit {
     }).catch(e => {
       console.error(e);
     });
+  }
+
+  getFilesByType(id: number) {
+    return this.getFiles().filter(f => f.id = id);
   }
 }

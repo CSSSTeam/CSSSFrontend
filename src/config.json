@@ -17,7 +17,7 @@
       "getTypes": "fileSystem/type/",
       "listFile": "fileSystem/file/",
       "detailsFile": "fileSystem/file/:fileId/",
-      "createType": "fileSystem/type/add/",
+      "createType": "fileSystem/type/",
       "deleteType": "fileSystem/type/:typeId/",
       "deleteFile": "fileSystem/file/:fileId/",
       "searchFile": "fileSystem/file/search/"

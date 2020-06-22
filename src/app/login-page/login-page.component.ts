@@ -19,25 +19,45 @@ export class LoginPageComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private scrollService: ScrollService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
 
-    if(window.innerWidth > window.innerHeight) this.scrollService.scrollDown(window.screen.height, 1500);
+    if (window.innerWidth > window.innerHeight) {
+      this.scrollService.scrollDown(window.screen.height, 1500);
+    }
 
     this.loginForm = {
       username: '',
       password: ''
     };
+    this.restartErrorForm();
+
+  }
+
+  private restartErrorForm() {
     this.errorForm = {
       global: '',
       username: '',
       password: ''
     };
-
   }
 
   login() {
+    let ok = true;
+    this.restartErrorForm();
+    if (this.loginForm.username == '') {
+      ok = false;
+      this.errorForm.username = 'To pole nie może być puste.';
+    }
+    if (this.loginForm.username == '') {
+      ok = false;
+      this.errorForm.password = 'To pole nie może być puste.';
+    }
+    if (!ok) {
+      return;
+    }
     this.userService.loginUser(this.loginForm).subscribe(
       (data: any) => {
         this.userService.createUser(data.token, this.router);
