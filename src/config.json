@@ -20,7 +20,8 @@
       "createType": "fileSystem/type/",
       "deleteType": "fileSystem/type/:typeId/",
       "deleteFile": "fileSystem/file/:fileId/",
-      "searchFile": "fileSystem/file/search/"
+      "searchFile": "fileSystem/file/search/",
+      "updateFile": "fileSystem/file/:fileId/"
     },
     "events": {
       "create": "events/event/",

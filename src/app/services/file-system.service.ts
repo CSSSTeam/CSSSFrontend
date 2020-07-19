@@ -11,16 +11,19 @@ export class FileSystemService {
   private dataURL;
   private typesOfFile = new Array<TypeOfFile>();
   private files: any;
+  private uploadingFileList: Array<any>;
+  private MAX_CHUNK: number = 100000;
 
   constructor(private http: HttpClient) {
     this.dataURL = (data as any).default;
     this.getTypesOfFiles();
+    this.uploadingFileList = [];
   }
 
   public getFiles() {
     if (this.files == null) {
       this.listFile();
-      return null;
+      return [];
     }
     return this.files;
   }
@@ -60,9 +63,19 @@ export class FileSystemService {
         'Content-Disposition': 'attachment; filename="' + n + '"'
       })
     };
-    this.getUploadId(file, httpOption, n).subscribe(data => {
 
-        this.sendChunks(file, data, n);
+
+    this.getUploadId(file, httpOption, n).subscribe(data => {
+        this.uploadingFileList.push({
+          upload_id: data['upload_id'],
+          name: name,
+          description: description,
+          type: type,
+          progress: 0
+        });
+
+
+        this.sendChunks(file, data, n, description, type, name);
       },
       e => {
         console.error(e);
@@ -75,7 +88,7 @@ export class FileSystemService {
     let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.addFile;
     let formData: FormData = new FormData();
 
-    let end = Math.min(file.size, 100000);
+    let end = Math.min(file.size, this.MAX_CHUNK);
 
     const chunk = file.slice(0, end, file.type);
     formData.append('the_file', chunk, name);
@@ -83,22 +96,31 @@ export class FileSystemService {
     return this.http.post(url, formData, httpOption);
   }
 
-  async sendChunks(file, uploadingData, name) {
+  async sendChunks(file, uploadingData, nameWithExtension, description, type, name) {
     const offset = uploadingData['offset'];
     if (offset >= file.size) {
-      this.endUploadFile(file, uploadingData['upload_id']);
+      this.uploadingFileList.filter(f => {
+        return f.upload_id == uploadingData['upload_id'];
+      })[0].progress = 100;
+      this.endUploadFile(file, uploadingData['upload_id'], name, description, type);
+
       return;
     }
-    const end = Math.min(2 * offset, file.size);
+    //calc progress
+    this.uploadingFileList.filter(f => {
+      return f.upload_id == uploadingData['upload_id'];
+    })[0].progress = Math.round(offset / file.size * 100);
+
+    const end = Math.min(offset + this.MAX_CHUNK, file.size);
 
     const chunk: File = file.slice(offset, end, file.type);
-    this.sendChunk(chunk, uploadingData['upload_id'], offset, end - 1, file.size, name).subscribe(data => {
-      this.sendChunks(file, data, name);
+    this.sendChunk(chunk, uploadingData['upload_id'], offset, end - 1, file.size, nameWithExtension).subscribe(data => {
+      this.sendChunks(file, data, nameWithExtension, description, type, name);
     });
   }
 
 
-  private endUploadFile(file, uploadId) {
+  private endUploadFile(file, uploadId, name, description, type) {
     UtilsService.computeChecksumMd5(file).then(md5 => {
       let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.addFileComplete;
 
@@ -111,9 +133,15 @@ export class FileSystemService {
       formData.append('upload_id', uploadId);
       formData.append('md5', md5);
 
-      this.http.post(url, formData, httpOption).subscribe(data => {
-        this.files.push(data);
-        console.log(data);
+      this.http.post(url, formData, httpOption).subscribe(d => {
+        //this.files.push(d);
+        let data = {
+          name: name,
+          description: description,
+          fileType: type
+        };
+        this.updateFile(d['pk'], data);
+        console.log(d);
       });
     });
   }
@@ -135,6 +163,22 @@ export class FileSystemService {
     formData.append('upload_id', uploadId);
     formData.append('the_file', chunk, name);
     return this.http.post(url, formData, httpOption);
+  }
+
+  public updateFile(fileId, data) {
+    let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.updateFile;
+    url = url.replace(':fileId', fileId);
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': 'token ' + localStorage.getItem('token')
+      })
+    };
+    this.http.post(url, data, httpOption).subscribe(data => {
+      this.files = this.files.filter(file => file.pk != fileId);
+      this.files.push(data);
+      console.log(data);
+    });
+
   }
 
   public listFile(): Promise<any> {
@@ -172,9 +216,8 @@ export class FileSystemService {
     ));
   }
 
-  public downloadFile(name: string, src: string): Promise<any> {
-    let filename = src.replace(/^.*[\\\/]/, '');
-    let url = this.dataURL.server + 'uploaded_files/' + filename;
+  public downloadFile(name: string, url: string): Promise<any> {
+
     return new Promise<any>((p, e) => this.http.get(url, {responseType: 'blob'}).subscribe(
       (data: any) => {
         saveAs(data, name);
