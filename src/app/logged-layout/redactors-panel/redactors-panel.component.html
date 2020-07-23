@@ -5,8 +5,8 @@
   <select [(ngModel)]="addEventForm.eventType" size="1"><
     <option *ngFor="let type of getTypes()" [value]="type.pk">{{type.name}}</option>
   </select><br/>
-  <input type="date" [(ngModel)]="addEventForm.dateStart" [value]="addEventForm.dateStart"><br/>
-  <input type="date" [(ngModel)]="addEventForm.dateEnd" [value]="addEventForm.dateEnd">\
+  <input type="datetime-local" [(ngModel)]="addEventForm.dateStart" [value]="addEventForm.dateStart"><br/>
+  <input type="datetime-local" [(ngModel)]="addEventForm.dateEnd" [value]="addEventForm.dateEnd">\
   <input type="submit" (click)="addEvent()">
 </div>
 <div>

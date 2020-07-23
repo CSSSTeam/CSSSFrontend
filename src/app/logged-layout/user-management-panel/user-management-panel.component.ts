@@ -56,14 +56,24 @@ export class UserManagementPanelComponent implements OnInit {
       d.password = this.generateRandomPassword(8);
       return d;
     });
-    this.userList = this.userList.map(d => {
-      return d;
-    });
-
     console.log(this.userList);
-    this.userManagementService.createUsers(this.userList).catch(e => {
+
+    this.userManagementService.createUsers(this.userList).then(() => {
+      this.generatePasswordFile(this.userList);
+    }).catch(e => {
       console.error(e);
     });
+  }
+
+  private generatePasswordFile(userlist) {
+
+    let content = 'It\'s File with generated users';
+    userlist.forEach(user => {
+      content += '\nusername: ' + user.username + ' password: ' + user.password;
+    });
+    let file = new Blob([content]);
+    saveAs(file, 'asdf.txt');
+
   }
 
   private static loadFile(evt, mainFunc) {

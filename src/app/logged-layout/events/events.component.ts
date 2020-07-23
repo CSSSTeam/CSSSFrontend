@@ -14,24 +14,17 @@ export class EventsComponent implements OnInit {
   user;
   daysOfWeek;
   events4Week;
-
   constructor(private userService: UserService, private eventsSystemService: EventsSystemService) {
     this.config = (data as any).default;
     this.daysOfWeek = this.config.daysOfWeek;
   }
 
   ngOnInit() {
-
     this.user = User.instance;
-    this.events4Week = this.eventsSystemService.getEventsForWeek();
   }
 
   getEvent(day) {
-    if (this.events4Week == null) {
-      this.events4Week = this.eventsSystemService.getEventsForWeek();
-      return null;
-    }
-
+    this.events4Week = this.eventsSystemService.getEventsForWeek();
     return this.events4Week[day[0]];
   }
 }

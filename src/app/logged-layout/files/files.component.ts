@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FileSystemService } from '../../services/file-system.service';
+import {Component, OnInit} from '@angular/core';
+import {FileSystemService} from '../../services/file-system.service';
 
 @Component({
   selector: 'app-files',
@@ -17,137 +17,12 @@ export class FilesComponent implements OnInit {
   isSearchBox = false;
   searchedFile: Array<any>;
 
-  types = [
-    { name: 'matematyka', id: 0 },
-    { name: 'j. polski', id: 1 },
-    { name: 'biologia', id: 2 },
-    { name: 'j. angielski', id: 3 },
-    { name: 'j. niemiecki', id: 4 },
-    { name: 'fizyka', id: 5 },
-    { name: 'wos', id: 6 },
-    { name: 'chemia', id: 7 },
-    { name: 'religia', id: 8 }
-  ]
-
-  files = [
-    {
-      name: 'pingwin',
-      type: 'biologia',
-      typeid: 2,
-      id: 0
-    },
-    {
-      name: 'irregular verbs',
-      type: 'j. angielski',
-      typeid: 3,
-      id: 1
-    },
-    {
-      name: 'zmartwychwstanie',
-      type: 'religia',
-      typeid: 8,
-      id: 2
-    },
-    {
-      name: 'prawa człowieka',
-      type: 'wos',
-      typeid: 6,
-      id: 3
-    },
-    {
-      name: 'tridiploidany',
-      type: 'chemia',
-      typeid: 7,
-      id: 4
-    },
-    {
-      name: 'krzyż pański',
-      type: 'religia',
-      typeid: 8,
-      id: 5
-    },
-    {
-      name: 'serce żaby',
-      type: 'biologia',
-      typeid: 2,
-      id: 6
-    },
-    {
-      name: 'idiomy',
-      type: 'j. polski',
-      typeid: 1,
-      id: 7
-    },
-    {
-      name: 'conditionals',
-      type: 'j. angielski',
-      typeid: 3,
-      id: 8
-    },
-    {
-      name: 'władza sądownicza',
-      type: 'wos',
-      typeid: 6,
-      id: 9
-    },
-    {
-      name: 'węglowodory',
-      type: 'chemia',
-      typeid: 7,
-      id: 10
-    },
-    {
-      name: 'prawo pitagorasa',
-      type: 'matematyka',
-      typeid: 0,
-      id: 11
-    },
-    {
-      name: 'szekspir',
-      type: 'j. polski',
-      typeid: 1,
-      id: 12
-    },
-    {
-      name: 'słońce',
-      type: 'fizyka',
-      typeid: 5,
-      id: 13
-    },
-    {
-      name: 'gwiazdy',
-      type: 'fizyka',
-      typeid: 5,
-      id: 14
-    },
-    {
-      name: 'prosta krzywa',
-      type: 'matematyka',
-      typeid: 0,
-      id: 15
-    },
-    {
-      name: 'groß',
-      type: 'j. niemiecki',
-      typeid: 4,
-      id: 16
-    },
-    {
-      name: 'klein',
-      type: 'j. niemiecki',
-      typeid: 4,
-      id: 17
-    }
-  ]
 
   constructor(public fileSystemService: FileSystemService) {
   }
 
   searchBox() {
     this.isSearchBox = !this.isSearchBox;
-    for (let type of this.types) {
-      this.isTypeElOpen[type.id] = false;
-    }
   }
 
   showFileMgmt() {
@@ -193,12 +68,12 @@ export class FilesComponent implements OnInit {
   }
 
   getTypes() {
-    //return this.fileSystemService.Types();
-    return this.types;
+    return this.fileSystemService.Types();
+    //return this.types;
   }
 
   getFiles() {
-     if (this.searchedFile != null) {
+    if (this.searchedFile != null) {
       return this.searchedFile;
     }
     return this.fileSystemService.getFiles();
@@ -240,5 +115,11 @@ export class FilesComponent implements OnInit {
     }).catch(e => {
       console.error(e);
     });
+  }
+
+  getFilesByType(id: number) {
+    let a = this.getFiles().filter(f => f.fileType == id);
+    console.log(this.getFiles(), id, a);
+    return a;
   }
 }
