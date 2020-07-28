@@ -5,20 +5,63 @@
     "logout": "user/logout/",
     "infoUser": "user/details/",
     "date": "servis/now/",
+    "loggedUserChangePassword": "user/changePassword/",
     "timetable": {
       "get": "timetable/get/",
       "createTimetable": "timetable/createTimetable/",
       "createPeriods": "timetable/createHour/"
     },
     "fileSystem": {
-      "addFile": "fileSystem/file/add/",
+      "addFile": "fileSystem/file/upload/",
+      "addFileComplete": "fileSystem/file/upload/complete/",
       "getTypes": "fileSystem/type/",
       "listFile": "fileSystem/file/",
       "detailsFile": "fileSystem/file/:fileId/",
-      "createType": "fileSystem/type/add/",
-      "deleteType": "fileSystem/type/del/:typeId/",
-      "deleteFile": "fileSystem/file/del/:fileId/",
-      "searchFile": "fileSystem/file/search/"
+      "createType": "fileSystem/type/",
+      "deleteType": "fileSystem/type/:typeId/",
+      "deleteFile": "fileSystem/file/:fileId/",
+      "searchFile": "fileSystem/file/search/",
+      "updateFile": "fileSystem/file/:fileId/"
+    },
+    "events": {
+      "create": "events/event/",
+      "getEventByDate": "events/event/",
+      "getEventDetails": "events/event/:eventId/",
+      "getEventTypes": "events/type/",
+      "createType": "events/type/",
+      "deleteEvent": "events/event/:eventId/"
+    },
+    "userManager": {
+      "getList": "user/",
+      "createUser": "user/",
+      "deleteUser": "user/:idUser/",
+      "getGroups": "group/",
+      "addGroup2User": "user/group/"
     }
+  },
+  "daysOfWeek": [
+    [
+      "monday",
+      "Poniedziałek"
+    ],
+    [
+      "tuesday",
+      "Wtorek"
+    ],
+    [
+      "wednesday",
+      "Środa"
+    ],
+    [
+      "thursday",
+      "Czwartek"
+    ],
+    [
+      "friday",
+      "Piątek"
+    ]
+  ],
+  "intervalsInSecond": {
+    "intervalsEvent": 6
   }
 }

@@ -47,6 +47,23 @@ export class UserService {
   isLogged() {
     return User.instance != null;
   }
+
+  changePassword(form): Promise<any> {
+    let url = this.dataURL.server + this.dataURL.endpoints.loggedUserChangePassword;
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': 'token ' + localStorage.getItem('token')
+      })
+    };
+    return new Promise<any>((p, e) => this.http.post(url, form, httpOption).subscribe(
+      (data: any) => {
+        p(data);
+      },
+      (error: any) => {
+        e(error);
+      }
+    ));
+  }
 }
 
 export class User {
@@ -81,12 +98,7 @@ export class User {
         }
       }
     );
-
-
   }
-
-  //todo(n2one): create function hasPermission
-
   initData(data, token) {
     this.firstName = data.firstName;
     this.lastName = data.lastName;

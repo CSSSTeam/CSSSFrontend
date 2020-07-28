@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { SupportService } from '../services/support.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { UserService, User } from '../services/user.service';
+import {Group, PermissionsService} from '../services/permissions.service';
+import {ScrollService} from '../services/scroll.service';
 
 @Component({
   selector: 'app-logged-layout',
   templateUrl: './logged-layout.component.html',
   styleUrls: ['./logged-layout.component.css'],
-  providers: [UserService]
+  providers: [UserService,PermissionsService]
 })
 export class LoggedLayoutComponent implements OnInit {
 
@@ -16,8 +18,10 @@ export class LoggedLayoutComponent implements OnInit {
 
   constructor(
     protected router: Router,
-    private scrollService: SupportService
-  ) { }
+     private scrollService: ScrollService,
+    protected permissions: PermissionsService
+  ) {
+  }
 
   ngOnInit() {
 
@@ -26,12 +30,12 @@ export class LoggedLayoutComponent implements OnInit {
     if (window.screen.height != 0) this.scrollService.scrollUp();
 
     this.isMenu = window.innerWidth >= 1350;
-
   }
 
   showMenu() {
     this.isMenu = !this.isMenu;
   }
+
   navTo() {
     if (window.innerWidth <= 1350) {
       this.scrollService.scrollDown(document.querySelector('#mainNav').clientHeight, 0);
@@ -42,6 +46,7 @@ export class LoggedLayoutComponent implements OnInit {
   isSett: boolean = false;
   isCog: boolean = true;
 
+
   showSettings() {
     this.isSett = !this.isSett;
     this.isCog = !this.isCog;
@@ -49,5 +54,13 @@ export class LoggedLayoutComponent implements OnInit {
 
   logout() {
     User.instance.logout();
+  }
+
+  isRedactor() {
+    return this.permissions.hasPerm([Group.moderator, Group.president, Group.vicePresident, Group.admin]);
+  }
+
+  isAdmin() {
+    return this.permissions.hasPerm([Group.president, Group.vicePresident, Group.admin]);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SupportService } from '../../services/support.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-chg-password',
@@ -7,9 +7,15 @@ import { SupportService } from '../../services/support.service';
   styleUrls: ['./chg-password.component.css']
 })
 export class ChgPasswordComponent implements OnInit {
+  changePasswordForm: any;
+  info = '';
 
-  constructor(private supportService: SupportService) {
-
+  constructor(private supportService: SupportService,private userService: UserService) {
+    this.changePasswordForm = {
+      oldPass: '',
+      newPass: '',
+      newPass2: ''
+    };
   }
 
   ngOnInit() {
@@ -20,4 +26,15 @@ export class ChgPasswordComponent implements OnInit {
     this.supportService.popup("zmieniono hasło");
   }
 
+  changePassword() {
+    console.log(this.changePasswordForm);
+    this.userService.changePassword(this.changePasswordForm).then(() =>
+      this.info = 'CHANGED'
+    ).catch(
+      error => {
+        console.error(error);
+        this.info = 'some Error';
+      }
+    );
+  }
 }

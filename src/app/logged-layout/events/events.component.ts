@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService, User } from '../../services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {UserService, User} from '../../services/user.service';
+import {EventsSystemService} from '../../services/events-system.service';
+import * as data from '../../../config.json';
 
 @Component({
   selector: 'app-events',
@@ -8,16 +10,16 @@ import { UserService, User } from '../../services/user.service';
   providers: [UserService]
 })
 export class EventsComponent implements OnInit {
-
+  config;
   user;
-  eventsList = [];
-
-  constructor(private userService: UserService) {
-
+  daysOfWeek;
+  events4Week;
+  constructor(private userService: UserService, private eventsSystemService: EventsSystemService) {
+    this.config = (data as any).default;
+    this.daysOfWeek = this.config.daysOfWeek;
   }
 
   ngOnInit() {
-
     this.user = User.instance;
 
     if (window.innerWidth <= 1100)
@@ -37,35 +39,10 @@ export class EventsComponent implements OnInit {
       this.eventsList[id] = true;
     }
   }
+  }
 
-  monSubjects = [
-    { subject: 'matematyka', type: 'test' },
-    { subject: 'religia', type: 'smallTest' },
-    { subject: 'SO', type: 'test' },
-  ];
-
-  tueSubjects = [
-    { subject: 'matematyka', type: 'test' },
-    { subject: 'religia', type: 'smallTest' },
-    { subject: 'SO', type: 'test' },
-  ];
-
-  wedSubjects = [
-    { subject: 'matematyka', type: 'test' },
-    { subject: 'religia', type: 'smallTest' },
-    { subject: 'SO', type: 'test' },
-  ];
-
-  thuSubjects = [
-    { subject: 'matematyka', type: 'test' },
-    { subject: 'religia', type: 'smallTest' },
-    { subject: 'SO', type: 'test' },
-  ];
-
-  friSubjects = [
-    { subject: 'matematyka', type: 'test' },
-    { subject: 'religia', type: 'smallTest' },
-    { subject: 'SO', type: 'test' },
-  ];
-
+  getEvent(day) {
+    this.events4Week = this.eventsSystemService.getEventsForWeek();
+    return this.events4Week[day[0]];
+  }
 }

@@ -29,15 +29,32 @@ export class LoginPageComponent implements OnInit {
       username: '',
       password: ''
     };
+    this.restartErrorForm();
+
+  }
+
+  private restartErrorForm() {
     this.errorForm = {
       global: '',
       username: '',
       password: ''
     };
-
   }
 
   login() {
+    let ok = true;
+    this.restartErrorForm();
+    if (this.loginForm.username == '') {
+      ok = false;
+      this.errorForm.username = 'To pole nie może być puste.';
+    }
+    if (this.loginForm.username == '') {
+      ok = false;
+      this.errorForm.password = 'To pole nie może być puste.';
+    }
+    if (!ok) {
+      return;
+    }
     this.userService.loginUser(this.loginForm).subscribe(
       (data: any) => {
         this.userService.createUser(data.token, this.router);

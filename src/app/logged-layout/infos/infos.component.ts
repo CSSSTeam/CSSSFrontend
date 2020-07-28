@@ -31,9 +31,13 @@ export class InfosComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  mgmtStart() {
+
+  }
 }

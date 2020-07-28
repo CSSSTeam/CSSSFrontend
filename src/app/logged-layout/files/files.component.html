@@ -13,6 +13,7 @@
         <div id="allFiles" (click)="allFiles()">Wszystkie pliki</div>
         <div class="mobileTypeFiles" *ngIf="allfiles">
 
+
           <div *ngFor="let file of showFiles()" id="listItem">
             <!--(click)="download"-->
 
@@ -74,14 +75,14 @@
   <!--<div>
     
       <h2>Typy</h2>
-    
+
       name:
       <input type="text" [(ngModel)]="addingTypeForm.name">
       <button (click)="createTypeFile()">Dodaj typ</button>
-    
+
     </div>
     <div>
-    
+
       Lista typów:
       <div *ngFor="let type of getTypes()">
         {{type.name}}
