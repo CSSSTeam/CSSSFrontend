@@ -1,70 +1,31 @@
 <main>
-    <div id="eventsMgmt">
+  <p id="statement" *ngIf="addedEvent" (click)="addedEvent = false">
+    pomyślnie <br> dodano wydarzenie
+  </p>
+  <article>
+    <nav>
+      <p routerLink="/events">wróć</p>
+    </nav>
+    <section>
 
-        <div id="eventsMgmtHead" class="header">
-          <h6>Menedżer wydarzeń</h6>
-        </div>
-      
-        <div id="eventsMgmtContent">
-  
-            <label id="name">
-                <input placeholder="przedmiot" type="text">
-            </label>
-
-            <label id="type">
-                <select required size="1">
-                    <option disabled selected>typ</option>
-                    <option>sprawdzian</option>
-                    <option>kartkówka</option>
-                    <option>odp. ustna</option>
-                    <option>duże zad. domowe</option>
-                    <option>referat</option>
-                    <option>sprawozdanie</option>
-                    <option>dla chętnych</option>
-                </select>
-            </label>
-
-            <label id="desc">
-                <textarea placeholder="opis"></textarea>
-            </label>
-  
-            <label id="term" name="Termin:">
-                    <input
-                        placeholder="termin" type="text"
-                        onfocus="(this.type='date')"
-                        onblur="(this.type='text')"
-                    >
-            </label>
-
-            <label id="group">
-                <select required size="1">
-                    <option disabled selected>grupa</option>
-                    <option>grupa 1</option>
-                    <option>grupa 2</option>
-                    <option>grupa 1 - UTK</option>
-                    <option>grupa 2 - UTK</option>
-                    <option>grupa 3 - UTK</option>
-                    <option>grupa 1 - WF - chł.</option>
-                    <option>grupa 2 - WF - chł.</option>
-                    <option>grupa 3 - WF - dz.</option>
-                </select>
-            </label>
-
-            <input id="add" type="button" value="Dodaj wydarzenie">
-
-            <label id="event">
-                <select required size="1">
-                    <option disabled selected>wydarzenie</option>
-                    <option></option>
-                </select>
-            </label>
-
-            <input id="del" type="button" value="Usuń wydarzenie">
-
-            <input id="back" type="button" routerLink="/events" value="Wróć">
-
-        </div>
-    </div>
-
+      <div id="eventsMgmtContent">
+        <input type="text" placeholder="przedmiot" onfocus="(this.placeholder='')"
+          onblur="(this.placeholder='przedmiot')"><br>
+        <select required size="1">
+          <option disabled selected hidden>typ</option>
+          <option>sprawdzian</option>
+          <option>kartkówka</option>
+          <option>odp. ustna</option>
+          <option>duże zad. domowe</option>
+          <option>referat</option>
+          <option>sprawozdanie</option>
+          <option>dla chętnych</option>
+        </select><br>
+        <input placeholder="termin" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"> <br>
+        <textarea placeholder="opis" onfocus="(this.placeholder='')" onblur="(this.placeholder='opis')"></textarea>
+        <input id="add" type="button" (click)="addEvent()" value="dodaj wydarzenie">
+      </div>
+    </section>
+  </article>
 </main>
 <div style="clear:both"></div>

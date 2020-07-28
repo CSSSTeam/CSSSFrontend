@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TimeoutError } from 'rxjs';
+import { SupportService } from '../../../services/support.service';
 
 @Component({
   selector: 'app-events-edit',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(private supportService: SupportService) { }
 
   ngOnInit(): void {
+  }
+
+  addEvent() {
+    this.supportService.popup("dodano wydarzenie");
   }
 
 }

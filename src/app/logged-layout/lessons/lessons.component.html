@@ -1,34 +1,61 @@
 <main>
-  <div id="timeTable">
-    <div *ngFor="let day of timetableService.daysOfWeek">
-
-      <div (click)="showDay(day[0])" id="{{day[0]}}" class="day">
-        <h6><i class="icon-calendar"></i>{{day[1]}}<i id="tab{{day[0]}}" class="icon-down-open open"></i></h6>
-      </div>
-
-      <div class="table" *ngIf="isTabsOpen[day[0]]">
-
-        <div *ngFor="let lesson of timetable()[day[0]], let index = index">
-          <div  class="lesson" *ngIf="timetable()[day[0]][index].length != 0">
-              <div class="tableEl subject">
-                {{ displayText(lesson[0], 'subject') }}
+  <article>
+    <nav>
+      <p routerLink="/lessons-edit">edytuj</p>
+    </nav>
+    <section>
+      <div id="timeTable">
+        <div id="uOption">
+          <div id="ops">
+            <div *ngFor="let day of timetableService.daysOfWeek">
+              <div (click)="showDay(day[0])" [ngClass]="isActive[day[0]] ? 'day active' : 'day inactive'">
+                <i class="icon-calendar"></i><br>{{ day[1] }}
               </div>
-              <div class="tableEl hours">
-                {{ displayTime(timetable()['period'][index]['start']) }} -
-                {{ displayTime(timetable()['period'][index]['end']) }}
+              <div id="mobileDayOfTimeTable" *ngIf="!mainTimeTable">
+                <div class="table" *ngIf="isTabsOpen[whichDay] == whichDay && days[day[0]]">
+                  <div *ngFor="let lesson of timetable()[whichDay], index as index, last as last">
+                    <div class="lesson {{last}}Element">
+                      <div class="tableEl subject">
+                        {{ displayText(lesson[0], 'subject') }}
+                      </div><br>
+                      <div id="subDetails">
+                        <div class="tableEl hours">
+                          {{ displayTime(timetable()['period'][index]['start']) }} -
+                          {{ displayTime(timetable()['period'][index]['end']) }}
+                        </div>
+                        <div class="tableEl room">
+                          {{ displayText(lesson[0], 'classroom') }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="tableEl room">
-                {{ displayText(lesson[0], 'classroom') }}
+            </div>
+          </div>
+        </div>
+        <div id="dayOfTimeTable" *ngIf="mainTimeTable">
+          <div class="table" *ngIf="isTabsOpen[whichDay] == whichDay">
+            <div *ngFor="let lesson of timetable()[whichDay], index as index, last as last">
+              <div class="lesson {{last}}Element">
+                <div class="tableEl subject">
+                  {{ displayText(lesson[0], 'subject') }}
+                </div><br>
+                <div id="subDetails">
+                  <div class="tableEl hours">
+                    {{ displayTime(timetable()['period'][index]['start']) }} -
+                    {{ displayTime(timetable()['period'][index]['end']) }}
+                  </div>
+                  <div class="tableEl room">
+                    {{ displayText(lesson[0], 'classroom') }}
+                  </div>
+                </div>
               </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div routerLink="/lessons-edit" (click)="mgmtStart()" id="timeTableMGMT">
-      <h6>Zarządzaj planem lekcji</h6>
-    </div>
-
-  </div>
+    </section>
+  </article>
 </main>
 <div style="clear:both"></div>

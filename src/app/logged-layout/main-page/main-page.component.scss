@@ -1,67 +1,209 @@
-#schDays {
-  .day {
-    width: 300px;
-    min-height: 50px;
-    background-color: #000;
-    margin: 0px 0;
-    padding: 10px;
-    border-radius: 5px;
+article {
+  height: 100%;
 
-    &:nth-child(even) {
-      background-color: #222;
+  nav {
+    height: 10%;
+    margin: 0 2rem;
+    width: calc(100% - 4rem);
+    border-bottom: 1px solid rgba(217, 108, 0, .5);
+    display: none;
+  }
+
+  section {
+    height: 90%;
+    padding: 3rem;
+
+
+
+    #leftSide {
+      float: left;
+      width: 60%;
+      height: 100%;
+
+      .box {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        #timeTable {
+          width: 100%;
+          height: 70%;
+          padding: 0 2rem;
+
+          #uOption {
+            height: 15%;
+            position: relative;
+
+            #ops {
+              text-align: center;
+              font-size: 1.2rem;
+              position: absolute;
+              left: 3rem;
+              bottom: .3rem;
+
+              .but {
+                display: inline-block;
+                margin: 0 .5rem;
+                padding: .5rem 1rem;
+                border-radius: 1rem;
+                cursor: pointer;
+              }
+
+              .inactive {
+                background-color: #222;
+                opacity: .6;
+                transition: opacity .2s ease;
+
+                &:hover {
+                  opacity: 1;
+                }
+              }
+
+              .active {
+                background-color: #D96C00;
+                opacity: 1;
+              }
+            }
+          }
+
+          #dayOfTimeTable {
+            height: 85%;
+            margin: 1rem 3rem;
+            border: 2px solid rgba(238, 238, 238, .1);
+            border-radius: 2rem;
+
+            .table {
+              height: 100%;
+              padding: 2rem;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+
+              .lesson {
+                height: 3rem;
+                line-height: 3rem;
+                border-bottom: 1px solid rgba(238, 238, 238, .1);
+
+                .tableEl {
+                  color: #eee;
+                  float: left;
+                }
+
+                .subject {
+                  width: 50%;
+                  font-size: 1.4rem;
+                  padding-left: 2rem;
+                  color: #fff;
+                }
+
+                .hours {
+                  width: 30%;
+                  font-size: 1.2rem;
+                  text-align: right;
+                }
+
+                .room {
+                  width: 20%;
+                  font-size: .9rem;
+                  text-align: center;
+                }
+              }
+
+              .lastLesson {
+                border: none;
+              }
+
+              .trueElement {
+                border: none;
+              }
+            }
+          }
+        }
+      }
     }
 
-    h6 {
-      font-size: 1rem;
-      color: #bbb;
-      border-bottom: 1px dotted #bbb;
-      margin-bottom: 5px;
-      padding: 4px 0;
-    }
+    #navigation {
+      border-left: 2px dotted rgba(100, 100, 100, .2);
+      float: left;
+      display: flex;
+      align-items: center;
+      width: 40%;
+      height: 100%;
+      padding-left: 3%;
+      transform: translateY(7%);
 
-    div {
-      padding: 1.5% 2%;
-      margin: 3px;
-      border-radius: 10px;
-      font-size: 1rem;
-      letter-spacing: 1px;
-      color: #eee;
-      background-color: #222;
-    }
+      .subSite {
+        opacity: .5;
+        transition: opacity .2s ease;
 
-    .null {
-      padding: 5px 8px;
-      margin: 8px;
-      font-size: 1rem;
-      letter-spacing: 1px;
-      color: #eee;
+        &:hover {
+          opacity: 1;
+          cursor: pointer;
+        }
+
+        .sqr {
+          border: 2px solid rgba(238, 238, 238, .3);
+          border-radius: 2rem;
+          margin: 1rem 0;
+          font-size: 2rem;
+          display: flex;
+          align-items: center;
+        }
+
+        p {
+          margin-left: 1rem;
+          font-size: 1.5rem;
+        }
+
+      }
     }
   }
 }
 
-@media (min-width: 768px) {
-  #schDays {
-    max-height: 80vh;
-    overflow-y: scroll;
-    scrollbar-color: #ccc rgba(0, 0, 0, 0);
-    scrollbar-width: thin;
-
-    .day {
-      width: 600px;
-      margin: 10px 0;
-    }
-
-    .subjects {
-      width: 48%;
-      display: inline-block;
+@media (min-width: 1350px) {
+  article {
+    nav {
+      display: block;
     }
   }
 
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
+}
 
-  ::-webkit-scrollbar-thumb {
-    background-color: #ccc
+@media (min-width: 950px) {
+  article {
+    section {
+      #navigation {
+        .sqr {
+          padding: 1rem 4rem;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  article {
+    section {
+      height: auto;
+
+      #leftSide {
+        display: none;
+      }
+
+      #navigation {
+        justify-content: center;
+        float: none;
+        border-left: none;
+        margin: 0 auto;
+        padding-left: none;
+
+        .sqr {
+          padding: 2vw 6vw;
+          font-size: 4vw;
+        }
+      }
+    }
   }
 }

@@ -1,35 +1,18 @@
 <main>
-    <div id="infosMgmt">
-
-        <div id="infosMgmtHead" class="header">
-            <h6>Menedżer informacji</h6>
-        </div>
-        
-        <div id="infosMgmtContent">
-
-            <label id="cont">
-                <textarea placeholder="treść"></textarea>
-            </label>
-
-            <input id="file" type="file"> <!-- (change)="onFileChanged($event)" -->
-
-            <input id="addImage" type="button" value="Wgraj zdjęcie"> <!-- (click)="uploadFile()" -->
-
-            <label id="authorsList">
-                <select required size="1">
-                    <option disabled selected>autor</option>
-                    <option></option> <!-- *ngFor="autor of autors" -->
-                    <option>Inny</option>
-                </select>
-            </label>
-
-            <input id="addInfo" type="button" value="Opublikuj">
-
-            <input id="back" type="button" routerLink="/infos" value="Wróć">
-
-        </div>
-    </div>
-
+  <article>
+    <nav>
+      <p routerLink="/infos">wróć</p>
+    </nav>
+    <section>
+      <div id="infosMgmtContent">
+        <input placeholder="autor" type="text" onfocus="(this.placeholder='')" onblur="(this.placeholder='autor')">
+        <textarea placeholder="artykuł" onfocus="(this.placeholder='')"
+          onblur="(this.placeholder='artykuł')"></textarea>
+        <label for="upload">Wybierz plik</label>
+        <input id="upload" type="file">
+        <input id="add" type="button" (click)="addInfo()" value="dodaj wpis">
+      </div>
+    </section>
+  </article>
 </main>
 <div style="clear:both"></div>
-    

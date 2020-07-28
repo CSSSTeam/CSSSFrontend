@@ -1,7 +1,4 @@
-#content {
-  background-image: url(../../assets/img/loginPage/darkMosaic.png);
-
-  #logMainNav {
+/* #logMainNav {
     //background-image: url(../../assets/img/mainBg.svg);
     background-size: cover;
     height: 50vh;
@@ -33,101 +30,85 @@
                 color: green;
             }
         }
+    } */
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../assets/img/sand.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+
+  #logo {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+
+    img {
+      width: 20vw;
     }
-    #logPage {
-        height: 50vh;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        #logBox {
-            -webkit-box-shadow: 3px 3px 30px 5px rgba(58,58,68,1);
-            -moz-box-shadow: 3px 3px 30px 5px rgba(58,58,68,1);
-            box-shadow: 3px 3px 30px 5px rgba(58,58,68,1);
-            text-align: center;
-            padding: 20px 30px;
-            border-radius: 20px;
-            width: 300px;
-            input {
-                width: 100%;
-                background-color: #efefef;
-                color: #666;
-                border: 2px solid #ddd;
-                border-radius: 5px;
-                font-size: 1.3rem;
-                padding: 3%;
-                outline: none;
-                margin-top: 5%;
-            }
-            button {
-                width: 100%;
-                background-color: #d85b11;
-                font-size: 1.3rem;
-                color: #eee;
-                padding: 4% 3%;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                letter-spacing: 2px;
-                outline: none;
-                margin-top: 10%;
-            }
-        }
+  }
+
+  #logPage {
+    -webkit-box-shadow: 3px 3px 30px 5px rgba(58, 58, 68, 1);
+    -moz-box-shadow: 3px 3px 30px 5px rgba(58, 58, 68, 1);
+    box-shadow: 3px 3px 30px 5px rgba(58, 58, 68, 1);
+    text-align: center;
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
+    min-width: 25vw;
+    margin: 0 2rem;
+
+
+    input {
+      width: 100%;
+      background-color: #efefef;
+      color: #666;
+      border: 2px solid #ddd;
+      border-radius: .5rem;
+      font-size: 1.5rem;
+      padding: 1rem 1.5rem;
+      outline: none;
+      margin-top: 1rem;
+
+      &:focus {
+        background-color: rgba(239, 239, 239, .1);
+      }
     }
+
+    button {
+      width: 100%;
+      background-color: #d85b11;
+      font-size: 1.3rem;
+      color: #eee;
+      padding: .8rem 0;
+      border: none;
+      border-radius: .5rem;
+      cursor: pointer;
+      letter-spacing: 2px;
+      outline: none;
+      margin-top: 2rem;
+    }
+
     a {
-        text-decoration: none;
-        outline: none;
+      text-decoration: none;
+      outline: none;
     }
+
+  }
 }
-@media (max-width: 1023px) and (max-height: 560px) and (orientation: landscape) {
-    #content {
-        #logMainNav {
-            height: 100vh;
-        }
-        #logPage {
-            height: 100vh;
-        }
+
+@media (max-width: 500px) {
+  main {
+    #logPage {
+      input {
+        font-size: 1rem;
+      }
+
+      button {
+        font-size: 1rem;
+      }
     }
-}
-@media (min-width: 1024px) {
-    #content {
-      background-image: url(../../assets/img/loginPage/darkMosaic.png);
-
-      #logMainNav {
-        background-image: url(../../assets/img/loginPage/darkMosaic.png);
-        background-size: auto;
-        float: left;
-        height: 100vh;
-        width: 50%;
-
-        #logo {
-          height: 15vh;
-        }
-
-        p {
-
-          height: 80%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 20%;
-          font-size: 120%;
-          text-align: right;
-        }
-        }
-        #logPage {
-            background-image: url(../../assets/img/mainBg.svg);
-            background-size: cover;
-            float: left;
-            height: 100vh;
-            width: 50%;
-            border-left: 30px solid #d85b11;
-            #logBox {
-                text-align: center;
-                padding: 20px 30px;
-                border-radius: 20px;
-                width: 450px;
-            }
-        }
-    }
+  }
 }

@@ -1,7 +1,7 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
@@ -28,6 +28,10 @@ import { EventsEditComponent } from './logged-layout/events/events-edit/events-e
 import { ChgPasswordComponent } from './logged-layout/chg-password/chg-password.component';
 import { AboutComponent } from './logged-layout/about/about.component';
 import { InfosEditComponent } from './logged-layout/infos/infos-edit/infos-edit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilesEditComponent } from './logged-layout/files/files-edit/files-edit.component';
+import { TreasurePanelComponent } from './logged-layout/treasure-panel/treasure-panel.component';
+import { UsersComponent } from './logged-layout/users/users.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,9 @@ import { InfosEditComponent } from './logged-layout/infos/infos-edit/infos-edit.
     ChgPasswordComponent,
     AboutComponent,
     InfosEditComponent,
+    FilesEditComponent,
+    TreasurePanelComponent,
+    UsersComponent
     RedactorsPanelComponent,
     EventsDetailsComponent,
     LessonsEditComponent,
@@ -53,14 +60,11 @@ import { InfosEditComponent } from './logged-layout/infos/infos-edit/infos-edit.
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES),
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    HttpClientXsrfModule.withOptions({
-      cookieName: 'XSRF-TOKEN',
-      headerName: 'X-CSRF-TOKEN'
-    })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [UserService, GuardService],
   bootstrap: [AppComponent]

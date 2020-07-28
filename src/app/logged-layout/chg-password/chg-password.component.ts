@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
 
 @Component({
@@ -10,7 +10,7 @@ export class ChgPasswordComponent implements OnInit {
   changePasswordForm: any;
   info = '';
 
-  constructor(private userService: UserService) {
+  constructor(private supportService: SupportService,private userService: UserService) {
     this.changePasswordForm = {
       oldPass: '',
       newPass: '',
@@ -19,6 +19,11 @@ export class ChgPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
+
+  }
+
+  changePassword() {
+    this.supportService.popup("zmieniono hasło");
   }
 
   changePassword() {

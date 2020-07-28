@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from '../services/user.service';
-import {Router} from '@angular/router';
-import { ScrollService } from '../services/scroll.service';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+import { SupportService } from '../services/support.service';
 
 @Component({
   selector: 'app-login-page',
@@ -12,21 +12,18 @@ import { ScrollService } from '../services/scroll.service';
 export class LoginPageComponent implements OnInit {
 
   title = 'csssFrontend';
-  loginForm:any;
-  errorForm:any;
+  loginForm: any;
+  errorForm: any;
 
   constructor(
     private router: Router,
     private userService: UserService,
-    private scrollService: ScrollService
-  ) {
-  }
+    private scrollService: SupportService
+  ) { }
 
   ngOnInit() {
 
-    if (window.innerWidth > window.innerHeight) {
-      this.scrollService.scrollDown(window.screen.height, 1500);
-    }
+    if (window.innerWidth > window.innerHeight) this.scrollService.scrollDown(window.screen.height, 1500);
 
     this.loginForm = {
       username: '',

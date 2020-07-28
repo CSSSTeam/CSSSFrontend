@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "logged-layout.component.scss"
+    ],
+    "names": [],
+    "file": "logged-layout.component.css"
+}

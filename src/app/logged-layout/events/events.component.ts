@@ -21,6 +21,24 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
     this.user = User.instance;
+
+    if (window.innerWidth <= 1100)
+      for (let i = 0; i <= 4; i++) this.eventsList[i] = false;
+    else
+      for (let i = 0; i <= 4; i++) this.eventsList[i] = true;
+
+  }
+
+  showEventsList(id) {
+    if (window.innerWidth <= 1100) {
+      if (this.eventsList[id] == true) {
+        this.eventsList[id] = false;
+        return;
+      };
+      for (let i = 0; i <= 4; i++) this.eventsList[i] = false;
+      this.eventsList[id] = true;
+    }
+  }
   }
 
   getEvent(day) {

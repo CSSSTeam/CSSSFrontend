@@ -1,24 +1,32 @@
-import {Component, OnInit} from '@angular/core';
-import {FileSystemService} from '../../services/file-system.service';
-
+import { Component, OnInit } from '@angular/core';
+import { FileSystemService } from '../../services/file-system.service';
+import { SupportService } from '../../services/support.service';
+import { Router } from '@angular/router';
+import { stringify } from 'querystring';
+import { types } from 'util';
 @Component({
   selector: 'app-files',
   templateUrl: './files.component.html',
   styleUrls: ['./files.component.css'],
-  providers: [FileSystemService]
+  providers: [
+    FileSystemService,
+    SupportService
+  ]
 })
 export class FilesComponent implements OnInit {
 
   isFileMgmtOpen = false;
   isTypeElOpen = [];
+  typeFiles = [];
   addingFileForm: any;
   addingTypeForm: any;
   searchText: string;
-  isSearchBox = false;
   searchedFile: Array<any>;
+  mainFilesList: boolean;
+  subjects = [];
+  allfiles: boolean = false;
 
-
-  constructor(public fileSystemService: FileSystemService) {
+  constructor(public fileSystemService: FileSystemService, public supportService: SupportService) {
   }
 
   searchBox() {
@@ -35,14 +43,43 @@ export class FilesComponent implements OnInit {
     }
   }
 
+  search() {
+    if (!this.mainFilesList) {
+      for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+      this.typeFiles = this.getFiles();
+      this.allfiles = true;
+    }
+  }
+
+  allFiles() {
+    if (!this.mainFilesList) {
+      for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+      this.typeFiles = this.getFiles();
+      this.allfiles = !this.allfiles;
+    } else {
+      this.typeFiles = this.getFiles();
+    }
+  }
+
   openTypeEl(id) {
-    if (this.isTypeElOpen[id] == false) {
+    this.allfiles = false;
+    const temp = this.subjects[id];
+    for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+    this.subjects[id] = !temp;
+    if (this.isTypeElOpen[id] != true) {
       this.isTypeElOpen[id] = true;
-      document.querySelector('#tab' + id).className = 'icon-cancel open';
     } else {
       this.isTypeElOpen[id] = false;
-      document.querySelector('#tab' + id).className = 'icon-down-open open';
     }
+    this.typeFiles = [];
+    this.showFiles(id);
+  }
+
+  showFiles(id) {
+    this.getFiles().forEach(e => {
+      if (e.typeid == id) this.typeFiles.push(e);
+    });
+    return this.typeFiles;
   }
 
   onFileChanged(event) {
@@ -59,6 +96,12 @@ export class FilesComponent implements OnInit {
     this.addingTypeForm = {
       name: ''
     };
+    this.typeFiles = this.getFiles();
+
+    if (window.innerWidth >= 1020) this.mainFilesList = true;
+    else this.mainFilesList = false;
+
+    for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
   }
 
   uploadFile() {
@@ -90,15 +133,16 @@ export class FilesComponent implements OnInit {
   }
 
   deleteType(id: number) {
-    this.fileSystemService.deleteType(id).then(() => {
+    /* this.fileSystemService.deleteType(id).then(() => {
       console.log('delete Type');
     }).catch(e => {
       console.error(e);
-    });
+    }); */
+    alert('deleted type');
   }
 
   searchFile() {
-    if (this.searchText == '') {
+    /* if (this.searchText == '') {
       this.searchedFile = null;
       return;
     }
@@ -106,15 +150,22 @@ export class FilesComponent implements OnInit {
       this.searchedFile = data;
     }).catch(e => {
       console.error(e);
+    }); */
+    this.typeFiles = [];
+    this.getFiles().forEach(e => {
+      if (e.name.includes(this.searchText)) this.typeFiles.push(e);
     });
+    return this.typeFiles;
   }
 
   deleteFile(pk: number) {
-    this.fileSystemService.deleteFile(pk).then(() => {
+    /* this.fileSystemService.deleteFile(pk).then(() => {
       console.log('deleted File');
     }).catch(e => {
       console.error(e);
-    });
+    }); */
+
+    this.supportService.statement('usunąć plik', 'usunięto plik');
   }
 
   getFilesByType(id: number) {

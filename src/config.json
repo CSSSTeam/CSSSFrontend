@@ -4,8 +4,8 @@
     "login": "auth/",
     "logout": "user/logout/",
     "infoUser": "user/details/",
+    "date": "servis/now/",
     "loggedUserChangePassword": "user/changePassword/",
-    "date": "basic/date/",
     "timetable": {
       "get": "timetable/get/",
       "createTimetable": "timetable/createTimetable/",

@@ -1,121 +1,350 @@
-#timeTable {
-    .day {
-        width: 300px;
-        height: 50px;
-        background-color: #0A0B0D;
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 5px;
-        position: relative;
-        transition: all .2s ease-in-out;
+article {
+  height: 100%;
+
+  nav {
+    height: 3rem;
+    margin: 0 2rem;
+    width: calc(100% - 4rem);
+    border-bottom: 1px solid rgba(217, 108, 0, .5);
+    position: relative;
+
+    p {
+      position: absolute;
+      right: 50%;
+      transform: translateX(50%);
+      bottom: .5rem;
+      font-size: 1.1rem;
+      padding: .5rem 2rem;
+      border: 1px solid rgba(238, 238, 238, .6);
+      border-radius: 1rem;
+      opacity: .6;
+      transition: opacity .2s ease;
+
+      &:hover {
+        opacity: 1;
         cursor: pointer;
-        &:hover {
-            cursor: pointer;
-            padding-left: 20px;
-        }
-        &:hover h6 {
-            color: #fff;
-        }
-        h6 {
-            font-size: 1.5rem;
-            color: #ddd;
-            .open {
-                position: absolute;
-                right: 10px;
-            }
-        }
+      }
     }
-    .table {
-        background-color: #171717;
-        border-radius: 10px;
-        padding: 10px;
-        .lesson {
-            width: 100%;
-            min-height: 40px;
-            line-height: 90%;
-            padding: 6px 12px;
-            border-bottom: 1px solid #393939;
-            .tableEl {
-                color: #eee;
-                font-size: 1rem;
-            }
-            .subject {
-                width: 100%;
-                font-size: 1.1rem;
-                color: #fff;
-            }
-            .hours {
-                width: 60%;
-                display: inline-block;
-                font-size: .8rem;
-            }
-            .room {
-                width: 40%;
-                display: inline-block;
-                font-size: .9rem;
-                text-align: right;
-            }
-        }
-    }
-    #timeTableMGMT {
-        width: 300px;
-        height: 40px;
-        line-height: 20px;
-        background-color: #b74a00;
-        margin: 10px 0;
-        padding: 10px;
-        border-radius: 5px;
-        position: relative;
-        cursor: pointer;
-        h6 {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #bbb;
-            text-transform: uppercase;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-    }
-}
-@media (min-width: 768px) {
+  }
+
+  section {
+    height: 90%;
+
     #timeTable {
-        max-height: 80vh;
-        overflow-y: scroll;
-        scrollbar-color: #ccc rgba(0,0,0,0);
-        scrollbar-width: thin;
-        .day, #timeTableMGMT {
-            width: 600px;
-        }
-        .table {
-            .lesson {
-                width: 100%;
-                .tableEl {
-                    color: #eee;
-                    padding: 5px;
-                    float: left;
-                }
-                .subject {
-                    width: 50%;
-                    font-size: 1.2rem;
-                    color: #fff;
-                }
-                .hours {
-                    width: 30%;
-                    font-size: .9rem;
-                    text-align: right;
-                }
-                .room {
-                    width: 20%;
-                    font-size: 1rem;
-                    text-align: center;
-                }
+      height: 100%;
+      padding: 0 2rem;
+
+      #uOption {
+        position: relative;
+
+        #ops {
+          width: 100%;
+          padding: 2rem 0;
+          text-align: center;
+          bottom: .3rem;
+
+          .day {
+            font-size: .9rem;
+            padding: .5rem 1.5rem;
+            border-radius: 1rem;
+            opacity: .6;
+            transition: opacity .2s ease;
+            background-color: #222;
+
+            &:hover {
+              opacity: 1;
+              cursor: pointer;
             }
+          }
+
+          .inactive {
+            background-color: #222;
+            opacity: .6;
+            transition: opacity .2s ease;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+
+          .active {
+            background-color: #D96C00;
+            opacity: 1;
+          }
+
+          #mobileDayOfTimeTable {
+            height: 75%;
+            border-radius: 2rem;
+
+            .table {
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+
+              .lesson {
+                border-bottom: 1px solid rgba(238, 238, 238, .1);
+                height: 4.8rem;
+                line-height: 1.5rem;
+                padding: .5rem 0;
+
+                .tableEl {
+                  color: #eee;
+                  float: left;
+                }
+
+                .subject {
+                  width: 100%;
+                  padding: 0 0 .8rem 3rem;
+                  font-size: 1.2rem;
+                  text-align: left;
+                }
+
+                #subDetails {
+                  padding: .5rem 0 .5rem 0;
+                  font-size: 1rem;
+
+                  .hours {
+                    width: 60%;
+                    text-align: left;
+                    padding-left: 3rem;
+                  }
+
+                  .room {
+                    width: 40%;
+                    text-align: center;
+                  }
+                }
+
+              }
+
+              .trueElement {
+                border: none;
+              }
+            }
+          }
         }
+      }
+
+      #dayOfTimeTable {
+        height: 75%;
+        border: 2px solid rgba(238, 238, 238, .1);
+        border-radius: 2rem;
+
+        .table {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .lesson {
+            border-bottom: 1px solid rgba(238, 238, 238, .1);
+
+            .tableEl {
+              color: #eee;
+              float: left;
+            }
+
+            .subject {
+              color: #fff;
+            }
+
+            #subDetails {
+
+              .hours {
+                text-align: right;
+              }
+
+              .room {
+                text-align: center;
+              }
+            }
+
+          }
+
+          .trueElement {
+            border: none;
+          }
+        }
+      }
     }
-    ::-webkit-scrollbar {
-        width: 6px;
+  }
+}
+
+@media (max-width: 750px) {
+  article {
+    section {
+      #dayOfTimeTable {
+        padding: .5rem;
+        margin: 1.5rem 1rem;
+
+        .table {
+          padding: .5rem;
+
+          .lesson {
+            height: 4.5rem;
+            padding: .5rem 0;
+
+            .subject {
+              padding-left: 2rem;
+              width: 100%;
+              font-size: 1.4rem;
+            }
+
+            #subDetails {
+              width: 100%;
+              font-size: 1.1rem;
+              padding: .5rem 0 0 2rem;
+
+              .room {
+                padding-left: 2rem;
+              }
+            }
+          }
+        }
+      }
     }
-    ::-webkit-scrollbar-thumb {
-        background-color: #ccc
+  }
+}
+
+@media (min-width: 750px) {
+  article {
+    section {
+      #dayOfTimeTable {
+        padding: 2rem;
+        margin: 3rem 4rem;
+
+        .table {
+          padding: 2rem;
+
+          .lesson {
+            height: 3rem;
+            line-height: 3rem;
+            padding: 0;
+
+            br {
+              display: none;
+            }
+
+            .subject {
+              padding-left: 2rem;
+              width: 50%;
+              font-size: 1.6rem;
+            }
+
+            #subDetails {
+              width: 50%;
+              float: left;
+              font-size: 1.2rem;
+
+              .hours {
+                width: 60%;
+              }
+
+              .room {
+                width: 40%;
+              }
+            }
+          }
+        }
+      }
     }
+  }
+}
+
+@media (max-width: 350px) {
+  article {
+    section {
+      #dayOfTimeTable {
+        .table {
+          .lesson {
+            .subject {
+              padding-left: .5rem;
+              font-size: 1.2rem;
+            }
+
+            #subDetails {
+              padding: .5rem 0 0 .5rem;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1350px) {
+  article {
+    nav {
+      height: 10%;
+
+      p {
+        font-size: 1.5rem;
+        right: 10px;
+        bottom: 1rem;
+        transform: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  section {
+    #uOption {
+      .day {
+        font-size: .8rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 960px) {
+  section {
+    #uOption {
+      br {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  section {
+    #uOption {
+      height: 15rem;
+
+      #ops {
+        .day {
+          width: 80%;
+          margin: .3rem auto;
+        }
+
+        br {
+          display: none;
+        }
+
+        .icon-calendar {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 650px) {
+  section {
+    #uOption {
+      height: 5rem;
+
+      #ops {
+        display: flex;
+        justify-content: center;
+
+        .day {
+          margin: 0 .5rem;
+        }
+      }
+    }
+  }
 }

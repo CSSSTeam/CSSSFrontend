@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SupportService } from '../../../services/support.service';
 
 @Component({
   selector: 'app-infos-edit',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfosEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(private supportService: SupportService) { }
 
   ngOnInit(): void {
+  }
+
+  addInfo() {
+    this.supportService.popup("dodano wpis");
   }
 
 }

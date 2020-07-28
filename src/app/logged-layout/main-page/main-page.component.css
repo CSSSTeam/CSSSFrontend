@@ -1,61 +1,219 @@
-#schDays .day {
-  width: 300px;
-  min-height: 50px;
-  background-color: #000;
-  margin: 0px 0;
-  padding: 10px;
-  border-radius: 5px;
+article {
+  height: 100%;
 }
 
-#schDays .day:nth-child(even) {
+article nav {
+  height: 10%;
+  margin: 0 2rem;
+  width: calc(100% - 4rem);
+  border-bottom: 1px solid rgba(217, 108, 0, 0.5);
+  display: none;
+}
+
+article section {
+  height: 90%;
+  padding: 3rem;
+}
+
+article section #leftSide {
+  float: left;
+  width: 60%;
+  height: 100%;
+}
+
+article section #leftSide .box {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+article section #leftSide .box #timeTable {
+  width: 100%;
+  height: 70%;
+  padding: 0 2rem;
+}
+
+article section #leftSide .box #timeTable #uOption {
+  height: 15%;
+  position: relative;
+}
+
+article section #leftSide .box #timeTable #uOption #ops {
+  text-align: center;
+  font-size: 1.2rem;
+  position: absolute;
+  left: 3rem;
+  bottom: .3rem;
+}
+
+article section #leftSide .box #timeTable #uOption #ops .but {
+  display: inline-block;
+  margin: 0 .5rem;
+  padding: .5rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+article section #leftSide .box #timeTable #uOption #ops .inactive {
   background-color: #222;
+  opacity: .6;
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
 }
 
-#schDays .day h6 {
-  font-size: 1rem;
-  color: #bbb;
-  border-bottom: 1px dotted #bbb;
-  margin-bottom: 5px;
-  padding: 4px 0;
+article section #leftSide .box #timeTable #uOption #ops .inactive:hover {
+  opacity: 1;
 }
 
-#schDays .day div {
-  padding: 1.5% 2%;
-  margin: 3px;
-  border-radius: 10px;
-  font-size: 1rem;
-  letter-spacing: 1px;
+article section #leftSide .box #timeTable #uOption #ops .active {
+  background-color: #D96C00;
+  opacity: 1;
+}
+
+article section #leftSide .box #timeTable #dayOfTimeTable {
+  height: 85%;
+  margin: 1rem 3rem;
+  border: 2px solid rgba(238, 238, 238, 0.1);
+  border-radius: 2rem;
+}
+
+article section #leftSide .box #timeTable #dayOfTimeTable .table {
+  height: 100%;
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+article section #leftSide .box #timeTable #dayOfTimeTable .table .lesson {
+  height: 3rem;
+  line-height: 3rem;
+  border-bottom: 1px solid rgba(238, 238, 238, 0.1);
+}
+
+article section #leftSide .box #timeTable #dayOfTimeTable .table .lesson .tableEl {
   color: #eee;
-  background-color: #222;
+  float: left;
 }
 
-#schDays .day .null {
-  padding: 5px 8px;
-  margin: 8px;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  color: #eee;
+article section #leftSide .box #timeTable #dayOfTimeTable .table .lesson .subject {
+  width: 50%;
+  font-size: 1.4rem;
+  padding-left: 2rem;
+  color: #fff;
 }
 
-@media (min-width: 768px) {
-  #schDays {
-    max-height: 80vh;
-    overflow-y: scroll;
-    scrollbar-color: #ccc transparent;
-    scrollbar-width: thin;
-  }
-  #schDays .day {
-    width: 600px;
-    margin: 10px 0;
-  }
-  #schDays .subjects {
-    width: 48%;
-    display: inline-block;
-  }
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #ccc;
+article section #leftSide .box #timeTable #dayOfTimeTable .table .lesson .hours {
+  width: 30%;
+  font-size: 1.2rem;
+  text-align: right;
+}
+
+article section #leftSide .box #timeTable #dayOfTimeTable .table .lesson .room {
+  width: 20%;
+  font-size: .9rem;
+  text-align: center;
+}
+
+article section #leftSide .box #timeTable #dayOfTimeTable .table .lastLesson {
+  border: none;
+}
+
+article section #leftSide .box #timeTable #dayOfTimeTable .table .trueElement {
+  border: none;
+}
+
+article section #navigation {
+  border-left: 2px dotted rgba(100, 100, 100, 0.2);
+  float: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40%;
+  height: 100%;
+  padding-left: 3%;
+  -webkit-transform: translateY(7%);
+          transform: translateY(7%);
+}
+
+article section #navigation .subSite {
+  opacity: .5;
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
+}
+
+article section #navigation .subSite:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+article section #navigation .subSite .sqr {
+  border: 2px solid rgba(238, 238, 238, 0.3);
+  border-radius: 2rem;
+  margin: 1rem 0;
+  font-size: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+article section #navigation .subSite p {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 1350px) {
+  article nav {
+    display: block;
   }
 }
+
+@media (min-width: 950px) {
+  article section #navigation .sqr {
+    padding: 1rem 4rem;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 950px) {
+  article section {
+    height: auto;
+  }
+  article section #leftSide {
+    display: none;
+  }
+  article section #navigation {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    float: none;
+    border-left: none;
+    margin: 0 auto;
+    padding-left: none;
+  }
+  article section #navigation .sqr {
+    padding: 2vw 6vw;
+    font-size: 4vw;
+  }
+}
+/*# sourceMappingURL=main-page.component.css.map */

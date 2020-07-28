@@ -1,167 +1,192 @@
-#eventsMgmt {
-  width: 300px;
-}
-
-#eventsMgmt #eventsMgmtHead {
-  width: 100%;
-  height: 50px;
-  background-color: #0A0B0D;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 5px;
+main {
   position: relative;
+}
+
+main #statement {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
   text-align: center;
+  font-size: 3rem;
 }
 
-#eventsMgmt #eventsMgmtHead h6 {
-  font-size: 1.5rem;
-  color: #ddd;
+main article {
+  height: 100%;
 }
 
-#eventsMgmt #eventsMgmtContent {
-  background-color: #171717;
-  border-radius: 10px;
-  padding: 10px;
-  display: grid;
-  grid-gap: 8px;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(9, 1fr);
-  grid-template-areas: "box1" "box2" "box3" "box4" "box5" "box6" "box7" "box8" "box9";
+main article nav {
+  height: 3rem;
+  margin: 0 2rem;
+  width: calc(100% - 4rem);
+  border-bottom: 1px solid rgba(217, 108, 0, 0.5);
+  position: relative;
 }
 
-#eventsMgmt #eventsMgmtContent #name {
-  grid-area: box1;
+main article nav p {
+  position: absolute;
+  right: 50%;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  bottom: .5rem;
+  font-size: 1.1rem;
+  padding: .5rem 2rem;
+  border: 1px solid rgba(238, 238, 238, 0.6);
+  border-radius: 1rem;
+  opacity: .6;
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
 }
 
-#eventsMgmt #eventsMgmtContent #name input {
-  height: 3.5rem;
+main article nav p:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+main article section {
+  height: 90%;
+  padding: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main article section #eventsMgmtContent {
+  width: 70%;
+  height: 95%;
+  padding: 2rem;
+  overflow-y: scroll;
+}
+
+main input,
+main textarea,
+main select {
+  width: 100%;
+  color: #eee;
+  font-size: 1.2rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  border-bottom: 2px solid rgba(221, 221, 221, 0.2);
+  cursor: pointer;
+}
+
+main input::-webkit-input-placeholder,
+main textarea::-webkit-input-placeholder,
+main select::-webkit-input-placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+main input:-ms-input-placeholder,
+main textarea:-ms-input-placeholder,
+main select:-ms-input-placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+main input::-ms-input-placeholder,
+main textarea::-ms-input-placeholder,
+main select::-ms-input-placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+main input::placeholder,
+main textarea::placeholder,
+main select::placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+main #add {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(221, 221, 221, 0.2);
+  border-radius: 1rem;
+  text-align: center;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+}
+
+main #add:hover {
+  background-color: #000;
+}
+
+main #add:active {
+  color: #333;
+}
+
+main select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+main select option {
   background-color: #222;
 }
 
-#eventsMgmt #eventsMgmtContent #type {
-  grid-area: box2;
-}
-
-#eventsMgmt #eventsMgmtContent #type select {
-  height: 3.5rem;
-  background-color: #222;
-}
-
-#eventsMgmt #eventsMgmtContent #desc {
-  grid-area: box3;
-}
-
-#eventsMgmt #eventsMgmtContent #desc textarea {
-  height: 3.5rem;
-}
-
-#eventsMgmt #eventsMgmtContent #term {
-  grid-area: box4;
-}
-
-#eventsMgmt #eventsMgmtContent #term input {
-  height: 3.5rem;
-}
-
-#eventsMgmt #eventsMgmtContent #group {
-  grid-area: box5;
-}
-
-#eventsMgmt #eventsMgmtContent #group select {
-  height: 3.5rem;
-}
-
-#eventsMgmt #eventsMgmtContent #add {
-  grid-template: box6;
-  cursor: pointer;
-}
-
-#eventsMgmt #eventsMgmtContent #event {
-  grid-area: box7;
-}
-
-#eventsMgmt #eventsMgmtContent #event select {
-  height: 3.5rem;
-  color: crimson;
-  font-weight: bold;
-  text-align: center;
-}
-
-#eventsMgmt #eventsMgmtContent #del {
-  grid-template: box8;
-  cursor: pointer;
-  color: crimson;
-  font-weight: bold;
-}
-
-#eventsMgmt #eventsMgmtContent #back {
-  grid-template: box9;
-  cursor: pointer;
-}
-
-#eventsMgmt #eventsMgmtContent p {
-  width: 100%;
-  text-align: center;
-}
-
-#eventsMgmt #eventsMgmtContent input, #eventsMgmt #eventsMgmtContent textarea {
-  width: 100%;
-  height: 3.5rem;
-  padding: 8px 8px;
-  background-color: #333;
-  color: #eee;
-  border: 1px solid #555;
-  border-radius: 5px;
-  font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 1rem;
-  resize: none;
-}
-
-#eventsMgmt #eventsMgmtContent input:hover, #eventsMgmt #eventsMgmtContent textarea:hover {
-  background-color: #444;
-}
-
-#eventsMgmt #eventsMgmtContent select {
-  width: 100%;
-  padding: 5px;
-  background-color: #333;
-  color: #eee;
-  border: 1px solid #555;
-  border-radius: 5px;
-  font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 1rem;
-}
-
-#eventsMgmt #eventsMgmtContent select option {
-  padding: 0;
-  font-size: .8rem;
-}
-
-@media (min-width: 768px) {
-  #eventsMgmt {
-    width: 600px;
+@media (min-width: 1350px) {
+  main article nav {
+    height: 10%;
   }
-  #eventsMgmt #eventsMgmtHead {
+  main article nav p {
+    font-size: 1.5rem;
+    right: 10px;
+    bottom: 1rem;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  main article section {
+    padding: 1.5rem;
+  }
+  main article section #eventsMgmtContent {
+    width: 90%;
+    margin: .5rem 1rem;
+  }
+  main article input,
+  main article textarea,
+  main article select {
+    font-size: 1rem;
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 550px) {
+  main article section #eventsMgmtContent {
     width: 100%;
-    height: 50px;
+    padding: .8rem;
   }
-  #eventsMgmt #eventsMgmtContent {
-    width: 100%;
-    grid-gap: 8px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-areas: "box1 box2" "box3 box3" "box3 box3" "box4 box5" "box7 box6" "box8 box9";
-  }
-  #eventsMgmt #eventsMgmtContent #desc {
-    grid-area: box3;
-  }
-  #eventsMgmt #eventsMgmtContent #desc textarea {
-    height: 7.6rem;
-  }
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #ccc;
+  main article input,
+  main article textarea,
+  main article select {
+    font-size: .8rem;
+    padding: 1rem;
+    margin: .5rem 0;
   }
 }
+/*# sourceMappingURL=events-edit.component.css.map */

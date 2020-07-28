@@ -1,0 +1,339 @@
+article {
+  height: 100%;
+
+  nav {
+    height: 3rem;
+    margin: 0 2rem;
+    width: calc(100% - 4rem);
+    border-bottom: 1px solid rgba(217, 108, 0, .5);
+    position: relative;
+  }
+
+  #mainOpts {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: .5rem;
+
+    #checkAll,
+    #edit {
+      float: left;
+      margin: 0 .5rem;
+      padding: .5rem 2rem;
+      border: 1px solid rgba(238, 238, 238, .6);
+      border-radius: 1rem;
+      opacity: .6;
+      transition: opacity .2s ease;
+      font-size: 1.1rem;
+      text-align: center;
+
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+
+  }
+
+
+
+  section {
+    height: 90%;
+    padding: 3rem;
+
+    #students {
+      float: left;
+      width: 40%;
+      height: 100%;
+      padding: 2rem;
+      overflow-y: scroll;
+      border: 1px solid rgba(238, 238, 238, .1);
+      border-radius: 1rem;
+
+      #student {
+        padding: .8rem 1.2rem;
+        border-bottom: 1px solid rgba(238, 238, 238, .1);
+        font-size: 1.2rem;
+        transition: color .2s ease;
+        position: relative;
+
+        &:hover {
+          cursor: pointer;
+          color: #777;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        #frame {
+          border: 1px solid rgba(238, 238, 238, .2);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 2rem;
+          height: 2rem;
+          position: absolute;
+          top: 50%;
+          right: 1rem;
+          transform: translateY(-50%);
+
+          #checkArea {
+            width: 1rem;
+            height: 1rem;
+            background-color: orangered;
+          }
+        }
+      }
+    }
+
+    #payments {
+      float: left;
+      width: 57%;
+      margin-left: 3%;
+      height: 100%;
+      border: 1px solid rgba(238, 238, 238, .1);
+      border-radius: 0 1rem 1rem 0;
+      padding: 2rem;
+
+      #lists {
+        padding: 1rem;
+        float: left;
+        width: 46%;
+        height: 100%;
+        margin-right: 4%;
+        overflow-y: scroll;
+
+        h1 {
+          font-size: 1.5rem;
+          padding-bottom: 1rem;
+          margin-bottom: 1.5rem;
+          border-bottom: 1px solid rgba(238, 238, 238, .3);
+        }
+
+        #list {
+          margin: .5rem 0;
+          background-color: #d96d00;
+          border-radius: .5rem;
+          font-size: 1rem;
+          padding: .5rem;
+          position: relative;
+          transition: background-color .2s ease;
+
+          &:hover {
+            background-color: #a05001;
+            cursor: pointer;
+          }
+
+          .icon-trash {
+            position: absolute;
+            right: .5rem;
+            bottom: 50%;
+            transform: translateY(50%);
+
+            &:hover {
+              color: crimson;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      #listBuilder {
+        padding: 1rem;
+        float: left;
+        width: 50%;
+        height: 100%;
+        overflow-y: scroll;
+
+        h1 {
+          font-size: 1.5rem;
+          padding-bottom: 1rem;
+          margin-bottom: 1rem;
+          border-bottom: 1px solid rgba(238, 238, 238, .3);
+        }
+
+        input,
+        textarea,
+        button {
+          width: 100%;
+          color: #eee;
+          font-size: 1rem;
+          font-family: 'Montserrat Alternates', sans-serif;
+          padding: 1.2rem;
+          margin: .5rem 0;
+          text-align: left;
+          background-color: rgba(0, 0, 0, .2);
+          border: none;
+          border-bottom: 2px solid rgba(221, 221, 221, .2);
+          outline: none;
+          cursor: pointer;
+
+          &::-webkit-input-placeholder {
+            color: #eee;
+            opacity: 1;
+          }
+
+          &::-moz-placeholder {
+            color: #eee;
+            opacity: 1;
+          }
+
+          &:-ms-input-placeholder {
+            color: #eee;
+            opacity: 1;
+          }
+
+          &::-ms-input-placeholder {
+            color: #eee;
+            opacity: 1;
+          }
+
+          &::placeholder {
+            color: #eee;
+            opacity: 1;
+          }
+        }
+
+        #add {
+          background-color: rgba(0, 0, 0, .5);
+          border: 2px solid rgba(221, 221, 221, .2);
+          border-radius: 1rem;
+          transition: background-color .2s;
+
+          &:hover {
+            background-color: #000;
+          }
+
+          &:active {
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1350px) {
+  article {
+    nav {
+      height: 10%;
+
+      #mainOpts {
+        left: 1rem;
+        bottom: 1rem;
+        transform: none;
+      }
+
+    }
+  }
+
+}
+
+@media (max-width: 880px) {
+  article {
+    nav {
+      height: 6rem;
+
+      #mainOpts {
+
+        #checkAll,
+        #edit {
+          float: none;
+          margin: .3rem 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  article {
+    nav {
+      height: 7rem;
+    }
+  }
+}
+
+@media (max-width: 1550px) {
+  article {
+    section {
+      #students {
+        #student {
+          font-size: 1rem;
+        }
+      }
+
+      #payments {
+        #lists {
+          #list {
+            font-size: .8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1150px) {
+  article {
+    section {
+      #students {
+        float: none;
+        width: 100%;
+      }
+
+      #payments {
+        float: none;
+        width: 100%;
+        border: none;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  article {
+    section {
+
+      #payments {
+
+        #lists,
+        #listBuilder {
+          float: none;
+          width: 80%;
+          margin: 1rem auto;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  article {
+    section {
+      padding: 1rem;
+
+      #students {
+        padding: 1rem;
+        border: none;
+
+        #student {
+          font-size: .8rem;
+          padding: .8rem 0;
+        }
+      }
+
+      #payments {
+        padding: 0;
+
+        #lists,
+        #listBuilder {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

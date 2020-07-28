@@ -1,266 +1,298 @@
-#mainArea {
-  width: 300px;
+article {
+  height: 100%;
 }
 
-#mainArea #fileMgmt #fileMgmtHead {
-  width: 100%;
-  height: 50px;
-  background-color: #0A0B0D;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 5px;
+article nav {
+  height: 3rem;
+  margin: 0 2rem;
+  width: calc(100% - 4rem);
+  border-bottom: 1px solid rgba(217, 108, 0, 0.5);
   position: relative;
-  transition: all .2s ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+article nav p {
+  position: absolute;
+  right: 50%;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  bottom: .5rem;
+  font-size: 1.1rem;
+  padding: .5rem 2rem;
+  border: 1px solid rgba(238, 238, 238, 0.6);
+  border-radius: 1rem;
+  opacity: .6;
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
+}
+
+article nav p:hover {
+  opacity: 1;
   cursor: pointer;
 }
 
-#mainArea #fileMgmt #fileMgmtHead:hover {
+article section {
+  height: 90%;
+  padding: 3rem 4rem;
+}
+
+article section #typesList {
+  height: 100%;
+  float: left;
+  width: 35%;
+  margin-right: 3%;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(238, 238, 238, 0.1);
+  overflow-y: scroll;
+}
+
+article section #typesList .mobileTypeFiles {
+  height: 100%;
+  padding: 2rem;
+  overflow-y: scroll;
+}
+
+article section #typesList .mobileTypeFiles #listItem {
+  width: 100%;
+  height: 3rem;
+  line-height: .8rem;
+  padding: 1.2rem;
+  margin: .5rem 0;
+  background-color: rgba(35, 35, 35, 0.3);
+  border-radius: 10px;
+  font-size: 1.2rem;
+  position: relative;
+}
+
+article section #typesList .mobileTypeFiles #listItem:hover {
   cursor: pointer;
-  padding-left: 20px;
+  background-color: rgba(35, 35, 35, 0.6);
 }
 
-#mainArea #fileMgmt #fileMgmtHead:hover h6 {
-  color: #fff;
+article section #typesList .mobileTypeFiles #listItem p {
+  font-size: 1rem;
+  color: #d96c22;
 }
 
-#mainArea #fileMgmt #fileMgmtHead h6 {
+article section #typesList .mobileTypeFiles #listItem #fileOptions {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 1rem;
+}
+
+article section #typesList .mobileTypeFiles #listItem #fileOptions i {
   font-size: 1.5rem;
-  color: #ddd;
+  padding: 0 .2rem;
 }
 
-#mainArea #fileMgmt #fileMgmtHead h6 .open {
-  position: absolute;
-  right: 10px;
-}
-
-#mainArea #fileMgmt #fileMgmtContent {
-  background-color: #171717;
-  border-radius: 10px;
-  padding: 10px;
-  display: grid;
-  grid-gap: 8px;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(7, 1fr);
-  grid-template-areas: "box1" "box2" "box3" "box4" "box5" "box6" "box7";
-}
-
-#mainArea #fileMgmt #fileMgmtContent #fileName {
-  grid-area: box1;
-}
-
-#mainArea #fileMgmt #fileMgmtContent #fileName input {
-  height: 3.5rem;
-  background-color: #222;
-}
-
-#mainArea #fileMgmt #fileMgmtContent #desc {
-  grid-area: box2;
-}
-
-#mainArea #fileMgmt #fileMgmtContent #desc textarea {
-  height: 3.5rem;
-}
-
-#mainArea #fileMgmt #fileMgmtContent #type {
-  grid-area: box3;
-}
-
-#mainArea #fileMgmt #fileMgmtContent #type select {
-  height: 3.5rem;
-}
-
-#mainArea #fileMgmt #fileMgmtContent #file {
-  grid-area: box4;
-  font-size: .8rem;
-}
-
-#mainArea #fileMgmt #fileMgmtContent #addFile {
-  grid-template: box5;
+article section #typesList .mobileTypeFiles #listItem #fileOptions i:hover {
   cursor: pointer;
+  color: #d96c22;
 }
 
-#mainArea #fileMgmt #fileMgmtContent #typeName {
-  grid-area: box6;
+article section #typesList .mobileTypeFiles #listItem #fileOptions .icon-trash:hover {
+  color: #a10c0c;
 }
 
-#mainArea #fileMgmt #fileMgmtContent #typeName input {
-  height: 3.5rem;
-  background-color: #222;
-}
-
-#mainArea #fileMgmt #fileMgmtContent #addType {
-  grid-template: box7;
-  cursor: pointer;
-}
-
-#mainArea #fileMgmt #fileMgmtContent p {
+article section #typesList #searchBox {
   width: 100%;
-  text-align: center;
-}
-
-#mainArea #fileMgmt #fileMgmtContent input,
-#mainArea #fileMgmt #fileMgmtContent textarea {
-  width: 100%;
-  padding: 8px 8px;
-  background-color: #333;
-  color: #eee;
-  border: 1px solid #555;
-  border-radius: 5px;
+  font-size: 1.1rem;
   font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 1rem;
-  resize: none;
+  padding: .5rem 2rem;
+  margin-bottom: .5rem;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(238, 238, 238, 0.3);
+  color: rgba(238, 238, 238, 0.3);
+  border-radius: 1rem;
 }
 
-#mainArea #fileMgmt #fileMgmtContent input:hover,
-#mainArea #fileMgmt #fileMgmtContent textarea:hover {
-  background-color: #444;
+article section #typesList #searchBox:focus {
+  color: rgba(238, 238, 238, 0.7);
+  border: 1px solid rgba(238, 238, 238, 0.8);
 }
 
-#mainArea #fileMgmt #fileMgmtContent select {
-  width: 100%;
-  padding: 5px;
-  background-color: #333;
-  color: #eee;
-  border: 1px solid #555;
+article section #typesList #typeElHead {
+  background-color: rgba(1, 1, 1, 0.2);
   border-radius: 5px;
-  font-family: 'Montserrat Alternates', sans-serif;
+  padding: 1rem 2rem 1rem 0;
+  margin: .5rem 0;
+  text-align: right;
+  -webkit-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+}
+
+article section #typesList #typeElHead:hover {
+  cursor: pointer;
+  background-color: rgba(1, 1, 1, 0.6);
+}
+
+article section #typesList #allFiles {
+  background-color: rgba(1, 1, 1, 0.2);
+  border-radius: 5px;
   font-size: 1rem;
+  padding: .5rem 2rem .5rem 0;
+  margin: .5rem 0;
+  text-align: right;
+  -webkit-transition: color .2s ease;
+  transition: color .2s ease;
 }
 
-#mainArea #fileMgmt #fileMgmtContent select option {
-  padding: 0;
-  font-size: .8rem;
-}
-
-#mainArea #filesList #header {
-  width: 100%;
-  background-color: #0A0B0D;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 3px;
-  position: relative;
-}
-
-#mainArea #filesList #header h6 {
-  font-size: 1.3rem;
-  color: #ddd;
-}
-
-#mainArea #filesList #header h6 .icon-search {
-  position: absolute;
-  right: 10px;
+article section #typesList #allFiles:hover {
   cursor: pointer;
+  color: #444;
 }
 
-#mainArea #filesList #header h6 .icon-search:hover {
-  color: #fff;
+article section #typeFiles {
+  height: 100%;
+  width: 62%;
+  float: left;
+  padding: 2rem;
+  border: 1px solid rgba(238, 238, 238, 0.1);
+  overflow-y: scroll;
 }
 
-#mainArea #filesList #searchBox {
+article section #typeFiles #listItem {
   width: 100%;
-  height: 30px;
-  color: #fff;
-  font-size: .9rem;
-  letter-spacing: 2px;
-  border: none;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  padding: 20px;
-  background-color: rgba(183, 74, 0, 0.8);
-}
-
-#mainArea #filesList #typeEl {
-  cursor: pointer;
-  position: relative;
-}
-
-#mainArea #filesList #typeEl p {
-  font-size: 2rem;
-}
-
-#mainArea #filesList #typeEl #delType {
-  position: absolute;
-  right: 15px;
-}
-
-#mainArea #filesList #typeEl #list {
-  margin-top: 15px;
-}
-
-#mainArea #filesList #typeEl #list #listItem {
-  width: 100%;
-  min-height: 40px;
-  line-height: 80%;
-  padding: 10px 12px;
-  margin: 4px 0;
-  background-color: #232323;
+  height: 3rem;
+  line-height: .8rem;
+  padding: 1.2rem;
+  margin: .5rem 0;
+  background-color: rgba(35, 35, 35, 0.3);
   border-radius: 10px;
   font-size: 1.2rem;
+  position: relative;
 }
 
-#mainArea #filesList #typeEl #list #listItem p {
+article section #typeFiles #listItem:hover {
+  cursor: pointer;
+  background-color: rgba(35, 35, 35, 0.6);
+}
+
+article section #typeFiles #listItem p {
   font-size: 1rem;
   color: #d96c22;
 }
 
-#mainArea #filesList #typeEl #list #listItem i {
-  display: inline-block;
+article section #typeFiles #listItem #fileOptions {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 1rem;
+}
+
+article section #typeFiles #listItem #fileOptions i {
+  font-size: 1.5rem;
+  padding: 0 .2rem;
+}
+
+article section #typeFiles #listItem #fileOptions i:hover {
   cursor: pointer;
-}
-
-#mainArea #filesList #typeEl #list #listItem i:hover {
-  color: #fff;
-}
-
-#mainArea #filesList #typeEl {
-  width: 100%;
-  min-height: 40px;
-  line-height: 80%;
-  padding: 10px 12px;
-  margin: 4px 0;
-  background-color: #171717;
-  border-radius: 10px;
-  font-size: 1.2rem;
-}
-
-#mainArea #filesList #typeEl p {
   color: #d96c22;
 }
 
-#mainArea #filesList #typeEl i {
-  display: inline-block;
-  cursor: pointer;
+article section #typeFiles #listItem #fileOptions .icon-trash:hover {
+  color: #a10c0c;
 }
 
-#mainArea #filesList #typeEl i:hover {
-  color: #fff;
+@media (max-width: 1020px) {
+  article section {
+    padding: 1.5rem 1rem;
+  }
+  article section #typesList {
+    width: 100%;
+    float: none;
+    border: none;
+  }
+  article section #typeFiles {
+    width: 100%;
+    float: none;
+    border: none;
+  }
 }
 
-@media (min-width: 768px) {
-  #mainArea {
-    max-height: 80vh;
-    width: 600px;
-    overflow-y: scroll;
-    scrollbar-color: #ccc transparent;
-    scrollbar-width: thin;
+@media (max-width: 500px) {
+  article section #typesList .mobileTypeFiles {
+    padding: .5rem;
   }
-  #mainArea #fileMgmt #fileMgmtHead {
-    width: 100%;
+  article section #typesList .mobileTypeFiles #listItem {
+    padding: .5rem;
+    height: 5rem;
+    line-height: 2rem;
   }
-  #mainArea #fileMgmt #fileMgmtContent {
-    width: 100%;
-    grid-gap: 8px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-areas: "box1 box3" "box2 box2" "box2 box2" "box2 box2" "box4 box5" "box6 box7";
+  article section #typesList .mobileTypeFiles #listItem #fileOptions {
+    position: static;
+    display: block;
+    -webkit-transform: none;
+            transform: none;
   }
-  #mainArea #fileMgmt #fileMgmtContent #desc textarea {
-    height: 11.4rem;
+  article section #typesList .mobileTypeFiles #listItem #fileOptions i {
+    font-size: 1.2rem;
   }
-  ::-webkit-scrollbar {
-    width: 6px;
+  article section #typesList #allFiles {
+    height: 2.3rem;
+    line-height: 110%;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: .8rem 0;
   }
-  ::-webkit-scrollbar-thumb {
-    background-color: #ccc;
+  article section #typesList #typeElHead {
+    height: 2.5rem;
+    line-height: 40%;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  article section #typeFiles #listItem {
+    padding: .5rem 1rem;
+    height: 5rem;
+    line-height: 2rem;
+  }
+  article section #typeFiles #listItem #fileOptions {
+    position: static;
+    display: block;
+    -webkit-transform: none;
+            transform: none;
+  }
+  article section #typeFiles #listItem #fileOptions i {
+    font-size: 1.2rem;
   }
 }
+
+@media (max-width: 360px) {
+  article section #typesList #allFiles {
+    font-size: .8rem;
+  }
+  article section #typesList #typeElHead {
+    font-size: 1rem;
+  }
+  article section #typeFiles #listItem #fileOptions i {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1350px) {
+  article nav {
+    height: 10%;
+  }
+  article nav #searchBox {
+    font-size: 1.4rem;
+    bottom: 1rem;
+    left: 10px;
+  }
+  article nav p {
+    font-size: 1.5rem;
+    right: 10px;
+    bottom: 1rem;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+/*# sourceMappingURL=files.component.css.map */
