@@ -1,0 +1,199 @@
+article {
+  height: 100%;
+}
+
+article nav {
+  display: none;
+  height: 10%;
+  margin: 0 2rem;
+  width: calc(100% - 4rem);
+  border-bottom: 1px solid rgba(217, 108, 0, 0.5);
+}
+
+article section {
+  height: 90%;
+  padding: 3rem;
+}
+
+article section #users {
+  float: left;
+  width: 50%;
+  height: 100%;
+  padding: 2rem;
+  overflow-y: scroll;
+  border: 1px solid rgba(238, 238, 238, 0.1);
+  border-radius: 1rem;
+}
+
+article section #users #user {
+  padding: .8rem 1.2rem;
+  border-bottom: 1px solid rgba(238, 238, 238, 0.1);
+  font-size: 1.2rem;
+  -webkit-transition: color .2s ease;
+  transition: color .2s ease;
+  position: relative;
+}
+
+article section #users #user span:hover {
+  cursor: pointer;
+  color: #777;
+}
+
+article section #users #user:last-child {
+  border-bottom: none;
+}
+
+article section #users #user .icon-trash {
+  position: absolute;
+  top: 50%;
+  right: .5rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+article section #users #user .icon-trash:hover {
+  color: crimson;
+  cursor: pointer;
+}
+
+article section #usersMgmt {
+  float: left;
+  width: 47%;
+  margin-left: 3%;
+  margin-bottom: 3rem;
+  height: 100%;
+  border: 1px solid rgba(238, 238, 238, 0.1);
+  border-radius: 0 1rem 1rem 0;
+  padding: 2rem;
+  overflow-y: scroll;
+}
+
+article section #usersMgmt h1 {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(238, 238, 238, 0.3);
+}
+
+article section #usersMgmt input,
+article section #usersMgmt textarea,
+article section #usersMgmt button,
+article section #usersMgmt select {
+  width: 100%;
+  color: #eee;
+  font-size: 1rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  padding: 1.5rem;
+  margin: .5rem 0;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  border-bottom: 2px solid rgba(221, 221, 221, 0.2);
+  outline: none;
+  cursor: pointer;
+}
+
+article section #usersMgmt input::-webkit-input-placeholder,
+article section #usersMgmt textarea::-webkit-input-placeholder,
+article section #usersMgmt button::-webkit-input-placeholder,
+article section #usersMgmt select::-webkit-input-placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+article section #usersMgmt input:-ms-input-placeholder,
+article section #usersMgmt textarea:-ms-input-placeholder,
+article section #usersMgmt button:-ms-input-placeholder,
+article section #usersMgmt select:-ms-input-placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+article section #usersMgmt input::-ms-input-placeholder,
+article section #usersMgmt textarea::-ms-input-placeholder,
+article section #usersMgmt button::-ms-input-placeholder,
+article section #usersMgmt select::-ms-input-placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+article section #usersMgmt input::placeholder,
+article section #usersMgmt textarea::placeholder,
+article section #usersMgmt button::placeholder,
+article section #usersMgmt select::placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+article section #usersMgmt #add {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(221, 221, 221, 0.2);
+  border-radius: 1rem;
+  text-align: center;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+}
+
+article section #usersMgmt #add:hover {
+  background-color: #000;
+}
+
+article section #usersMgmt #add:active {
+  color: #333;
+}
+
+article section #usersMgmt select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+article section #usersMgmt select option {
+  background-color: #222;
+}
+
+article section #usersMgmt textarea {
+  text-align: left;
+}
+
+@media (min-width: 1350px) {
+  article nav {
+    display: block;
+  }
+}
+
+@media (max-width: 1015px) {
+  article section #usersMgmt {
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+  article section #usersMgmt,
+  article section #users {
+    float: none;
+    margin: 1rem auto;
+    width: 80%;
+  }
+}
+
+@media (max-width: 700px) {
+  article section {
+    padding: 1rem;
+  }
+  article section #usersMgmt,
+  article section #users {
+    width: 100%;
+    border: none;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 460px) {
+  article section #users #user {
+    font-size: .8rem;
+    padding: .8rem 0;
+  }
+  article section #users #user .icon-trash {
+    font-size: 1rem;
+  }
+}
+/*# sourceMappingURL=users.component.css.map */

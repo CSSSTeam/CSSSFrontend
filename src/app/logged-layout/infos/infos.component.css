@@ -1,106 +1,145 @@
-#infosList .infoEl {
-  width: 300px;
-  min-height: 50px;
-  background-color: #000;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
+article {
+  height: 100%;
 }
 
-#infosList .infoEl:nth-child(even) {
-  background-color: #222;
-}
-
-#infosList .infoEl h6 {
-  font-size: 1rem;
-  color: #bbb;
-  border-bottom: 1px dotted #bbb;
-  margin-bottom: 5px;
-  padding: 4px 0;
+article nav {
+  height: 3rem;
+  margin: 0 2rem;
+  width: calc(100% - 4rem);
+  border-bottom: 1px solid rgba(217, 108, 0, 0.5);
   position: relative;
 }
 
-#infosList .infoEl h6 i {
-  margin-right: 7px;
-}
-
-#infosList .infoEl h6 span {
+article nav p {
   position: absolute;
-  top: -5px;
-  right: 5px;
-  font-size: .8rem;
-  color: #444;
+  right: 50%;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  bottom: .5rem;
+  font-size: 1.1rem;
+  padding: .5rem 2rem;
+  border: 1px solid rgba(238, 238, 238, 0.6);
+  border-radius: 1rem;
+  opacity: .6;
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
 }
 
-#infosList .infoEl div {
-  padding: 1% 2%;
-  margin: 3px;
-  border-radius: 10px;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  color: #eee;
-  text-align: center;
-}
-
-#infosList .infoEl div p {
-  font-size: .9rem;
-  text-align: left;
-  text-indent: 10px;
-  padding: 7px;
-}
-
-#infosList .infoEl span {
-  display: block;
-  margin: 15px auto 10px auto;
-  max-width: 170px;
-  max-height: 80px;
-}
-
-#infosList #infosMGMT {
-  width: 300px;
-  height: 40px;
-  line-height: 20px;
-  background-color: #b74a00;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
-  position: relative;
+article nav p:hover {
+  opacity: 1;
   cursor: pointer;
 }
 
-#infosList #infosMGMT h6 {
-  font-size: 1rem;
-  font-weight: 400;
-  color: #bbb;
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 1px;
+article section {
+  height: 90%;
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-@media (min-width: 768px) {
-  #infosList {
-    max-height: 80vh;
-    overflow-y: scroll;
-    scrollbar-color: #ccc transparent;
-    scrollbar-width: thin;
+article section #infosList {
+  float: left;
+  width: 80%;
+  height: 100%;
+  padding: 0 2rem;
+  overflow-y: scroll;
+}
+
+article section #infosList #infoEl {
+  margin: 1rem 0;
+}
+
+article section #infosList #infoEl div {
+  padding: 0 2rem;
+}
+
+article section #infosList #infoEl h6 {
+  margin: .5rem 1rem 1.5rem;
+  padding: 1.5rem 0;
+  font-size: 1.3rem;
+  border-bottom: 1px solid rgba(255, 166, 0, 0.2);
+  position: relative;
+}
+
+article section #infosList #infoEl h6 i {
+  color: rgba(238, 238, 238, 0.6);
+}
+
+article section #infosList #infoEl h6 span {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  font-size: .8rem;
+  color: rgba(238, 238, 238, 0.6);
+}
+
+article section #infosList #infoEl #img img {
+  float: left;
+  margin: 0 1rem 1rem 1rem;
+}
+
+article section #infosList #infoEl p {
+  font-size: 1.1rem;
+  text-align: justify;
+  text-indent: 4rem;
+  margin: 1rem 2rem;
+}
+
+article section #rSide {
+  float: left;
+  width: 0;
+}
+
+@media (max-width: 700px) {
+  article section {
+    padding: 0;
   }
-  #infosList .infoEl {
-    width: 600px;
+  article section #infosList {
+    padding: 0;
   }
-  #infosList .infoEl div p {
-    text-indent: 25px;
+  article section #infosList #infoEl div {
+    padding: 0;
   }
-  #infosList .infoEl span {
-    max-width: 240px;
-    max-height: 100px;
-  }
-  #infosList #infosMGMT {
-    width: 600px;
-  }
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #ccc;
+  article section #infosList #infoEl p {
+    font-size: .8rem;
   }
 }
+
+@media (max-width: 950px) {
+  article section #infosList #infoEl p {
+    margin: 0;
+  }
+  article section #infosList #infoEl #img {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  article section #infosList #infoEl #img img {
+    float: none;
+  }
+}
+
+@media (min-width: 1350px) {
+  article nav {
+    height: 10%;
+  }
+  article nav p {
+    font-size: 1.5rem;
+    right: 10px;
+    bottom: 1rem;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+/*# sourceMappingURL=infos.component.css.map */

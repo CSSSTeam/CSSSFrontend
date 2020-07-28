@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SupportService } from '../../services/support.service';
 
 @Component({
   selector: 'app-chg-password',
@@ -7,12 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ChgPasswordComponent implements OnInit {
 
-  constructor(){
+  constructor(private supportService: SupportService) {
 
-  }   
+  }
 
-  ngOnInit(){
+  ngOnInit() {
 
+  }
+
+  changePassword() {
+    this.supportService.popup("zmieniono hasło");
   }
 
 }

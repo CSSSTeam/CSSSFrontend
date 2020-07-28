@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import * as data from '../../config.json';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Injectable()
@@ -85,7 +85,7 @@ export class User {
 
   }
 
-//todo(n2one): create function hasPermission
+  //todo(n2one): create function hasPermission
 
   initData(data, token) {
     this.firstName = data.firstName;

@@ -1,99 +1,160 @@
-#infosList {
-    .infoEl {
-        width: 300px;
-        min-height: 50px;
-        background-color: #000;
-        margin: 10px 0;
-        padding: 10px;
-        border-radius: 5px;
-        &:nth-child(even) {
-            background-color: #222;
-        }
-        h6 {
-            font-size: 1rem;
-            color: #bbb;
-            border-bottom: 1px dotted #bbb;
-            margin-bottom: 5px;
-            padding: 4px 0;
-            position: relative;
-            i {
-                margin-right: 7px;
-            }
-            span {
-                position: absolute;
-                top: -5px; right: 5px;
-                font-size: .8rem;
-                color: #444;
-            }
-        }
-        div {
-            padding: 1% 2%;
-            margin: 3px;
-            border-radius: 10px;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            color: #eee;
-            text-align: center;
-            p {
-                font-size: .9rem;
-                text-align: left;
-                text-indent: 10px;
-                padding: 7px;
-            }
-        }
-        span /*img*/ {
-            display: block;
-            margin: 15px auto 10px auto;
-            max-width: 170px;
-            max-height: 80px;
-        }
-    }
-    #infosMGMT {
-        width: 300px;
-        height: 40px;
-        line-height: 20px;
-        background-color: #b74a00;
-        margin: 10px 0;
-        padding: 10px;
-        border-radius: 5px;
-        position: relative;
+article {
+  height: 100%;
+
+  nav {
+    height: 3rem;
+    margin: 0 2rem;
+    width: calc(100% - 4rem);
+    border-bottom: 1px solid rgba(217, 108, 0, .5);
+    position: relative;
+
+    p {
+      position: absolute;
+      right: 50%;
+      transform: translateX(50%);
+      bottom: .5rem;
+      font-size: 1.1rem;
+      padding: .5rem 2rem;
+      border: 1px solid rgba(238, 238, 238, .6);
+      border-radius: 1rem;
+      opacity: .6;
+      transition: opacity .2s ease;
+
+      &:hover {
+        opacity: 1;
         cursor: pointer;
-        h6 {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #bbb;
-            text-transform: uppercase;
-            text-align: center;
-            letter-spacing: 1px;
-        }
+      }
     }
-}
-@media (min-width: 768px) {
+
+  }
+
+  section {
+    height: 90%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     #infosList {
-        max-height: 80vh;
-        overflow-y: scroll;
-        scrollbar-color: #ccc rgba(0,0,0,0);
-        scrollbar-width: thin;
-        .infoEl {
-            width: 600px;
-            div {
-                p {
-                    text-indent: 25px;
-                }
-            }
-            span {
-                max-width: 240px;
-                max-height: 100px;
-            }
+      float: left;
+      width: 80%;
+      height: 100%;
+      padding: 0 2rem;
+      overflow-y: scroll;
+
+      #infoEl {
+        margin: 1rem 0;
+
+        div {
+          padding: 0 2rem;
         }
-        #infosMGMT {
-            width: 600px;
+
+        h6 {
+          margin: .5rem 1rem 1.5rem;
+          padding: 1.5rem 0;
+          font-size: 1.3rem;
+          border-bottom: 1px solid rgba(255, 166, 0, .2);
+          position: relative;
+
+          i {
+            color: rgba(238, 238, 238, .6);
+          }
+
+          span {
+            position: absolute;
+            right: 10px;
+            bottom: 8px;
+            font-size: .8rem;
+            color: rgba(238, 238, 238, .6);
+          }
         }
+
+        #img {
+
+          img {
+            float: left;
+            margin: 0 1rem 1rem 1rem;
+          }
+        }
+
+        p {
+          font-size: 1.1rem;
+          text-align: justify;
+          text-indent: 4rem;
+          margin: 1rem 2rem;
+        }
+
+
+      }
+
     }
-    ::-webkit-scrollbar {
-        width: 6px;
+
+    #rSide {
+      float: left;
+      width: 0;
     }
-    ::-webkit-scrollbar-thumb {
-        background-color: #ccc;
+  }
+}
+
+@media (max-width: 700px) {
+  article {
+    section {
+      padding: 0;
+
+      #infosList {
+        padding: 0;
+
+        #infoEl {
+
+          div {
+            padding: 0;
+          }
+
+          p {
+            font-size: .8rem;
+          }
+
+        }
+      }
     }
+  }
+}
+
+@media (max-width: 950px) {
+  article {
+    section {
+      #infosList {
+        #infoEl {
+          p {
+            margin: 0;
+          }
+
+          #img {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            img {
+              float: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1350px) {
+  article {
+    nav {
+      height: 10%;
+
+      p {
+        font-size: 1.5rem;
+        right: 10px;
+        bottom: 1rem;
+        transform: none;
+      }
+    }
+  }
 }

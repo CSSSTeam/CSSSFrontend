@@ -1,3 +1,73 @@
+<main>
+  <article>
+    <nav></nav>
+    <section>
+      <div id="leftSide">
+        <div class="box">
+          <div id="timeTable">
+            <div id="uOption">
+              <div id="ops">
+                <div (click)="whichDay = this.dateService.getDayProps('name'); isActive = false"
+                  [ngClass]="isActive ? 'but inactive' : 'but active'">
+                  dzisiaj
+                </div>
+                <div (click)="whichDay = this.dateService.getDayProps('name'); isActive = true"
+                  [ngClass]="isActive ? 'but active' : 'but inactive'">
+                  jutro
+                </div>
+              </div>
+            </div>
+            <div id="dayOfTimeTable">
+              <div class="table">
+                <div *ngFor="let lesson of timetable()[whichDay], index as index, last as lastIndex">
+                  <div class="lesson" [ngClass]="lastIndex ? 'lastLesson' : return"
+                    *ngIf="timetable()[whichDay][index].length != 0">
+                    <div class="tableEl subject">
+                      {{ displayText(lesson[0], 'subject') }}
+                    </div>
+                    <div class="tableEl hours">
+                      {{ displayTime(timetable()['period'][index]['start']) }} -
+                      {{ displayTime(timetable()['period'][index]['end']) }}
+                    </div>
+                    <div class="tableEl room">
+                      {{ displayText(lesson[0], 'classroom') }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="navigation">
+        <div>
+          <div class="subSite" routerLink="/events">
+            <div class="sqr"><i class="icon-th-list"></i>
+              <p>Wydarzenia</p>
+            </div>
+          </div>
+          <div class="subSite" routerLink="/lessons">
+            <div class="sqr"><i class="icon-table"></i>
+              <p>Plan lekcji</p>
+            </div>
+          </div>
+          <div class="subSite" routerLink="/files">
+            <div class="sqr"><i class="icon-folder-open"></i>
+              <p>Pliki</p>
+            </div>
+          </div>
+          <div class="subSite" routerLink="/infos">
+            <div class="sqr"><i class="icon-attention"></i>
+              <p>Informacje</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+<div style="clear:both"></div>
+
 <!-- <p>{{user.firstName}}</p>
 <p>{{user.lastName}}</p>
 <p>{{user.username}}</p>
@@ -6,33 +76,3 @@
 <div *ngFor="let group of user.groups">
   <p>{{group}}</p>
 </div>-->
-<main>
-    <div id="schDays">
-        <div id="day1" class="day">
-            <h6><i class="icon-calendar"></i>Poniedziałek</h6>
-            <div class="subjects" *ngFor="let subjects of monSubjects">
-                {{ subjects.subject }}
-            </div>
-        </div>
-        <div id="day2" class="day">
-            <h6><i class="icon-calendar"></i>Wtorek</h6>
-            <!--<div class="subjects" *ngFor="let subjects of tueSubjects">
-                {{ subjects.subject }}
-            </div>-->
-            <span class="null">Brak</span>
-        </div>
-        <div id="day3" class="day">
-            <h6><i class="icon-calendar"></i>Środa</h6>
-            <span class="null">Brak</span>
-        </div>
-        <div id="day4" class="day">
-            <h6><i class="icon-calendar"></i>Czwartek</h6>
-            <span class="null">Brak</span>
-        </div>
-        <div id="day5" class="day">
-            <h6><i class="icon-calendar"></i>Piątek</h6>
-            <span class="null">Brak</span>
-        </div>
-    </div>
-</main>
-<div style="clear:both"></div>

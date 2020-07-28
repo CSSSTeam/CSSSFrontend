@@ -1,85 +1,123 @@
-#schDays .day {
-  width: 300px;
-  min-height: 50px;
-  background-color: #000;
-  margin: 0px 0;
-  padding: 10px;
-  border-radius: 5px;
+article {
+  height: 100%;
 }
 
-#schDays .day:nth-child(even) {
-  background-color: #222;
-}
-
-#schDays .day h6 {
-  font-size: 1rem;
-  color: #bbb;
-  border-bottom: 1px dotted #bbb;
-  margin-bottom: 5px;
-  padding: 4px 0;
-}
-
-#schDays .day div {
-  padding: 1.5% 2%;
-  margin: 3px;
-  border-radius: 10px;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  color: #eee;
-  background-color: #222;
-}
-
-#schDays .day .null {
-  padding: 5px 8px;
-  margin: 8px;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  color: #eee;
-}
-
-#schDays #timeTableMGMT {
-  width: 300px;
-  height: 40px;
-  line-height: 20px;
-  background-color: #b74a00;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
+article nav {
+  height: 3rem;
+  margin: 0 2rem;
+  width: calc(100% - 4rem);
+  border-bottom: 1px solid rgba(217, 108, 0, 0.5);
   position: relative;
+}
+
+article nav p {
+  position: absolute;
+  right: 50%;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  bottom: .5rem;
+  font-size: 1.1rem;
+  padding: .5rem 2rem;
+  border: 1px solid rgba(238, 238, 238, 0.6);
+  border-radius: 1rem;
+  opacity: .6;
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
+}
+
+article nav p:hover {
+  opacity: 1;
   cursor: pointer;
 }
 
-#schDays #timeTableMGMT h6 {
-  font-size: 1rem;
-  font-weight: 400;
-  color: #bbb;
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 1px;
+article section {
+  height: 90%;
+  padding: 3rem;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1rem;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: "mon tue wed thu fri";
 }
 
-@media (min-width: 768px) {
-  #schDays {
-    max-height: 80vh;
-    overflow-y: scroll;
-    scrollbar-color: #ccc transparent;
-    scrollbar-width: thin;
+article section #day1 {
+  grid-area: 'mon';
+}
+
+article section #day2 {
+  grid-area: 'tue';
+}
+
+article section #day3 {
+  grid-area: 'wed';
+}
+
+article section #day4 {
+  grid-area: 'thu';
+}
+
+article section #day5 {
+  grid-area: 'fri';
+}
+
+article section .day {
+  padding: .5rem 0;
+  border: 2px solid rgba(238, 238, 238, 0.1);
+  border-radius: 2rem;
+  min-height: 50vh;
+}
+
+article section .day h6 {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 1rem 0;
+}
+
+article section .day i {
+  margin-right: .5rem;
+}
+
+article section .day .subjects {
+  font-size: 1rem;
+  padding: .4rem .4rem;
+  margin: .6rem 1rem;
+  border-radius: .5rem;
+  background-color: rgba(220, 20, 60, 0.7);
+  -webkit-transition: background-color .3s ease;
+  transition: background-color .3s ease;
+}
+
+article section .day .subjects:hover {
+  background-color: crimson;
+  cursor: pointer;
+}
+
+@media (min-width: 1350px) {
+  article nav {
+    height: 10%;
   }
-  #schDays .day {
-    width: 600px;
-    margin: 10px 0;
-  }
-  #schDays .subjects {
-    width: 48%;
-    display: inline-block;
-  }
-  #schDays #timeTableMGMT {
-    width: 600px;
-  }
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #ccc;
+  article nav p {
+    font-size: 1.5rem;
+    right: 10px;
+    bottom: 1rem;
+    -webkit-transform: none;
+            transform: none;
   }
 }
+
+@media (max-width: 1100px) {
+  article section {
+    display: block;
+  }
+  article section .day {
+    margin-bottom: 1rem;
+    min-height: 0;
+  }
+  article section .day h6 {
+    cursor: pointer;
+  }
+}
+/*# sourceMappingURL=events.component.css.map */

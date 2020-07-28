@@ -1,26 +1,27 @@
 <main>
-    <div id="infosList">
+  <article>
+    <nav>
+      <p routerLink="/infos-edit">edytuj</p>
+    </nav>
+    <section>
+      <div id="infosList">
 
-        <div class="infoEl" *ngFor="let info of infos">
+        <div id="infoEl" *ngFor="let info of infos">
 
-            <h6><i class="icon-list-bullet"></i> {{ info.date }} <span>autor: {{ info.author }}</span></h6>
+          <h6><i class="icon-list-bullet"></i> {{ info.date }} <span>autor: {{ info.author }}</span></h6>
 
-            <div>
-                <p>
-                    {{ info.content }}
-                </p>
-                <!-- <img src="{{ info.url }}" alt="{{ info.photo }}"> -->
-                <!-- <span
-                    style="background-color: #ddd; width: 1000px; height: 500px"
-                ></span> -->
+          <div>
+            <div id="img">
+              <img src="{{ info.url }}">
             </div>
-
+            <p> {{ info.content }} </p>
+          </div>
+          <div style="clear:both"></div>
         </div>
 
-        <div routerLink="/infos-edit" (click)="mgmtStart()" id="infosMGMT">
-            <h6>Zarządzaj informacjami</h6>
-        </div>
-
-    </div>
+      </div>
+      <div id="rSide"></div>
+    </section>
+  </article>
 </main>
 <div style="clear:both"></div>

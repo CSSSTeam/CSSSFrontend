@@ -1,34 +1,21 @@
-<div id="content">
-  <div id="logMainNav">
-      <div id="logLogo">
-          <img src="../assets/img/logotype_white.svg" alt="logo">
-      </div>
-      <p>
-        Jest to nieduża, jasno zabarwiona małpa. Jej twarz jest charakterystyczna. Sierść dookoła oczu ma sinoniebieski odcień. Nos i uszy są ceglastoczerwone. Sierść na policzkach ma żółte zabarwienie i jest dość długa.
-      </p>
+<main>
+  <div id="logo">
+    <img src="../assets/img/logotype_white.svg" alt="logo">
   </div>
   <div id="logPage">
-      <div id="logBox">
-        <h3>{{displayError(errorForm.global)}}</h3>
-        <p>{{displayError(errorForm.username)}}</p>
-        <label>
-          <input
-            [(ngModel)]="loginForm.username" placeholder="login"
-            onfocus="this.placeholder=''"
-            onblur="this.placeholder='login'"
-          >
-        </label><br>
-        <p>{{displayError(errorForm.password)}}</p>
-        <label>
-          <input
-            [(ngModel)]="loginForm.password" type="password" placeholder="hasło"
-            onfocus="this.placeholder=''"
-            onblur="this.placeholder='hasło'"
-          >
-        </label><br>
-        
-        <button (click)="login()">zaloguj się</button>
-      </div>
+    <h3>{{displayError(errorForm.global)}}</h3>
+    <p>{{displayError(errorForm.username)}}</p>
+    <label>
+      <input [(ngModel)]="loginForm.username" placeholder="login" onfocus="this.placeholder=''"
+        onblur="this.placeholder='login'">
+    </label><br>
+    <p>{{displayError(errorForm.password)}}</p>
+    <label>
+      <input [(ngModel)]="loginForm.password" type="password" placeholder="hasło" onfocus="this.placeholder=''"
+        onblur="this.placeholder='hasło'">
+    </label><br>
+
+    <button (click)="login()">zaloguj się</button>
   </div>
-  <div style="clear:both"></div>
-</div>
+</main>
+<div style="clear:both"></div>

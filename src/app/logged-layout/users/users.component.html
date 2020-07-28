@@ -1,0 +1,32 @@
+<main>
+  <article>
+    <nav></nav>
+    <section>
+      <div id="users">
+        <div id="user" *ngFor="let user of users, index as index">
+          <span>{{ user.name }}</span>
+          <i class="icon-trash" (click)="deleteUser()"></i>
+        </div>
+      </div>
+      <div id="usersMgmt">
+        <h1>dodaj użytkownika:</h1>
+        <input type="text" placeholder="nazwa" onfocus="this.placeholder=''" onblur="this.placeholder='nazwa'">
+        <select required size="1">
+          <option disabled selected hidden>grupa</option>
+          <option>1 niem</option>
+          <option>2 niem</option>
+        </select>
+        <select required size="1">
+          <option disabled selected hidden>uprawnienia</option>
+          <option>nauczyciel</option>
+          <option>uczeń</option>
+          <option>skarbnik</option>
+          <option>admin</option>
+        </select>
+        <textarea placeholder="opis" onfocus="this.placeholder=''" onblur="this.placeholder='opis'"></textarea>
+        <input id="add" type="button" (click)="addUser()" value="dodaj użytkownika">
+      </div>
+    </section>
+  </article>
+</main>
+<div style="clear:both"></div>

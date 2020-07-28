@@ -1,0 +1,235 @@
+main {
+  position: relative;
+}
+
+main #statement {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 3rem;
+}
+
+main article {
+  height: 100%;
+}
+
+main article nav {
+  height: 3rem;
+  margin: 0 2rem;
+  width: calc(100% - 4rem);
+  border-bottom: 1px solid rgba(217, 108, 0, 0.5);
+  position: relative;
+}
+
+main article nav p {
+  position: absolute;
+  right: 50%;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  bottom: .5rem;
+  font-size: 1.1rem;
+  padding: .5rem 2rem;
+  border: 1px solid rgba(238, 238, 238, 0.6);
+  border-radius: 1rem;
+  opacity: .6;
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
+}
+
+main article nav p:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+main article section {
+  height: 90%;
+  padding: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main article section #filesMgmtContent {
+  width: 70%;
+  height: 95%;
+  padding: 2rem;
+  overflow-y: scroll;
+}
+
+main input,
+main label,
+main textarea,
+main select {
+  width: 100%;
+  color: #eee;
+  font-size: 1.2rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  border-bottom: 2px solid rgba(221, 221, 221, 0.2);
+  cursor: pointer;
+}
+
+main input::-webkit-input-placeholder,
+main label::-webkit-input-placeholder,
+main textarea::-webkit-input-placeholder,
+main select::-webkit-input-placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+main input:-ms-input-placeholder,
+main label:-ms-input-placeholder,
+main textarea:-ms-input-placeholder,
+main select:-ms-input-placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+main input::-ms-input-placeholder,
+main label::-ms-input-placeholder,
+main textarea::-ms-input-placeholder,
+main select::-ms-input-placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+main input::placeholder,
+main label::placeholder,
+main textarea::placeholder,
+main select::placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+main #upload {
+  width: auto;
+  margin: .5rem auto;
+  font-size: 1rem;
+  padding: .5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main #upload::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+main label {
+  display: inline-block;
+  background-color: rgba(17, 17, 17, 0.6);
+  border: 1px solid #222;
+  text-align: center;
+  transition: background-color .3s ease;
+  -webkit-transition: background-color .3s ease;
+  -moz-transition: background-color .3s ease;
+  -ms-transition: background-color .3s ease;
+  -o-transition: background-color .3s ease;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+
+main label:hover {
+  background-color: rgba(61, 61, 61, 0.6);
+}
+
+main #add {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(221, 221, 221, 0.2);
+  border-radius: 1rem;
+  text-align: center;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+}
+
+main #add:hover {
+  background-color: #000;
+}
+
+main #add:active {
+  color: #333;
+}
+
+main select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+main select option {
+  background-color: #222;
+}
+
+@media (min-width: 1350px) {
+  main article nav {
+    height: 10%;
+  }
+  main article nav p {
+    font-size: 1.5rem;
+    right: 10px;
+    bottom: 1rem;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  main article section {
+    padding: 1.5rem;
+  }
+  main article section #filesMgmtContent {
+    width: 90%;
+    margin: .5rem 1rem;
+  }
+  main article input,
+  main article textarea,
+  main article select {
+    font-size: 1rem;
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 550px) {
+  main article section #filesMgmtContent {
+    width: 100%;
+    padding: .8rem;
+  }
+  main article input,
+  main article textarea,
+  main article select {
+    font-size: .8rem;
+    padding: 1rem;
+    margin: .5rem 0;
+  }
+}
+/*# sourceMappingURL=files-edit.component.css.map */

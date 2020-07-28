@@ -1,80 +1,123 @@
-#schDays {
-    .day {
-        width: 300px;
-        min-height: 50px;
-        background-color: #000;
-        margin: 0px 0;
-        padding: 10px;
-        border-radius: 5px;
-        &:nth-child(even) {
-            background-color: #222;
-        }
-        h6 {
-            font-size: 1rem;
-            color: #bbb;
-            border-bottom: 1px dotted #bbb;
-            margin-bottom: 5px;
-            padding: 4px 0;
-        }
-        div {
-            padding: 1.5% 2%;
-            margin: 3px;
-            border-radius: 10px;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            color: #eee;
-            background-color: #222;
-        }
-        .null {
-            padding: 5px 8px;
-            margin: 8px;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            color: #eee;
-        }
-    }
-    #timeTableMGMT {
-        width: 300px;
-        height: 40px;
-        line-height: 20px;
-        background-color: #b74a00;
-        margin: 10px 0;
-        padding: 10px;
-        border-radius: 5px;
-        position: relative;
+article {
+  height: 100%;
+
+  nav {
+    height: 3rem;
+    margin: 0 2rem;
+    width: calc(100% - 4rem);
+    border-bottom: 1px solid rgba(217, 108, 0, .5);
+    position: relative;
+
+    p {
+      position: absolute;
+      right: 50%;
+      transform: translateX(50%);
+      bottom: .5rem;
+      font-size: 1.1rem;
+      padding: .5rem 2rem;
+      border: 1px solid rgba(238, 238, 238, .6);
+      border-radius: 1rem;
+      opacity: .6;
+      transition: opacity .2s ease;
+
+      &:hover {
+        opacity: 1;
         cursor: pointer;
-        h6 {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #bbb;
-            text-transform: uppercase;
-            text-align: center;
-            letter-spacing: 1px;
-        }
+      }
     }
+  }
+
+  section {
+    height: 90%;
+    padding: 3rem;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      "mon tue wed thu fri";
+
+    #day1 {
+      grid-area: 'mon';
+    }
+
+    #day2 {
+      grid-area: 'tue';
+    }
+
+    #day3 {
+      grid-area: 'wed';
+    }
+
+    #day4 {
+      grid-area: 'thu';
+    }
+
+    #day5 {
+      grid-area: 'fri';
+    }
+
+    .day {
+      padding: .5rem 0;
+      border: 2px solid rgba(238, 238, 238, .1);
+      border-radius: 2rem;
+      min-height: 50vh;
+
+      h6 {
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 1rem 0;
+      }
+
+      i {
+        margin-right: .5rem;
+      }
+
+      .subjects {
+        font-size: 1rem;
+        padding: .4rem .4rem;
+        margin: .6rem 1rem;
+        border-radius: .5rem;
+        background-color: rgba(220, 20, 60, .7);
+        transition: background-color .3s ease;
+
+        &:hover {
+          background-color: rgba(220, 20, 60, 1);
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
-@media (min-width: 768px) {
-    #schDays {
-        max-height: 80vh;
-        overflow-y: scroll;
-        scrollbar-color: #ccc rgba(0,0,0,0);
-        scrollbar-width: thin;
-        .day {
-            width: 600px;
-            margin: 10px 0;
-        }
-        .subjects {
-            width: 48%;
-            display: inline-block;
-        }
-        #timeTableMGMT {
-            width: 600px;
-        }
+
+@media (min-width: 1350px) {
+  article {
+    nav {
+      height: 10%;
+
+      p {
+        font-size: 1.5rem;
+        right: 10px;
+        bottom: 1rem;
+        transform: none;
+      }
     }
-    ::-webkit-scrollbar {
-        width: 6px;
+  }
+}
+
+@media (max-width: 1100px) {
+  article {
+    section {
+      display: block;
+
+      .day {
+        margin-bottom: 1rem;
+        min-height: 0;
+
+        h6 {
+          cursor: pointer;
+        }
+      }
     }
-    ::-webkit-scrollbar-thumb {
-        background-color: #ccc
-    }
+  }
 }

@@ -1,0 +1,311 @@
+article {
+  height: 100%;
+}
+
+article nav {
+  height: 3rem;
+  margin: 0 2rem;
+  width: calc(100% - 4rem);
+  border-bottom: 1px solid rgba(217, 108, 0, 0.5);
+  position: relative;
+}
+
+article #mainOpts {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  bottom: .5rem;
+}
+
+article #mainOpts #checkAll,
+article #mainOpts #edit {
+  float: left;
+  margin: 0 .5rem;
+  padding: .5rem 2rem;
+  border: 1px solid rgba(238, 238, 238, 0.6);
+  border-radius: 1rem;
+  opacity: .6;
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+article #mainOpts #checkAll:hover,
+article #mainOpts #edit:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+article section {
+  height: 90%;
+  padding: 3rem;
+}
+
+article section #students {
+  float: left;
+  width: 40%;
+  height: 100%;
+  padding: 2rem;
+  overflow-y: scroll;
+  border: 1px solid rgba(238, 238, 238, 0.1);
+  border-radius: 1rem;
+}
+
+article section #students #student {
+  padding: .8rem 1.2rem;
+  border-bottom: 1px solid rgba(238, 238, 238, 0.1);
+  font-size: 1.2rem;
+  -webkit-transition: color .2s ease;
+  transition: color .2s ease;
+  position: relative;
+}
+
+article section #students #student:hover {
+  cursor: pointer;
+  color: #777;
+}
+
+article section #students #student:last-child {
+  border-bottom: none;
+}
+
+article section #students #student #frame {
+  border: 1px solid rgba(238, 238, 238, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+article section #students #student #frame #checkArea {
+  width: 1rem;
+  height: 1rem;
+  background-color: orangered;
+}
+
+article section #payments {
+  float: left;
+  width: 57%;
+  margin-left: 3%;
+  height: 100%;
+  border: 1px solid rgba(238, 238, 238, 0.1);
+  border-radius: 0 1rem 1rem 0;
+  padding: 2rem;
+}
+
+article section #payments #lists {
+  padding: 1rem;
+  float: left;
+  width: 46%;
+  height: 100%;
+  margin-right: 4%;
+  overflow-y: scroll;
+}
+
+article section #payments #lists h1 {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(238, 238, 238, 0.3);
+}
+
+article section #payments #lists #list {
+  margin: .5rem 0;
+  background-color: #d96d00;
+  border-radius: .5rem;
+  font-size: 1rem;
+  padding: .5rem;
+  position: relative;
+  -webkit-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+}
+
+article section #payments #lists #list:hover {
+  background-color: #a05001;
+  cursor: pointer;
+}
+
+article section #payments #lists #list .icon-trash {
+  position: absolute;
+  right: .5rem;
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+}
+
+article section #payments #lists #list .icon-trash:hover {
+  color: crimson;
+  cursor: pointer;
+}
+
+article section #payments #listBuilder {
+  padding: 1rem;
+  float: left;
+  width: 50%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+article section #payments #listBuilder h1 {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(238, 238, 238, 0.3);
+}
+
+article section #payments #listBuilder input,
+article section #payments #listBuilder textarea,
+article section #payments #listBuilder button {
+  width: 100%;
+  color: #eee;
+  font-size: 1rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  padding: 1.2rem;
+  margin: .5rem 0;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  border-bottom: 2px solid rgba(221, 221, 221, 0.2);
+  outline: none;
+  cursor: pointer;
+}
+
+article section #payments #listBuilder input::-webkit-input-placeholder,
+article section #payments #listBuilder textarea::-webkit-input-placeholder,
+article section #payments #listBuilder button::-webkit-input-placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+article section #payments #listBuilder input:-ms-input-placeholder,
+article section #payments #listBuilder textarea:-ms-input-placeholder,
+article section #payments #listBuilder button:-ms-input-placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+article section #payments #listBuilder input::-ms-input-placeholder,
+article section #payments #listBuilder textarea::-ms-input-placeholder,
+article section #payments #listBuilder button::-ms-input-placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+article section #payments #listBuilder input::placeholder,
+article section #payments #listBuilder textarea::placeholder,
+article section #payments #listBuilder button::placeholder {
+  color: #eee;
+  opacity: 1;
+}
+
+article section #payments #listBuilder #add {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(221, 221, 221, 0.2);
+  border-radius: 1rem;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+}
+
+article section #payments #listBuilder #add:hover {
+  background-color: #000;
+}
+
+article section #payments #listBuilder #add:active {
+  color: #333;
+}
+
+@media (min-width: 1350px) {
+  article nav {
+    height: 10%;
+  }
+  article nav #mainOpts {
+    left: 1rem;
+    bottom: 1rem;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@media (max-width: 880px) {
+  article nav {
+    height: 6rem;
+  }
+  article nav #mainOpts #checkAll,
+  article nav #mainOpts #edit {
+    float: none;
+    margin: .3rem 0;
+  }
+}
+
+@media (max-width: 550px) {
+  article nav {
+    height: 7rem;
+  }
+}
+
+@media (max-width: 1550px) {
+  article section #students #student {
+    font-size: 1rem;
+  }
+  article section #payments #lists #list {
+    font-size: .8rem;
+  }
+}
+
+@media (max-width: 1150px) {
+  article section #students {
+    float: none;
+    width: 100%;
+  }
+  article section #payments {
+    float: none;
+    width: 100%;
+    border: none;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  article section #payments #lists,
+  article section #payments #listBuilder {
+    float: none;
+    width: 80%;
+    margin: 1rem auto;
+  }
+}
+
+@media (max-width: 460px) {
+  article section {
+    padding: 1rem;
+  }
+  article section #students {
+    padding: 1rem;
+    border: none;
+  }
+  article section #students #student {
+    font-size: .8rem;
+    padding: .8rem 0;
+  }
+  article section #payments {
+    padding: 0;
+  }
+  article section #payments #lists,
+  article section #payments #listBuilder {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=treasure-panel.component.css.map */

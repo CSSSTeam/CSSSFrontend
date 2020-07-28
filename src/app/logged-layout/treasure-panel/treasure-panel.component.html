@@ -1,0 +1,38 @@
+<main>
+  <article>
+    <nav>
+      <div id="mainOpts">
+        <p id="checkAll" (click)="checkAll()">zaznacz wszystkich</p>
+        <p id="edit" *ngIf="editUser" (click)="editOneUser()">edytuj</p>
+      </div>
+    </nav>
+    <section>
+      <div id="students">
+        <div id="student" *ngFor="let student of students, index as index" (click)="checkStudent(index)">
+          {{ student.jourNum }}) {{ student.name }}
+          <div id="frame">
+            <div id="checkArea" *ngIf="isChecked[index] == true"></div>
+          </div>
+        </div>
+      </div>
+      <div id="payments">
+        <div id="lists">
+          <h1>twoje listy:</h1>
+          <div id="list" *ngFor="let list of lists">
+            {{ list.name }} <i class="icon-trash" (click)="deleteList()"></i>
+          </div>
+        </div>
+        <div id="listBuilder">
+          <h1>utwórz listę:</h1>
+          <input type="number" placeholder="kwota (zł)" onfocus="this.placeholder=''"
+            onblur="this.placeholder='kwota (zł)'">
+          <input placeholder="termin" type="text" onfocus="(this.type='date')" onblur="(this.type='text')">
+          <textarea placeholder="opis" onfocus="this.placeholder=''" onblur="this.placeholder='opis'"></textarea>
+          <input id="add" type="button" (click)="addList()" value="utwórz listę">
+        </div>
+        <div style="clear:both"></div>
+      </div>
+    </section>
+  </article>
+</main>
+<div style="clear:both"></div>

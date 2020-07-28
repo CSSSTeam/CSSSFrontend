@@ -1,0 +1,34 @@
+<main>
+  <article>
+    <nav>
+      <p routerLink="/files">wróć</p>
+    </nav>
+    <section>
+      <div id="filesMgmtContent">
+        <select required size="1">
+          <option disabled selected hidden>przedmiot</option>
+          <option>mat</option>
+          <option>pol</option>
+        </select>
+        <input placeholder="nazwa" type="text" onfocus="(this.placeholder='')" onblur="(this.placeholder='nazwa')">
+        <textarea placeholder="opis" onfocus="(this.placeholder='')" onblur="(this.placeholder='opis')"></textarea>
+        <select required size="1">
+          <option disabled selected hidden>grupa</option>
+          <option>wszyscy</option>
+          <option>grupa 1</option>
+          <option>grupa 2</option>
+          <option>grupa 1 - UTK</option>
+          <option>grupa 2 - UTK</option>
+          <option>grupa 3 - UTK</option>
+          <option>grupa 1 - WF - chł.</option>
+          <option>grupa 2 - WF - chł.</option>
+          <option>grupa 3 - WF - dz.</option>
+        </select>
+        <label for="upload">Wybierz plik</label>
+        <input id="upload" type="file">
+        <input id="add" type="button" (click)="addFile()" value="dodaj plik">
+      </div>
+    </section>
+  </article>
+</main>
+<div style="clear:both"></div>

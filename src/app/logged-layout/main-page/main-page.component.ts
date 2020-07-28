@@ -1,51 +1,59 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService, User} from '../../services/user.service';
+import { Component, OnInit } from '@angular/core';
+import { TimeTableService } from '../../services/time-table.service';
+import { UserService, User } from '../../services/user.service';
+import { SupportService } from 'src/app/services/support.service';
+import { DateService } from 'src/app/services/date.service';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css'],
-  providers: [UserService]
+  providers: [TimeTableService, UserService, SupportService, DateService]
 })
 export class MainPageComponent implements OnInit {
 
-  user;
+  whichDay;
+  isActive = false;
+  isConfigEnabled: boolean = true;
 
-  constructor() {
+  timetable() {
+    return this.timetableService.getTimetable();
+  }
 
+  constructor(
+    public timetableService: TimeTableService,
+    public dateService: DateService
+  ) {
+    console.log(this.dateService.getDayProps('name'));
+    // console.log(this.dateService.getDayProps("index"));
   }
 
   ngOnInit() {
+  }
 
-    this.user = User.instance;
+  showDate() {
+
 
   }
 
+  displayText(object: any, tag: string): string {
+    return object == undefined ? '‎‏‏‎‎‎' : object[tag];
+  }
 
-  monSubjects = [
-    {subject: 'matematyka', type: 'test'},
-    {subject: 'religia', type: 'smallTest'},
-    {subject: 'SO', type: 'test'},
-  ];
+  mgmtStart() {
 
-  tueSubjects = [
-    {subject: 'matematyka', type: 'test'},
-    {subject: 'religia', type: 'smallTest'},
-    {subject: 'SO', type: 'test'},
-  ];
-  wedSubjects = [
-    {subject: 'matematyka', type: 'test'},
-    {subject: 'religia', type: 'smallTest'},
-    {subject: 'SO', type: 'test'},
-  ];
-  thuSubjects = [
-    {subject: 'matematyka', type: 'test'},
-    {subject: 'religia', type: 'smallTest'},
-    {subject: 'SO', type: 'test'},
-  ];
-  friSubjects = [
-    {subject: 'matematyka', type: 'test'},
-    {subject: 'religia', type: 'smallTest'},
-    {subject: 'SO', type: 'test'},
-  ];
+  }
+
+  displayTime(timeElement: string) {
+    let time = timeElement.split(':');
+    return time[0] + ':' + time[1];
+  }
+
+  createLesson() {
+  }
+
+  logout() {
+    User.instance.logout();
+  }
+
 }

@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as data from '../../config.json';
 
 @Injectable({
@@ -14,6 +14,10 @@ export class TimeTableService {
     ['wednesday', 'Środa'],
     ['thursday', 'Czwartek'],
     ['friday', 'Piątek']
+  ];
+  public daysOfWeekend = [
+    ['saturday', 'Sobota'],
+    ['sunday', 'Niedziela']
   ];
 
   constructor(private http: HttpClient) {

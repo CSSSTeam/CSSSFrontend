@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SupportService } from '../../../services/support.service';
 
 @Component({
   selector: 'app-lessons-edit',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lessons-edit.component.css']
 })
 export class LessonsEditComponent implements OnInit {
-  
-  constructor() { }
+
+  constructor(public supportService: SupportService) { }
 
   ngOnInit(): void {
+  }
+
+  addLesson() {
+    this.supportService.popup("dodano lekcję");
   }
 
 }

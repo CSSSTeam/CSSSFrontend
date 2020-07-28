@@ -1,130 +1,316 @@
-#timeTable .day {
-  width: 300px;
-  height: 50px;
-  background-color: #0A0B0D;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 5px;
+article {
+  height: 100%;
+}
+
+article nav {
+  height: 3rem;
+  margin: 0 2rem;
+  width: calc(100% - 4rem);
+  border-bottom: 1px solid rgba(217, 108, 0, 0.5);
   position: relative;
-  transition: all .2s ease-in-out;
-  cursor: pointer;
 }
 
-#timeTable .day:hover {
-  cursor: pointer;
-  padding-left: 20px;
-}
-
-#timeTable .day:hover h6 {
-  color: #fff;
-}
-
-#timeTable .day h6 {
-  font-size: 1.5rem;
-  color: #ddd;
-}
-
-#timeTable .day h6 .open {
+article nav p {
   position: absolute;
-  right: 10px;
+  right: 50%;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  bottom: .5rem;
+  font-size: 1.1rem;
+  padding: .5rem 2rem;
+  border: 1px solid rgba(238, 238, 238, 0.6);
+  border-radius: 1rem;
+  opacity: .6;
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
 }
 
-#timeTable .table {
-  background-color: #171717;
-  border-radius: 10px;
-  padding: 10px;
+article nav p:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 
-#timeTable .table .lesson {
+article section {
+  height: 90%;
+}
+
+article section #timeTable {
+  height: 100%;
+  padding: 0 2rem;
+}
+
+article section #timeTable #uOption {
+  position: relative;
+}
+
+article section #timeTable #uOption #ops {
   width: 100%;
-  min-height: 40px;
-  line-height: 90%;
-  padding: 6px 12px;
-  border-bottom: 1px solid #393939;
+  padding: 2rem 0;
+  text-align: center;
+  bottom: .3rem;
 }
 
-#timeTable .table .lesson .tableEl {
+article section #timeTable #uOption #ops .day {
+  font-size: .9rem;
+  padding: .5rem 1.5rem;
+  border-radius: 1rem;
+  opacity: .6;
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
+  background-color: #222;
+}
+
+article section #timeTable #uOption #ops .day:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+article section #timeTable #uOption #ops .inactive {
+  background-color: #222;
+  opacity: .6;
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
+}
+
+article section #timeTable #uOption #ops .inactive:hover {
+  opacity: 1;
+}
+
+article section #timeTable #uOption #ops .active {
+  background-color: #D96C00;
+  opacity: 1;
+}
+
+article section #timeTable #uOption #ops #mobileDayOfTimeTable {
+  height: 75%;
+  border-radius: 2rem;
+}
+
+article section #timeTable #uOption #ops #mobileDayOfTimeTable .table {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+article section #timeTable #uOption #ops #mobileDayOfTimeTable .table .lesson {
+  border-bottom: 1px solid rgba(238, 238, 238, 0.1);
+  height: 4.8rem;
+  line-height: 1.5rem;
+  padding: .5rem 0;
+}
+
+article section #timeTable #uOption #ops #mobileDayOfTimeTable .table .lesson .tableEl {
   color: #eee;
+  float: left;
+}
+
+article section #timeTable #uOption #ops #mobileDayOfTimeTable .table .lesson .subject {
+  width: 100%;
+  padding: 0 0 .8rem 3rem;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+article section #timeTable #uOption #ops #mobileDayOfTimeTable .table .lesson #subDetails {
+  padding: .5rem 0 .5rem 0;
   font-size: 1rem;
 }
 
-#timeTable .table .lesson .subject {
-  width: 100%;
-  font-size: 1.1rem;
+article section #timeTable #uOption #ops #mobileDayOfTimeTable .table .lesson #subDetails .hours {
+  width: 60%;
+  text-align: left;
+  padding-left: 3rem;
+}
+
+article section #timeTable #uOption #ops #mobileDayOfTimeTable .table .lesson #subDetails .room {
+  width: 40%;
+  text-align: center;
+}
+
+article section #timeTable #uOption #ops #mobileDayOfTimeTable .table .trueElement {
+  border: none;
+}
+
+article section #timeTable #dayOfTimeTable {
+  height: 75%;
+  border: 2px solid rgba(238, 238, 238, 0.1);
+  border-radius: 2rem;
+}
+
+article section #timeTable #dayOfTimeTable .table {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+article section #timeTable #dayOfTimeTable .table .lesson {
+  border-bottom: 1px solid rgba(238, 238, 238, 0.1);
+}
+
+article section #timeTable #dayOfTimeTable .table .lesson .tableEl {
+  color: #eee;
+  float: left;
+}
+
+article section #timeTable #dayOfTimeTable .table .lesson .subject {
   color: #fff;
 }
 
-#timeTable .table .lesson .hours {
-  width: 60%;
-  display: inline-block;
-  font-size: .8rem;
-}
-
-#timeTable .table .lesson .room {
-  width: 40%;
-  display: inline-block;
-  font-size: .9rem;
+article section #timeTable #dayOfTimeTable .table .lesson #subDetails .hours {
   text-align: right;
 }
 
-#timeTable #timeTableMGMT {
-  width: 300px;
-  height: 40px;
-  line-height: 20px;
-  background-color: #b74a00;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
-  position: relative;
-  cursor: pointer;
-}
-
-#timeTable #timeTableMGMT h6 {
-  font-size: 1rem;
-  font-weight: 400;
-  color: #bbb;
-  text-transform: uppercase;
+article section #timeTable #dayOfTimeTable .table .lesson #subDetails .room {
   text-align: center;
-  letter-spacing: 1px;
 }
 
-@media (min-width: 768px) {
-  #timeTable {
-    max-height: 80vh;
-    overflow-y: scroll;
-    scrollbar-color: #ccc transparent;
-    scrollbar-width: thin;
+article section #timeTable #dayOfTimeTable .table .trueElement {
+  border: none;
+}
+
+@media (max-width: 750px) {
+  article section #dayOfTimeTable {
+    padding: .5rem;
+    margin: 1.5rem 1rem;
   }
-  #timeTable .day, #timeTable #timeTableMGMT {
-    width: 600px;
+  article section #dayOfTimeTable .table {
+    padding: .5rem;
   }
-  #timeTable .table .lesson {
+  article section #dayOfTimeTable .table .lesson {
+    height: 4.5rem;
+    padding: .5rem 0;
+  }
+  article section #dayOfTimeTable .table .lesson .subject {
+    padding-left: 2rem;
     width: 100%;
+    font-size: 1.4rem;
   }
-  #timeTable .table .lesson .tableEl {
-    color: #eee;
-    padding: 5px;
-    float: left;
+  article section #dayOfTimeTable .table .lesson #subDetails {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: .5rem 0 0 2rem;
   }
-  #timeTable .table .lesson .subject {
-    width: 50%;
-    font-size: 1.2rem;
-    color: #fff;
-  }
-  #timeTable .table .lesson .hours {
-    width: 30%;
-    font-size: .9rem;
-    text-align: right;
-  }
-  #timeTable .table .lesson .room {
-    width: 20%;
-    font-size: 1rem;
-    text-align: center;
-  }
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #ccc;
+  article section #dayOfTimeTable .table .lesson #subDetails .room {
+    padding-left: 2rem;
   }
 }
+
+@media (min-width: 750px) {
+  article section #dayOfTimeTable {
+    padding: 2rem;
+    margin: 3rem 4rem;
+  }
+  article section #dayOfTimeTable .table {
+    padding: 2rem;
+  }
+  article section #dayOfTimeTable .table .lesson {
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0;
+  }
+  article section #dayOfTimeTable .table .lesson br {
+    display: none;
+  }
+  article section #dayOfTimeTable .table .lesson .subject {
+    padding-left: 2rem;
+    width: 50%;
+    font-size: 1.6rem;
+  }
+  article section #dayOfTimeTable .table .lesson #subDetails {
+    width: 50%;
+    float: left;
+    font-size: 1.2rem;
+  }
+  article section #dayOfTimeTable .table .lesson #subDetails .hours {
+    width: 60%;
+  }
+  article section #dayOfTimeTable .table .lesson #subDetails .room {
+    width: 40%;
+  }
+}
+
+@media (max-width: 350px) {
+  article section #dayOfTimeTable .table .lesson .subject {
+    padding-left: .5rem;
+    font-size: 1.2rem;
+  }
+  article section #dayOfTimeTable .table .lesson #subDetails {
+    padding: .5rem 0 0 .5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1350px) {
+  article nav {
+    height: 10%;
+  }
+  article nav p {
+    font-size: 1.5rem;
+    right: 10px;
+    bottom: 1rem;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@media (max-width: 1150px) {
+  section #uOption .day {
+    font-size: .8rem;
+  }
+}
+
+@media (min-width: 960px) {
+  section #uOption br {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  section #uOption {
+    height: 15rem;
+  }
+  section #uOption #ops .day {
+    width: 80%;
+    margin: .3rem auto;
+  }
+  section #uOption #ops br {
+    display: none;
+  }
+  section #uOption #ops .icon-calendar {
+    display: none;
+  }
+}
+
+@media (min-width: 650px) {
+  section #uOption {
+    height: 5rem;
+  }
+  section #uOption #ops {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  section #uOption #ops .day {
+    margin: 0 .5rem;
+  }
+}
+/*# sourceMappingURL=lessons.component.css.map */

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ScrollService } from './scroll.service';
+import { SupportService } from './support.service';
 
 describe('ScrollService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ScrollService = TestBed.get(ScrollService);
+    const service: SupportService = TestBed.get(SupportService);
     expect(service).toBeTruthy();
   });
 });

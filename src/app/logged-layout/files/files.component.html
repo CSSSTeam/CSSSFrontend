@@ -1,77 +1,77 @@
 <main>
-  <div id="mainArea">
-    <div id="fileMgmt">
+  <article>
+    <nav>
 
-      <div (click)="showFileMgmt()" id="fileMgmtHead" class="header">
-        <h6><i class="icon-folder-empty"></i> Dodaj plik<i id="openMgmt" class="icon-down-open open"></i></h6>
-      </div>
+      <p routerLink="/files-edit">edytuj</p>
 
-      <div id="fileMgmtContent" *ngIf="isFileMgmtOpen">
+    </nav>
+    <section>
 
-        <label id="fileName">
-          <input placeholder="nazwa pliku" type="text" [(ngModel)]="addingFileForm.name">
-        </label>
+      <div id="typesList">
+        <input id="searchBox" (click)="search()" type="text" (ngModelChange)="searchFile()" [(ngModel)]="searchText"
+          placeholder="Wyszukaj plik">
+        <div id="allFiles" (click)="allFiles()">Wszystkie pliki</div>
+        <div class="mobileTypeFiles" *ngIf="allfiles">
 
-        <label id="desc">
-          <textarea placeholder="opis" [(ngModel)]="addingFileForm.description"></textarea>
-        </label>
+          <div *ngFor="let file of showFiles()" id="listItem">
+            <!--(click)="download"-->
 
-        <label id="type">
-          <select required size="1" [(ngModel)]="addingFileForm.type">
-            <option disabled selected>przedmiot</option>
-            <option *ngFor="let type of getTypes()" [value]="type.id">{{type.name}}</option>
-            <option>Inne</option>
-          </select>
-        </label>
+            <p>{{ file.name }}</p>
 
-        <input id="file" type="file" (change)="onFileChanged($event)">
+            <div id="fileOptions">
+              <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>
+              <i class="icon-help-1" routerLink="/files/{{file.pk}}"></i>
+              <i class="icon-trash" (click)="deleteFile()"></i>
+              <!--(click)="deleteFile(file.pk)"-->
+            </div>
 
-        <input id="addFile" type="button" (click)="uploadFile()" value="Dodaj plik">
+          </div>
 
-        <label id="typeName">
-          <input placeholder="nazwa przedmiotu" type="text" [(ngModel)]="addingTypeForm.name">
-        </label>
+        </div>
+        <div *ngFor="let type of getTypes()">
+          <div id="typeElHead" (click)="openTypeEl(type.id)">
+            {{ type.name }}
+          </div>
+          <div class="mobileTypeFiles" *ngIf="!mainFilesList && subjects[type.id]">
 
-        <input id="addType" type="button" (click)="createTypeFile()" value="Dodaj przedmiot">
+            <div *ngFor="let file of showFiles()" id="listItem">
+              <!--(click)="download"-->
 
-      </div>
-    </div>
-    <div id="filesList">
+              <p>{{ file.name }}</p>
 
-      <div id="header">
-        <h6>
-          <i class="icon-list-bullet"></i> Lista plików:<i (click)="isSearchBox = !isSearchBox"
-            class="icon-search open"></i>
-        </h6>
-      </div>
-
-      <input id="searchBox" *ngIf="isSearchBox" type="text" (change)="searchFile()" [(ngModel)]="searchText"
-        placeholder="Wyszukaj">
-
-      <div *ngFor="let type of getTypes()">
-        <div id="typeEl" (click)="openTypeEl(type.id)">
-
-          <i id="tab{{type.id}}" class="icon-down-open open"></i> {{ type.name }}
-          <i id="delType" class="icon-trash" (click)="deleteType(type.id)"></i>
-
-          <div id="list" *ngIf="isTypeElOpen[type.id]">
-
-            <div *ngFor="let file of getFiles()">
-              <div id="listItem" *ngIf="file.typeid == type.id">
-                <p>{{ file.name }}</p><br>
-
+              <div id="fileOptions">
                 <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>
-                <i class="icon-trash" (click)="deleteFile(file.pk)"></i>
                 <i class="icon-help-1" routerLink="/files/{{file.pk}}"></i>
+                <i class="icon-trash" (click)="deleteFile()"></i>
+                <!--(click)="deleteFile(file.pk)"-->
               </div>
+
             </div>
 
           </div>
         </div>
       </div>
 
-    </div>
-    <!--<div>
+      <div id="typeFiles" *ngIf="mainFilesList">
+
+        <div *ngFor="let file of showFiles()" id="listItem">
+          <!--(click)="download"-->
+
+          <p>{{ file.name }}</p>
+
+          <div id="fileOptions">
+            <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>
+            <i class="icon-help-1" routerLink="/files/{{file.pk}}"></i>
+            <i class="icon-trash" (click)="deleteFile()"></i>
+            <!--(click)="deleteFile(file.pk)"-->
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </article>
+  <!--<div>
     
       <h2>Typy</h2>
     
@@ -88,7 +88,7 @@
         <button (click)="deleteType(type.id)">delete</button>
       </div>
       
-    </div>-->
-  </div>
+    </div>
+  </div> -->
 </main>
 <div style="clear:both"></div>

@@ -1,72 +1,67 @@
 <div id="content">
   <div id="mainNav">
     <a (click)="navTo()" routerLink="/" routerLinkActive="active">
-      <div id="logo">
-        <img src="assets/img/logotype_yellow.svg" alt="">
+      <div id="logo" @fade>
+        <img src="assets/img/logotype_black.svg" alt="">
       </div>
     </a>
-    <div id="settings">
-      <i *ngIf="isCog" (click)="showSettings()" class="icon-cog"></i>
-      <div *ngIf="isSett" id="account">
-        <div>
-          <i (click)="logout()" class="icon-off"></i>
-          <i class="icon-key" (click)="showSettings()" routerLink="/chg-password" routerLinkActive="active"></i>
-          <i class="icon-info" (click)="showSettings()" routerLink="/about" routerLinkActive="active"></i>
-          <i (click)="showSettings()" class="icon-cancel"></i>
-        </div>
-      </div>
-    </div>
     <div (click)="showMenu()" id="menu">
       <i id="ham" class="icon-menu"></i>
     </div>
     <nav *ngIf="isMenu">
-      <a (click)="navTo()" routerLink="/events" routerLinkActive="active">
+      <a (click)="navTo()" routerLink="/events">
         <div id="events" class="menuOp">
           <i class="icon-th-list"></i>Wydarzenia
         </div>
       </a>
-      <a (click)="navTo()" routerLink="/lessons" routerLinkActive="active">
+      <a (click)="navTo()" routerLink="/lessons">
         <div id="lessons" class="menuOp">
           <i class="icon-table"></i>Rozkład zajęć
         </div>
       </a>
-      <a (click)="navTo()" routerLink="/files" routerLinkActive="active">
+      <a (click)="navTo()" routerLink="/files">
         <div id="files" class="menuOp">
           <i class="icon-folder-open"></i>Pliki
         </div>
       </a>
+      <a (click)="navTo()" routerLink="/infos">
+        <div id="infos" class="menuOp">
+          <i class="icon-attention"></i>Informacje
+        </div>
+      </a>
+      <div id="mgmtOptions">
+        <a (click)="navTo()" routerLink="/treasure-panel">
+          <div id="treaPanel" class="menuOp">
+            <i class="icon-list-bullet"></i>Panel skarbnika
+          </div>
+        </a>
+        <a (click)="navTo()" routerLink="/users" routerLinkActive="active">
+          <div id="usersMgmt" class="menuOp">
+            <i class="icon-cog"></i>Użytkownicy
+          </div>
+        </a>
+      </div>
     </nav>
-    <div id="widgets">
-      <div id="box1" class="wid">
-        <div class="elem">
-          <h1>30</h1>
+  </div>
+  <div id="container">
+    <router-outlet></router-outlet>
+    <footer>
+      <p>
+        Class Student Service System &copy; 2020
+      </p>
+    </footer>
+    <div id="settings">
+      <i *ngIf="isCog" (click)="showSettings()" class="icon-cog"></i>
+      <div *ngIf="isSett" id="account">
+        <div>
+          <i class="icon-off opt" (click)="logout()"></i>
+          <i class="icon-key opt" (click)="showSettings(); isMenu = false" routerLink="/chg-password"
+            routerLinkActive="active"></i>
+          <i class="icon-info opt" (click)="showSettings(); isMenu = false" routerLink="/about"
+            routerLinkActive="active"></i>
+          <div id="close"><i class="icon-cancel" (click)="showSettings()"></i></div>
         </div>
-      </div>
-      <div id="box2" class="wid">
-        <div class="elem">
-          <i class="icon-calendar"></i>
-        </div>
-      </div>
-      <div id="box3" class="wid int">
-        <a (click)="navTo()" routerLink="/infos" routerLinkActive="active">
-          <div class="elem">
-            <i class="icon-attention"></i>
-            <p>Informacje</p>
-          </div>
-        </a>
-      </div>
-      <div id="box4" class="wid int">
-        <a (click)="navTo()" routerLink="/others" routerLinkActive="active">
-          <div class="elem">
-            <i class="icon-newspaper"></i>
-            <p>Inne</p>
-          </div>
-        </a>
       </div>
     </div>
   </div>
-  <router-outlet></router-outlet>
-  <footer>
-    ClassStudentServiceSystem &copy; 2020
-  </footer>
 </div>
