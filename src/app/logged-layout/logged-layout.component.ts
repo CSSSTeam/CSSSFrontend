@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SupportService } from '../services/support.service';
-import { Router, RouterOutlet } from '@angular/router';
-import { UserService, User } from '../services/user.service';
+import {SupportService} from '../services/support.service';
+import {Router} from '@angular/router';
+import {UserService, User} from '../services/user.service';
 import {Group, PermissionsService} from '../services/permissions.service';
-import {ScrollService} from '../services/scroll.service';
 
 @Component({
   selector: 'app-logged-layout',
@@ -18,8 +17,8 @@ export class LoggedLayoutComponent implements OnInit {
 
   constructor(
     protected router: Router,
-     private scrollService: ScrollService,
-    protected permissions: PermissionsService
+    protected permissions: PermissionsService,
+    protected scrollService: SupportService
   ) {
   }
 

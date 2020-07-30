@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FileSystemService } from '../../services/file-system.service';
-import { SupportService } from '../../services/support.service';
-import { Router } from '@angular/router';
-import { stringify } from 'querystring';
-import { types } from 'util';
+import {Component, OnInit} from '@angular/core';
+import {FileSystemService} from '../../services/file-system.service';
+import {SupportService} from '../../services/support.service';
+
 @Component({
   selector: 'app-files',
   templateUrl: './files.component.html',
@@ -29,23 +27,10 @@ export class FilesComponent implements OnInit {
   constructor(public fileSystemService: FileSystemService, public supportService: SupportService) {
   }
 
-  searchBox() {
-    this.isSearchBox = !this.isSearchBox;
-  }
-
-  showFileMgmt() {
-    if (this.isFileMgmtOpen == false) {
-      this.isFileMgmtOpen = true;
-      document.querySelector('#openMgmt').className = 'icon-cancel open';
-    } else {
-      this.isFileMgmtOpen = false;
-      document.querySelector('#openMgmt').className = 'icon-down-open open';
-    }
-  }
-
   search() {
     if (!this.mainFilesList) {
-      for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+      //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+      //TODO(n2one): do search files
       this.typeFiles = this.getFiles();
       this.allfiles = true;
     }
@@ -53,7 +38,8 @@ export class FilesComponent implements OnInit {
 
   allFiles() {
     if (!this.mainFilesList) {
-      for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+      //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+      //TODO(n2one): do all file
       this.typeFiles = this.getFiles();
       this.allfiles = !this.allfiles;
     } else {
@@ -64,20 +50,19 @@ export class FilesComponent implements OnInit {
   openTypeEl(id) {
     this.allfiles = false;
     const temp = this.subjects[id];
-    for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+    //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+    //TODO(n2one):types v2
     this.subjects[id] = !temp;
-    if (this.isTypeElOpen[id] != true) {
-      this.isTypeElOpen[id] = true;
-    } else {
-      this.isTypeElOpen[id] = false;
-    }
+    this.isTypeElOpen[id] = this.isTypeElOpen[id] != true;
     this.typeFiles = [];
     this.showFiles(id);
   }
 
   showFiles(id) {
     this.getFiles().forEach(e => {
-      if (e.typeid == id) this.typeFiles.push(e);
+      if (e.typeid == id) {
+        this.typeFiles.push(e);
+      }
     });
     return this.typeFiles;
   }
@@ -98,10 +83,10 @@ export class FilesComponent implements OnInit {
     };
     this.typeFiles = this.getFiles();
 
-    if (window.innerWidth >= 1020) this.mainFilesList = true;
-    else this.mainFilesList = false;
+    this.mainFilesList = window.innerWidth >= 1020;
 
-    for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+    //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+    //TODO(n2one): types
   }
 
   uploadFile() {
@@ -153,7 +138,9 @@ export class FilesComponent implements OnInit {
     }); */
     this.typeFiles = [];
     this.getFiles().forEach(e => {
-      if (e.name.includes(this.searchText)) this.typeFiles.push(e);
+      if (e.name.includes(this.searchText)) {
+        this.typeFiles.push(e);
+      }
     });
     return this.typeFiles;
   }

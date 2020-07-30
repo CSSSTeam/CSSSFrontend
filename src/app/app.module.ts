@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {MainPageComponent} from './logged-layout/main-page/main-page.component';
 import {LoggedLayoutComponent} from './logged-layout/logged-layout.component';
@@ -51,7 +51,7 @@ import { UsersComponent } from './logged-layout/users/users.component';
     InfosEditComponent,
     FilesEditComponent,
     TreasurePanelComponent,
-    UsersComponent
+    UsersComponent,
     RedactorsPanelComponent,
     EventsDetailsComponent,
     LessonsEditComponent,
