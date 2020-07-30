@@ -4,43 +4,11 @@
       <p routerLink="/events-edit">edytuj</p>
     </nav>
     <section>
-      <div id="day1" class="day">
-        <h6 (click)="showEventsList(0)"><i class="icon-calendar"></i>Poniedziałek</h6>
-        <div *ngIf="eventsList[0]">
-          <div class="subjects" *ngFor="let subjects of monSubjects">
-            {{ subjects.subject }}
-          </div>
-        </div>
-      </div>
-      <div id="day2" class="day">
-        <h6 (click)="showEventsList(1)"><i class="icon-calendar"></i>Wtorek</h6>
-        <div *ngIf="eventsList[1]">
-          <div class="subjects" *ngFor="let subjects of tueSubjects">
-            {{ subjects.subject }}
-          </div>
-        </div>
-      </div>
-      <div id="day3" class="day">
-        <h6 (click)="showEventsList(2)"><i class="icon-calendar"></i>Środa</h6>
-        <div *ngIf="eventsList[2]">
-          <div class="subjects" *ngFor="let subjects of wedSubjects">
-            {{ subjects.subject }}
-          </div>
-        </div>
-      </div>
-      <div id="day4" class="day">
-        <h6 (click)="showEventsList(3)"><i class="icon-calendar"></i>Czwartek</h6>
-        <div *ngIf="eventsList[3]">
-          <div class="subjects" *ngFor="let subjects of thuSubjects">
-            {{ subjects.subject }}
-          </div>
-        </div>
-      </div>
-      <div id="day5" class="day">
-        <h6 (click)="showEventsList(4)"><i class="icon-calendar"></i>Piątek</h6>
-        <div *ngIf="eventsList[4]">
-          <div class="subjects" *ngFor="let subjects of friSubjects">
-            {{ subjects.subject }}
+      <div *ngFor="let day of daysOfWeek;let index=index" id="day{{index+1}} " class="day">
+        <h6 (click)="showEventsList(index)"><i class="icon-calendar"></i>{{day[0]}}</h6>
+        <div *ngIf="getEvent(day).length > 0">
+          <div class="subjects" *ngFor="let subjects of getEvent(day)">
+            {{ subjects.name }}
           </div>
         </div>
       </div>

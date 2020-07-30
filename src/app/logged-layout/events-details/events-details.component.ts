@@ -7,6 +7,8 @@ import {EventsSystemService} from '../../services/events-system.service';
   templateUrl: './events-details.component.html',
   styleUrls: ['./events-details.component.css']
 })
+
+//TODO(n2one):remove this Component and code move to new in events
 export class EventsDetailsComponent implements OnInit {
 
   event;
