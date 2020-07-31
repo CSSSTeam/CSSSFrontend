@@ -9,6 +9,8 @@ import { SupportService } from '../../../services/support.service';
 })
 export class EventsEditComponent implements OnInit {
 
+  colorValue;
+
   constructor(private supportService: SupportService) { }
 
   ngOnInit(): void {
