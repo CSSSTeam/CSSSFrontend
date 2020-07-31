@@ -3,7 +3,7 @@ import { FileSystemService } from '../../services/file-system.service';
 import { SupportService } from '../../services/support.service';
 import { Router } from '@angular/router';
 import { stringify } from 'querystring';
-import { types } from 'util';
+//import { types } from 'util';
 @Component({
   selector: 'app-files',
   templateUrl: './files.component.html',
@@ -29,10 +29,6 @@ export class FilesComponent implements OnInit {
   constructor(public fileSystemService: FileSystemService, public supportService: SupportService) {
   }
 
-  searchBox() {
-    this.isSearchBox = !this.isSearchBox;
-  }
-
   showFileMgmt() {
     if (this.isFileMgmtOpen == false) {
       this.isFileMgmtOpen = true;
@@ -45,7 +41,7 @@ export class FilesComponent implements OnInit {
 
   search() {
     if (!this.mainFilesList) {
-      for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+      // TUTAJ !!!!!!!!!!!!!!!!!1 //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
       this.typeFiles = this.getFiles();
       this.allfiles = true;
     }
@@ -53,7 +49,7 @@ export class FilesComponent implements OnInit {
 
   allFiles() {
     if (!this.mainFilesList) {
-      for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+      // TUTAJ!!!!!!!!!!!!!!!! //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
       this.typeFiles = this.getFiles();
       this.allfiles = !this.allfiles;
     } else {
@@ -101,7 +97,7 @@ export class FilesComponent implements OnInit {
     if (window.innerWidth >= 1020) this.mainFilesList = true;
     else this.mainFilesList = false;
 
-    for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+    // TUTAJ !!!!!!!!!!!!! //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
   }
 
   uploadFile() {

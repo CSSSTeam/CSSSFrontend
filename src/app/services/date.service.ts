@@ -37,7 +37,7 @@ export class DateService {
 
   setDay(index, x = false) {
     this.dayProps = this.timetableService.daysOfWeek[index];
-    if (x) this.dayProps = this.timetableService.daysOfWeekend[index];
+    //if (x) this.dayProps = this.timetableService.daysOfWeekend[index];
   }
 
   getDayProps(property) {

@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { SupportService } from '../services/support.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { UserService, User } from '../services/user.service';
-import {Group, PermissionsService} from '../services/permissions.service';
-import {ScrollService} from '../services/scroll.service';
+import { Group, PermissionsService } from '../services/permissions.service';
 
 @Component({
   selector: 'app-logged-layout',
   templateUrl: './logged-layout.component.html',
   styleUrls: ['./logged-layout.component.css'],
-  providers: [UserService,PermissionsService]
+  providers: [UserService, PermissionsService]
 })
 export class LoggedLayoutComponent implements OnInit {
 
@@ -18,7 +17,7 @@ export class LoggedLayoutComponent implements OnInit {
 
   constructor(
     protected router: Router,
-     private scrollService: ScrollService,
+    private supportService: SupportService,
     protected permissions: PermissionsService
   ) {
   }
@@ -27,7 +26,7 @@ export class LoggedLayoutComponent implements OnInit {
 
     this.user = User.instance;
 
-    if (window.screen.height != 0) this.scrollService.scrollUp();
+    if (window.screen.height != 0) this.supportService.scrollUp();
 
     this.isMenu = window.innerWidth >= 1350;
   }
@@ -38,7 +37,7 @@ export class LoggedLayoutComponent implements OnInit {
 
   navTo() {
     if (window.innerWidth <= 1350) {
-      this.scrollService.scrollDown(document.querySelector('#mainNav').clientHeight, 0);
+      this.supportService.scrollDown(document.querySelector('#mainNav').clientHeight, 0);
       this.isMenu = false;
     }
   }
