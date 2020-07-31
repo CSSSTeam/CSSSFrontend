@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {EventsSystemService} from '../../services/events-system.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EventsSystemService } from '../../services/events-system.service';
 
 @Component({
   selector: 'app-events-details',

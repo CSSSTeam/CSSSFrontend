@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService, User} from '../../services/user.service';
-import {EventsSystemService} from '../../services/events-system.service';
+import { Component, OnInit } from '@angular/core';
+import { UserService, User } from '../../services/user.service';
+import { EventsSystemService } from '../../services/events-system.service';
 import * as data from '../../../config.json';
 
 @Component({
@@ -14,6 +14,7 @@ export class EventsComponent implements OnInit {
   user;
   daysOfWeek;
   events4Week;
+  eventsList;
   constructor(private userService: UserService, private eventsSystemService: EventsSystemService) {
     this.config = (data as any).default;
     this.daysOfWeek = this.config.daysOfWeek;
@@ -38,7 +39,6 @@ export class EventsComponent implements OnInit {
       for (let i = 0; i <= 4; i++) this.eventsList[i] = false;
       this.eventsList[id] = true;
     }
-  }
   }
 
   getEvent(day) {
