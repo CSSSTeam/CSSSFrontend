@@ -21,80 +21,45 @@ export class FilesComponent implements OnInit {
   searchText: string;
   searchedFile: Array<any>;
   mainFilesList: boolean;
-  subjects = [];
-  allfiles: boolean = false;
+  allfiles: any;
 
   constructor(public fileSystemService: FileSystemService, public supportService: SupportService) {
   }
 
   search() {
     if (!this.mainFilesList) {
-      //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
-      //TODO(n2one): do search files
       this.typeFiles = this.getFiles();
       this.allfiles = true;
     }
   }
 
   allFiles() {
-    if (!this.mainFilesList) {
-      //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
-      //TODO(n2one): do all file
-      this.typeFiles = this.getFiles();
-      this.allfiles = !this.allfiles;
+    if (this.mainFilesList) {
+      this.allfiles = true;
     } else {
-      this.typeFiles = this.getFiles();
+      this.allfiles = !this.allfiles;
     }
+    this.typeFiles = this.getFiles();
   }
 
   openTypeEl(id) {
     this.allfiles = false;
-    const temp = this.subjects[id];
-    //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
-    //TODO(n2one):types v2
-    this.subjects[id] = !temp;
     this.isTypeElOpen[id] = this.isTypeElOpen[id] != true;
-    this.typeFiles = [];
-    this.showFiles(id);
+    this.typeFiles = this.getFilesByType(id);
   }
 
-  showFiles(id) {
-    this.getFiles().forEach(e => {
-      if (e.typeid == id) {
-        this.typeFiles.push(e);
-      }
-    });
+  showFiles() {
     return this.typeFiles;
   }
 
-  onFileChanged(event) {
-    this.addingFileForm.upload = event.target.files[0];
-  }
-
   ngOnInit() {
-    this.addingFileForm = {
-      name: '',
-      description: '',
-      type: 0,
-      upload: File = null
-    };
     this.addingTypeForm = {
       name: ''
     };
     this.typeFiles = this.getFiles();
 
     this.mainFilesList = window.innerWidth >= 1020;
-
-    //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
-    //TODO(n2one): types
   }
-
-  uploadFile() {
-
-    this.fileSystemService.uploadFile(this.addingFileForm.name,
-      this.addingFileForm.description, this.addingFileForm.type, this.addingFileForm.upload);
-  }
-
   getTypes() {
     return this.fileSystemService.Types();
     //return this.types;

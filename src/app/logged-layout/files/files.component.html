@@ -9,12 +9,11 @@
 
       <div id="typesList">
         <input id="searchBox" (click)="search()" type="text" (ngModelChange)="searchFile()" [(ngModel)]="searchText"
-          placeholder="Wyszukaj plik">
+               placeholder="Wyszukaj plik">
         <div id="allFiles" (click)="allFiles()">Wszystkie pliki</div>
-        <div class="mobileTypeFiles" *ngIf="allfiles">
+        <div class="mobileTypeFiles" *ngIf="!mainFilesList && allfiles">
 
-
-          <div *ngFor="let file of showFiles()" id="listItem">
+          <div *ngFor="let file of getFiles()" id="listItem">
             <!--(click)="download"-->
 
             <p>{{ file.name }}</p>
@@ -22,7 +21,7 @@
             <div id="fileOptions">
               <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>
               <i class="icon-help-1" routerLink="/files/{{file.pk}}"></i>
-              <i class="icon-trash" (click)="deleteFile()"></i>
+              <i class="icon-trash" (click)="deleteFile(file.pk)"></i>
               <!--(click)="deleteFile(file.pk)"-->
             </div>
 
@@ -33,9 +32,9 @@
           <div id="typeElHead" (click)="openTypeEl(type.id)">
             {{ type.name }}
           </div>
-          <div class="mobileTypeFiles" *ngIf="!mainFilesList && subjects[type.id]">
+          <div class="mobileTypeFiles" *ngIf="!mainFilesList && isTypeElOpen[type.id]">
 
-            <div *ngFor="let file of showFiles()" id="listItem">
+            <div *ngFor="let file of getFilesByType(type.id)" id="listItem">
               <!--(click)="download"-->
 
               <p>{{ file.name }}</p>
@@ -43,7 +42,7 @@
               <div id="fileOptions">
                 <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>
                 <i class="icon-help-1" routerLink="/files/{{file.pk}}"></i>
-                <i class="icon-trash" (click)="deleteFile()"></i>
+                <i class="icon-trash" (click)="deleteFile(file.pk)"></i>
                 <!--(click)="deleteFile(file.pk)"-->
               </div>
 
@@ -63,7 +62,7 @@
           <div id="fileOptions">
             <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>
             <i class="icon-help-1" routerLink="/files/{{file.pk}}"></i>
-            <i class="icon-trash" (click)="deleteFile()"></i>
+            <i class="icon-trash" (click)="deleteFile(file.pk)"></i>
             <!--(click)="deleteFile(file.pk)"-->
           </div>
 
@@ -73,7 +72,7 @@
     </section>
   </article>
   <!--<div>
-    
+
       <h2>Typy</h2>
 
       name:
@@ -88,7 +87,7 @@
         {{type.name}}
         <button (click)="deleteType(type.id)">delete</button>
       </div>
-      
+
     </div>
   </div> -->
 </main>
