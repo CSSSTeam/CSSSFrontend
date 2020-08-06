@@ -170,7 +170,7 @@ main select::placeholder {
   opacity: 1;
 }
 
-main .add {
+main #add {
   background-color: rgba(0, 0, 0, 0.5);
   border: 2px solid rgba(221, 221, 221, 0.2);
   border-radius: 1rem;
@@ -179,11 +179,11 @@ main .add {
   transition: background-color .2s;
 }
 
-main .add:hover {
+main #add:hover {
   background-color: #000;
 }
 
-main .add:active {
+main #add:active {
   color: #333;
 }
 

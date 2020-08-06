@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService, User } from '../../services/user.service';
 import { EventsSystemService } from '../../services/events-system.service';
+import { EventsEditComponent } from './events-edit/events-edit.component'
 import * as data from '../../../config.json';
 
 @Component({

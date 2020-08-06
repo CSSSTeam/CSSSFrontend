@@ -41,7 +41,7 @@ export class FilesComponent implements OnInit {
 
   search() {
     if (!this.mainFilesList) {
-      // TUTAJ !!!!!!!!!!!!!!!!!1 //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+      // for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
       this.typeFiles = this.getFiles();
       this.allfiles = true;
     }
@@ -49,7 +49,7 @@ export class FilesComponent implements OnInit {
 
   allFiles() {
     if (!this.mainFilesList) {
-      // TUTAJ!!!!!!!!!!!!!!!! //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+      // for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
       this.typeFiles = this.getFiles();
       this.allfiles = !this.allfiles;
     } else {
@@ -60,7 +60,7 @@ export class FilesComponent implements OnInit {
   openTypeEl(id) {
     this.allfiles = false;
     const temp = this.subjects[id];
-    for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+    // for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
     this.subjects[id] = !temp;
     if (this.isTypeElOpen[id] != true) {
       this.isTypeElOpen[id] = true;
@@ -97,7 +97,7 @@ export class FilesComponent implements OnInit {
     if (window.innerWidth >= 1020) this.mainFilesList = true;
     else this.mainFilesList = false;
 
-    // TUTAJ !!!!!!!!!!!!! //for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+    // for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
   }
 
   uploadFile() {
