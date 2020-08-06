@@ -21,9 +21,7 @@ import {LessonsEditComponent} from './logged-layout/lessons/lessons-edit/lessons
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {FileDetailsComponent} from './logged-layout/file-datails/file-details.component';
-import {RedactorsPanelComponent} from './logged-layout/redactors-panel/redactors-panel.component';
 import {EventsDetailsComponent} from './logged-layout/events-details/events-details.component';
-import {UserManagementPanelComponent} from './logged-layout/user-management-panel/user-management-panel.component';
 import { EventsEditComponent } from './logged-layout/events/events-edit/events-edit.component';
 import { ChgPasswordComponent } from './logged-layout/chg-password/chg-password.component';
 import { AboutComponent } from './logged-layout/about/about.component';
@@ -52,11 +50,10 @@ import { UsersComponent } from './logged-layout/users/users.component';
     FilesEditComponent,
     TreasurePanelComponent,
     UsersComponent,
-    RedactorsPanelComponent,
+
     EventsDetailsComponent,
     LessonsEditComponent,
-    EventsEditComponent,
-    UserManagementPanelComponent
+    EventsEditComponent
   ],
   imports: [
     BrowserModule,
