@@ -46,8 +46,23 @@ export class EventsEditComponent implements OnInit {
   }
 
   addEvent() {
-    console.log(this.addEventForm);
-    //TODO(n2one): data validation
+    if (this.addEventForm.name == '' || this.addEventForm.name == undefined) {
+      this.supportService.popup('Wydarzenie musi mieć nazwe');
+      return;
+    }
+    if (this.addEventForm.dateStart > this.addEventForm.dateEnd) {
+      this.supportService.popup('Wydarzenie musi mieć puźniej konic niż początek');
+      return;
+    }
+
+    if (this.addEventForm.dateStart < Date.now()) {
+      this.supportService.popup('Wydarzenie musi mieć odnosić się do przyszłości');
+      return;
+    }
+    if (this.addEventForm.description == '' || this.addEventForm.description == undefined) {
+      this.supportService.popup('Wydarzenie musi mieć opis');
+      return;
+    }
     this.eventsSystemService.addEvent(this.addEventForm).then(() => {
       this.addedEvent = true;
       this.supportService.popup('dodano wydarzenie');
@@ -56,5 +71,4 @@ export class EventsEditComponent implements OnInit {
       this.supportService.popup('nie udało się dodać nowego wydarzenia');
     });
   }
-
 }

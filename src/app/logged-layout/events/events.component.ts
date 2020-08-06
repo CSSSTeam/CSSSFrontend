@@ -14,7 +14,7 @@ export class EventsComponent implements OnInit {
   user;
   daysOfWeek;
   events4Week;
-  eventsList: any; // TODO(n2one): load events to this
+  eventsList: any;
   constructor(private userService: UserService, private eventsSystemService: EventsSystemService) {
     this.config = (data as any).default;
     this.daysOfWeek = this.config.daysOfWeek;
