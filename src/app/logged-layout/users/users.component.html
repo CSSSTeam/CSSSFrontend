@@ -3,28 +3,20 @@
     <nav></nav>
     <section>
       <div id="users">
-        <div id="user" *ngFor="let user of users, index as index">
-          <span>{{ user.name }}</span>
-          <i class="icon-trash" (click)="deleteUser()"></i>
+        <div id="user" *ngFor="let user of getUsers(), index as index">
+          <span>{{ user.username }}</span>
+          <i class="icon-trash" (click)="deleteUser(user.id)"></i>
         </div>
       </div>
       <div id="usersMgmt">
         <h1>dodaj użytkownika:</h1>
-        <input type="text" placeholder="nazwa" onfocus="this.placeholder=''" onblur="this.placeholder='nazwa'">
-        <select required size="1">
-          <option disabled selected hidden>grupa</option>
-          <option>1 niem</option>
-          <option>2 niem</option>
-        </select>
-        <select required size="1">
+        <input [(ngModel)]="newUserForm.username" type="text" placeholder="nazwa" onfocus="this.placeholder=''"
+               onblur="this.placeholder='nazwa'">
+        <select [(ngModel)]="newUserForm.group" required size="6" multiple>
           <option disabled selected hidden>uprawnienia</option>
-          <option>nauczyciel</option>
-          <option>uczeń</option>
-          <option>skarbnik</option>
-          <option>admin</option>
+          <option *ngFor="let group of getGroups()" [ngValue]="group.id">{{group.name}}</option>
         </select>
-        <textarea placeholder="opis" onfocus="this.placeholder=''" onblur="this.placeholder='opis'"></textarea>
-        <input id="add" type="button" (click)="addUser()" value="dodaj użytkownika">
+        <input id="add" type="button" (click)="createUser()" value="dodaj użytkownika">
       </div>
     </section>
   </article>
