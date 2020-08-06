@@ -1,5 +1,5 @@
-import { Injectable, ComponentFactoryResolver } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as data from '../../config.json';
 import { TimeTableService } from './time-table.service';
@@ -37,7 +37,8 @@ export class DateService {
 
   setDay(index, x = false) {
     this.dayProps = this.timetableService.daysOfWeek[index];
-    if (x) this.dayProps = this.timetableService.daysOfWeekend[index];
+    console.log('DATE SERVICE 40 FUNCTION SET DAY I don\'t know what to do');
+    // if (x) this.dayProps = this.timetableService.daysOfWeekend[index];
   }
 
   getDayProps(property) {
@@ -63,7 +64,7 @@ export class DateService {
     this.getDate().subscribe(
       (data: any) => {
         let myDate = new Date(data.date).getDay();
-  
+
         switch (myDate) {
           case 1: this.setDay(0); break;
           case 2: this.setDay(1); break;
@@ -74,11 +75,11 @@ export class DateService {
           case 7: this.setDay(1, true); break;
           default: console.error("date.service -> getDayName()")
         }
-  
+
         this.day.index = myDate - 1;
         this.day.name = this.dayProps[0];
         this.day.plName = this.dayProps[1];
-  
+
         return this.day;
       },
       error => console.error(error)
@@ -88,7 +89,7 @@ export class DateService {
 
 
   /*  export class Date {
-  
+
    data;
    dayProps;
    temp;
@@ -98,7 +99,7 @@ export class DateService {
      plName: ''
    };
    dateService: DateService;
-  
+
    constructor(
      dateService: DateService,
      timetableService: TimeTableService
@@ -107,20 +108,20 @@ export class DateService {
      dateService.getDate().subscribe(
        (data: any) => {
          let myDate = new Date(data.date).getDay();
-  
+
          const tt = this.timetableService.daysOfWeek;
-  
+
          if (property === "index") this.temp = myDate - 1;
          else if (property === "name") this.temp = tt[myDate - 1][0];
          else if (property === "plName") this.temp = tt[myDate - 1][1];
          else if (property === "all") this.temp = tt[myDate - 1];
          else alert("getDayProps() - zły atrybut")
-  
-  
+
+
        },
        error => console.error(error)
      );
    }
-  
+
   } */
 }

@@ -64,7 +64,7 @@ export class UserManagementService {
     console.log(usersData);
     return new Promise<any>((p, e) => this.http.post(url, usersData, httpOption).subscribe(
       (data: any) => {
-        this.users = this.users.concat(data);
+        this.users = this.users.push(data);
 
         p(data);
       },
@@ -109,7 +109,7 @@ export class UserManagementService {
       (data: any) => {
         this.groups = data;
       },
-      (error: any) => {
+      () => {
         this.hasNetwork = false;
       }
     );

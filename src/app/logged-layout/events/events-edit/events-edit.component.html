@@ -9,20 +9,16 @@
     <section>
 
       <div id="eventsMgmtContent">
-        <input type="text" placeholder="przedmiot" onfocus="(this.placeholder='')"
-          onblur="(this.placeholder='przedmiot')"><br>
-        <select required size="1">
-          <option disabled selected hidden>typ</option>
-          <option>sprawdzian</option>
-          <option>kartkówka</option>
-          <option>odp. ustna</option>
-          <option>duże zad. domowe</option>
-          <option>referat</option>
-          <option>sprawozdanie</option>
-          <option>dla chętnych</option>
+        <input type="text" [(ngModel)]="addEventForm.name" placeholder="przedmiot" onfocus="(this.placeholder='')"
+               onblur="(this.placeholder='przedmiot')"><br>
+        <select [(ngModel)]="addEventForm.eventType" required size="1">
+          <option disabled selected hidden value="-1">typ</option>
+          <option *ngFor="let type of getTypes()" [value]="type.pk">{{type.name}}</option>
         </select><br>
-        <input placeholder="termin" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"> <br>
-        <textarea placeholder="opis" onfocus="(this.placeholder='')" onblur="(this.placeholder='opis')"></textarea>
+        <input placeholder="termin" [(ngModel)]="addEventForm.dateStart" type="datetime-local"> <br>
+        <input placeholder="termin" [(ngModel)]="addEventForm.dateEnd" type="datetime-local"> <br>
+        <textarea placeholder="opis" [(ngModel)]="addEventForm.description" onfocus="(this.placeholder='')"
+                  onblur="(this.placeholder='opis')"></textarea>
         <input id="add" type="button" (click)="addEvent()" value="dodaj wydarzenie">
       </div>
     </section>

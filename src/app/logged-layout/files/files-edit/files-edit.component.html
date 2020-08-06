@@ -5,28 +5,17 @@
     </nav>
     <section>
       <div id="filesMgmtContent">
-        <select required size="1">
+        <select required size="1" [(ngModel)]="addingFileForm.type">
           <option disabled selected hidden>przedmiot</option>
-          <option>mat</option>
-          <option>pol</option>
+          <option *ngFor="let type of getTypes()" [ngValue]="type.id">{{type.name}}</option>
         </select>
-        <input placeholder="nazwa" type="text" onfocus="(this.placeholder='')" onblur="(this.placeholder='nazwa')">
-        <textarea placeholder="opis" onfocus="(this.placeholder='')" onblur="(this.placeholder='opis')"></textarea>
-        <select required size="1">
-          <option disabled selected hidden>grupa</option>
-          <option>wszyscy</option>
-          <option>grupa 1</option>
-          <option>grupa 2</option>
-          <option>grupa 1 - UTK</option>
-          <option>grupa 2 - UTK</option>
-          <option>grupa 3 - UTK</option>
-          <option>grupa 1 - WF - chł.</option>
-          <option>grupa 2 - WF - chł.</option>
-          <option>grupa 3 - WF - dz.</option>
-        </select>
+        <input placeholder="nazwa" type="text" onfocus="(this.placeholder='')" onblur="(this.placeholder='nazwa')"
+               [(ngModel)]="addingFileForm.name">
+        <textarea placeholder="opis" onfocus="(this.placeholder='')" onblur="(this.placeholder='opis')"
+                  [(ngModel)]="addingFileForm.description"></textarea>
         <label for="upload">Wybierz plik</label>
-        <input id="upload" type="file">
-        <input id="add" type="button" (click)="addFile()" value="dodaj plik">
+        <input id="upload" type="file" (change)="onFileChanged($event)">
+        <input id="add" type="button" (click)="uploadFile()" value="dodaj plik">
       </div>
     </section>
   </article>

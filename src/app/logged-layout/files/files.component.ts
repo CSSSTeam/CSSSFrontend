@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FileSystemService } from '../../services/file-system.service';
-import { SupportService } from '../../services/support.service';
-import { Router } from '@angular/router';
-import { stringify } from 'querystring';
-import { types } from 'util';
+import {Component, OnInit} from '@angular/core';
+import {FileSystemService} from '../../services/file-system.service';
+import {SupportService} from '../../services/support.service';
+
 @Component({
   selector: 'app-files',
   templateUrl: './files.component.html',
@@ -23,93 +21,45 @@ export class FilesComponent implements OnInit {
   searchText: string;
   searchedFile: Array<any>;
   mainFilesList: boolean;
-  subjects = [];
-  allfiles: boolean = false;
+  allfiles: any;
 
   constructor(public fileSystemService: FileSystemService, public supportService: SupportService) {
   }
 
-  searchBox() {
-    this.isSearchBox = !this.isSearchBox;
-  }
-
-  showFileMgmt() {
-    if (this.isFileMgmtOpen == false) {
-      this.isFileMgmtOpen = true;
-      document.querySelector('#openMgmt').className = 'icon-cancel open';
-    } else {
-      this.isFileMgmtOpen = false;
-      document.querySelector('#openMgmt').className = 'icon-down-open open';
-    }
-  }
-
   search() {
     if (!this.mainFilesList) {
-      for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
       this.typeFiles = this.getFiles();
       this.allfiles = true;
     }
   }
 
   allFiles() {
-    if (!this.mainFilesList) {
-      for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
-      this.typeFiles = this.getFiles();
-      this.allfiles = !this.allfiles;
+    if (this.mainFilesList) {
+      this.allfiles = true;
     } else {
-      this.typeFiles = this.getFiles();
+      this.allfiles = !this.allfiles;
     }
+    this.typeFiles = this.getFiles();
   }
 
   openTypeEl(id) {
     this.allfiles = false;
-    const temp = this.subjects[id];
-    for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
-    this.subjects[id] = !temp;
-    if (this.isTypeElOpen[id] != true) {
-      this.isTypeElOpen[id] = true;
-    } else {
-      this.isTypeElOpen[id] = false;
-    }
-    this.typeFiles = [];
-    this.showFiles(id);
+    this.isTypeElOpen[id] = this.isTypeElOpen[id] != true;
+    this.typeFiles = this.getFilesByType(id);
   }
 
-  showFiles(id) {
-    this.getFiles().forEach(e => {
-      if (e.typeid == id) this.typeFiles.push(e);
-    });
+  showFiles() {
     return this.typeFiles;
   }
 
-  onFileChanged(event) {
-    this.addingFileForm.upload = event.target.files[0];
-  }
-
   ngOnInit() {
-    this.addingFileForm = {
-      name: '',
-      description: '',
-      type: 0,
-      upload: File = null
-    };
     this.addingTypeForm = {
       name: ''
     };
     this.typeFiles = this.getFiles();
 
-    if (window.innerWidth >= 1020) this.mainFilesList = true;
-    else this.mainFilesList = false;
-
-    for (let i = 0; i < this.types.length; i++) this.subjects[i] = false;
+    this.mainFilesList = window.innerWidth >= 1020;
   }
-
-  uploadFile() {
-
-    this.fileSystemService.uploadFile(this.addingFileForm.name,
-      this.addingFileForm.description, this.addingFileForm.type, this.addingFileForm.upload);
-  }
-
   getTypes() {
     return this.fileSystemService.Types();
     //return this.types;
@@ -153,7 +103,9 @@ export class FilesComponent implements OnInit {
     }); */
     this.typeFiles = [];
     this.getFiles().forEach(e => {
-      if (e.name.includes(this.searchText)) this.typeFiles.push(e);
+      if (e.name.includes(this.searchText)) {
+        this.typeFiles.push(e);
+      }
     });
     return this.typeFiles;
   }
