@@ -1,32 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SupportService} from '../services/support.service';
 import {Router} from '@angular/router';
-import {UserService, User} from '../services/user.service';
-import {Group, PermissionsService} from '../services/permissions.service';
+import {User, UserService} from '../services/user.service';
+import {Group, PermissionsService, PermissionGuard} from '../services/permissions.service';
 
 @Component({
   selector: 'app-logged-layout',
   templateUrl: './logged-layout.component.html',
   styleUrls: ['./logged-layout.component.css'],
-  providers: [UserService,PermissionsService]
+  providers: [UserService, PermissionsService]
 })
 export class LoggedLayoutComponent implements OnInit {
 
   user;
   isMenu: boolean;
 
+  public userPanelAuthGroup = PermissionGuard.userPanelAuthGroup;
+
   constructor(
     protected router: Router,
-    protected permissions: PermissionsService,
-    protected scrollService: SupportService
+    public permissions: PermissionsService,
+    protected scrollService: SupportService,
   ) {
+
   }
 
   ngOnInit() {
 
     this.user = User.instance;
 
-    if (window.screen.height != 0) this.scrollService.scrollUp();
+    if (window.screen.height != 0) {
+      this.scrollService.scrollUp();
+    }
 
     this.isMenu = window.innerWidth >= 1350;
   }
