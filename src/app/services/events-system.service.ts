@@ -204,7 +204,7 @@ export class EventsSystemService {
     return this.eventTypes;
   }
 
-  getEventTypesAtId(id: number) {
+  getEventTypesAtId(id) {
     return this.getEventTypes().find(e => {
       return id == e.pk;
     });
@@ -231,7 +231,7 @@ export class EventsSystemService {
     ));
   }
 
-  deleteEvent(id: number): Promise<any> {
+  deleteEvent(id): Promise<any> {
     let url = this.dataURL.server + this.dataURL.endpoints.events.deleteEvent;
     url = url.replace(':eventId', id.toString());
 

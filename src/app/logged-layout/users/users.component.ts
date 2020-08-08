@@ -48,6 +48,8 @@ export class UsersComponent implements OnInit {
   }
 
   createUser() {
+
+    //TODO(n2one): repair add users with groups. create user but don't have groups
     return this.userManagementService.createUsers(this.newUserForm).then(() => {
       this.supportService.popup('dodano użytkownika');
     }).catch(e => {
