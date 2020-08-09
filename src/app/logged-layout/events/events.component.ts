@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService, User} from '../../services/user.service';
+import {User, UserService} from '../../services/user.service';
 import {EventsSystemService} from '../../services/events-system.service';
 import * as data from '../../../config.json';
+import {PermissionsService, PermissionGuard} from '../../services/permissions.service';
 
 @Component({
   selector: 'app-events',
@@ -14,10 +15,13 @@ export class EventsComponent implements OnInit {
   user;
   daysOfWeek;
   events4Week;
-  eventsList: any;
-  constructor(private userService: UserService, private eventsSystemService: EventsSystemService) {
+  eventsList: Array<boolean>;
+  permGroup = PermissionGuard.eventsAddPanelAuthGroup;
+
+  constructor(private userService: UserService, public permissions: PermissionsService, private eventsSystemService: EventsSystemService) {
     this.config = (data as any).default;
     this.daysOfWeek = this.config.daysOfWeek;
+    this.eventsList = [];
   }
 
   ngOnInit() {
@@ -41,13 +45,18 @@ export class EventsComponent implements OnInit {
         this.eventsList[id] = false;
         return;
       }
-      for (let i = 0; i <= 4; i++) this.eventsList[i] = false;
+      for (let i = 0; i <= 4; i++) {
+        this.eventsList[i] = false;
+      }
       this.eventsList[id] = true;
     }
   }
 
   getEvent(day) {
     this.events4Week = this.eventsSystemService.getEventsForWeek();
+    if (this.events4Week == undefined) {
+      return undefined;
+    }
     return this.events4Week[day[0]];
   }
 }

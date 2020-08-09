@@ -24,7 +24,7 @@ export class FileDetailsComponent implements OnInit {
     });
   }
 
-  getType(typeId: number) {
+  getType(typeId) {
     let type = this.fileSystemService.Types().filter(t => {
       return t.id == typeId;
     })[0];

@@ -38,7 +38,7 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.newUserForm = {
       username: '',
-      group: 0,
+      groups: 0,
       password: 'asdf'
     };
   }
@@ -48,6 +48,13 @@ export class UsersComponent implements OnInit {
   }
 
   createUser() {
+
+    if (this.getUsers().find(u => {
+      return u.username == this.newUserForm.username;
+    }) != undefined) {
+      this.supportService.popup('Istnieje już użytkownik o takim loginie');
+      return;
+    }
     return this.userManagementService.createUsers(this.newUserForm).then(() => {
       this.supportService.popup('dodano użytkownika');
     }).catch(e => {

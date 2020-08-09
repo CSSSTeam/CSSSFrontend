@@ -7,7 +7,7 @@ import * as data from '../../config.json';
 })
 export class UserManagementService {
   private dataURL: any;
-  private users: any;
+  private users: Array<any>;
   private groups: any;
   private hasNetwork: Boolean = true;
 
@@ -64,7 +64,7 @@ export class UserManagementService {
     console.log(usersData);
     return new Promise<any>((p, e) => this.http.post(url, usersData, httpOption).subscribe(
       (data: any) => {
-        this.users = this.users.push(data);
+        this.users.push(data);
 
         p(data);
       },
@@ -74,7 +74,7 @@ export class UserManagementService {
     ));
   }
 
-  deleteUser(id: number): Promise<any> {
+  deleteUser(id): Promise<any> {
 
     let url = this.dataURL.server + this.dataURL.endpoints.userManager.deleteUser;
     url = url.replace(':idUser', id.toString());
@@ -115,7 +115,7 @@ export class UserManagementService {
     );
   }
 
-  getGroupById(id: number) {
+  getGroupById(id) {
 
     if (this.groups == null) {
       this.getGroupsQuery();
@@ -135,7 +135,7 @@ export class UserManagementService {
     return this.groups;
   }
 
-  addUser2Group(userId: number, groupId: number) {
+  addUser2Group(userId, groupId) {
 
     let url = this.dataURL.server + this.dataURL.endpoints.userManager.addGroup2User;
     url = url + '?user=' + userId + '&group=' + groupId;

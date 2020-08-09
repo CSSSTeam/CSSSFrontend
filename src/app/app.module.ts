@@ -1,7 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { RouterModule } from '@angular/router';
+import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
@@ -22,14 +22,15 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {FileDetailsComponent} from './logged-layout/file-datails/file-details.component';
 import {EventsDetailsComponent} from './logged-layout/events-details/events-details.component';
-import { EventsEditComponent } from './logged-layout/events/events-edit/events-edit.component';
-import { ChgPasswordComponent } from './logged-layout/chg-password/chg-password.component';
-import { AboutComponent } from './logged-layout/about/about.component';
-import { InfosEditComponent } from './logged-layout/infos/infos-edit/infos-edit.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FilesEditComponent } from './logged-layout/files/files-edit/files-edit.component';
-import { TreasurePanelComponent } from './logged-layout/treasure-panel/treasure-panel.component';
-import { UsersComponent } from './logged-layout/users/users.component';
+import {EventsEditComponent} from './logged-layout/events/events-edit/events-edit.component';
+import {ChgPasswordComponent} from './logged-layout/chg-password/chg-password.component';
+import {AboutComponent} from './logged-layout/about/about.component';
+import {InfosEditComponent} from './logged-layout/infos/infos-edit/infos-edit.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FilesEditComponent} from './logged-layout/files/files-edit/files-edit.component';
+import {TreasurePanelComponent} from './logged-layout/treasure-panel/treasure-panel.component';
+import {UsersComponent} from './logged-layout/users/users.component';
+import {PermissionGuard} from './services/permissions.service';
 
 @NgModule({
   declarations: [
@@ -61,9 +62,9 @@ import { UsersComponent } from './logged-layout/users/users.component';
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
-  providers: [UserService, GuardService],
+  providers: [UserService, GuardService, PermissionGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -35,7 +35,8 @@
             <i class="icon-list-bullet"></i>Panel skarbnika
           </div>
         </a>
-        <a (click)="navTo()" routerLink="/users" routerLinkActive="active">
+        <a *ngIf="permissions.hasPerm(userPanelAuthGroup)" (click)="navTo()" routerLink="/users"
+           routerLinkActive="active">
           <div id="usersMgmt" class="menuOp">
             <i class="icon-cog"></i>Użytkownicy
           </div>
@@ -56,9 +57,9 @@
         <div>
           <i class="icon-off opt" (click)="logout()"></i>
           <i class="icon-key opt" (click)="showSettings(); isMenu = false" routerLink="/chg-password"
-            routerLinkActive="active"></i>
+             routerLinkActive="active"></i>
           <i class="icon-info opt" (click)="showSettings(); isMenu = false" routerLink="/about"
-            routerLinkActive="active"></i>
+             routerLinkActive="active"></i>
           <div id="close"><i class="icon-cancel" (click)="showSettings()"></i></div>
         </div>
       </div>

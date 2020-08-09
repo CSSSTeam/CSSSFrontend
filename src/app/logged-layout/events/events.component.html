@@ -1,12 +1,12 @@
 <main>
   <article>
     <nav>
-      <p routerLink="/events-edit">edytuj</p>
+      <p routerLink="/events-edit" *ngIf="permissions.hasPerm(permGroup)">edytuj</p>
     </nav>
     <section>
       <div *ngFor="let day of daysOfWeek;let index=index" id="day{{index+1}} " class="day">
         <h6 (click)="showEventsList(index)"><i class="icon-calendar"></i>{{day[0]}}</h6>
-        <div *ngIf="getEvent(day).length > 0">
+        <div *ngIf="getEvent(day) != undefined && getEvent(day).length > 0">
           <div class="subjects" *ngFor="let subjects of getEvent(day)">
             {{ subjects.name }}
           </div>

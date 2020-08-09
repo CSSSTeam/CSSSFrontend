@@ -37,7 +37,6 @@ export class EventsEditComponent implements OnInit {
   }
 
   getTypes() {
-    console.log('1');
     return this.eventsSystemService.getEventTypes();
   }
 

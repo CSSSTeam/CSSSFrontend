@@ -230,9 +230,9 @@ export class FileSystemService {
     ));
   }
 
-  getDetails(id: number): Promise<any> {
+  getDetails(id): Promise<any> {
     let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.detailsFile;
-    url = url.replace(':fileId', id.toString());
+    url = url.replace(':fileId', id);
     const httpOption = {
       headers: new HttpHeaders({
         'Authorization': 'token ' + localStorage.getItem('token')
@@ -265,9 +265,9 @@ export class FileSystemService {
       });
   }
 
-  deleteType(id: number): Promise<any> {
+  deleteType(id): Promise<any> {
     let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.deleteType;
-    url = url.replace(':typeId', id.toString());
+    url = url.replace(':typeId', id);
     const httpOption = {
       headers: new HttpHeaders({
         'Authorization': 'token ' + localStorage.getItem('token')
@@ -289,9 +289,9 @@ export class FileSystemService {
     ));
   }
 
-  deleteFile(id: number): Promise<any> {
+  deleteFile(id): Promise<any> {
     let url = this.dataURL.server + this.dataURL.endpoints.fileSystem.deleteFile;
-    url = url.replace(':fileId', id.toString());
+    url = url.replace(':fileId', id);
     const httpOption = {
       headers: new HttpHeaders({
         'Authorization': 'token ' + localStorage.getItem('token')
@@ -312,12 +312,12 @@ export class FileSystemService {
 }
 
 class TypeOfFile {
-  constructor(pk: number, name: string) {
+  constructor(pk: string, name: string) {
     this.id = pk;
     this.name = name;
   }
 
-  id: number;
+  id: string;
   name: string;
 
 }

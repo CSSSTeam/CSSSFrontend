@@ -6,6 +6,6 @@ import {LoggedLayoutComponent} from './logged-layout/logged-layout.component';
 
 export const APP_ROUTES: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full',},
-  {path: '', component: LoggedLayoutComponent, canActivate: [GuardService], data: {title: 'Secure Views'}, children: LOGGED_PAGE},
+  {path: '', component: LoggedLayoutComponent, canActivate: [GuardService], children: LOGGED_PAGE},
   {path: 'login', component: LoginPageComponent, data: {title: 'Public Views'}}
 ];

@@ -12,6 +12,7 @@ export class EventsSystemService {
   private dataURL;
   private eventTypes;
   public daysOfWeek;
+
   constructor(private http: HttpClient) {
     this.dataURL = (data as any).default;
     this.daysOfWeek = this.dataURL.daysOfWeek;
@@ -35,7 +36,7 @@ export class EventsSystemService {
 
     return new Promise<any>((p, e) => this.http.post(url, eventData, httpOption).subscribe(
       data => {
-        console.log(data);
+
         if (this.events != null) {
           this.events.push(data);
           this.createEventWeek();
@@ -99,7 +100,6 @@ export class EventsSystemService {
 
     return new Promise<any>((p, e) => this.http.get(url, httpOption).subscribe(
       data => {
-        console.log('ok');
         this.events = data;
         p(data);
       },
@@ -165,7 +165,7 @@ export class EventsSystemService {
     };
     return new Promise<any>((p, e) => this.http.get(url, httpOption).subscribe(
       data => {
-        console.log('ok');
+
         p(data);
       },
       (err: any) => {
@@ -185,7 +185,6 @@ export class EventsSystemService {
     };
     return new Promise<any>((p, e) => this.http.get(url, httpOption).subscribe(
       data => {
-        console.log(data);
         p(data);
       },
       (err: any) => {
@@ -205,7 +204,7 @@ export class EventsSystemService {
     return this.eventTypes;
   }
 
-  getEventTypesAtId(id: number) {
+  getEventTypesAtId(id) {
     return this.getEventTypes().find(e => {
       return id == e.pk;
     });
@@ -223,7 +222,6 @@ export class EventsSystemService {
 
     return new Promise<any>((p, e) => this.http.post(url, addTypeForm, httpOption).subscribe(
       data => {
-        console.log(data);
         this.eventTypes.push(data);
         p(data);
       },
@@ -233,7 +231,7 @@ export class EventsSystemService {
     ));
   }
 
-  deleteEvent(id: number): Promise<any> {
+  deleteEvent(id): Promise<any> {
     let url = this.dataURL.server + this.dataURL.endpoints.events.deleteEvent;
     url = url.replace(':eventId', id.toString());
 
@@ -245,7 +243,7 @@ export class EventsSystemService {
     };
     return new Promise<any>((p, e) => this.http.delete(url, httpOption).subscribe(
       () => {
-        console.log('ok');
+
         this.events = this.events.filter(d => {
           return d.pk != id;
         });
