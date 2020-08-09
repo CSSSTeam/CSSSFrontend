@@ -12,7 +12,7 @@
         <h1>dodaj użytkownika:</h1>
         <input [(ngModel)]="newUserForm.username" type="text" placeholder="nazwa" onfocus="this.placeholder=''"
                onblur="this.placeholder='nazwa'">
-        <select [(ngModel)]="newUserForm.group" required size="6" multiple>
+        <select [(ngModel)]="newUserForm.groups" required size="6" multiple>
           <option disabled selected hidden>uprawnienia</option>
           <option *ngFor="let group of getGroups()" [ngValue]="group.id">{{group.name}}</option>
         </select>

@@ -7,7 +7,7 @@ import * as data from '../../config.json';
 })
 export class UserManagementService {
   private dataURL: any;
-  private users: any;
+  private users: Array<any>;
   private groups: any;
   private hasNetwork: Boolean = true;
 
@@ -64,7 +64,7 @@ export class UserManagementService {
     console.log(usersData);
     return new Promise<any>((p, e) => this.http.post(url, usersData, httpOption).subscribe(
       (data: any) => {
-        this.users = this.users.push(data);
+        this.users.push(data);
 
         p(data);
       },
