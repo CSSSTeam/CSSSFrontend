@@ -3,7 +3,6 @@ import {MainPageComponent} from './main-page/main-page.component';
 import {EventsComponent} from './events/events.component';
 import {LessonsComponent} from './lessons/lessons.component';
 import {FilesComponent} from './files/files.component';
-import {InfosComponent} from './infos/infos.component';
 import {OthersComponent} from './others/others.component';
 import {LessonsEditComponent} from './lessons/lessons-edit/lessons-edit.component';
 import {EventsEditComponent} from './events/events-edit/events-edit.component';
@@ -22,7 +21,6 @@ export const LOGGED_PAGE: Routes = [
   {path: 'lessons', component: LessonsComponent},
   {path: 'files', component: FilesComponent},
   {path: 'files/:id', component: FileDetailsComponent},
-  {path: 'infos', component: InfosComponent},
   {path: 'others', component: OthersComponent},
   {path: 'lessons-edit', component: LessonsEditComponent},
   {
