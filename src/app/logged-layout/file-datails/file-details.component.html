@@ -2,16 +2,18 @@
   <article>
     <div id="box">
       <h1>
-        {{ file.name }}
+        sprawdzian_infa{{ file.name }}
       </h1>
       <p>
-        {{ file.description }}
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, optio voluptate. Voluptates accusantium sequi
+        quis, alias quibusdam aliquam quod, assumenda veniam impedit perspiciatis ullam ab tempora nobis, quidem quo
+        sit!{{ file.description }}
       </p>
       <h2>
-        <span>przedmiot:</span> {{ getType(file.fileType) }}
+        <span>przedmiot:</span> informatyka{{ getType(file.fileType) }}
       </h2>
       <h2>
-        <span>data dodania:</span> {{ getDate(file.date) }}
+        <span>data dodania:</span> 12-09-2020{{ getDate(file.date) }}
       </h2>
       <input id="download" type="button" (click)="downloadFile()" value="pobierz">
       <input id="back" type="button" routerLink="/files" value="wróć">

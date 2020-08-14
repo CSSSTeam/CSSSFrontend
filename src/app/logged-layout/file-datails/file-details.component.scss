@@ -60,3 +60,33 @@ article {
     }
   }
 }
+
+@media (max-width: 1350px) {
+  article {
+    #box {
+      width: 50vw;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  article {
+    #box {
+      width: 80vw;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  article {
+    #box {
+      h1 {
+        font-size: 1.1rem;
+      }
+
+      p {
+        font-size: .9rem;
+      }
+    }
+  }
+}
