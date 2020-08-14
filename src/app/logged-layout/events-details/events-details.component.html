@@ -1,5 +1,21 @@
-name: {{event['name']}}<br/>
-description: {{event['description']}}<br/>
-type: {{getNameType(event.eventType)}}<br/>
-
-<input type="submit" (click)="deleteEvent()" value="DELETE">
+<main>
+  <article>
+    <div id="box">
+      <h1>
+        {{ event['name'] }}
+      </h1>
+      <p>
+        {{ event['description'] }}
+      </p>
+      <h2>
+        <span>typ:</span> {{ getNameType(event.eventType) }}
+      </h2>
+      <h2>
+        <span>data:</span>
+      </h2>
+      <input id="delete" type="button" (click)="deleteEvent()" value="usuń">
+      <input id="back" type="button" routerLink="/events" value="wróć">
+    </div>
+  </article>
+</main>
+<div style="clear:both"></div>
