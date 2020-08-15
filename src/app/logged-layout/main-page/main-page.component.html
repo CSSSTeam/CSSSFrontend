@@ -8,11 +8,11 @@
             <div id="uOption">
               <div id="ops">
                 <div (click)="whichDay = this.dateService.getDayProps('name'); isActive = false"
-                  [ngClass]="isActive ? 'but inactive' : 'but active'">
+                     [ngClass]="isActive ? 'but inactive' : 'but active'">
                   dzisiaj
                 </div>
                 <div (click)="whichDay = this.dateService.getDayProps('name'); isActive = true"
-                  [ngClass]="isActive ? 'but active' : 'but inactive'">
+                     [ngClass]="isActive ? 'but active' : 'but inactive'">
                   jutro
                 </div>
               </div>
@@ -20,8 +20,8 @@
             <div id="dayOfTimeTable">
               <div class="table">
                 <div *ngFor="let lesson of timetable()[whichDay], index as index, last as lastIndex">
-                  <div class="lesson" [ngClass]="lastIndex ? 'lastLesson' : return"
-                    *ngIf="timetable()[whichDay][index].length != 0">
+                  <div class="lesson" [ngClass]="lastIndex ? 'lastLesson' : ''"
+                       *ngIf="timetable()[whichDay][index].length != 0">
                     <div class="tableEl subject">
                       {{ displayText(lesson[0], 'subject') }}
                     </div>
@@ -56,11 +56,11 @@
               <p>Pliki</p>
             </div>
           </div>
-          <div class="subSite" routerLink="/infos">
-            <div class="sqr"><i class="icon-attention"></i>
-              <p>Informacje</p>
-            </div>
-          </div>
+          <!--          <div class="subSite" routerLink="/infos">
+                      <div class="sqr"><i class="icon-attention"></i>
+                        <p>Informacje</p>
+                      </div>
+                    </div>-->
         </div>
       </div>
     </section>

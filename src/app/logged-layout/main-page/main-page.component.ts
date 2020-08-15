@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { TimeTableService } from '../../services/time-table.service';
-import { UserService, User } from '../../services/user.service';
-import { SupportService } from 'src/app/services/support.service';
-import { DateService } from 'src/app/services/date.service';
+import {Component, OnInit} from '@angular/core';
+import {TimeTableService} from '../../services/time-table.service';
+import {UserService, User} from '../../services/user.service';
+import {SupportService} from 'src/app/services/support.service';
+import {DateService} from 'src/app/services/date.service';
 
 @Component({
   selector: 'app-main-page',
@@ -20,24 +20,16 @@ export class MainPageComponent implements OnInit {
     return this.timetableService.getTimetable();
   }
 
-  constructor(
-    public timetableService: TimeTableService,
-    public dateService: DateService
+
+  constructor(public timetableService: TimeTableService, public dateService: DateService
   ) {
-    console.log(this.dateService.getDayProps('name'));
-    // console.log(this.dateService.getDayProps("index"));
   }
 
   ngOnInit() {
   }
 
-  showDate() {
-
-
-  }
-
   displayText(object: any, tag: string): string {
-    return object == undefined ? '‎‏‏‎‎‎' : object[tag];
+    return object == undefined ? '' : object[tag];
   }
 
   mgmtStart() {
@@ -47,9 +39,6 @@ export class MainPageComponent implements OnInit {
   displayTime(timeElement: string) {
     let time = timeElement.split(':');
     return time[0] + ':' + time[1];
-  }
-
-  createLesson() {
   }
 
   logout() {
