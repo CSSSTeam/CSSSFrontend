@@ -21,6 +21,22 @@
                   onblur="(this.placeholder='opis')"></textarea>
         <input id="add" type="button" (click)="addEvent()" value="dodaj wydarzenie">
       </div>
+      <div id="typesMgmtContent">
+        <div id="typeAddForm">
+          <input type="text" placeholder="nazwa typu" onfocus="(this.placeholder='')"
+            onblur="(this.placeholder='nazwa typu')"><br>
+          <input id="color" type="text" placeholder="kolor etykiety" [(ngModel)]="colorValue"
+            onmouseover="(this.type='color')" onmouseout="(this.type='text')">
+          <div id="colorBox" [style.background]="colorValue"></div>
+          <div style="clear:both"></div>
+          <input id="addType" type="button" value="dodaj typ">
+        </div>
+        <select required size="1">
+          <option disabled selected hidden>wybierz typ</option>
+          <option>sprawdzian</option>
+        </select><br>
+        <input id="deleteType" type="button" value="usuń typ">
+      </div>
     </section>
   </article>
 </main>

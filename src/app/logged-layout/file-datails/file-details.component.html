@@ -1,5 +1,21 @@
-<p>name: {{file.name}}</p><br/>
-<p>description: {{file.description}}</p><br/>
-<p>type: {{getType(file.fileType)}}</p><br/>
-<p>date: {{getDate(file.date)}}</p><br/>
-<button (click)="downloadFile()">Download</button>
+<main>
+  <article>
+    <div id="box">
+      <h1>
+        {{ file.name }}
+      </h1>
+      <p>
+        {{ file.description }}
+      </p>
+      <h2>
+        <span>przedmiot:</span> {{ getType(file.fileType) }}
+      </h2>
+      <h2>
+        <span>data dodania:</span> {{ getDate(file.date) }}
+      </h2>
+      <input id="download" type="button" (click)="downloadFile()" value="pobierz">
+      <input id="back" type="button" routerLink="/files" value="wróć">
+    </div>
+  </article>
+</main>
+<div style="clear:both"></div>

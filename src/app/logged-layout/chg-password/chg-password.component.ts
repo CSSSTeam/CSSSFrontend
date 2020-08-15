@@ -11,7 +11,7 @@ export class ChgPasswordComponent implements OnInit {
   changePasswordForm: any;
   info = '';
 
-  constructor(private supportService: SupportService,private userService: UserService) {
+  constructor(private supportService: SupportService, private userService: UserService) {
     this.changePasswordForm = {
       oldPass: '',
       newPass: '',
@@ -24,11 +24,11 @@ export class ChgPasswordComponent implements OnInit {
   }
 
   changePassword() {
-
     console.log(this.changePasswordForm);
-    this.userService.changePassword(this.changePasswordForm).then(() =>
-      this.supportService.popup('zmieniono hasło')
-    ).catch(
+    this.userService.changePassword(this.changePasswordForm).then(() => {
+      this.info = 'CHANGED';
+      this.supportService.popup("zmieniono hasło");
+    }).catch(
       error => {
         console.error(error);
         this.info = 'some Error';

@@ -1,7 +1,7 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
@@ -30,6 +30,7 @@ import {FilesEditComponent} from './logged-layout/files/files-edit/files-edit.co
 import {TreasurePanelComponent} from './logged-layout/treasure-panel/treasure-panel.component';
 import {UsersComponent} from './logged-layout/users/users.component';
 import {PermissionGuard} from './services/permissions.service';
+import { EventsDetailsComponent } from './logged-layout/events-details/events-details.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {PermissionGuard} from './services/permissions.service';
     FilesEditComponent,
     TreasurePanelComponent,
     UsersComponent,
+    EventsDetailsComponent,
     LessonsEditComponent,
     EventsEditComponent
   ],
@@ -59,7 +61,7 @@ import {PermissionGuard} from './services/permissions.service';
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES),
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [UserService, GuardService, PermissionGuard],
   bootstrap: [AppComponent]

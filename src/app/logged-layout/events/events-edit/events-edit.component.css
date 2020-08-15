@@ -70,10 +70,60 @@ main article section {
 }
 
 main article section #eventsMgmtContent {
-  width: 70%;
+  width: 60%;
   height: 95%;
   padding: 2rem;
   overflow-y: scroll;
+}
+
+main article section #typesMgmtContent {
+  width: 30%;
+  height: 95%;
+  padding: 2rem;
+  overflow-y: scroll;
+}
+
+main article section #typesMgmtContent #typeAddForm {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px dotted rgba(238, 238, 238, 0.4);
+}
+
+main article section #typesMgmtContent #typeAddForm #color {
+  width: 80%;
+  height: 3rem;
+  float: left;
+}
+
+main article section #typesMgmtContent #typeAddForm #colorBox {
+  background-color: #000;
+  margin: 1rem 0;
+  border-bottom: 2px solid rgba(221, 221, 221, 0.2);
+  float: left;
+  width: 20%;
+  height: calc(3rem + 2px);
+}
+
+main article section #typesMgmtContent #addType,
+main article section #typesMgmtContent #deleteType {
+  padding: .8rem;
+  font-size: 1.1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(221, 221, 221, 0.2);
+  border-radius: 1rem;
+  text-align: center;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+}
+
+main article section #typesMgmtContent #addType:hover,
+main article section #typesMgmtContent #deleteType:hover {
+  background-color: #000;
+}
+
+main article section #typesMgmtContent #addType:active,
+main article section #typesMgmtContent #deleteType:active {
+  color: #333;
 }
 
 main input,

@@ -55,10 +55,58 @@ main {
       align-items: center;
 
       #eventsMgmtContent {
-        width: 70%;
+        width: 60%;
         height: 95%;
         padding: 2rem;
         overflow-y: scroll;
+      }
+
+      #typesMgmtContent {
+        width: 30%;
+        height: 95%;
+        padding: 2rem;
+        overflow-y: scroll;
+
+        #typeAddForm {
+          padding-bottom: 1.5rem;
+          margin-bottom: 1.5rem;
+          border-bottom: 1px dotted rgba(238, 238, 238, .4);
+
+          #color {
+            width: 80%;
+            height: 3rem;
+            float: left;
+          }
+
+          #colorBox {
+            background-color: #000;
+            margin: 1rem 0;
+            border-bottom: 2px solid rgba(221, 221, 221, .2);
+            float: left;
+            width: 20%;
+            height: calc(3rem + 2px);
+          }
+        }
+
+        #addType,
+        #deleteType {
+          padding: .8rem;
+          font-size: 1.1rem;
+          background-color: rgba(0, 0, 0, .5);
+          border: 2px solid rgba(221, 221, 221, .2);
+          border-radius: 1rem;
+          text-align: center;
+          transition: background-color .2s;
+
+          &:hover {
+            background-color: #000;
+          }
+
+          &:active {
+            color: #333;
+          }
+        }
+
       }
     }
   }

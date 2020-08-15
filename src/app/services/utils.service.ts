@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import * as SparkMD5 from 'spark-md5';
 
 @Injectable({
@@ -13,8 +13,8 @@ export class UtilsService {
     const name = cname + '=';
     const decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
       while (c.charAt(0) == ' ') {
         c = c.substring(1);
       }
@@ -27,15 +27,15 @@ export class UtilsService {
 
   public static blobToFile(theBlob: Blob, fileName: string): File {
     var b: any = theBlob;
-    console.log(b, <File> b);
+    console.log(b, <File>b);
     //A Blob() is almost a File() - it's just missing the two properties below which we will add
     b.lastModifiedDate = new Date();
-    console.log(b, <File> b);
+    console.log(b, <File>b);
     b.filename = fileName;
     b.name = fileName;
-    console.log(b, <File> b);
+    console.log(b, <File>b);
     //Cast to a File() type
-    return <File> theBlob;
+    return <File>theBlob;
   }
 
   public static computeChecksumMd5(file: File): Promise<string> {
@@ -46,7 +46,7 @@ export class UtilsService {
 
       let cursor = 0; // current cursor in file
 
-      fileReader.onerror = function(): void {
+      fileReader.onerror = function (): void {
         reject('MD5 computation failed - error reading the file');
       };
 
@@ -60,7 +60,7 @@ export class UtilsService {
       // If using TS >= 3.6, you can use `FileReaderProgressEvent` type instead
       // of `any` for `e` variable, otherwise stick with `any`
       // See https://github.com/Microsoft/TypeScript/issues/25510
-      fileReader.onload = function(e: any): void {
+      fileReader.onload = function (e: any): void {
         spark.append(e.target.result); // Accumulate chunk to md5 computation
         cursor += chunkSize; // Move past this chunk
 

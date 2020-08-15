@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {SupportService} from '../services/support.service';
-import {Router} from '@angular/router';
-import {User, UserService} from '../services/user.service';
-import {Group, PermissionsService, PermissionGuard} from '../services/permissions.service';
+import { Component, OnInit } from '@angular/core';
+import { SupportService } from '../services/support.service';
+import { Router, RouterOutlet } from '@angular/router';
+import { UserService, User } from '../services/user.service';
+import { Group, PermissionsService, PermissionGuard } from '../services/permissions.service';
 
 @Component({
   selector: 'app-logged-layout',
@@ -42,7 +42,7 @@ export class LoggedLayoutComponent implements OnInit {
 
   navTo() {
     if (window.innerWidth <= 1350) {
-      this.scrollService.scrollDown(document.querySelector('#mainNav').clientHeight, 0);
+      this.supportService.scrollDown(document.querySelector('#mainNav').clientHeight, 0);
       this.isMenu = false;
     }
   }

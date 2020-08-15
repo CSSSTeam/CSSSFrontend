@@ -34,6 +34,9 @@ export class EventsEditComponent implements OnInit {
       name: ''
     };
 
+  colorValue;
+
+  constructor(private supportService: SupportService) { }
   }
 
   getTypes() {

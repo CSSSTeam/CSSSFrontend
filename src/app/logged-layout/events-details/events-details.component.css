@@ -39,7 +39,7 @@ article #box p {
   font-size: 1.1rem;
 }
 
-article #box #download,
+article #box #delete,
 article #box #back {
   width: 100%;
   color: #eee;
@@ -55,13 +55,13 @@ article #box #back {
   transition: background-color .2s;
 }
 
-article #box #download:hover,
+article #box #delete:hover,
 article #box #back:hover {
   cursor: pointer;
   background-color: #000;
 }
 
-article #box #download:active,
+article #box #delete:active,
 article #box #back:active {
   color: #333;
 }
@@ -90,4 +90,4 @@ article #box #back {
     font-size: .9rem;
   }
 }
-/*# sourceMappingURL=file-details.component.css.map */
+/*# sourceMappingURL=events-details.component.css.map */
