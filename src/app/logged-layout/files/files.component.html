@@ -16,7 +16,7 @@
           <div *ngFor="let file of getFiles()" id="listItem">
             <!--(click)="download"-->
 
-            <p>{{ file.name }}</p>
+            <p routerLink="/files/{{file.pk}}">{{ file.name }}</p>
 
             <div id="fileOptions">
               <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>
@@ -37,7 +37,7 @@
             <div *ngFor="let file of getFilesByType(type.id)" id="listItem">
               <!--(click)="download"-->
 
-              <p>{{ file.name }}</p>
+              <p routerLink="/files/{{file.pk}}">{{ file.name }}</p>
 
               <div id="fileOptions">
                 <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>
@@ -57,7 +57,7 @@
         <div *ngFor="let file of showFiles()" id="listItem">
           <!--(click)="download"-->
 
-          <p>{{ file.name }}</p>
+          <p routerLink="/files/{{file.pk}}">{{ file.name }}</p>
 
           <div id="fileOptions">
             <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>

@@ -6,7 +6,7 @@
     <section>
       <div id="filesMgmtContent">
         <select required size="1" [(ngModel)]="addingFileForm.type">
-          <option disabled selected hidden>przedmiot</option>
+          <option disabled selected hidden value="-1">przedmiot</option>
           <option *ngFor="let type of getTypes()" [ngValue]="type.id">{{type.name}}</option>
         </select>
         <input placeholder="nazwa" type="text" onfocus="(this.placeholder='')" onblur="(this.placeholder='nazwa')"

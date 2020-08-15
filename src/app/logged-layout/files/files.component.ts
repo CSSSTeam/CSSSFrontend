@@ -120,7 +120,7 @@ export class FilesComponent implements OnInit {
     this.supportService.statement('usunąć plik', 'usunięto plik');
   }
 
-  getFilesByType(id: number) {
+  getFilesByType(id) {
     let a = this.getFiles().filter(f => f.fileType == id);
     console.log(this.getFiles(), id, a);
     return a;
