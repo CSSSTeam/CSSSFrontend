@@ -14,10 +14,12 @@ import {TreasurePanelComponent} from './treasure-panel/treasure-panel.component'
 import {UsersComponent} from './users/users.component';
 import {AboutComponent} from './about/about.component';
 import {PermissionGuard} from '../services/permissions.service';
+import {EventsDetailsComponent} from './events-details/events-details.component';
 
 export const LOGGED_PAGE: Routes = [
   {path: '', component: MainPageComponent},
   {path: 'events', component: EventsComponent},
+  {path: 'events/:id', component: EventsDetailsComponent},
   {path: 'lessons', component: LessonsComponent},
   {path: 'files', component: FilesComponent},
   {path: 'files/:id', component: FileDetailsComponent},

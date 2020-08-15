@@ -2,16 +2,16 @@
   <article>
     <div id="box">
       <h1>
-        {{ event['name'] }}
+        {{ displayIfExist(event, 'name') }}
       </h1>
       <p>
-        {{ event['description'] }}
+        {{ displayIfExist(event, 'description') }}
       </p>
       <h2>
-        <span>typ:</span> {{ getNameType(event.eventType) }}
+        <span>typ:</span> {{ getNameType(displayIfExist(event, 'eventType')) }}
       </h2>
       <h2>
-        <span>data:</span>
+        <span>data: </span>{{ displayIfExist(event, 'dateStart') }} - {{displayIfExist(event, 'dateEnd') }}
       </h2>
       <input id="delete" type="button" (click)="deleteEvent()" value="usuń">
       <input id="back" type="button" routerLink="/events" value="wróć">

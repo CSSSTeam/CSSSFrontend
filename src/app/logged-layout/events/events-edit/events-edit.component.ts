@@ -22,6 +22,8 @@ export class EventsEditComponent implements OnInit {
   constructor(private eventsSystemService: EventsSystemService, private supportService: SupportService) {
   }
 
+  colorValue;
+
   ngOnInit() {
     this.addEventForm = {
       name: '',
@@ -34,11 +36,7 @@ export class EventsEditComponent implements OnInit {
       name: ''
     };
 
-  colorValue;
-
-  constructor(private supportService: SupportService) { }
   }
-
   getTypes() {
     return this.eventsSystemService.getEventTypes();
   }

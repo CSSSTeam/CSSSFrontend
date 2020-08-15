@@ -153,9 +153,9 @@ export class EventsSystemService {
     });
   }
 
-  getEventDetails(id: number): Promise<any> {
+  getEventDetails(id): Promise<any> {
     let url = this.dataURL.server + this.dataURL.endpoints.events.getEventDetails;
-    url = url.replace(':eventId', id.toString());
+    url = url.replace(':eventId', id);
 
     const httpOption = {
       headers: new HttpHeaders({

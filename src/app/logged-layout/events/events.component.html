@@ -7,7 +7,7 @@
       <div *ngFor="let day of daysOfWeek;let index=index" id="day{{index+1}} " class="day">
         <h6 (click)="showEventsList(index)"><i class="icon-calendar"></i>{{day[0]}}</h6>
         <div *ngIf="getEvent(day) != undefined && getEvent(day).length > 0">
-          <div class="subjects" *ngFor="let subjects of getEvent(day)">
+          <div class="subjects" *ngFor="let subjects of getEvent(day)" routerLink="/events/{{subjects.pk}}">
             {{ subjects.name }}
           </div>
         </div>
