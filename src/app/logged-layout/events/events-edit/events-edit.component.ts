@@ -18,31 +18,46 @@ export class EventsEditComponent implements OnInit {
     dateEnd: Date.now()
   };
   addTypeForm: any;
+  delTypeForm: any;
 
   constructor(private eventsSystemService: EventsSystemService, private supportService: SupportService) {
   }
-
-  colorValue;
 
   ngOnInit() {
     this.addEventForm = {
       name: '',
       description: '',
-      eventType: 1,
+      eventType: -1,
       dateStart: Date.now(),
       dateEnd: Date.now()
     };
     this.addTypeForm = {
-      name: ''
+      name: '',
+      colorValue: '#FF0000'
+    };
+    this.delTypeForm = {
+      eventType: -1
     };
 
   }
+
   getTypes() {
     return this.eventsSystemService.getEventTypes();
   }
 
   addType() {
-    this.eventsSystemService.addType(this.addTypeForm).then().catch();
+    if (this.addTypeForm.name == undefined || this.addTypeForm.name == '') {
+      this.supportService.popup('Typ musi mieć nazwe');
+      return;
+    }
+
+
+    this.eventsSystemService.addType(this.addTypeForm).then(() => {
+      this.supportService.popup('Dodano Typ');
+    }).catch(e => {
+      this.supportService.popup('Coś poszło nie tak');
+      console.error(e);
+    });
   }
 
   addEvent() {
@@ -69,6 +84,15 @@ export class EventsEditComponent implements OnInit {
     }).catch(e => {
       console.error(e);
       this.supportService.popup('nie udało się dodać nowego wydarzenia');
+    });
+  }
+
+  delType() {
+    this.eventsSystemService.deleteType(this.delTypeForm.eventType).then(() => {
+      this.supportService.popup('USUNIĘTO');
+    }).catch(e => {
+      console.error(e);
+      this.supportService.popup('NIe udało się usunąć typu');
     });
   }
 }

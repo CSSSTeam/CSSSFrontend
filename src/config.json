@@ -29,7 +29,8 @@
       "getEventDetails": "events/event/:eventId/",
       "getEventTypes": "events/type/",
       "createType": "events/type/",
-      "deleteEvent": "events/event/:eventId/"
+      "deleteEvent": "events/event/:eventId/",
+      "deleteType": "events/type/:eventId/"
     },
     "userManager": {
       "getList": "user/",
