@@ -15,8 +15,7 @@ export class FileDetailsComponent implements OnInit {
 
   ngOnInit() {
     let idStr = this.route.snapshot.paramMap.get('id');
-    let id = Number.parseInt(idStr);
-    this.fileSystemService.getDetails(id).then(r => {
+    this.fileSystemService.getDetails(idStr).then(r => {
       this.file = r;
     }).catch(e => {
       console.error(e);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SupportService } from '../services/support.service';
-import { Router, RouterOutlet } from '@angular/router';
-import { UserService, User } from '../services/user.service';
+import {SupportService} from '../services/support.service';
+import {Router} from '@angular/router';
+import {UserService, User} from '../services/user.service';
 import { Group, PermissionsService, PermissionGuard } from '../services/permissions.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class LoggedLayoutComponent implements OnInit {
   constructor(
     protected router: Router,
     public permissions: PermissionsService,
-    protected scrollService: SupportService,
+    protected supportService: SupportService,
   ) {
 
   }
@@ -30,7 +30,7 @@ export class LoggedLayoutComponent implements OnInit {
     this.user = User.instance;
 
     if (window.screen.height != 0) {
-      this.scrollService.scrollUp();
+      this.supportService.scrollUp();
     }
 
     this.isMenu = window.innerWidth >= 1350;

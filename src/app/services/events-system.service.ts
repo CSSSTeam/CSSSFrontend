@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as data from '../../config.json';
-import { interval } from 'rxjs';
+import {interval} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -153,9 +153,9 @@ export class EventsSystemService {
     });
   }
 
-  getEventDetails(id: number): Promise<any> {
+  getEventDetails(id): Promise<any> {
     let url = this.dataURL.server + this.dataURL.endpoints.events.getEventDetails;
-    url = url.replace(':eventId', id.toString());
+    url = url.replace(':eventId', id);
 
     const httpOption = {
       headers: new HttpHeaders({
@@ -233,7 +233,7 @@ export class EventsSystemService {
 
   deleteEvent(id): Promise<any> {
     let url = this.dataURL.server + this.dataURL.endpoints.events.deleteEvent;
-    url = url.replace(':eventId', id.toString());
+    url = url.replace(':eventId', id);
 
     const httpOption = {
       headers: new HttpHeaders({
@@ -248,6 +248,30 @@ export class EventsSystemService {
           return d.pk != id;
         });
         this.createEventWeek();
+        p();
+      },
+      (err: any) => {
+        e(err);
+      }
+    ));
+  }
+
+  deleteType(id): Promise<any> {
+    let url = this.dataURL.server + this.dataURL.endpoints.events.deleteType;
+    url = url.replace(':eventId', id);
+
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': 'token ' + localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+      })
+    };
+    return new Promise<any>((p, e) => this.http.delete(url, httpOption).subscribe(
+      () => {
+
+        this.eventTypes = this.eventTypes.filter(d => {
+          return d.pk != id;
+        });
         p();
       },
       (err: any) => {

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { EventsSystemService } from '../../services/events-system.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {EventsSystemService} from '../../services/events-system.service';
 
 @Component({
   selector: 'app-events-details',
@@ -17,19 +17,23 @@ export class EventsDetailsComponent implements OnInit {
 
   ngOnInit() {
     let idStr = this.route.snapshot.paramMap.get('id');
-    let id = Number.parseInt(idStr);
 
-    this.eventsSystemService.getEventDetails(id).then(
+    this.eventsSystemService.getEventDetails(idStr).then(
       data => {
-        console.log(data);
         this.event = data;
       }
-    ).catch();
+    ).catch(() => {
+      console.error('EVENT NOT FOUND');
+      this.router.navigate(['/']);
+    });
 
 
   }
 
   getNameType(eventType: number) {
+    if (eventType == undefined) {
+      return undefined;
+    }
     var a = this.eventsSystemService.getEventTypesAtId(eventType);
     return a.name;
   }
@@ -38,5 +42,12 @@ export class EventsDetailsComponent implements OnInit {
     this.eventsSystemService.deleteEvent(this.event.pk).then(() => {
       this.router.navigate(['/events']);
     }).catch();
+  }
+
+  displayIfExist(obj: any, param: string) {
+    if (obj == undefined) {
+      return undefined;
+    }
+    return param in obj ? obj[param] : undefined;
   }
 }
