@@ -1,7 +1,7 @@
 <main>
-  <p id="statement" *ngIf="addedEvent" (click)="addedEvent = false">
+<!--  <p id="statement" *ngIf="addedEvent" (click)="addedEvent = false">
     pomyślnie <br> dodano wydarzenie
-  </p>
+  </p>-->
   <article>
     <nav>
       <p routerLink="/events">wróć</p>
@@ -27,7 +27,7 @@
                  onblur="(this.placeholder='nazwa typu')"><br>
           <input id="color" type="text" placeholder="kolor etykiety" [(ngModel)]="addTypeForm.colorValue"
                  onmouseover="(this.type='color')" onmouseout="(this.type='text')">
-          <div id="colorBox" [style.background]="addTypeForm.colorValue"></div>
+          <div id="colorBox" [style.background]="addTypeForm.color"></div>
           <div style="clear:both"></div>
           <input id="addType" type="button" value="dodaj typ" (click)="addType()">
         </div>

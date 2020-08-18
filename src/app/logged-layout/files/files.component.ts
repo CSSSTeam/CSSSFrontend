@@ -60,6 +60,7 @@ export class FilesComponent implements OnInit {
 
     this.mainFilesList = window.innerWidth >= 1020;
   }
+
   getTypes() {
     return this.fileSystemService.Types();
     //return this.types;
@@ -92,15 +93,6 @@ export class FilesComponent implements OnInit {
   }
 
   searchFile() {
-    /* if (this.searchText == '') {
-      this.searchedFile = null;
-      return;
-    }
-    this.fileSystemService.searchFile(this.searchText).then(data => {
-      this.searchedFile = data;
-    }).catch(e => {
-      console.error(e);
-    }); */
     this.typeFiles = [];
     this.getFiles().forEach(e => {
       if (e.name.includes(this.searchText)) {
@@ -110,14 +102,11 @@ export class FilesComponent implements OnInit {
     return this.typeFiles;
   }
 
-  deleteFile(pk: number) {
-    /* this.fileSystemService.deleteFile(pk).then(() => {
-      console.log('deleted File');
-    }).catch(e => {
-      console.error(e);
-    }); */
-
-    this.supportService.statement('usunąć plik', 'usunięto plik');
+  deleteFile(id: number) {
+    this.supportService.statement('usunąć plik', () => {
+      this.fileSystemService.deleteFile(id).then(() =>
+        this.supportService.popup('usunięto plik')).catch(e => console.error(e));
+    });
   }
 
   getFilesByType(id) {

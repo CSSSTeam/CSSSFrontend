@@ -33,19 +33,19 @@ export class FilesEditComponent implements OnInit {
   uploadFile() {
 
     if (this.addingFileForm.name == undefined || this.addingFileForm.name == '') {
-      this.supportService.popup('Plik musi mieć nazwe');
+      this.supportService.popup('Plik musi mieć nazwe', false);
       return;
     }
     if (this.addingFileForm.description == undefined || this.addingFileForm.description == '') {
-      this.supportService.popup('Plik musi mieć opis');
+      this.supportService.popup('Plik musi mieć opis', false);
       return;
     }
-    if (this.addingFileForm.type != -1) {
-      this.supportService.popup('Plik musi mieć typ');
+    if (this.addingFileForm.type == -1) {
+      this.supportService.popup('Plik musi mieć typ', false);
       return;
     }
-    if (this.addingFileForm.upload != null) {
-      this.supportService.popup('Musisz wysłać jakić plik');
+    if (this.addingFileForm.upload == null) {
+      this.supportService.popup('Musisz wysłać jakić plik', false);
       return;
     }
     this.fileSystemService.uploadFile(this.addingFileForm.name,

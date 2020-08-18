@@ -8,7 +8,6 @@ import {EventsSystemService} from '../../../services/events-system.service';
   styleUrls: ['./events-edit.component.css']
 })
 export class EventsEditComponent implements OnInit {
-  addedEvent: any;
 
   addEventForm = {
     name: '',
@@ -33,7 +32,7 @@ export class EventsEditComponent implements OnInit {
     };
     this.addTypeForm = {
       name: '',
-      colorValue: '#FF0000'
+      color: '#FF0000'
     };
     this.delTypeForm = {
       eventType: -1
@@ -47,43 +46,42 @@ export class EventsEditComponent implements OnInit {
 
   addType() {
     if (this.addTypeForm.name == undefined || this.addTypeForm.name == '') {
-      this.supportService.popup('Typ musi mieć nazwe');
+      this.supportService.popup('Typ musi mieć nazwe', false);
       return;
     }
-
+    this.addTypeForm.color = this.addTypeForm.color.substr(1, 6);
 
     this.eventsSystemService.addType(this.addTypeForm).then(() => {
       this.supportService.popup('Dodano Typ');
     }).catch(e => {
-      this.supportService.popup('Coś poszło nie tak');
+      this.supportService.popup('Coś poszło nie tak', false);
       console.error(e);
     });
   }
 
   addEvent() {
     if (this.addEventForm.name == '' || this.addEventForm.name == undefined) {
-      this.supportService.popup('Wydarzenie musi mieć nazwe');
+      this.supportService.popup('Wydarzenie musi mieć nazwe', false);
       return;
     }
     if (this.addEventForm.dateStart > this.addEventForm.dateEnd) {
-      this.supportService.popup('Wydarzenie musi mieć puźniej konic niż początek');
+      this.supportService.popup('Wydarzenie musi mieć puźniej konic niż początek', false);
       return;
     }
 
     if (this.addEventForm.dateStart < Date.now()) {
-      this.supportService.popup('Wydarzenie musi mieć odnosić się do przyszłości');
+      this.supportService.popup('Wydarzenie musi mieć odnosić się do przyszłości', false);
       return;
     }
     if (this.addEventForm.description == '' || this.addEventForm.description == undefined) {
-      this.supportService.popup('Wydarzenie musi mieć opis');
+      this.supportService.popup('Wydarzenie musi mieć opis', false);
       return;
     }
     this.eventsSystemService.addEvent(this.addEventForm).then(() => {
-      this.addedEvent = true;
       this.supportService.popup('dodano wydarzenie');
     }).catch(e => {
       console.error(e);
-      this.supportService.popup('nie udało się dodać nowego wydarzenia');
+      this.supportService.popup('nie udało się dodać nowego wydarzenia', false);
     });
   }
 
@@ -92,7 +90,7 @@ export class EventsEditComponent implements OnInit {
       this.supportService.popup('USUNIĘTO');
     }).catch(e => {
       console.error(e);
-      this.supportService.popup('NIe udało się usunąć typu');
+      this.supportService.popup('NIe udało się usunąć typu', false);
     });
   }
 }

@@ -10,8 +10,6 @@ import {UserManagementService} from '../../services/user-management.service';
 export class UsersComponent implements OnInit {
 
 
-  hasNetwork = true;
-
   users: any;
   newUserForm: any;
   userList: any;
@@ -52,21 +50,27 @@ export class UsersComponent implements OnInit {
     if (this.getUsers().find(u => {
       return u.username == this.newUserForm.username;
     }) != undefined) {
-      this.supportService.popup('Istnieje już użytkownik o takim loginie');
+      this.supportService.popup('Istnieje już użytkownik o takim loginie', false);
       return;
     }
     return this.userManagementService.createUsers(this.newUserForm).then(() => {
       this.supportService.popup('dodano użytkownika');
     }).catch(e => {
       console.log(e);
-      this.supportService.popup('Nie udało się stworzyć użytkownika');
+      this.supportService.popup('Nie udało się stworzyć użytkownika', false);
     });
   }
 
   deleteUser(pk: number) {
-    this.userManagementService.deleteUser(pk).then(() => {
-      this.supportService.statement('usunąć użytkownika', 'usunięto użytkownika');
-    }).catch();
+    this.supportService.statement('usunąć użytkownika', () => {
+      this.userManagementService.deleteUser(pk).then(() => {
+        this.supportService.popup('Udało się usunać plik');
+      }).catch(e => {
+        console.error(e);
+        this.supportService.popup('Coś poszło nie tak', false);
+      });
+    });
+
   }
 
   createUserFromFile() {
