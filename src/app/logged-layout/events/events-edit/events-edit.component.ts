@@ -32,7 +32,7 @@ export class EventsEditComponent implements OnInit {
     };
     this.addTypeForm = {
       name: '',
-      colorValue: '#FF0000'
+      color: '#FF0000'
     };
     this.delTypeForm = {
       eventType: -1
@@ -49,7 +49,7 @@ export class EventsEditComponent implements OnInit {
       this.supportService.popup('Typ musi mieć nazwe', false);
       return;
     }
-
+    this.addTypeForm.color = this.addTypeForm.color.substr(1, 6);
 
     this.eventsSystemService.addType(this.addTypeForm).then(() => {
       this.supportService.popup('Dodano Typ');

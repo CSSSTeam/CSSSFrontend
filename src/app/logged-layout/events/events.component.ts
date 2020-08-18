@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService, User } from '../../services/user.service';
-import { EventsSystemService } from '../../services/events-system.service';
-import { EventsEditComponent } from './events-edit/events-edit.component'
+import {Component, OnInit} from '@angular/core';
+import {User, UserService} from '../../services/user.service';
+import {EventsSystemService} from '../../services/events-system.service';
 import * as data from '../../../config.json';
-import {PermissionsService, PermissionGuard} from '../../services/permissions.service';
+import {PermissionGuard, PermissionsService} from '../../services/permissions.service';
 
 @Component({
   selector: 'app-events',
@@ -59,5 +58,15 @@ export class EventsComponent implements OnInit {
       return undefined;
     }
     return this.events4Week[day[0]];
+  }
+
+  getTypeColor(typeId) {
+    return this.eventsSystemService.getEventTypes().find(t => {
+      return t.pk == typeId;
+    }).color;
+  }
+
+  getStyle(subjects: any) {
+    return {'background-color': '#' + this.getTypeColor(subjects.eventType)};
   }
 }
