@@ -23,7 +23,7 @@ export class SupportService {
     window.scroll(0, 0);
   }
 
-  popup(text) {
+  popup(text, ok = true) {
     const popup = document.createElement('div');
     if (window.innerWidth >= 1350) {
       this.imgW = 150;
@@ -31,7 +31,11 @@ export class SupportService {
       this.imgW = 80;
     }
     popup.classList.add('popup');
-    popup.innerHTML = '<div><img src="../assets/img/check.png" width="' + this.imgW + '"/><br> pomyślnie <br>' + text + '</div>';
+    if (ok) {
+      popup.innerHTML = '<div><img src="../assets/img/check.png" width="' + this.imgW + '"/><br> pomyślnie <br>' + text + '</div>';
+    } else {
+      popup.innerHTML = '<div><img src="../assets/img/check.png" width="' + this.imgW + '"/><br> pomyślnie <br>' + text + '</div>';
+    }
     document.body.appendChild(popup);
     popup.addEventListener('click', () => document.body.removeChild(popup));
     setTimeout(() => document.body.removeChild(popup), 1500);
