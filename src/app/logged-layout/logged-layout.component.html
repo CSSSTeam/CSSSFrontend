@@ -24,11 +24,11 @@
           <i class="icon-folder-open"></i>Pliki
         </div>
       </a>
-<!--      <a (click)="navTo()" routerLink="/infos">
-        <div id="infos" class="menuOp">
-          <i class="icon-attention"></i>Informacje
-        </div>
-      </a>-->
+      <!--      <a (click)="navTo()" routerLink="/infos">
+              <div id="infos" class="menuOp">
+                <i class="icon-attention"></i>Informacje
+              </div>
+            </a>-->
       <div id="mgmtOptions">
         <a (click)="navTo()" routerLink="/treasure-panel">
           <div id="treaPanel" class="menuOp">
@@ -56,9 +56,9 @@
       <div *ngIf="isSett" id="account">
         <div>
           <i class="icon-off opt" (click)="logout()"></i>
-          <i class="icon-key opt" (click)="showSettings(); isMenu = false" routerLink="/chg-password"
+          <i class="icon-key opt" (click)="showSettings()" routerLink="/chg-password"
              routerLinkActive="active"></i>
-          <i class="icon-info opt" (click)="showSettings(); isMenu = false" routerLink="/about"
+          <i class="icon-info opt" (click)="showSettings()" routerLink="/about"
              routerLinkActive="active"></i>
           <div id="close"><i class="icon-cancel" (click)="showSettings()"></i></div>
         </div>
