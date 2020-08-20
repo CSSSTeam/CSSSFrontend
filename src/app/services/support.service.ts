@@ -22,12 +22,17 @@ export class SupportService {
     window.scroll(0, 0);
   }
 
-  popup(text) {
+  popup(text, type) {
     const popup = document.createElement('div');
+
     if (window.innerWidth >= 1350) this.imgW = 150;
     else this.imgW = 80;
+
     popup.classList.add('popup');
-    popup.innerHTML = '<div><img src="../assets/img/check.png" width="' + this.imgW + '"></img><br> pomyślnie <br>' + text + '</div>';
+    if (type == 'correct' || type == 'error') {
+      popup.innerHTML = `<div><img src="../assets/img/${type}.png width="${this.imgW}"></img><br>${text}</div>`
+    } else console.error("wrong type argument in popup()");
+
     document.body.appendChild(popup);
     popup.addEventListener('click', () => document.body.removeChild(popup));
     setTimeout(() => document.body.removeChild(popup), 1500);
@@ -44,7 +49,7 @@ export class SupportService {
     const back = document.querySelector('.back');
     yes.addEventListener('click', () => {
       document.body.removeChild(statement);
-      return this.popup(pop);
+      this.popup(pop, 'correct');
     });
     back.addEventListener('click', () => document.body.removeChild(statement));
   }
