@@ -64,7 +64,7 @@ export class UsersComponent implements OnInit {
   deleteUser(pk: number) {
     this.supportService.statement('usunąć użytkownika', () => {
       this.userManagementService.deleteUser(pk).then(() => {
-        this.supportService.popup('Udało się usunać plik');
+        this.supportService.popup('Udało się usunać użytkownika');
       }).catch(e => {
         console.error(e);
         this.supportService.popup('Coś poszło nie tak', false);
