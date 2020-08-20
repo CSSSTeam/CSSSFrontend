@@ -55,10 +55,8 @@
       <div *ngIf="isSett" id="account">
         <div>
           <i class="icon-off opt" (click)="logout()"></i>
-          <i class="icon-key opt" (click)="showSettings(); isMenu = false" routerLink="/chg-password"
-            routerLinkActive="active"></i>
-          <i class="icon-info opt" (click)="showSettings(); isMenu = false" routerLink="/about"
-            routerLinkActive="active"></i>
+          <i class="icon-key opt" (click)="switchMenu()" routerLink="/chg-password" routerLinkActive="active"></i>
+          <i class="icon-info opt" (click)="switchMenu()" routerLink="/about" routerLinkActive="active"></i>
           <div id="close"><i class="icon-cancel" (click)="showSettings()"></i></div>
         </div>
       </div>
