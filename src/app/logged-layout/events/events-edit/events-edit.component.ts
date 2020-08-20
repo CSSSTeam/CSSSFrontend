@@ -17,7 +17,7 @@ export class EventsEditComponent implements OnInit {
   }
 
   addEvent() {
-    this.supportService.popup("dodano wydarzenie");
+    this.supportService.popup("pomyślnie <br> dodano wydarzenie", 'success');
   }
 
 }

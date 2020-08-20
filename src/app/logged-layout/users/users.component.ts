@@ -35,11 +35,11 @@ export class UsersComponent implements OnInit {
   }
 
   addUser() {
-    this.supportService.popup('dodano użytkownika');
+    this.supportService.popup('dodano użytkownika', 'success');
   }
 
   deleteUser() {
-    this.supportService.statement('usunąć użytkownika', 'usunięto użytkownika')
+    this.supportService.statement('usunąć użytkownika', 'pomyślnie <br> usunięto użytkownika')
   }
 
 }

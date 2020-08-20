@@ -14,7 +14,7 @@ export class FilesEditComponent implements OnInit {
   }
 
   addFile() {
-    this.supportService.popup("dodano plik");
+    this.supportService.popup("pomyślnie <br> dodano plik", 'success');
   }
 
 }
