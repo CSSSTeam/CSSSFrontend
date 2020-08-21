@@ -70,6 +70,7 @@ main article section {
 }
 
 main article section #eventsMgmtContent {
+  float: left;
   width: 60%;
   height: 95%;
   padding: 2rem;
@@ -77,7 +78,8 @@ main article section #eventsMgmtContent {
 }
 
 main article section #typesMgmtContent {
-  width: 30%;
+  float: left;
+  width: 40%;
   height: 95%;
   padding: 2rem;
   overflow-y: scroll;
@@ -97,8 +99,8 @@ main article section #typesMgmtContent #typeAddForm #color {
 
 main article section #typesMgmtContent #typeAddForm #colorBox {
   background-color: #000;
-  margin: 1rem 0;
   border-bottom: 2px solid rgba(221, 221, 221, 0.2);
+  margin: 1rem 0;
   float: left;
   width: 20%;
   height: calc(3rem + 2px);
@@ -215,14 +217,22 @@ main select option {
     padding: 1.5rem;
   }
   main article section #eventsMgmtContent {
-    width: 90%;
-    margin: .5rem 1rem;
+    width: 100%;
+    margin: 0;
+  }
+  main article section #typesMgmtContent {
+    width: 100%;
+  }
+  main article section #typesMgmtContent #typeAddForm #colorBox {
+    height: 3rem;
+    margin: .5rem 0;
   }
   main article input,
   main article textarea,
   main article select {
     font-size: 1rem;
     padding: 1.2rem;
+    margin: .5rem 0;
   }
 }
 
@@ -230,6 +240,9 @@ main select option {
   main article section #eventsMgmtContent {
     width: 100%;
     padding: .8rem;
+  }
+  main article section #typesMgmtContent #typeAddForm #colorBox {
+    margin: .5rem 0;
   }
   main article input,
   main article textarea,

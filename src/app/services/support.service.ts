@@ -43,7 +43,16 @@ export class SupportService {
 
   statement(text, yesCallBack, backCallBack = (() => null)) {
     const statement = document.createElement('div');
-    statement.innerHTML = '<div id="box"><p>Czy na pewno chcesz ' + text + '?</p><div><button class="yes">Tak</button><button class="back">Cofnij</button></div></div>';
+    statement.innerHTML = `
+<div id="box">
+  <p>Czy na pewno chcesz ${text}?</p>
+  <div>
+    <button class="yes">Tak</button>
+    <button class="back">Cofnij</button>
+  </div>
+</div>
+    `;
+    // statement.innerHTML = '<div id="box"><p>Czy na pewno chcesz ' + text + '?</p><div><button class="yes">Tak</button><button class="back">Cofnij</button></div></div>';
 
     statement.classList.add('statement');
     document.body.appendChild(statement);

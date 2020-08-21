@@ -137,11 +137,11 @@ export class TreasurePanelComponent implements OnInit {
   }
 
   addList() {
-    this.supportService.popup('dodano listę');
+    this.supportService.popup('pomyślnie <br> dodano listę', 'success');
   }
 
   deleteList() {
-    this.supportService.statement('usunąć listę', 'usunięto listę');
+    this.supportService.statement('usunąć listę', 'pomyślnie <br> usunięto listę');
   }
 
 }

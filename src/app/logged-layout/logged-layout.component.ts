@@ -56,6 +56,13 @@ export class LoggedLayoutComponent implements OnInit {
     this.isCog = !this.isCog;
   }
 
+  switchMenu() {
+    if (this.isMenu)
+      this.isMenu = window.innerWidth >= 1350;
+    this.isSett = !this.isSett;
+    this.isCog = !this.isCog;
+  }
+
   logout() {
     User.instance.logout();
   }

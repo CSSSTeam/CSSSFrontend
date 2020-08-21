@@ -14,7 +14,7 @@ export class InfosEditComponent implements OnInit {
   }
 
   addInfo() {
-    this.supportService.popup("dodano wpis");
+    this.supportService.popup("pomyślnie <br> dodano wpis", 'success');
   }
 
 }
