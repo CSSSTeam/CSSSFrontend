@@ -25,7 +25,7 @@
         <div id="typeAddForm">
           <input type="text" placeholder="nazwa typu" [(ngModel)]="addTypeForm.name" onfocus="(this.placeholder='')"
                  onblur="(this.placeholder='nazwa typu')"><br>
-          <input id="color" type="text" placeholder="kolor etykiety" [(ngModel)]="addTypeForm.colorValue"
+          <input id="color" type="text" placeholder="kolor etykiety" [(ngModel)]="addTypeForm.color"
                  onmouseover="(this.type='color')" onmouseout="(this.type='text')">
           <div id="colorBox" [style.background]="addTypeForm.color"></div>
           <div style="clear:both"></div>

@@ -27,7 +27,7 @@ export class ChgPasswordComponent implements OnInit {
     console.log(this.changePasswordForm);
     this.userService.changePassword(this.changePasswordForm).then(() => {
       this.info = 'CHANGED';
-      this.supportService.popup("pomyślnie <br> zmieniono hasło", 'success');
+      this.supportService.popup('zmieniono hasło');
     }).catch(
       error => {
         console.error(error);

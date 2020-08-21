@@ -32,9 +32,9 @@ export class SupportService {
     }
     popup.classList.add('popup');
     if (ok) {
-      popup.innerHTML = '<div><img src="../assets/img/check.png" width="' + this.imgW + '"/><br> pomyślnie <br>' + text + '</div>';
+      popup.innerHTML = '<div><img src="../assets/img/success.png" width="' + this.imgW + '"/><br> pomyślnie <br>' + text + '</div>';
     } else {
-      popup.innerHTML = '<div><img src="../assets/img/check.png" width="' + this.imgW + '"/><br> pomyślnie <br>' + text + '</div>';
+      popup.innerHTML = '<div><img src="../assets/img/error.png" width="' + this.imgW + '"/><br> ERROR <br>' + text + '</div>';
     }
     document.body.appendChild(popup);
     popup.addEventListener('click', () => document.body.removeChild(popup));
