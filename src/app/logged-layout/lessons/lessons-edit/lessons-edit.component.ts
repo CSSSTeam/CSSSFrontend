@@ -14,7 +14,7 @@ export class LessonsEditComponent implements OnInit {
   }
 
   addLesson() {
-    this.supportService.popup("pomyślnie <br> dodano lekcję", 'success');
+    this.supportService.popup('dodano lekcję');
   }
 
 }

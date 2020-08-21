@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { SupportService } from '../../services/support.service';
+import {Component, OnInit} from '@angular/core';
+import {SupportService} from '../../services/support.service';
 //import { tick } from '@angular/core/testing';
 //import { ConsoleReporter } from 'jasmine';
 
@@ -112,8 +112,7 @@ export class TreasurePanelComponent implements OnInit {
     if (!this.isAllChecked) {
       this.students.forEach((e, i) => this.isChecked[i] = true);
       this.isAllChecked = true;
-    }
-    else {
+    } else {
       this.students.forEach((e, i) => this.isChecked[i] = false);
       this.isAllChecked = false;
       this.editUser = false;
@@ -121,27 +120,32 @@ export class TreasurePanelComponent implements OnInit {
   }
 
   checkStudent(index) {
-    this.isChecked[index] == true ? this.isChecked[index] = false : this.isChecked[index] = true
+    this.isChecked[index] == true ? this.isChecked[index] = false : this.isChecked[index] = true;
     this.isChecked.forEach(e => {
-      if (e == true) this.counter++;
-    })
-    if (this.counter == 1) this.editUser = true;
-    else this.editUser = false;
+      if (e == true) {
+        this.counter++;
+      }
+    });
+    this.editUser = this.counter == 1;
     this.counter = 0;
   }
 
   editOneUser() {
     this.isChecked.forEach((e, i) => {
-      if (e == true) alert(this.students[i].name);
+      if (e == true) {
+        alert(this.students[i].name);
+      }
     });
   }
 
   addList() {
-    this.supportService.popup('pomyślnie <br> dodano listę', 'success');
+    this.supportService.popup('pomyślnie <br> dodano listę', true);
   }
 
   deleteList() {
-    this.supportService.statement('usunąć listę', 'pomyślnie <br> usunięto listę');
+    this.supportService.statement('usunąć listę', () => {
+      this.supportService.popup('usunięto listę');
+    });
   }
 
 }
