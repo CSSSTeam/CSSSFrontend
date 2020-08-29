@@ -10,7 +10,8 @@
           <option>mat</option>
           <option>pol</option>
         </select>
-        <input placeholder="nazwa" type="text" onfocus="(this.placeholder='')" onblur="(this.placeholder='nazwa')">
+        <input placeholder="nazwa" type="text" [(ngModel)]="fileName" onfocus="(this.placeholder='')"
+          onblur="(this.placeholder='nazwa')">
         <textarea placeholder="opis" onfocus="(this.placeholder='')" onblur="(this.placeholder='opis')"></textarea>
         <select required size="1">
           <option disabled selected hidden>grupa</option>
@@ -26,7 +27,7 @@
         </select>
         <label for="upload">Wybierz plik</label>
         <input id="upload" type="file">
-        <input id="add" type="button" (click)="addFile()" value="dodaj plik">
+        <input id="add" type="button" (click)="addFile(fileName)" value="dodaj plik">
       </div>
     </section>
   </article>

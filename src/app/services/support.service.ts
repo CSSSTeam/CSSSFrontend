@@ -23,6 +23,7 @@ export class SupportService {
   }
 
   popup(text, type) {
+    let exists = false;
     const popup = document.createElement('div');
 
     if (window.innerWidth >= 1350) this.imgW = 150;
@@ -38,8 +39,15 @@ export class SupportService {
     } else console.error("wrong type argument in popup()");
 
     document.body.appendChild(popup);
-    popup.addEventListener('click', () => document.body.removeChild(popup));
-    setTimeout(() => document.body.removeChild(popup), 1500);
+    popup.addEventListener('click', () => {
+      document.body.removeChild(popup);
+      exists = true;
+    });
+
+    setTimeout(() => {
+      if (!exists)
+        document.body.removeChild(popup);
+    }, 1500);
   }
 
   statement(text, pop) {
