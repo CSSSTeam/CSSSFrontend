@@ -18,6 +18,7 @@ export class FileSystemService {
     this.dataURL = (data as any).default;
     this.getTypesOfFiles();
     this.uploadingFileList = [];
+    this.files = [];
   }
 
   public getFiles() {
@@ -134,7 +135,10 @@ export class FileSystemService {
       formData.append('md5', md5);
 
       this.http.post(url, formData, httpOption).subscribe(d => {
-        //this.files.push(d);
+        this.files.push(d);
+        this.uploadingFileList = this.uploadingFileList.filter(u => {
+          return uploadId != u.upload_id;
+        });
         let data = {
           name: name,
           description: description,
@@ -308,6 +312,10 @@ export class FileSystemService {
         e(error);
       }
     ));
+  }
+
+  getUploadingList() {
+    return this.uploadingFileList;
   }
 }
 

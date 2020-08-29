@@ -19,7 +19,7 @@
             <p routerLink="/files/{{file.pk}}">{{ file.name }}</p>
 
             <div id="fileOptions">
-              <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>
+              <a [href]="file.upload" target="_blank"><i class="icon-download"></i></a>
               <i class="icon-help-1" routerLink="/files/{{file.pk}}"></i>
               <i class="icon-trash" (click)="deleteFile(file.pk)"></i>
               <!--(click)="deleteFile(file.pk)"-->
@@ -40,7 +40,8 @@
               <p routerLink="/files/{{file.pk}}">{{ file.name }}</p>
 
               <div id="fileOptions">
-                <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>
+                <a [href]="file.upload" target="_blank"><i class="icon-download">
+                  <!--(click)="downloadFile(file.name,file.upload)"--> </i></a>
                 <i class="icon-help-1" routerLink="/files/{{file.pk}}"></i>
                 <i class="icon-trash" (click)="deleteFile(file.pk)"></i>
                 <!--(click)="deleteFile(file.pk)"-->
@@ -60,7 +61,7 @@
           <p routerLink="/files/{{file.pk}}">{{ file.name }}</p>
 
           <div id="fileOptions">
-            <i class="icon-download" (click)="downloadFile(file.name,file.upload)"></i>
+            <a [href]="file.upload" target="_blank"><i class="icon-download"></i></a>
             <i class="icon-help-1" routerLink="/files/{{file.pk}}"></i>
             <i class="icon-trash" (click)="deleteFile(file.pk)"></i>
             <!--(click)="deleteFile(file.pk)"-->
