@@ -118,14 +118,14 @@ main {
 
   label {
     display: inline-block;
-    background-color: rgba(17, 17, 17, .6);
-    border: 1px solid #222;
+    background-color: rgba(0, 0, 0, .5);
+    border: 2px solid rgba(221, 221, 221, .2);
     text-align: center;
-    transition: background-color .3s ease;
-    -webkit-transition: background-color .3s ease;
-    -moz-transition: background-color .3s ease;
-    -ms-transition: background-color .3s ease;
-    -o-transition: background-color .3s ease;
+    transition: background-color .2s;
+    -webkit-transition: background-color .2s;
+    -moz-transition: background-color .2s;
+    -ms-transition: background-color .2s;
+    -o-transition: background-color .2s;
     border-radius: 1rem;
     -webkit-border-radius: 1rem;
     -moz-border-radius: 1rem;
@@ -133,7 +133,7 @@ main {
     -o-border-radius: 1rem;
 
     &:hover {
-      background-color: rgba(61, 61, 61, .6);
+      background-color: #000;
     }
   }
 
@@ -141,6 +141,10 @@ main {
     background-color: rgba(0, 0, 0, .5);
     border: 2px solid rgba(221, 221, 221, .2);
     border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
     text-align: center;
     transition: background-color .2s;
 
@@ -194,6 +198,7 @@ main {
       }
 
       input,
+      label,
       textarea,
       select {
         font-size: 1rem;
@@ -214,6 +219,7 @@ main {
       }
 
       input,
+      label,
       textarea,
       select {
         font-size: .8rem;

@@ -16,7 +16,13 @@
             <option>sprawdzian</option>
             <option>kartkówka</option>
           </select><br>
-          <input placeholder="termin" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"> <br>
+          <input class="start" placeholder="termin ( od )" onfocus="(this.type='date')" onblur="(this.type='text')">
+          <input class="start" type="time">
+          <div style="clear:both"></div>
+          <input class="stop" placeholder="termin ( do )" onfocus="(this.type='date')" onblur="(this.type='text')">
+          <input class="stop" type="time">
+
+          <!-- <input placeholder="termin" onfocus="(this.type='datetime-local')" onblur="(this.type='text')"> -->
           <textarea placeholder="opis" onfocus="(this.placeholder='')" onblur="(this.placeholder='opis')"></textarea>
           <input id="add" type="button" (click)="addEvent()" value="dodaj wydarzenie">
         </div>

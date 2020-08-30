@@ -144,14 +144,14 @@ main #upload::-webkit-file-upload-button {
 
 main label {
   display: inline-block;
-  background-color: rgba(17, 17, 17, 0.6);
-  border: 1px solid #222;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(221, 221, 221, 0.2);
   text-align: center;
-  transition: background-color .3s ease;
-  -webkit-transition: background-color .3s ease;
-  -moz-transition: background-color .3s ease;
-  -ms-transition: background-color .3s ease;
-  -o-transition: background-color .3s ease;
+  transition: background-color .2s;
+  -webkit-transition: background-color .2s;
+  -moz-transition: background-color .2s;
+  -ms-transition: background-color .2s;
+  -o-transition: background-color .2s;
   border-radius: 1rem;
   -webkit-border-radius: 1rem;
   -moz-border-radius: 1rem;
@@ -160,13 +160,17 @@ main label {
 }
 
 main label:hover {
-  background-color: rgba(61, 61, 61, 0.6);
+  background-color: #000;
 }
 
 main #add {
   background-color: rgba(0, 0, 0, 0.5);
   border: 2px solid rgba(221, 221, 221, 0.2);
   border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
   text-align: center;
   -webkit-transition: background-color .2s;
   transition: background-color .2s;
@@ -212,6 +216,7 @@ main select option {
     margin: .5rem 1rem;
   }
   main article input,
+  main article label,
   main article textarea,
   main article select {
     font-size: 1rem;
@@ -225,6 +230,7 @@ main select option {
     padding: .8rem;
   }
   main article input,
+  main article label,
   main article textarea,
   main article select {
     font-size: .8rem;

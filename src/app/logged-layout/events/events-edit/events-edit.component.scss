@@ -60,6 +60,22 @@ main {
         height: 95%;
         padding: 2rem;
         overflow-y: scroll;
+
+        label {
+          padding-left: 1rem;
+        }
+
+        .start {
+          width: 50%;
+          height: 4.5rem;
+          float: left;
+        }
+
+        .stop {
+          width: 50%;
+          height: 4.5rem;
+          float: left;
+        }
       }
 
       #typesMgmtContent {

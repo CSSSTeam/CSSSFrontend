@@ -77,6 +77,22 @@ main article section #eventsMgmtContent {
   overflow-y: scroll;
 }
 
+main article section #eventsMgmtContent label {
+  padding-left: 1rem;
+}
+
+main article section #eventsMgmtContent .start {
+  width: 50%;
+  height: 4.5rem;
+  float: left;
+}
+
+main article section #eventsMgmtContent .stop {
+  width: 50%;
+  height: 4.5rem;
+  float: left;
+}
+
 main article section #typesMgmtContent {
   float: left;
   width: 40%;
