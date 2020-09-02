@@ -53,6 +53,51 @@ body {
   font-size: 1.2rem;
 }
 
+.fileStatus {
+  width: 16rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: .5rem .3rem;
+}
+
+.fileStatus .fileStatusItem {
+  width: calc(100% - 1rem);
+  font-size: .7rem;
+  background-color: rgba(10, 10, 10, 0.9);
+  border: 2px solid #000;
+  border-radius: .8rem;
+  -webkit-border-radius: .8rem;
+  -moz-border-radius: .8rem;
+  -ms-border-radius: .8rem;
+  -o-border-radius: .8rem;
+  margin: .5rem;
+  padding: .5rem;
+  padding-top: .8rem;
+  position: relative;
+}
+
+.fileStatus .fileStatusItem .statusBar {
+  width: 85%;
+  height: .5rem;
+  margin: .5rem 0;
+  background-color: #eee;
+}
+
+.fileStatus .fileStatusItem .statusBar .innerBar {
+  height: 100%;
+  width: 0;
+  background-color: #D96C00;
+}
+
+.fileStatus .fileStatusItem i {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: .8rem;
+  cursor: pointer;
+}
+
 .statement {
   position: fixed;
   top: 0;
