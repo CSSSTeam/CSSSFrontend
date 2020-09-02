@@ -13,8 +13,10 @@ export class EventsEditComponent implements OnInit {
     name: '',
     description: '',
     eventType: 1,
-    dateStart: Date.now(),
-    dateEnd: Date.now()
+    dateStart: null,
+    dateTimeStart: null,
+    dateEnd: null,
+    dateTimeEnd: null
   };
   addTypeForm: any;
   delTypeForm: any;
@@ -28,7 +30,9 @@ export class EventsEditComponent implements OnInit {
       description: '',
       eventType: -1,
       dateStart: Date.now(),
-      dateEnd: Date.now()
+      dateTimeStart: null,
+      dateEnd: Date.now(),
+      dateTimeEnd: null
     };
     this.addTypeForm = {
       name: '',
@@ -77,6 +81,8 @@ export class EventsEditComponent implements OnInit {
       this.supportService.popup('Wydarzenie musi mieć opis', false);
       return;
     }
+    this.addEventForm.dateStart = this.addEventForm.dateStart + 'T' + this.addEventForm.dateTimeStart + ':00Z';
+    this.addEventForm.dateEnd = this.addEventForm.dateEnd + 'T' + this.addEventForm.dateTimeEnd + ':00Z';
     this.eventsSystemService.addEvent(this.addEventForm).then(() => {
       this.supportService.popup('dodano wydarzenie');
     }).catch(e => {
