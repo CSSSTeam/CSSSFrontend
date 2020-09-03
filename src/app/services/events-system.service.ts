@@ -130,7 +130,6 @@ export class EventsSystemService {
     if (eventsString != null) {
       this.events = JSON.parse(eventsString);
       this.createEventWeek();
-      console.log('sadsfdg');
     }
     this.getEventsBetweenDates(EventsSystemService.date2String(startWeek), EventsSystemService.date2String(endWeek)).then(() => {
       this.createEventWeek();
