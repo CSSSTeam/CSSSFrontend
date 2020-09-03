@@ -88,6 +88,7 @@ export class EventsSystemService {
   */
   getEventsBetweenDates(dateTimeStart: String, dateTimeEnd: String): Promise<any> {
 
+
     let url = this.dataURL.server + this.dataURL.endpoints.events.getEventByDate;
     url += '?start=' + dateTimeStart + '&end=' + dateTimeEnd;
 
@@ -101,6 +102,7 @@ export class EventsSystemService {
     return new Promise<any>((p, e) => this.http.get(url, httpOption).subscribe(
       data => {
         this.events = data;
+        localStorage.setItem('events', JSON.stringify(data));
         p(data);
       },
       (err: any) => {
@@ -124,10 +126,14 @@ export class EventsSystemService {
     let today = new Date();
     let startWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 1);
     let endWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 7);
-    this.getEventsBetweenDates(EventsSystemService.date2String(startWeek), EventsSystemService.date2String(endWeek)).then(data => {
-      this.events = data;
+    let eventsString = localStorage.getItem('events');
+    if (eventsString != null) {
+      this.events = JSON.parse(eventsString);
       this.createEventWeek();
-    }).catch();
+    }
+    this.getEventsBetweenDates(EventsSystemService.date2String(startWeek), EventsSystemService.date2String(endWeek)).then(() => {
+      this.createEventWeek();
+    });
   }
 
   private createEventWeek() {
@@ -195,7 +201,7 @@ export class EventsSystemService {
 
   getEventTypes() {
     if (this.eventTypes == null) {
-      this.eventTypes = localStorage.getItem('typeDetails');
+      this.eventTypes = JSON.parse(localStorage.getItem('typeDetails'));
       this.getTypes().then(data => {
         this.eventTypes = data;
         localStorage.setItem('typeDetails', JSON.stringify(data));
