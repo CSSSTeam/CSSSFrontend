@@ -29,9 +29,9 @@ export class EventsEditComponent implements OnInit {
       name: '',
       description: '',
       eventType: -1,
-      dateStart: Date.now(),
+      dateStart: null,
       dateTimeStart: null,
-      dateEnd: Date.now(),
+      dateEnd: null,
       dateTimeEnd: null
     };
     this.addTypeForm = {

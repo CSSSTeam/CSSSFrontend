@@ -75,7 +75,6 @@ export class FilesComponent implements OnInit {
 
   downloadFile(name: string, src: string) {
     console.log(src);
-
     this.fileSystemService.downloadFile(name, src).then(() => console.log('OK'));
   }
 
@@ -83,13 +82,12 @@ export class FilesComponent implements OnInit {
     this.fileSystemService.createTypeFile(this.addingTypeForm.name);
   }
 
-  deleteType(id: number) {
-    /* this.fileSystemService.deleteType(id).then(() => {
+  deleteType(id) {
+    this.fileSystemService.deleteType(id).then(() => {
       console.log('delete Type');
     }).catch(e => {
       console.error(e);
-    }); */
-    alert('deleted type');
+    });
   }
 
   searchFile() {
