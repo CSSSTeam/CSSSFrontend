@@ -13,10 +13,12 @@ export class EventsEditComponent implements OnInit {
     name: '',
     description: '',
     eventType: 1,
-    dateStart: null,
+    dateFieldStart: null,
     dateTimeStart: null,
-    dateEnd: null,
-    dateTimeEnd: null
+    dateFieldEnd: null,
+    dateTimeEnd: null,
+    dateStart: null,
+    dateEnd: null
   };
   addTypeForm: any;
   delTypeForm: any;
@@ -29,14 +31,17 @@ export class EventsEditComponent implements OnInit {
       name: '',
       description: '',
       eventType: -1,
-      dateStart: Date.now(),
+      dateFieldStart: null,
       dateTimeStart: null,
-      dateEnd: Date.now(),
-      dateTimeEnd: null
+      dateFieldEnd: null,
+      dateTimeEnd: null,
+      dateStart: null,
+      dateEnd: null
     };
     this.addTypeForm = {
       name: '',
-      color: '#FF0000'
+      colorField: '#FF0000',
+      color: '000000'
     };
     this.delTypeForm = {
       eventType: -1
@@ -53,7 +58,7 @@ export class EventsEditComponent implements OnInit {
       this.supportService.popup('Typ musi mieć nazwe', false);
       return;
     }
-    this.addTypeForm.color = this.addTypeForm.color.substr(1, 6);
+    this.addTypeForm.color = this.addTypeForm.colorField.substr(1, 6);
 
     this.eventsSystemService.addType(this.addTypeForm).then(() => {
       this.supportService.popup('Dodano Typ');
@@ -68,12 +73,12 @@ export class EventsEditComponent implements OnInit {
       this.supportService.popup('Wydarzenie musi mieć nazwe', false);
       return;
     }
-    if (this.addEventForm.dateStart > this.addEventForm.dateEnd) {
+    if (this.addEventForm.dateFieldStart > this.addEventForm.dateFieldEnd) {
       this.supportService.popup('Wydarzenie musi mieć puźniej konic niż początek', false);
       return;
     }
 
-    if (this.addEventForm.dateStart < Date.now()) {
+    if (this.addEventForm.dateFieldStart < Date.now()) {
       this.supportService.popup('Wydarzenie musi mieć odnosić się do przyszłości', false);
       return;
     }
@@ -81,8 +86,8 @@ export class EventsEditComponent implements OnInit {
       this.supportService.popup('Wydarzenie musi mieć opis', false);
       return;
     }
-    this.addEventForm.dateStart = this.addEventForm.dateStart + 'T' + this.addEventForm.dateTimeStart + ':00Z';
-    this.addEventForm.dateEnd = this.addEventForm.dateEnd + 'T' + this.addEventForm.dateTimeEnd + ':00Z';
+    this.addEventForm.dateStart = this.addEventForm.dateFieldStart + 'T' + this.addEventForm.dateTimeStart + ':00Z';
+    this.addEventForm.dateEnd = this.addEventForm.dateFieldEnd + 'T' + this.addEventForm.dateTimeEnd + ':00Z';
     this.eventsSystemService.addEvent(this.addEventForm).then(() => {
       this.supportService.popup('dodano wydarzenie');
     }).catch(e => {

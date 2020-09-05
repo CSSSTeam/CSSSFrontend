@@ -16,10 +16,11 @@
           <option *ngFor="let type of getTypes()" [value]="type.pk">{{type.name}}</option>
         </select><br>
         <input class="start" placeholder="termin ( od )" onfocus="(this.type='date')"
-               [(ngModel)]="addEventForm.dateStart" onblur="(this.type='text')">
+               [(ngModel)]="addEventForm.dateFieldStart" onblur="(this.type='text')">
         <input class="start" type="time" [(ngModel)]="addEventForm.dateTimeStart">
         <div style="clear:both"></div>
-        <input class="stop" placeholder="termin ( do )" onfocus="(this.type='date')" [(ngModel)]="addEventForm.dateEnd"
+        <input class="stop" placeholder="termin ( do )" onfocus="(this.type='date')"
+               [(ngModel)]="addEventForm.dateFieldEnd"
                onblur="(this.type='text')">
         <input class="stop" type="time" [(ngModel)]="addEventForm.dateTimeEnd">
         <textarea placeholder="opis" [(ngModel)]="addEventForm.description" onfocus="(this.placeholder='')"
@@ -30,7 +31,7 @@
         <div id="typeAddForm">
           <input type="text" placeholder="nazwa typu" [(ngModel)]="addTypeForm.name" onfocus="(this.placeholder='')"
                  onblur="(this.placeholder='nazwa typu')"><br>
-          <input id="color" type="text" placeholder="kolor etykiety" [(ngModel)]="addTypeForm.color"
+          <input id="color" type="text" placeholder="kolor etykiety" [(ngModel)]="addTypeForm.colorField"
                  onmouseover="(this.type='color')" onmouseout="(this.type='text')">
           <div id="colorBox" [style.background]="addTypeForm.color"></div>
           <div style="clear:both"></div>

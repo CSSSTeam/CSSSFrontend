@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as data from '../../config.json';
-import { saveAs } from 'file-saver';
-import { UtilsService } from './utils.service';
+import {saveAs} from 'file-saver';
+import {UtilsService} from './utils.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +12,13 @@ export class FileSystemService {
   private typesOfFile = new Array<TypeOfFile>();
   private files: any;
   private uploadingFileList: Array<any>;
-  private MAX_CHUNK: number = 100000;
+  private MAX_CHUNK: number = 10 * 1024 * 1024;
 
   constructor(private http: HttpClient) {
     this.dataURL = (data as any).default;
     this.getTypesOfFiles();
     this.uploadingFileList = [];
-    this.files = [];
+    this.files = null;
   }
 
   public getFiles() {
@@ -67,17 +67,17 @@ export class FileSystemService {
 
 
     this.getUploadId(file, httpOption, n).subscribe(data => {
-      this.uploadingFileList.push({
-        upload_id: data['upload_id'],
-        name: name,
-        description: description,
-        type: type,
-        progress: 0
-      });
+        this.uploadingFileList.push({
+          upload_id: data['upload_id'],
+          name: name,
+          description: description,
+          type: type,
+          progress: 0
+        });
 
 
-      this.sendChunks(file, data, n, description, type, name);
-    },
+        this.sendChunks(file, data, n, description, type, name);
+      },
       e => {
         console.error(e);
       }
@@ -135,7 +135,9 @@ export class FileSystemService {
       formData.append('md5', md5);
 
       this.http.post(url, formData, httpOption).subscribe(d => {
-        this.files.push(d);
+        if (this.files != null) {
+          this.files.push(d);
+        }
         this.uploadingFileList = this.uploadingFileList.filter(u => {
           return uploadId != u.upload_id;
         });
@@ -222,7 +224,7 @@ export class FileSystemService {
 
   public downloadFile(name: string, url: string): Promise<any> {
 
-    return new Promise<any>((p, e) => this.http.get(url, { responseType: 'blob' }).subscribe(
+    return new Promise<any>((p, e) => this.http.get(url, {responseType: 'blob'}).subscribe(
       (data: any) => {
         saveAs(data, name);
         p(data);
@@ -260,7 +262,7 @@ export class FileSystemService {
         'Authorization': 'token ' + localStorage.getItem('token')
       })
     };
-    this.http.post(url, { 'name': name }, httpOption).subscribe(
+    this.http.post(url, {'name': name}, httpOption).subscribe(
       (data: any) => {
         this.Types().push(new TypeOfFile(data.pk, data.name));
       },
@@ -327,7 +329,7 @@ export class FileSystemService {
 
       fileStatus.innerHTML = `
 <div class="fileStatusItem">
-      ${ fileName}
+      ${fileName}
       <div class="statusBar">
         <div class="innerBar"></div>
       </div>
@@ -338,7 +340,7 @@ export class FileSystemService {
     } else {
       fileStatus.innerHTML += `
 <div class="fileStatusItem">
-      ${ fileName}
+      ${fileName}
       <div class="statusBar">
         <div class="innerBar"></div>
       </div>
