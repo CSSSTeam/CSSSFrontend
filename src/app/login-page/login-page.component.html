@@ -1,4 +1,4 @@
-<main>
+<main (keyup)="login($event)">
   <div id="logo">
     <img src="../assets/img/logotype_white.png" alt="logo">
   </div>
@@ -14,8 +14,7 @@
       <input [(ngModel)]="loginForm.password" type="password" placeholder="hasło" onfocus="this.placeholder=''"
         onblur="this.placeholder='hasło'">
     </label><br>
-
-    <button (click)="login()">zaloguj się</button>
+    <button (click)="login('click')">zaloguj sie</button>
   </div>
 </main>
 <div style="clear:both"></div>
