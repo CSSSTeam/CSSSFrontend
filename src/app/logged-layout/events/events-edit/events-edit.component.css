@@ -58,15 +58,6 @@ main article nav p:hover {
 main article section {
   height: 90%;
   padding: 3rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 main article section #eventsMgmtContent {
@@ -75,6 +66,14 @@ main article section #eventsMgmtContent {
   height: 95%;
   padding: 2rem;
   overflow-y: scroll;
+}
+
+main article section #eventsMgmtContent ::-webkit-scrollbar {
+  width: 6px;
+}
+
+main article section #eventsMgmtContent ::-webkit-scrollbar-thumb {
+  background-color: #222;
 }
 
 main article section #eventsMgmtContent label {
@@ -99,6 +98,14 @@ main article section #typesMgmtContent {
   height: 95%;
   padding: 2rem;
   overflow-y: scroll;
+}
+
+main article section #typesMgmtContent ::-webkit-scrollbar {
+  width: 6px;
+}
+
+main article section #typesMgmtContent ::-webkit-scrollbar-thumb {
+  background-color: #222;
 }
 
 main article section #typesMgmtContent #typeAddForm {

@@ -7,41 +7,38 @@
       <p routerLink="/events">wróć</p>
     </nav>
     <section>
-      <div>
-        <div id="eventsMgmtContent">
-          <input type="text" placeholder="nazwa" onfocus="(this.placeholder='')"
-            onblur="(this.placeholder='nazwa')"><br>
-          <select required size="1">
-            <option disabled selected hidden>typ</option>
-            <option>sprawdzian</option>
-            <option>kartkówka</option>
-          </select><br>
-          <input class="start" placeholder="termin ( od )" onfocus="(this.type='date')" onblur="(this.type='text')">
-          <input class="start" type="time">
-          <div style="clear:both"></div>
-          <input class="stop" placeholder="termin ( do )" onfocus="(this.type='date')" onblur="(this.type='text')">
-          <input class="stop" type="time">
+      <div id="eventsMgmtContent">
+        <input type="text" placeholder="nazwa" onfocus="(this.placeholder='')" onblur="(this.placeholder='nazwa')"><br>
+        <select required size="1">
+          <option disabled selected hidden>typ</option>
+          <option>sprawdzian</option>
+          <option>kartkówka</option>
+        </select><br>
+        <input class="start" placeholder="termin ( od )" onfocus="(this.type='date')" onblur="(this.type='text')">
+        <input class="start" type="time">
+        <div style="clear:both"></div>
+        <input class="stop" placeholder="termin ( do )" onfocus="(this.type='date')" onblur="(this.type='text')">
+        <input class="stop" type="time">
 
-          <!-- <input placeholder="termin" onfocus="(this.type='datetime-local')" onblur="(this.type='text')"> -->
-          <textarea placeholder="opis" onfocus="(this.placeholder='')" onblur="(this.placeholder='opis')"></textarea>
-          <input id="add" type="button" (click)="addEvent()" value="dodaj wydarzenie">
+        <!-- <input placeholder="termin" onfocus="(this.type='datetime-local')" onblur="(this.type='text')"> -->
+        <textarea placeholder="opis" onfocus="(this.placeholder='')" onblur="(this.placeholder='opis')"></textarea>
+        <input id="add" type="button" (click)="addEvent()" value="dodaj wydarzenie">
+      </div>
+      <div id="typesMgmtContent">
+        <div id="typeAddForm">
+          <input type="text" placeholder="nazwa typu" onfocus="(this.placeholder='')"
+            onblur="(this.placeholder='nazwa typu')"><br>
+          <input id="color" type="text" placeholder="kolor etykiety" [(ngModel)]="colorValue"
+            onmouseover="(this.type='color')" onmouseout="(this.type='text')">
+          <div id="colorBox" [style.background]="colorValue"></div>
+          <div style="clear:both"></div>
+          <input id="addType" type="button" value="dodaj typ">
         </div>
-        <div id="typesMgmtContent">
-          <div id="typeAddForm">
-            <input type="text" placeholder="nazwa typu" onfocus="(this.placeholder='')"
-              onblur="(this.placeholder='nazwa typu')"><br>
-            <input id="color" type="text" placeholder="kolor etykiety" [(ngModel)]="colorValue"
-              onmouseover="(this.type='color')" onmouseout="(this.type='text')">
-            <div id="colorBox" [style.background]="colorValue"></div>
-            <div style="clear:both"></div>
-            <input id="addType" type="button" value="dodaj typ">
-          </div>
-          <select required size="1">
-            <option disabled selected hidden>wybierz typ</option>
-            <option>sprawdzian</option>
-          </select><br>
-          <input id="deleteType" type="button" value="usuń typ">
-        </div>
+        <select required size="1">
+          <option disabled selected hidden>wybierz typ</option>
+          <option>sprawdzian</option>
+        </select><br>
+        <input id="deleteType" type="button" value="usuń typ">
       </div>
     </section>
   </article>
