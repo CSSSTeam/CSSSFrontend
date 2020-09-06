@@ -76,6 +76,20 @@ main {
     border: none;
     border-bottom: 2px solid rgba(221, 221, 221, .2);
     cursor: pointer;
+    transition: border-bottom .2s ease;
+    -webkit-transition: border-bottom .2s ease;
+    -moz-transition: border-bottom .2s ease;
+    -ms-transition: border-bottom .2s ease;
+    -o-transition: border-bottom .2s ease;
+
+    &:hover {
+      border-bottom: 2px solid rgba(221, 221, 221, .7);
+    }
+
+    &:focus {
+      background-color: rgba(0, 0, 0, .5);
+      border-bottom: 2px solid rgba(221, 221, 221, .7);
+    }
 
     &::-webkit-input-placeholder {
       color: #eee;

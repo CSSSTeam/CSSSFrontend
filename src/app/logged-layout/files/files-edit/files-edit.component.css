@@ -91,6 +91,26 @@ main select {
   border: none;
   border-bottom: 2px solid rgba(221, 221, 221, 0.2);
   cursor: pointer;
+  transition: border-bottom .2s ease;
+  -webkit-transition: border-bottom .2s ease;
+  -moz-transition: border-bottom .2s ease;
+  -ms-transition: border-bottom .2s ease;
+  -o-transition: border-bottom .2s ease;
+}
+
+main input:hover,
+main label:hover,
+main textarea:hover,
+main select:hover {
+  border-bottom: 2px solid rgba(221, 221, 221, 0.7);
+}
+
+main input:focus,
+main label:focus,
+main textarea:focus,
+main select:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(221, 221, 221, 0.7);
 }
 
 main input::-webkit-input-placeholder,
