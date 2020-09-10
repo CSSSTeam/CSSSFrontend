@@ -14,6 +14,7 @@ export class LoginPageComponent implements OnInit {
   title = 'csssFrontend';
   loginForm: any;
   errorForm: any;
+  inputErrorColor;
 
   constructor(
     private router: Router,
@@ -61,7 +62,9 @@ export class LoginPageComponent implements OnInit {
           this.userService.createUser(data.token, this.router);
           this.router.navigate(['/']);
         },
-        error => this.loginError(error.error)
+        error => {
+          this.loginError(error.error);
+        }
       );
     }
   }
