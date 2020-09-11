@@ -3,8 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as data from '../../config.json';
 import { saveAs } from 'file-saver';
 import { UtilsService } from './utils.service';
-import { fstat } from 'fs';
-import { summaryForJitFileName } from '@angular/compiler/src/aot/util';
 
 @Injectable({
   providedIn: 'root'
@@ -349,14 +347,14 @@ export class FileSystemService {
       fileStatus.innerHTML += this.buildFileStatusItemDiv(fileName);
 
     document.querySelectorAll('.innerBar').forEach(item => {
-      item.style.width = `${this.progress}%`;
+      item['style'].width = `${this.progress}%`;
     });
     // a tam ( ^ ) sie ustawia szerokosc paska stanu :::::)))
 
     document.querySelectorAll('.icon-cancel').forEach(item => {
-      item.addEventListener('click', e =>
+      item.addEventListener('click', () =>
         document.querySelector('.fileStatus').removeChild(item.parentNode)
-      )
+      );
     });
 
   }
