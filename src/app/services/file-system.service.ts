@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as data from '../../config.json';
-import {saveAs} from 'file-saver';
-import {UtilsService} from './utils.service';
+import { saveAs } from 'file-saver';
+import { UtilsService } from './utils.service';
+import { fstat } from 'fs';
+import { summaryForJitFileName } from '@angular/compiler/src/aot/util';
 
 @Injectable({
   providedIn: 'root'
@@ -320,41 +322,43 @@ export class FileSystemService {
     return this.uploadingFileList;
   }
 
+  buildFileStatusItemDiv(fileName) {
+    return `
+<div class="fileStatusItem">
+  ${ fileName}
+  <div class="statusBar">
+    <div class="innerBar"></div>
+  </div>
+  <i class="icon-cancel"></i>
+</div>
+    `;
+  }
+
+
+  progress = 20; // <----- TUTAJ PROSZE INFO Z BACKENDU :))) dziekuje
+
   fileStatus(fileName) {
     const fileStatus = document.querySelector('.fileStatus');
 
     if (fileStatus === null) {
       const fileStatus = document.createElement('div');
       fileStatus.classList.add('fileStatus');
-
-      fileStatus.innerHTML = `
-<div class="fileStatusItem">
-      ${fileName}
-      <div class="statusBar">
-        <div class="innerBar"></div>
-      </div>
-      <i class="icon-cancel"></i>
-</div>
-      `;
+      fileStatus.innerHTML = this.buildFileStatusItemDiv(fileName);
       document.body.appendChild(fileStatus);
-    } else {
-      fileStatus.innerHTML += `
-<div class="fileStatusItem">
-      ${fileName}
-      <div class="statusBar">
-        <div class="innerBar"></div>
-      </div>
-      <i class="icon-cancel"></i>
-</div>
-      `;
-      document.body.appendChild(fileStatus);
-    }
+    } else
+      fileStatus.innerHTML += this.buildFileStatusItemDiv(fileName);
 
-    document.querySelectorAll('.icon-cancel').forEach(e => {
-      e.addEventListener('click', () => {
-        document.querySelector('.fileStatus').removeChild(e.parentNode);
-      });
+    document.querySelectorAll('.innerBar').forEach(item => {
+      item.style.width = `${this.progress}%`;
     });
+    // a tam ( ^ ) sie ustawia szerokosc paska stanu :::::)))
+
+    document.querySelectorAll('.icon-cancel').forEach(item => {
+      item.addEventListener('click', e =>
+        document.querySelector('.fileStatus').removeChild(item.parentNode)
+      )
+    });
+
   }
 
 }

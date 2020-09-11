@@ -182,6 +182,24 @@ article section #payments #listBuilder button {
   border-bottom: 2px solid rgba(221, 221, 221, 0.2);
   outline: none;
   cursor: pointer;
+  transition: border-bottom .2s ease;
+  -webkit-transition: border-bottom .2s ease;
+  -moz-transition: border-bottom .2s ease;
+  -ms-transition: border-bottom .2s ease;
+  -o-transition: border-bottom .2s ease;
+}
+
+article section #payments #listBuilder input:hover,
+article section #payments #listBuilder textarea:hover,
+article section #payments #listBuilder button:hover {
+  border-bottom: 2px solid rgba(221, 221, 221, 0.7);
+}
+
+article section #payments #listBuilder input:focus,
+article section #payments #listBuilder textarea:focus,
+article section #payments #listBuilder button:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(221, 221, 221, 0.7);
 }
 
 article section #payments #listBuilder input::-webkit-input-placeholder,

@@ -91,6 +91,26 @@ article section #usersMgmt select {
   border-bottom: 2px solid rgba(221, 221, 221, 0.2);
   outline: none;
   cursor: pointer;
+  transition: border-bottom .2s ease;
+  -webkit-transition: border-bottom .2s ease;
+  -moz-transition: border-bottom .2s ease;
+  -ms-transition: border-bottom .2s ease;
+  -o-transition: border-bottom .2s ease;
+}
+
+article section #usersMgmt input:hover,
+article section #usersMgmt textarea:hover,
+article section #usersMgmt button:hover,
+article section #usersMgmt select:hover {
+  border-bottom: 2px solid rgba(221, 221, 221, 0.7);
+}
+
+article section #usersMgmt input:focus,
+article section #usersMgmt textarea:focus,
+article section #usersMgmt button:focus,
+article section #usersMgmt select:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(221, 221, 221, 0.7);
 }
 
 article section #usersMgmt input::-webkit-input-placeholder,

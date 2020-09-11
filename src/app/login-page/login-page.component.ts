@@ -14,6 +14,7 @@ export class LoginPageComponent implements OnInit {
   title = 'csssFrontend';
   loginForm: any;
   errorForm: any;
+  inputErrorColor;
 
   constructor(
     private router: Router,
@@ -41,28 +42,31 @@ export class LoginPageComponent implements OnInit {
     };
   }
 
-  login() {
-    let ok = true;
-    this.restartErrorForm();
-    if (this.loginForm.username == '') {
-      ok = false;
-      this.errorForm.username = 'To pole nie może być puste.';
+  login(e) {
+    if (e.key == "Enter" || e == "click") {
+      let ok = true;
+      this.restartErrorForm();
+      if (this.loginForm.username == '') {
+        ok = false;
+        this.errorForm.username = 'To pole nie może być puste.';
+      }
+      if (this.loginForm.username == '') {
+        ok = false;
+        this.errorForm.password = 'To pole nie może być puste.';
+      }
+      if (!ok) {
+        return;
+      }
+      this.userService.loginUser(this.loginForm).subscribe(
+        (data: any) => {
+          this.userService.createUser(data.token, this.router);
+          this.router.navigate(['/']);
+        },
+        error => {
+          this.loginError(error.error);
+        }
+      );
     }
-    if (this.loginForm.username == '') {
-      ok = false;
-      this.errorForm.password = 'To pole nie może być puste.';
-    }
-    if (!ok) {
-      return;
-    }
-    this.userService.loginUser(this.loginForm).subscribe(
-      (data: any) => {
-        this.userService.createUser(data.token, this.router);
-        this.router.navigate(['/']);
-      },
-      error => this.loginError(error.error)
-    );
-
   }
 
   private loginError(error: any) {

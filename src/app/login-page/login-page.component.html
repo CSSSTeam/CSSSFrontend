@@ -1,21 +1,25 @@
-<main>
+<main (keyup)="login($event)">
   <div id="logo">
-    <img src="../assets/img/logotype_white.svg" alt="logo">
+    <img src="../assets/img/logotype_white.png" alt="logo">
   </div>
   <div id="logPage">
     <h3>{{displayError(errorForm.global)}}</h3>
-    <p>{{displayError(errorForm.username)}}</p>
+
     <label>
       <input [(ngModel)]="loginForm.username" placeholder="login" onfocus="this.placeholder=''"
-        onblur="this.placeholder='login'">
-    </label><br>
-    <p>{{displayError(errorForm.password)}}</p>
-    <label>
-      <input [(ngModel)]="loginForm.password" type="password" placeholder="hasło" onfocus="this.placeholder=''"
-        onblur="this.placeholder='hasło'">
+        onblur="this.placeholder='login'" [ngStyle]="{'background-color': inputErrorColor}">
     </label><br>
 
-    <button (click)="login()">zaloguj się</button>
+    <p>{{displayError(errorForm.username)}}</p>
+
+    <label>
+      <input [(ngModel)]="loginForm.password" type="password" placeholder="hasło" onfocus="this.placeholder=''"
+        onblur="this.placeholder='hasło'" [ngStyle]="{'background-color': inputErrorColor}">
+    </label><br>
+
+    <p>{{displayError(errorForm.password)}}</p>
+
+    <button (click)="login('click')">zaloguj się</button>
   </div>
 </main>
 <div style="clear:both"></div>

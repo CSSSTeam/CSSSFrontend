@@ -58,22 +58,65 @@ main article nav p:hover {
 main article section {
   height: 90%;
   padding: 3rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 main article section #filesMgmtContent {
-  width: 70%;
+  float: left;
+  width: 60%;
   height: 95%;
   padding: 2rem;
   overflow-y: scroll;
+}
+
+main article section #typesMgmtContent {
+  float: left;
+  width: 40%;
+  height: 95%;
+  padding: 2rem;
+  overflow-y: scroll;
+}
+
+main article section #typesMgmtContent #typeAddForm {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px dotted rgba(238, 238, 238, 0.4);
+}
+
+main article section #typesMgmtContent #typeAddForm #color {
+  width: 80%;
+  height: 3rem;
+  float: left;
+}
+
+main article section #typesMgmtContent #typeAddForm #colorBox {
+  background-color: #000;
+  border-bottom: 2px solid rgba(221, 221, 221, 0.2);
+  margin: 1rem 0;
+  float: left;
+  width: 20%;
+  height: calc(3rem + 2px);
+}
+
+main article section #typesMgmtContent #addType,
+main article section #typesMgmtContent #deleteType {
+  padding: .8rem;
+  font-size: 1.1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(221, 221, 221, 0.2);
+  border-radius: 1rem;
+  text-align: center;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+}
+
+main article section #typesMgmtContent #addType:hover,
+main article section #typesMgmtContent #deleteType:hover {
+  background-color: #000;
+}
+
+main article section #typesMgmtContent #addType:active,
+main article section #typesMgmtContent #deleteType:active {
+  color: #333;
 }
 
 main input,
@@ -91,6 +134,26 @@ main select {
   border: none;
   border-bottom: 2px solid rgba(221, 221, 221, 0.2);
   cursor: pointer;
+  transition: border-bottom .2s ease;
+  -webkit-transition: border-bottom .2s ease;
+  -moz-transition: border-bottom .2s ease;
+  -ms-transition: border-bottom .2s ease;
+  -o-transition: border-bottom .2s ease;
+}
+
+main input:hover,
+main label:hover,
+main textarea:hover,
+main select:hover {
+  border-bottom: 2px solid rgba(221, 221, 221, 0.7);
+}
+
+main input:focus,
+main label:focus,
+main textarea:focus,
+main select:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(221, 221, 221, 0.7);
 }
 
 main input::-webkit-input-placeholder,
@@ -136,10 +199,6 @@ main #upload {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-main #upload::-webkit-file-upload-button {
-  visibility: hidden;
 }
 
 main label {
@@ -212,8 +271,15 @@ main select option {
     padding: 1.5rem;
   }
   main article section #filesMgmtContent {
-    width: 90%;
-    margin: .5rem 1rem;
+    width: 100%;
+    margin: 0;
+  }
+  main article section #typesMgmtContent {
+    width: 100%;
+  }
+  main article section #typesMgmtContent #typeAddForm #colorBox {
+    height: 3rem;
+    margin: .5rem 0;
   }
   main article input,
   main article label,
@@ -229,6 +295,9 @@ main select option {
     width: 100%;
     padding: .8rem;
   }
+  main article section #typesMgmtContent #typeAddForm #colorBox {
+    margin: .5rem 0;
+  }
   main article input,
   main article label,
   main article textarea,
@@ -236,6 +305,16 @@ main select option {
     font-size: .8rem;
     padding: 1rem;
     margin: .5rem 0;
+  }
+  main article #upload {
+    width: 100%;
+    font-size: .8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  main article #upload {
+    font-size: .6rem;
   }
 }
 /*# sourceMappingURL=files-edit.component.css.map */

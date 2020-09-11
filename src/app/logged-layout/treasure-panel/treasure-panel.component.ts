@@ -109,13 +109,13 @@ export class TreasurePanelComponent implements OnInit {
   }
 
   checkAll() {
+    this.editUser = false;
     if (!this.isAllChecked) {
       this.students.forEach((e, i) => this.isChecked[i] = true);
       this.isAllChecked = true;
     } else {
       this.students.forEach((e, i) => this.isChecked[i] = false);
       this.isAllChecked = false;
-      this.editUser = false;
     }
   }
 
