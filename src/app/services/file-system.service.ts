@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as data from '../../config.json';
-import { saveAs } from 'file-saver';
-import { UtilsService } from './utils.service';
+import {saveAs} from 'file-saver';
+import {UtilsService} from './utils.service';
 
 @Injectable({
   providedIn: 'root'
@@ -130,23 +130,20 @@ export class FileSystemService {
           'Authorization': 'token ' + localStorage.getItem('token')
         })
       };
+      this.uploadingFileList = this.uploadingFileList.filter(u => {
+        return uploadId != u.upload_id;
+      });
       let formData: FormData = new FormData();
       formData.append('upload_id', uploadId);
       formData.append('md5', md5);
+      formData.append('name', name);
+      formData.append('description', description);
+      formData.append('type', type);
 
       this.http.post(url, formData, httpOption).subscribe(d => {
         if (this.files != null) {
           this.files.push(d);
         }
-        this.uploadingFileList = this.uploadingFileList.filter(u => {
-          return uploadId != u.upload_id;
-        });
-        let data = {
-          name: name,
-          description: description,
-          fileType: type
-        };
-        this.updateFile(d['pk'], data);
         console.log(d);
       });
     });
@@ -197,6 +194,12 @@ export class FileSystemService {
     return new Promise<any>((p, e) => this.http.get(url, httpOption).subscribe(
       (data: any) => {
         this.files = data;
+        this.fileStatus('plik pliczek');
+        this.fileStatus('plik pliczek');
+        this.fileStatus('plik pliczek');
+        this.fileStatus('plik pliczek');
+        this.fileStatus('plik pliczek');
+        this.fileStatus('plik pliczek');
         p(data);
       },
       (error: any) => {
@@ -262,13 +265,15 @@ export class FileSystemService {
         'Authorization': 'token ' + localStorage.getItem('token')
       })
     };
-    this.http.post(url, {'name': name}, httpOption).subscribe(
+    return new Promise<any>((p, e) => this.http.post(url, {'name': name}, httpOption).subscribe(
       (data: any) => {
         this.Types().push(new TypeOfFile(data.pk, data.name));
+        p(data);
       },
       (error: any) => {
         console.error(error);
-      });
+        e(error);
+      }));
   }
 
   deleteType(id): Promise<any> {
@@ -323,7 +328,7 @@ export class FileSystemService {
   buildFileStatusItemDiv(fileName) {
     return `
 <div class="fileStatusItem">
-  ${ fileName}
+  ${fileName}
   <div class="statusBar">
     <div class="innerBar"></div>
   </div>
@@ -343,8 +348,9 @@ export class FileSystemService {
       fileStatus.classList.add('fileStatus');
       fileStatus.innerHTML = this.buildFileStatusItemDiv(fileName);
       document.body.appendChild(fileStatus);
-    } else
+    } else {
       fileStatus.innerHTML += this.buildFileStatusItemDiv(fileName);
+    }
 
     document.querySelectorAll('.innerBar').forEach(item => {
       item['style'].width = `${this.progress}%`;
