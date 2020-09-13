@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as data from '../../config.json';
 import {saveAs} from 'file-saver';
 import {UtilsService} from './utils.service';
+import {interval} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class FileSystemService {
     this.getTypesOfFiles();
     this.uploadingFileList = [];
     this.files = null;
+    let intervalReloadEvents = 500;
+    interval(intervalReloadEvents).subscribe(() => {
+      this.updateUploadingBars();
+    });
   }
 
   public getFiles() {
@@ -65,7 +70,6 @@ export class FileSystemService {
       })
     };
 
-
     this.getUploadId(file, httpOption, n).subscribe(data => {
         this.uploadingFileList.push({
           upload_id: data['upload_id'],
@@ -74,7 +78,7 @@ export class FileSystemService {
           type: type,
           progress: 0
         });
-
+        this.fileStatus(data['upload_id']);
 
         this.sendChunks(file, data, n, description, type, name);
       },
@@ -194,12 +198,6 @@ export class FileSystemService {
     return new Promise<any>((p, e) => this.http.get(url, httpOption).subscribe(
       (data: any) => {
         this.files = data;
-        this.fileStatus('plik pliczek');
-        this.fileStatus('plik pliczek');
-        this.fileStatus('plik pliczek');
-        this.fileStatus('plik pliczek');
-        this.fileStatus('plik pliczek');
-        this.fileStatus('plik pliczek');
         p(data);
       },
       (error: any) => {
@@ -337,25 +335,22 @@ export class FileSystemService {
     `;
   }
 
-
-  progress = 20; // <----- TUTAJ PROSZE INFO Z BACKENDU :))) dziekuje
-
-  fileStatus(fileName) {
+  fileStatus(upload_id) {
     const fileStatus = document.querySelector('.fileStatus');
 
     if (fileStatus === null) {
       const fileStatus = document.createElement('div');
       fileStatus.classList.add('fileStatus');
-      fileStatus.innerHTML = this.buildFileStatusItemDiv(fileName);
+      fileStatus.innerHTML = this.buildFileStatusItemDiv(this.getNameByUploadId(upload_id));
       document.body.appendChild(fileStatus);
     } else {
-      fileStatus.innerHTML += this.buildFileStatusItemDiv(fileName);
+      fileStatus.innerHTML += this.buildFileStatusItemDiv(this.getNameByUploadId(upload_id));
     }
 
     document.querySelectorAll('.innerBar').forEach(item => {
-      item['style'].width = `${this.progress}%`;
+      item['style'].width = `${this.getProgressByUploadId(upload_id)}%`;
+      item['name'] = 'bar_' + upload_id;
     });
-    // a tam ( ^ ) sie ustawia szerokosc paska stanu :::::)))
 
     document.querySelectorAll('.icon-cancel').forEach(item => {
       item.addEventListener('click', () =>
@@ -365,6 +360,33 @@ export class FileSystemService {
 
   }
 
+  private getObjectByUploadId(upload_id: any) {
+    return this.uploadingFileList.find(f => f.upload_id == upload_id);
+  }
+
+  private getProgressByUploadId(upload_id: any) {
+    let uploadingObj = this.getObjectByUploadId(upload_id);
+    if (uploadingObj == undefined) {
+      return undefined;
+    }
+    return uploadingObj['progress'];
+  }
+
+  private getNameByUploadId(upload_id: any) {
+    let uploadingObj = this.getObjectByUploadId(upload_id);
+    if (uploadingObj == undefined) {
+      return undefined;
+    }
+    return uploadingObj['name'];
+  }
+
+  private updateUploadingBars() {
+    document.querySelectorAll('.innerBar').forEach(item => {
+      let upload_id = item['name'].split('_')[1];
+
+      item['style'].width = `${this.getProgressByUploadId(upload_id)}%`;
+    });
+  }
 }
 
 class TypeOfFile {
