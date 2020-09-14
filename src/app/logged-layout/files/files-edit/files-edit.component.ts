@@ -64,4 +64,12 @@ export class FilesEditComponent implements OnInit {
       .then(() => this.supportService.popup('dodano typ'))
       .catch(() => this.supportService.popup('cos poszło nie tak', false));
   }
+
+  delType() {
+    this.fileSystemService.deleteType(this.removeTypeId).then(() => this.supportService.popup('USUNIĘTO'))
+      .catch(e => {
+        console.log(e);
+        this.supportService.popup('NIE UDAŁO SIĘ USUNĄĆ', false);
+      });
+  }
 }

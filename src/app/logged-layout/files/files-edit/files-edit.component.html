@@ -28,7 +28,7 @@
           <option disabled selected hidden value="-1">wybierz typ</option>
           <option *ngFor="let type of getTypes()" [ngValue]="type.id">{{type.name}}</option>
         </select><br>
-        <input id="deleteType" type="button" value="usuń typ">
+        <input id="deleteType" type="button" (click)="delType()" value="usuń typ">
       </div>
     </section>
   </article>
