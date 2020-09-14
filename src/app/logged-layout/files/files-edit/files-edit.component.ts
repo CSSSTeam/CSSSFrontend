@@ -9,6 +9,8 @@ import {FileSystemService} from '../../../services/file-system.service';
 })
 export class FilesEditComponent implements OnInit {
   public addingFileForm: any;
+  public addingTypeForm: any;
+  removeTypeId: any;
 
   constructor(public fileSystemService: FileSystemService, private supportService: SupportService) {
   }
@@ -19,6 +21,9 @@ export class FilesEditComponent implements OnInit {
       description: '',
       type: -1,
       upload: File = null
+    };
+    this.addingTypeForm = {
+      name: ''
     };
   }
 
@@ -53,4 +58,18 @@ export class FilesEditComponent implements OnInit {
     this.supportService.popup('dodano plik');
   }
 
+  addType() {
+    console.log(this.addingTypeForm);
+    this.fileSystemService.createTypeFile(this.addingTypeForm.name)
+      .then(() => this.supportService.popup('dodano typ'))
+      .catch(() => this.supportService.popup('cos poszło nie tak', false));
+  }
+
+  delType() {
+    this.fileSystemService.deleteType(this.removeTypeId).then(() => this.supportService.popup('USUNIĘTO'))
+      .catch(e => {
+        console.log(e);
+        this.supportService.popup('NIE UDAŁO SIĘ USUNĄĆ', false);
+      });
+  }
 }

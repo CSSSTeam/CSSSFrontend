@@ -20,18 +20,15 @@
       <div id="typesMgmtContent">
         <div id="typeAddForm">
           <input type="text" placeholder="nazwa typu" onfocus="(this.placeholder='')"
-            onblur="(this.placeholder='nazwa typu')"><br>
-          <input id="color" type="text" placeholder="kolor etykiety" [(ngModel)]="colorValue"
-            onmouseover="(this.type='color')" onmouseout="(this.type='text')">
-          <div id="colorBox" [style.background]="colorValue"></div>
+                 onblur="(this.placeholder='nazwa typu')" [(ngModel)]="addingTypeForm.name"><br>
           <div style="clear:both"></div>
-          <input id="addType" type="button" value="dodaj typ">
+          <input id="addType" type="button" value="dodaj typ" (click)="addType()">
         </div>
-        <select required size="1">
-          <option disabled selected hidden>wybierz typ</option>
-          <option>sprawdzian</option>
+        <select required size="1" [(ngModel)]="removeTypeId">
+          <option disabled selected hidden value="-1">wybierz typ</option>
+          <option *ngFor="let type of getTypes()" [ngValue]="type.id">{{type.name}}</option>
         </select><br>
-        <input id="deleteType" type="button" value="usuń typ">
+        <input id="deleteType" type="button" (click)="delType()" value="usuń typ">
       </div>
     </section>
   </article>

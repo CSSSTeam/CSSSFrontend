@@ -24,6 +24,7 @@ export class FilesComponent implements OnInit {
   allfiles: any;
 
   constructor(public fileSystemService: FileSystemService, public supportService: SupportService) {
+
   }
 
   search() {

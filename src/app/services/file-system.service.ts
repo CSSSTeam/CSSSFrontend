@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as data from '../../config.json';
-import { saveAs } from 'file-saver';
-import { UtilsService } from './utils.service';
+import {saveAs} from 'file-saver';
+import {UtilsService} from './utils.service';
+import {interval} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class FileSystemService {
     this.getTypesOfFiles();
     this.uploadingFileList = [];
     this.files = null;
+    let intervalReloadEvents = 500;
+    interval(intervalReloadEvents).subscribe(() => {
+      this.updateUploadingBars();
+    });
   }
 
   public getFiles() {
@@ -65,7 +70,6 @@ export class FileSystemService {
       })
     };
 
-
     this.getUploadId(file, httpOption, n).subscribe(data => {
         this.uploadingFileList.push({
           upload_id: data['upload_id'],
@@ -74,7 +78,7 @@ export class FileSystemService {
           type: type,
           progress: 0
         });
-
+        this.fileStatus(data['upload_id']);
 
         this.sendChunks(file, data, n, description, type, name);
       },
@@ -130,23 +134,20 @@ export class FileSystemService {
           'Authorization': 'token ' + localStorage.getItem('token')
         })
       };
+      this.uploadingFileList = this.uploadingFileList.filter(u => {
+        return uploadId != u.upload_id;
+      });
       let formData: FormData = new FormData();
       formData.append('upload_id', uploadId);
       formData.append('md5', md5);
+      formData.append('name', name);
+      formData.append('description', description);
+      formData.append('type', type);
 
       this.http.post(url, formData, httpOption).subscribe(d => {
         if (this.files != null) {
           this.files.push(d);
         }
-        this.uploadingFileList = this.uploadingFileList.filter(u => {
-          return uploadId != u.upload_id;
-        });
-        let data = {
-          name: name,
-          description: description,
-          fileType: type
-        };
-        this.updateFile(d['pk'], data);
         console.log(d);
       });
     });
@@ -262,13 +263,15 @@ export class FileSystemService {
         'Authorization': 'token ' + localStorage.getItem('token')
       })
     };
-    this.http.post(url, {'name': name}, httpOption).subscribe(
+    return new Promise<any>((p, e) => this.http.post(url, {'name': name}, httpOption).subscribe(
       (data: any) => {
         this.Types().push(new TypeOfFile(data.pk, data.name));
+        p(data);
       },
       (error: any) => {
         console.error(error);
-      });
+        e(error);
+      }));
   }
 
   deleteType(id): Promise<any> {
@@ -323,7 +326,7 @@ export class FileSystemService {
   buildFileStatusItemDiv(fileName) {
     return `
 <div class="fileStatusItem">
-  ${ fileName}
+  ${fileName}
   <div class="statusBar">
     <div class="innerBar"></div>
   </div>
@@ -332,24 +335,22 @@ export class FileSystemService {
     `;
   }
 
-
-  progress = 20; // <----- TUTAJ PROSZE INFO Z BACKENDU :))) dziekuje
-
-  fileStatus(fileName) {
+  fileStatus(upload_id) {
     const fileStatus = document.querySelector('.fileStatus');
 
     if (fileStatus === null) {
       const fileStatus = document.createElement('div');
       fileStatus.classList.add('fileStatus');
-      fileStatus.innerHTML = this.buildFileStatusItemDiv(fileName);
+      fileStatus.innerHTML = this.buildFileStatusItemDiv(this.getNameByUploadId(upload_id));
       document.body.appendChild(fileStatus);
-    } else
-      fileStatus.innerHTML += this.buildFileStatusItemDiv(fileName);
+    } else {
+      fileStatus.innerHTML += this.buildFileStatusItemDiv(this.getNameByUploadId(upload_id));
+    }
 
     document.querySelectorAll('.innerBar').forEach(item => {
-      item['style'].width = `${this.progress}%`;
+      item['style'].width = `${this.getProgressByUploadId(upload_id)}%`;
+      item['name'] = 'bar_' + upload_id;
     });
-    // a tam ( ^ ) sie ustawia szerokosc paska stanu :::::)))
 
     document.querySelectorAll('.icon-cancel').forEach(item => {
       item.addEventListener('click', () =>
@@ -359,6 +360,33 @@ export class FileSystemService {
 
   }
 
+  private getObjectByUploadId(upload_id: any) {
+    return this.uploadingFileList.find(f => f.upload_id == upload_id);
+  }
+
+  private getProgressByUploadId(upload_id: any) {
+    let uploadingObj = this.getObjectByUploadId(upload_id);
+    if (uploadingObj == undefined) {
+      return undefined;
+    }
+    return uploadingObj['progress'];
+  }
+
+  private getNameByUploadId(upload_id: any) {
+    let uploadingObj = this.getObjectByUploadId(upload_id);
+    if (uploadingObj == undefined) {
+      return undefined;
+    }
+    return uploadingObj['name'];
+  }
+
+  private updateUploadingBars() {
+    document.querySelectorAll('.innerBar').forEach(item => {
+      let upload_id = item['name'].split('_')[1];
+
+      item['style'].width = `${this.getProgressByUploadId(upload_id)}%`;
+    });
+  }
 }
 
 class TypeOfFile {
