@@ -384,7 +384,11 @@ export class FileSystemService {
     document.querySelectorAll('.innerBar').forEach(item => {
       let upload_id = item['name'].split('_')[1];
 
-      item['style'].width = `${this.getProgressByUploadId(upload_id)}%`;
+      let prograss = this.getProgressByUploadId(upload_id);
+      if (prograss == undefined) {
+        document.querySelector('.fileStatus').removeChild(item.parentNode.parentNode);
+      }
+      item['style'].width = prograss + '%';
     });
   }
 }
