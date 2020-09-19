@@ -101,10 +101,14 @@ export class FilesComponent implements OnInit {
     return this.typeFiles;
   }
 
-  deleteFile(id: number) {
+  deleteFile(id) {
+    let typeId = this.getFiles().find(a => a.pk == id).fileType;
     this.supportService.statement('usunąć plik', () => {
-      this.fileSystemService.deleteFile(id).then(() =>
-        this.supportService.popup('usunięto plik')).catch(e => console.error(e));
+      this.fileSystemService.deleteFile(id).then(() => {
+        console.log(this.getFiles());
+        this.typeFiles = this.getFilesByType(typeId);
+        this.supportService.popup('usunięto plik');
+      }).catch(e => console.error(e));
     });
   }
 

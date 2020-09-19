@@ -9,8 +9,8 @@
     <section>
 
       <div id="eventsMgmtContent">
-        <input type="text" [(ngModel)]="addEventForm.name" placeholder="przedmiot" onfocus="(this.placeholder='')"
-               onblur="(this.placeholder='przedmiot')"><br>
+        <input type="text" [(ngModel)]="addEventForm.name" placeholder="nazwa" onfocus="(this.placeholder='')"
+               onblur="(this.placeholder='nazwa')"><br>
         <select [(ngModel)]="addEventForm.eventType" required size="1">
           <option disabled selected hidden value="-1">typ</option>
           <option *ngFor="let type of getTypes()" [value]="type.pk">{{type.name}}</option>
