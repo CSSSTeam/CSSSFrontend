@@ -13,7 +13,7 @@
       <h2>
         <span>data dodania:</span> {{ getDate(file.date) }}
       </h2>
-      <input id="download" type="button" (click)="downloadFile()" value="pobierz">
+      <a [href]="file.upload" id="download" target="_blank">pobierz</a>
       <input id="back" type="button" routerLink="/files" value="wróć">
     </div>
   </article>
