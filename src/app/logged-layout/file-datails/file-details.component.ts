@@ -31,9 +31,13 @@ export class FileDetailsComponent implements OnInit {
     return type.name;
   }
 
-  getDate(dateStr: string) {
-    let date = new Date(dateStr);
-    return `${date.getHours()}:${date.getMinutes()} ${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
+  getDate(d: string) {
+    let day = d[8] + d[9];
+    let month = d[5] + d[6];
+    let hour = d[11] + d[12];
+    let minute = d[14] + d[15];
+    let year = d[0] + d[1] + d[2] + d[3];
+    return day + '/' + month + '/' + year + ' ' + hour + ':' + minute;
   }
 
   downloadFile() {
